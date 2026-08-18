@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="LoveJoy Starcade — games, glitter, fake astrology, and highly unnecessary browser nonsense.">
   <title>Starcade | LoveJoy Market</title>
-  <link rel="stylesheet" href="styles.css?v=20260818-navshimmer1">
+  <link rel="stylesheet" href="styles.css?v=20260818-menu-glitter1">
 
   <link rel="canonical" href="https://lovejoymarket.co/starcade.html">
   <meta name="theme-color" content="#07182c">
@@ -22,6 +22,25 @@
   <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
+
+  <style>
+    @media (min-width: 821px) {
+      .starcade-page .portal-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+
+  <style>
+    .portal-worm .portal-symbol {
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,248,236,.95) 0 2px, transparent 3px),
+        radial-gradient(circle at 68% 58%, rgba(255,45,141,.95) 0 2px, transparent 3px),
+        linear-gradient(135deg, #07182c, #ff2d8d 145%);
+      color: #fff8ec;
+      text-shadow: 0 0 6px rgba(255,248,236,.85), 0 0 10px rgba(255,45,141,.75);
+    }
+  </style>
 </head>
 <body class="starcade-page starcade-v3">
   <div class="star-rain" aria-hidden="true"></div>
@@ -29,8 +48,8 @@
 
   <div class="profile-strip">
     <div class="profile-strip-track">
-      <span>STARCADE AFTER DARK ✦ THREE GAMES ✦ ONE FAKE ASTROLOGY TERMINAL ✦ ZERO PRODUCTIVITY ✦</span>
-      <span aria-hidden="true">STARCADE AFTER DARK ✦ THREE GAMES ✦ ONE FAKE ASTROLOGY TERMINAL ✦ ZERO PRODUCTIVITY ✦</span>
+      <span>STARCADE AFTER DARK ✦ FOUR GAMES ✦ ONE FAKE ASTROLOGY TERMINAL ✦ ZERO PRODUCTIVITY ✦</span>
+      <span aria-hidden="true">STARCADE AFTER DARK ✦ FOUR GAMES ✦ ONE FAKE ASTROLOGY TERMINAL ✦ ZERO PRODUCTIVITY ✦</span>
     </div>
   </div>
 
@@ -58,7 +77,7 @@
         <img class="unique-heading starcade-v3-main-title" src="starcade-v3-title.png" alt="Starcade After Dark">
         <p class="profile-tagline">the least necessary part of lovejoymarket.co and therefore spiritually essential.</p>
         <p class="profile-subline">Play something. Get psychoanalyzed by a fake zodiac machine. Go back to pretending you opened the website for business reasons.</p>
-        <div class="currently-line"><span>status:</span> all three games are playable on desktop + phone. ✦</div>
+        <div class="currently-line"><span>status:</span> all four games are playable on desktop + phone. ✦</div>
       </section>
 
       <section class="module-card starcade-portals-section">
@@ -93,6 +112,16 @@
                 <strong>HEART ATTACK</strong>
                 <p>You are the heart. The smileys are pursuing you for reasons nobody has explained.</p>
                 <small>swipe to steer</small>
+              </div>
+            </a>
+
+            <a class="portal-card portal-worm" href="profile.html#glitterworm">
+              <div class="portal-symbol">〰 ✦</div>
+              <div class="portal-copy">
+                <span class="post-meta">WORM SITUATION</span>
+                <strong>GLITTERWORM</strong>
+                <p>A sparkly worm wants a glittery apple. Nobody has established why this is your responsibility.</p>
+                <small>swipe · arrows · WASD</small>
               </div>
             </a>
           </div>
@@ -201,7 +230,7 @@
   <footer class="site-footer">
     <div class="site-shell footer-grid">
       <strong>LoveJoy Starcade</strong>
-      <div class="footer-small">three games · one fake astrology machine · no coins</div>
+      <div class="footer-small">four games · one fake astrology machine · no coins</div>
     </div>
   </footer>
 

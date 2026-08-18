@@ -1,0 +1,12 @@
+GLITTERWORM IS NOW IN STARCADE
+===============================
+
+Changes:
+- Starcade now says FOUR GAMES instead of three
+- adds Glitterworm as the fourth portal
+- Glitterworm card opens the already-playable game at profile.html#glitterworm
+- desktop portal layout becomes a balanced 2x2
+- mobile stays one card per row
+- no duplicate Glitterworm game loop was added, avoiding keyboard/control conflicts
+
+Upload starcade.html to the repository root and replace the existing file.
