@@ -1,0 +1,17 @@
+LOVEJOY STARCADE NAV + SPARKLE FIX
+===================================
+
+This batch:
+- adds STARCADE to the primary site menu between Events and Market
+- marks Starcade active on starcade.html
+- makes Starfall targets glow and twinkle
+- adds orbiting target sparkles
+- adds sparkly laser shots
+- adds hit/muzzle glitter bursts
+- adds a twinkling starfield
+- gives the player ship a subtle sparkle halo
+- keeps the same game mechanics, collision sizes, mobile touch controls, and scores
+- applies to both the full Starcade game and the Events-page Starfall teaser because they share site.js
+- bumps site.js cache version so mobile browsers pull the update
+
+Upload all HTML files + site.js from this ZIP to the repository root.

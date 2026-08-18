@@ -691,6 +691,7 @@ runStarCascade();
   let wave = 1;
   let player;
   let bullets = [];
+  let sparkles = [];
   let enemies = [];
   let enemyDir = 1;
   let enemySpeed = .35;
@@ -722,6 +723,7 @@ runStarCascade();
     wave = 1;
     player = { x: W/2 - 14, y: H - 38, w: 28, h: 16, speed: 3.7 };
     bullets = [];
+    sparkles = [];
     enemyDir = 1;
     enemySpeed = .35;
     makeWave();
@@ -765,11 +767,56 @@ runStarCascade();
     const now = performance.now();
     if (!running || now - lastFire < 220) return;
     lastFire = now;
-    bullets.push({ x: player.x + player.w/2 - 2, y: player.y - 8, w: 4, h: 10 });
+    const muzzleX = player.x + player.w/2;
+    const muzzleY = player.y - 7;
+    bullets.push({ x: muzzleX - 2, y: muzzleY - 1, w: 4, h: 10 });
+    spawnSparkles(muzzleX, muzzleY, 5, .9);
   }
 
   function rects(a,b) {
     return a.x < b.x+b.w && a.x+a.w > b.x && a.y < b.y+b.h && a.y+a.h > b.y;
+  }
+
+  function spawnSparkles(x, y, count=10, energy=1) {
+    for (let i = 0; i < count; i += 1) {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = (.25 + Math.random() * 1.5) * energy;
+      sparkles.push({
+        x,
+        y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        life: .65 + Math.random() * .45,
+        size: 1.3 + Math.random() * 2.8,
+        pink: Math.random() > .48
+      });
+    }
+
+    // Keep this deliberately small so iPhones do not become space heaters.
+    if (sparkles.length > 150) sparkles.splice(0, sparkles.length - 150);
+  }
+
+  function drawTinySparkle(x, y, size, alpha=1, pink=false) {
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, alpha);
+    ctx.fillStyle = pink ? '#ff2d8d' : '#fff8ec';
+    ctx.shadowColor = pink ? '#ff2d8d' : '#fff8ec';
+    ctx.shadowBlur = size * 2.2;
+    ctx.fillRect(x - size, y - 1, size * 2, 2);
+    ctx.fillRect(x - 1, y - size, 2, size * 2);
+    ctx.restore();
+  }
+
+  function updateSparkles(dt) {
+    const step = dt / 16.67;
+    sparkles.forEach((s) => {
+      s.x += s.vx * step;
+      s.y += s.vy * step;
+      s.vx *= .985;
+      s.vy *= .985;
+      s.life -= .026 * step;
+    });
+    sparkles = sparkles.filter((s) => s.life > 0);
   }
 
   function endGame(message) {
@@ -802,6 +849,7 @@ runStarCascade();
 
     bullets.forEach((b) => b.y -= 5.5 * (dt/16.67));
     bullets = bullets.filter((b) => b.y + b.h > 0);
+    updateSparkles(dt);
 
     let left = Infinity, right = -Infinity;
     enemies.forEach((e) => {
@@ -827,6 +875,7 @@ runStarCascade();
       enemies.forEach((e) => {
         if (!e.alive) return;
         if (rects(b,e)) {
+          spawnSparkles(e.x + e.w/2, e.y + e.h/2, 15, 1.35);
           e.alive = false;
           b.y = -99;
           score += 10;
@@ -891,30 +940,79 @@ runStarCascade();
   }
 
   function drawLoveJoyTarget(x,y,phase) {
+    const t = performance.now() / 260;
+    const cx = x + 9;
+    const cy = y + 8;
+
+    ctx.save();
+    ctx.shadowColor = phase === 1 ? '#ff2d8d' : '#fff8ec';
+    ctx.shadowBlur = 7 + 3 * (.5 + .5 * Math.sin(t + phase));
+
     if (phase % 2 === 0) drawHeartTarget(x,y,phase);
     else drawSmileyTarget(x,y,phase);
+
+    ctx.restore();
+
+    // Two tiny orbiting sparkles per target. Enough to read as glitter,
+    // not enough to bully mobile performance.
+    for (let i = 0; i < 2; i += 1) {
+      const angle = t * (.42 + i*.11) + phase + i * Math.PI;
+      const orbit = 13 + i * 3;
+      const twinkle = .28 + .65 * (.5 + .5 * Math.sin(t*2 + phase + i));
+      drawTinySparkle(
+        cx + Math.cos(angle) * orbit,
+        cy + Math.sin(angle) * orbit,
+        1.2 + twinkle * 1.6,
+        twinkle,
+        (phase + i) % 2 === 0
+      );
+    }
   }
 
   function draw() {
+    const t = performance.now() / 420;
+
     ctx.fillStyle = '#07182c';
     ctx.fillRect(0,0,W,H);
 
-    ctx.globalAlpha = .22;
-    ctx.fillStyle = '#fff8ec';
+    // Twinkling starfield instead of static dots.
     for (let i=0;i<34;i+=1) {
       const x = (i*73 + wave*17) % W;
       const y = (i*47 + score) % H;
-      ctx.fillRect(x,y,1,1);
+      const twinkle = .08 + .28 * (.5 + .5 * Math.sin(t + i*.63));
+      ctx.save();
+      ctx.globalAlpha = twinkle;
+      ctx.fillStyle = i % 5 === 0 ? '#ff2d8d' : '#fff8ec';
+      ctx.fillRect(x,y,i % 7 === 0 ? 2 : 1,i % 7 === 0 ? 2 : 1);
+      ctx.restore();
     }
-    ctx.globalAlpha = 1;
 
     enemies.forEach((e) => {
       if (e.alive) drawLoveJoyTarget(e.x,e.y,e.phase);
     });
 
-    ctx.fillStyle = '#ff2d8d';
-    bullets.forEach((b) => ctx.fillRect(b.x,b.y,b.w,b.h));
+    // Sparkly laser shots.
+    bullets.forEach((b, i) => {
+      ctx.save();
+      ctx.fillStyle = '#ff2d8d';
+      ctx.shadowColor = '#ff2d8d';
+      ctx.shadowBlur = 9;
+      ctx.fillRect(b.x,b.y,b.w,b.h);
+      ctx.restore();
 
+      const pulse = .45 + .45 * (.5 + .5 * Math.sin(t*3 + i));
+      drawTinySparkle(b.x + b.w/2, b.y + b.h + 3, 1.3 + pulse, pulse, i % 2 === 0);
+    });
+
+    // Hit/muzzle glitter particles.
+    sparkles.forEach((s) => {
+      drawTinySparkle(s.x, s.y, s.size * Math.max(.45,s.life), s.life, s.pink);
+    });
+
+    // Ship with a soft cream glow.
+    ctx.save();
+    ctx.shadowColor = '#fff8ec';
+    ctx.shadowBlur = 9;
     ctx.fillStyle = '#fff8ec';
     ctx.fillRect(player.x+10, player.y, 8, 4);
     ctx.fillRect(player.x+6, player.y+4, 16, 4);
@@ -922,6 +1020,22 @@ runStarCascade();
     ctx.fillRect(player.x, player.y+12, 28, 4);
     ctx.fillStyle = '#ff2d8d';
     ctx.fillRect(player.x+11, player.y+6, 6, 6);
+    ctx.restore();
+
+    // Tiny animated sparkle halo around the player.
+    for (let i=0;i<3;i+=1) {
+      const angle = -t*.35 + i*(Math.PI*2/3);
+      const orbitX = 19 + i*2;
+      const orbitY = 12 + i;
+      const twinkle = .3 + .65 * (.5 + .5*Math.sin(t*2+i));
+      drawTinySparkle(
+        player.x + player.w/2 + Math.cos(angle)*orbitX,
+        player.y + player.h/2 + Math.sin(angle)*orbitY,
+        1.4 + twinkle*1.5,
+        twinkle,
+        i % 2 === 0
+      );
+    }
   }
 
   function loop(ts) {
