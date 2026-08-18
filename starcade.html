@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="LoveJoy Starcade — a tiny retro arcade hidden inside LoveJoy Market.">
+  <meta name="description" content="LoveJoy Starcade — games, glitter, fake astrology, and highly unnecessary browser nonsense.">
   <title>Starcade | LoveJoy Market</title>
-  <link rel="stylesheet" href="styles.css?v=20260818-star12">
+  <link rel="stylesheet" href="styles.css?v=20260818-starv3">
 </head>
-<body class="starcade-page">
+<body class="starcade-page starcade-v3">
   <div class="star-rain" aria-hidden="true"></div>
   <div class="ambient-stars" aria-hidden="true"></div>
 
   <div class="profile-strip">
     <div class="profile-strip-track">
-      <span>LOVEJOY STARCADE ✦ INSERT FAKE QUARTER ✦ NO TOKENS REQUIRED ✦ HIGH SCORE OR LIE ABOUT IT ✦</span>
-      <span aria-hidden="true">LOVEJOY STARCADE ✦ INSERT FAKE QUARTER ✦ NO TOKENS REQUIRED ✦ HIGH SCORE OR LIE ABOUT IT ✦</span>
+      <span>STARCADE AFTER DARK ✦ THREE GAMES ✦ ONE FAKE ASTROLOGY TERMINAL ✦ ZERO PRODUCTIVITY ✦</span>
+      <span aria-hidden="true">STARCADE AFTER DARK ✦ THREE GAMES ✦ ONE FAKE ASTROLOGY TERMINAL ✦ ZERO PRODUCTIVITY ✦</span>
     </div>
   </div>
 
@@ -34,131 +34,139 @@
 
   <main class="myspace-page">
     <div class="myspace-shell">
-      <section class="profile-banner starcade-banner">
-        <div class="banner-status"><span class="status-dot"></span> arcade machine humming suspiciously</div>
-        <img class="unique-heading starcade-main-title" src="starcade-title.png" alt="welcome to Starcade">
-        <p class="profile-tagline">a deeply unnecessary but emotionally important corner of lovejoymarket.co.</p>
-        <p class="profile-subline">No account. No coins. No reason this needed to exist. Perfect.</p>
-        <div class="currently-line"><span>controls:</span> desktop = arrows/A+D + space. phone = slide to move + tap to fire. ✦</div>
+      <section class="profile-banner starcade-v3-banner">
+        <div class="banner-status"><span class="status-dot"></span> secret digital hallway unlocked</div>
+        <img class="unique-heading starcade-v3-main-title" src="starcade-v3-title.png" alt="Starcade After Dark">
+        <p class="profile-tagline">the least necessary part of lovejoymarket.co and therefore spiritually essential.</p>
+        <p class="profile-subline">Play something. Get psychoanalyzed by a fake zodiac machine. Go back to pretending you opened the website for business reasons.</p>
+        <div class="currently-line"><span>status:</span> all three games are playable on desktop + phone. ✦</div>
       </section>
 
-      <section class="module-card starcade-feature-card">
-        <div class="module-title">Now Playing</div>
+      <section class="module-card starcade-portals-section">
+        <div class="module-title">Choose Your Diversion</div>
         <div class="module-body">
-          <img class="unique-heading starcade-cabinet-heading" src="starcade-cabinet.png" alt="cabinet 01">
-          <div class="starcade-feature-layout">
-            <div class="starcade-machine">
-              <div class="starcade-machine-top">
-                <span>LOVEJOY</span>
-                <strong>STARCADE</strong>
-                <small>cabinet no. 001</small>
+          <img class="unique-heading starcade-portals-heading" src="starcade-portals.png" alt="pick a portal">
+          <div class="portal-grid">
+            <a class="portal-card portal-starfall" href="#starfall">
+              <div class="portal-symbol">♡ ☺</div>
+              <div class="portal-copy">
+                <span class="post-meta">SHOOTER</span>
+                <strong>STARFALL</strong>
+                <p>Hearts. Smiley faces. A deeply unreasonable amount of shooting.</p>
+                <small>slide + tap on phone</small>
               </div>
+            </a>
 
-              <div class="starcade-screen starcade-screen-large">
-                <div class="starcade-hud">
-                  <span>SCORE <b data-game-score>0000</b></span>
-                  <span>HIGH <b data-game-high>0000</b></span>
-                  <span>LIVES <b data-game-lives>3</b></span>
-                  <span>WAVE <b data-game-wave>1</b></span>
-                </div>
-                <canvas width="420" height="470" data-lovejoy-game aria-label="LoveJoy Starcade arcade game"></canvas>
-                <div class="starcade-overlay" data-game-overlay>
-                  <strong>LOVEJOY STARCADE</strong>
-                  <span>clear the hearts + smiley faces before they reach you</span>
-                  <button type="button" data-game-start>insert fake quarter ✦</button>
-                </div>
+            <a class="portal-card portal-block" href="block-party.html">
+              <div class="portal-symbol">▦</div>
+              <div class="portal-copy">
+                <span class="post-meta">PUZZLE</span>
+                <strong>BLOCK PARTY</strong>
+                <p>Stack the shapes. Clear the rows. Make increasingly worse choices under pressure.</p>
+                <small>slide · tap · swipe down</small>
               </div>
+            </a>
 
-              <div class="starcade-controls starcade-controls-large" aria-label="Game controls">
-                <button type="button" data-game-left aria-label="Move left">◀</button>
-                <button type="button" class="fire" data-game-fire aria-label="Fire">✦ FIRE ✦</button>
-                <button type="button" data-game-right aria-label="Move right">▶</button>
+            <a class="portal-card portal-heart" href="heart-attack.html">
+              <div class="portal-symbol">♥</div>
+              <div class="portal-copy">
+                <span class="post-meta">MAZE</span>
+                <strong>HEART ATTACK</strong>
+                <p>You are the heart. The smileys are pursuing you for reasons nobody has explained.</p>
+                <small>swipe to steer</small>
               </div>
+            </a>
+          </div>
+        </div>
+      </section>
 
-              <button type="button" class="starcade-reset" data-game-reset>restart cabinet</button>
+      <section class="module-card starfall-section" id="starfall">
+        <div class="module-title">Now Playing: Starfall</div>
+        <div class="module-body">
+          <img class="unique-heading starfall-heading" src="starfall-title.png" alt="Starfall">
+          <p class="starfall-copy">Clear the LoveJoy formation before it reaches you. The hearts are innocent. The smiley faces know what they did.</p>
+
+          <div class="starcade-v3-game-layout">
+            <div class="starcade-screen starcade-v3-screen">
+              <div class="starcade-hud">
+                <span>SCORE <b data-game-score>0000</b></span>
+                <span>HIGH <b data-game-high>0000</b></span>
+                <span>LIVES <b data-game-lives>3</b></span>
+                <span>WAVE <b data-game-wave>1</b></span>
+              </div>
+              <canvas width="420" height="450" data-lovejoy-game aria-label="Starfall arcade game"></canvas>
+              <div class="starcade-overlay" data-game-overlay>
+                <strong>STARFALL</strong>
+                <span>phone: slide to move · tap to fire</span>
+                <button type="button" data-game-start>enter the situation ✦</button>
+              </div>
             </div>
 
-            <aside class="starcade-machine-side">
+            <aside class="starfall-side">
               <div class="arcade-card">
-                <span class="post-meta">HOW TO PLAY</span>
-                <strong>shoot the little creeps.</strong>
-                <p>Move left and right. On your phone, slide your finger across the game screen to steer and tap to fire. Clear the wave before the formation reaches your ship. Every wave gets a little meaner.</p>
+                <span class="post-meta">PHONE</span>
+                <strong>your screen is the controller</strong>
+                <p>Slide your finger left/right on the game to steer. Tap the game to fire.</p>
               </div>
-
               <div class="arcade-card">
-                <span class="post-meta">SCORING</span>
-                <div class="arcade-score-rules">
-                  <div><b>+10</b><span>each little creep</span></div>
-                  <div><b>+50</b><span>clearing a wave</span></div>
-                  <div><b>+∞</b><span>bragging rights apparently</span></div>
-                </div>
+                <span class="post-meta">DESKTOP</span>
+                <strong>retro rules apply</strong>
+                <p>Arrow keys or A/D to move. Space to fire.</p>
               </div>
-
               <div class="arcade-card arcade-status-card">
                 <span class="post-meta">LOCAL HIGH SCORE</span>
                 <strong data-high-score-card>0000</strong>
-                <p>Saved only in this browser. Deeply prestigious and almost impossible to verify.</p>
+                <p>Saved in this browser only. Deeply prestigious. Barely verifiable.</p>
               </div>
             </aside>
           </div>
         </div>
       </section>
 
-      <section class="module-card starcade-score-card">
-        <div class="module-title">The Extremely Official Scoreboard</div>
-        <div class="module-body">
-          <img class="unique-heading starcade-score-heading" src="starcade-scores.png" alt="high scores or whatever">
-          <div class="fake-scoreboard">
-            <div><span>01</span><strong>YOU, PROBABLY</strong><b data-scoreboard-high>0000</b></div>
-            <div><span>02</span><strong>JESSIE</strong><b>????</b></div>
-            <div><span>03</span><strong>SOME GUY NAMED XxDARKANGELxX</strong><b>1337</b></div>
-            <div><span>04</span><strong>THE ABYSS</strong><b>0666</b></div>
-            <div><span>05</span><strong>GUEST</strong><b>0001</b></div>
-          </div>
-          <p class="starcade-fineprint">No global leaderboard yet. This is local-browser nonsense, which is honestly more period-correct.</p>
+      <section class="module-card sun-quiz-card" id="sun-sign">
+        <div class="module-title">The LoveJoy Astrological Misconduct Department</div>
+        <div class="quiz-glitter-bar" aria-hidden="true">
+          <span>✦</span><span>★</span><span>✧</span><span>♡</span><span>☾</span><span>★</span><span>✧</span>
         </div>
-      </section>
+        <div class="module-body" id="sun-sign-quiz">
+          <div data-sun-intro>
+            <img class="unique-heading sun-quiz-heading" src="sun-quiz-title.png" alt="your sun sign, probably">
+            <img class="unique-heading sun-quiz-subheading" src="sun-quiz-subtitle.png" alt="astrological misconduct">
+            <p class="sun-quiz-intro">Five questions. No birth time. No chart. No credentials. We will still reach a conclusion with shocking confidence.</p>
+            <button type="button" class="session-button" data-sun-start>guess my sign ♡</button>
+            <p class="market-smallcopy">This is a game. Please do not reorganize your life around a browser quiz written by a tattoo artist's website.</p>
+          </div>
 
-      <section class="module-card starcade-coming-card">
-        <div class="module-title">Cabinets Under Questionable Construction</div>
-        <div class="module-body">
-          <img class="unique-heading starcade-coming-heading" src="starcade-coming.png" alt="more games live here eventually">
-          <div class="arcade-cabinet-grid">
-            <article class="arcade-cabinet is-live">
-              <div class="cabinet-screen">✦</div>
-              <strong>STARCADE 001</strong>
-              <span>space shooter</span>
-              <small>ONLINE</small>
-            </article>
-            <article class="arcade-cabinet">
-              <div class="cabinet-screen">▦</div>
-              <strong>BLOCK PARTY</strong>
-              <span>falling-block situation</span>
-              <small>COMING SOON</small>
-            </article>
-            <article class="arcade-cabinet">
-              <div class="cabinet-screen">♡</div>
-              <strong>HEART ATTACK</strong>
-              <span>maze-ish nonsense</span>
-              <small>COMING SOON</small>
-            </article>
-            <article class="arcade-cabinet">
-              <div class="cabinet-screen">?</div>
-              <strong>???</strong>
-              <span>bad idea pending</span>
-              <small>LOCKED</small>
-            </article>
+          <div data-sun-panel hidden>
+            <div class="sun-quiz-progress" data-sun-progress>question 1 of 5</div>
+            <h2 data-sun-question></h2>
+            <div class="sun-options" data-sun-options></div>
+            <div class="sun-actions">
+              <button type="button" class="text-link" data-sun-back>← back</button>
+              <button type="button" class="session-button" data-sun-next disabled>next question →</button>
+            </div>
+          </div>
+
+          <div data-sun-result hidden>
+            <span class="post-meta">THE MACHINE HAS DECIDED</span>
+            <h2 data-sun-result-title></h2>
+            <p class="sun-result-copy" data-sun-result-copy></p>
+            <p class="sun-result-footnote" data-sun-result-footnote></p>
+            <div class="sun-result-actions">
+              <button type="button" class="session-button" data-sun-retake>question the methodology</button>
+              <a href="events.html" class="text-link">go do something in real life →</a>
+            </div>
           </div>
         </div>
       </section>
 
       <section class="module-card comments-card starcade-signoff">
-        <div class="module-title">You Could Also Leave The Arcade</div>
+        <div class="module-title">Exit Through The Gift Shop, Metaphorically</div>
         <div class="module-body comment-row">
           <div class="comment-icon">⌂</div>
           <div>
-            <div class="post-meta">FINE. BE PRODUCTIVE.</div>
-            <p class="about-signoff-copy">go to an event or get tattooed or something.</p>
+            <div class="post-meta">CONGRATULATIONS ON ACCOMPLISHING NOTHING</div>
+            <p class="about-signoff-copy">you may now return to the useful parts of the website.</p>
             <div class="comment-links">
               <a href="events.html">events</a>
               <a href="tattoos.html">tattoos</a>
@@ -173,11 +181,11 @@
 
   <footer class="site-footer">
     <div class="site-shell footer-grid">
-      <strong>LoveJoy Market</strong>
-      <div class="footer-small">lovejoymarket.co · hidden arcade department · Fishers, Indiana</div>
+      <strong>LoveJoy Starcade</strong>
+      <div class="footer-small">three games · one fake astrology machine · no coins</div>
     </div>
   </footer>
 
-  <script src="site.js?v=20260818-star12"></script>
+  <script src="site.js?v=20260818-starv3"></script>
 </body>
 </html>

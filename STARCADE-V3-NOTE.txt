@@ -1,0 +1,18 @@
+LOVEJOY STARCADE V3
+====================
+
+Redesigned lobby:
+- no "cabinet" terminology
+- games are framed as portals / rooms
+- Starfall shooter lives on the lobby page
+- Block Party has its own page
+- Heart Attack has its own page
+- fake sun-sign guessing quiz added to the lobby
+
+Mobile:
+- Starfall: slide to move, tap to shoot
+- Block Party: slide to move, tap to rotate, swipe down to drop
+- Heart Attack: swipe to steer
+
+All high scores are local to the visitor's browser.
+No global leaderboard or database is used.

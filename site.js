@@ -1052,3 +1052,583 @@ runStarCascade();
   resetState();
   draw();
 })();
+
+
+/* ==========================================================
+   BLOCK PARTY
+   ========================================================== */
+(() => {
+  const canvas = document.querySelector('[data-block-party]');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const nextCanvas = document.querySelector('[data-block-next]');
+  const nextCtx = nextCanvas ? nextCanvas.getContext('2d') : null;
+  const overlay = document.querySelector('[data-block-overlay]');
+  const startBtn = document.querySelector('[data-block-start]');
+  const scoreEl = document.querySelector('[data-block-score]');
+  const highEl = document.querySelector('[data-block-high]');
+  const highCard = document.querySelector('[data-block-high-card]');
+  const linesEl = document.querySelector('[data-block-lines]');
+  const levelEl = document.querySelector('[data-block-level]');
+  const leftBtn = document.querySelector('[data-block-left]');
+  const rightBtn = document.querySelector('[data-block-right]');
+  const rotateBtn = document.querySelector('[data-block-rotate]');
+  const dropBtn = document.querySelector('[data-block-drop]');
+
+  const COLS = 10, ROWS = 18, CELL = canvas.width/COLS;
+  const highKey = 'lovejoyBlockPartyHigh';
+  const colors = ['','#ff2d8d','#fff8ec','#ff73b6'];
+  const shapes = [
+    [[1,1,1],[0,1,0]], [[1,1],[1,1]], [[1,1,1,1]],
+    [[1,1,0],[0,1,1]], [[0,1,1],[1,1,0]],
+    [[1,0,0],[1,1,1]], [[0,0,1],[1,1,1]]
+  ];
+
+  let board, current, next, score, lines, level, running, raf, lastDrop, dropEvery;
+
+  const getHigh = () => Number(localStorage.getItem(highKey) || 0) || 0;
+  const setHigh = (v) => { try { localStorage.setItem(highKey,String(v)); } catch(e){} };
+
+  function updateHud() {
+    if (score > getHigh()) setHigh(score);
+    scoreEl.textContent = String(score).padStart(4,'0');
+    highEl.textContent = String(getHigh()).padStart(4,'0');
+    if (highCard) highCard.textContent = String(getHigh()).padStart(4,'0');
+    linesEl.textContent = String(lines).padStart(2,'0');
+    levelEl.textContent = level;
+  }
+
+  function blankBoard() {
+    return Array.from({length:ROWS},()=>Array(COLS).fill(0));
+  }
+
+  function randomPiece() {
+    const shape = shapes[Math.floor(Math.random()*shapes.length)].map(r=>r.slice());
+    return {shape, x:Math.floor((COLS-shape[0].length)/2), y:-1, variant:1+Math.floor(Math.random()*3)};
+  }
+
+  function collides(piece,dx=0,dy=0,shape=piece.shape) {
+    for (let r=0;r<shape.length;r++) for (let c=0;c<shape[r].length;c++) {
+      if (!shape[r][c]) continue;
+      const x = piece.x+c+dx, y = piece.y+r+dy;
+      if (x<0 || x>=COLS || y>=ROWS) return true;
+      if (y>=0 && board[y][x]) return true;
+    }
+    return false;
+  }
+
+  function rotateShape(s) { return s[0].map((_,i)=>s.map(row=>row[i]).reverse()); }
+
+  function rotate() {
+    if (!running) return;
+    const r = rotateShape(current.shape);
+    for (const kick of [0,-1,1,-2,2]) {
+      if (!collides(current,kick,0,r)) {
+        current.x += kick; current.shape = r; draw(); return;
+      }
+    }
+  }
+
+  function move(dx) {
+    if (!running || collides(current,dx,0)) return;
+    current.x += dx; draw();
+  }
+
+  function merge() {
+    let dead = false;
+    current.shape.forEach((row,r)=>row.forEach((v,c)=>{
+      if (!v) return;
+      const y=current.y+r, x=current.x+c;
+      if (y<0) dead=true; else board[y][x]=current.variant;
+    }));
+    if (dead) { gameOver(); return false; }
+    return true;
+  }
+
+  function clearRows() {
+    let cleared=0;
+    board = board.filter(row=>{
+      if (row.every(Boolean)) { cleared++; return false; }
+      return true;
+    });
+    while (board.length<ROWS) board.unshift(Array(COLS).fill(0));
+    if (cleared) {
+      const awards=[0,100,260,480,800];
+      lines += cleared;
+      score += (awards[cleared]||cleared*250)*level;
+      level = 1+Math.floor(lines/8);
+      dropEvery = Math.max(160,700-(level-1)*60);
+      updateHud();
+    }
+  }
+
+  function spawn() {
+    current = next || randomPiece();
+    current.x = Math.floor((COLS-current.shape[0].length)/2);
+    current.y = -1;
+    next = randomPiece();
+    drawNext();
+    if (collides(current)) gameOver();
+  }
+
+  function softDrop(manual=false) {
+    if (!running) return;
+    if (!collides(current,0,1)) {
+      current.y++;
+      if (manual) score++;
+      updateHud();
+    } else {
+      if (!merge()) return;
+      clearRows(); spawn();
+    }
+    draw();
+  }
+
+  function hardDrop() {
+    if (!running) return;
+    let dist=0;
+    while (!collides(current,0,1)) { current.y++; dist++; }
+    score += dist*2; updateHud();
+    if (!merge()) return;
+    clearRows(); spawn(); draw();
+  }
+
+  function drawCell(x,y,v,alpha=1, target=ctx, size=CELL) {
+    target.globalAlpha=alpha;
+    target.fillStyle=colors[v] || '#ff2d8d';
+    target.fillRect(x*size+2,y*size+2,size-4,size-4);
+    target.strokeStyle='#07182c';
+    target.strokeRect(x*size+3,y*size+3,size-6,size-6);
+    target.globalAlpha=1;
+  }
+
+  function draw() {
+    ctx.fillStyle='#07182c'; ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.strokeStyle='rgba(255,248,236,.07)';
+    for(let c=1;c<COLS;c++){ctx.beginPath();ctx.moveTo(c*CELL,0);ctx.lineTo(c*CELL,canvas.height);ctx.stroke();}
+    for(let r=1;r<ROWS;r++){ctx.beginPath();ctx.moveTo(0,r*CELL);ctx.lineTo(canvas.width,r*CELL);ctx.stroke();}
+    board.forEach((row,r)=>row.forEach((v,c)=>{if(v)drawCell(c,r,v);}));
+    if(current) current.shape.forEach((row,r)=>row.forEach((v,c)=>{
+      if(v && current.y+r>=0) drawCell(current.x+c,current.y+r,current.variant);
+    }));
+  }
+
+  function drawNext() {
+    if (!nextCtx || !next) return;
+    nextCtx.fillStyle='#07182c'; nextCtx.fillRect(0,0,nextCanvas.width,nextCanvas.height);
+    const s=22, ox=(nextCanvas.width-next.shape[0].length*s)/2, oy=(nextCanvas.height-next.shape.length*s)/2;
+    next.shape.forEach((row,r)=>row.forEach((v,c)=>{
+      if(!v)return;
+      nextCtx.fillStyle=colors[next.variant];
+      nextCtx.fillRect(ox+c*s+2,oy+r*s+2,s-4,s-4);
+      nextCtx.strokeStyle='#07182c';
+      nextCtx.strokeRect(ox+c*s+3,oy+r*s+3,s-6,s-6);
+    }));
+  }
+
+  function gameOver() {
+    running=false; cancelAnimationFrame(raf);
+    if(score>getHigh())setHigh(score);
+    updateHud();
+    overlay.hidden=false;
+    overlay.querySelector('strong').textContent='STACK COLLAPSED, BABE';
+    overlay.querySelector('span').textContent=`score ${score} · lines ${lines}`;
+    startBtn.textContent='try again ✦';
+  }
+
+  function start() {
+    board=blankBoard(); score=0; lines=0; level=1; running=true; dropEvery=700;
+    next=randomPiece(); spawn(); updateHud(); overlay.hidden=true;
+    lastDrop=performance.now(); raf=requestAnimationFrame(loop);
+  }
+
+  function loop(ts) {
+    if(!running)return;
+    if(ts-lastDrop>=dropEvery){softDrop(false);lastDrop=ts;}
+    raf=requestAnimationFrame(loop);
+  }
+
+  window.addEventListener('keydown',(e)=>{
+    if(!running)return;
+    if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown',' '].includes(e.key)) e.preventDefault();
+    if(e.key==='ArrowLeft')move(-1);
+    if(e.key==='ArrowRight')move(1);
+    if(e.key==='ArrowUp')rotate();
+    if(e.key==='ArrowDown')softDrop(true);
+    if(e.key===' ')hardDrop();
+  });
+
+  leftBtn?.addEventListener('click',()=>move(-1));
+  rightBtn?.addEventListener('click',()=>move(1));
+  rotateBtn?.addEventListener('click',rotate);
+  dropBtn?.addEventListener('click',hardDrop);
+  startBtn?.addEventListener('click',start);
+
+  let px=null, py=null, moved=false;
+  canvas.addEventListener('pointerdown',(e)=>{
+    if(!running)return;
+    e.preventDefault(); px=e.clientX; py=e.clientY; moved=false;
+    try{canvas.setPointerCapture(e.pointerId)}catch(_){}
+  });
+  canvas.addEventListener('pointermove',(e)=>{
+    if(px===null||!running)return;
+    e.preventDefault();
+    const dx=e.clientX-px, dy=e.clientY-py;
+    if(Math.abs(dx)>22 && Math.abs(dx)>Math.abs(dy)){
+      move(dx>0?1:-1); px=e.clientX; py=e.clientY; moved=true;
+    }
+  });
+  canvas.addEventListener('pointerup',(e)=>{
+    if(px===null)return;
+    e.preventDefault();
+    const dx=e.clientX-px, dy=e.clientY-py;
+    if(Math.abs(dy)>38 && dy>0 && Math.abs(dy)>Math.abs(dx)) hardDrop();
+    else if(!moved && Math.abs(dx)<12 && Math.abs(dy)<12) rotate();
+    px=py=null;
+  });
+
+  board=blankBoard(); next=randomPiece(); current=randomPiece(); updateHud(); draw(); drawNext();
+})();
+
+/* ==========================================================
+   HEART ATTACK
+   ========================================================== */
+(() => {
+  const canvas=document.querySelector('[data-heart-attack]');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  const overlay=document.querySelector('[data-heart-overlay]');
+  const startBtn=document.querySelector('[data-heart-start]');
+  const scoreEl=document.querySelector('[data-heart-score]');
+  const highEl=document.querySelector('[data-heart-high]');
+  const highCard=document.querySelector('[data-heart-high-card]');
+  const livesEl=document.querySelector('[data-heart-lives]');
+  const levelEl=document.querySelector('[data-heart-level]');
+  const btnUp=document.querySelector('[data-heart-up]');
+  const btnDown=document.querySelector('[data-heart-down]');
+  const btnLeft=document.querySelector('[data-heart-left]');
+  const btnRight=document.querySelector('[data-heart-right]');
+
+  const TILE=28;
+  const highKey='lovejoyHeartAttackHigh';
+  const mazeTemplate=[
+    "###############",
+    "#.............#",
+    "#.###.###.###.#",
+    "#.............#",
+    "#.###.#.#.###.#",
+    "#.....#.#.....#",
+    "#####.#.#.#####",
+    "#.............#",
+    "#.###.###.###.#",
+    "#...#.....#...#",
+    "###.#.###.#.###",
+    "#.............#",
+    "#.###.###.###.#",
+    "#.............#",
+    "###############"
+  ];
+  const dirs={left:{x:-1,y:0},right:{x:1,y:0},up:{x:0,y:-1},down:{x:0,y:1}};
+  let maze, pellets, player, enemies, requested='left', current='left', score=0,lives=3,level=1,running=false,last=0,raf=0;
+
+  const getHigh=()=>Number(localStorage.getItem(highKey)||0)||0;
+  const setHigh=(v)=>{try{localStorage.setItem(highKey,String(v))}catch(e){}};
+
+  function updateHud(){
+    if(score>getHigh())setHigh(score);
+    scoreEl.textContent=String(score).padStart(4,'0');
+    highEl.textContent=String(getHigh()).padStart(4,'0');
+    if(highCard)highCard.textContent=String(getHigh()).padStart(4,'0');
+    livesEl.textContent=lives; levelEl.textContent=level;
+  }
+
+  function setupMaze(){
+    maze=mazeTemplate.map(r=>r.split(''));
+    pellets=new Set();
+    for(let y=0;y<maze.length;y++)for(let x=0;x<maze[y].length;x++){
+      if(maze[y][x]==='.')pellets.add(`${x},${y}`);
+    }
+    resetActors();
+  }
+
+  function resetActors(){
+    player={x:7,y:11};
+    current='left'; requested='left';
+    enemies=[
+      {x:1,y:1,dir:'right',phase:0},
+      {x:13,y:1,dir:'left',phase:1},
+      {x:1,y:13,dir:'right',phase:2}
+    ];
+    pellets.delete(`${player.x},${player.y}`);
+  }
+
+  function open(x,y){return maze[y]&&maze[y][x]&&maze[y][x]!=='#';}
+  function canMove(actor,dir){
+    const d=dirs[dir]; return open(actor.x+d.x,actor.y+d.y);
+  }
+
+  function movePlayer(){
+    if(canMove(player,requested))current=requested;
+    if(canMove(player,current)){
+      player.x+=dirs[current].x; player.y+=dirs[current].y;
+    }
+    const key=`${player.x},${player.y}`;
+    if(pellets.has(key)){pellets.delete(key);score+=10;updateHud();}
+    if(pellets.size===0){
+      score+=250; level++; updateHud(); setupMaze();
+    }
+  }
+
+  function chooseEnemyDir(e){
+    const choices=Object.keys(dirs).filter(d=>canMove(e,d));
+    if(!choices.length)return e.dir;
+    const opposite={left:'right',right:'left',up:'down',down:'up'}[e.dir];
+    let best=choices.filter(d=>d!==opposite);
+    if(!best.length)best=choices;
+    best.sort((a,b)=>{
+      const da=Math.abs((e.x+dirs[a].x)-player.x)+Math.abs((e.y+dirs[a].y)-player.y);
+      const db=Math.abs((e.x+dirs[b].x)-player.x)+Math.abs((e.y+dirs[b].y)-player.y);
+      return da-db;
+    });
+    return Math.random()<0.7?best[0]:best[Math.floor(Math.random()*best.length)];
+  }
+
+  function moveEnemies(){
+    enemies.forEach(e=>{
+      e.dir=chooseEnemyDir(e);
+      if(canMove(e,e.dir)){e.x+=dirs[e.dir].x;e.y+=dirs[e.dir].y;}
+    });
+  }
+
+  function collided(){
+    return enemies.some(e=>e.x===player.x&&e.y===player.y);
+  }
+
+  function loseLife(){
+    lives--; updateHud();
+    if(lives<=0){gameOver();return;}
+    resetActors();
+  }
+
+  function drawHeart(cx,cy,s,fill='#ff2d8d'){
+    ctx.fillStyle=fill;
+    ctx.beginPath();
+    ctx.moveTo(cx,cy+s*.35);
+    ctx.bezierCurveTo(cx-s*.65,cy-s*.15,cx-s*.55,cy-s*.7,cx,cy-s*.25);
+    ctx.bezierCurveTo(cx+s*.55,cy-s*.7,cx+s*.65,cy-s*.15,cx,cy+s*.35);
+    ctx.fill();
+  }
+
+  function drawSmiley(cx,cy,s,phase){
+    ctx.fillStyle=phase===1?'#ff2d8d':'#fff8ec';
+    ctx.beginPath();ctx.arc(cx,cy,s,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#07182c';
+    ctx.fillRect(cx-s*.42,cy-s*.25,2,2);ctx.fillRect(cx+s*.25,cy-s*.25,2,2);
+    ctx.beginPath();ctx.arc(cx,cy+s*.08,s*.45,0,Math.PI);ctx.strokeStyle='#07182c';ctx.lineWidth=2;ctx.stroke();
+  }
+
+  function draw(){
+    ctx.fillStyle='#07182c';ctx.fillRect(0,0,canvas.width,canvas.height);
+    for(let y=0;y<maze.length;y++)for(let x=0;x<maze[y].length;x++){
+      const px=x*TILE,py=y*TILE;
+      if(maze[y][x]==='#'){
+        ctx.fillStyle='rgba(255,45,141,.22)';
+        ctx.fillRect(px+2,py+2,TILE-4,TILE-4);
+        ctx.strokeStyle='#ff2d8d';ctx.strokeRect(px+4,py+4,TILE-8,TILE-8);
+      } else if(pellets.has(`${x},${y}`)){
+        ctx.fillStyle='#fff8ec';ctx.fillRect(px+TILE/2-1,py+TILE/2-1,3,3);
+      }
+    }
+    drawHeart(player.x*TILE+TILE/2,player.y*TILE+TILE/2,10);
+    enemies.forEach(e=>drawSmiley(e.x*TILE+TILE/2,e.y*TILE+TILE/2,9,e.phase));
+  }
+
+  function gameOver(){
+    running=false;cancelAnimationFrame(raf);
+    if(score>getHigh())setHigh(score);updateHud();
+    overlay.hidden=false;
+    overlay.querySelector('strong').textContent='EMOTIONALLY COMPROMISED';
+    overlay.querySelector('span').textContent=`score ${score} · level ${level}`;
+    startBtn.textContent='re-enter the maze ♡';
+  }
+
+  function start(){
+    score=0;lives=3;level=1;running=true;setupMaze();updateHud();overlay.hidden=true;last=performance.now();draw();raf=requestAnimationFrame(loop);
+  }
+
+  function loop(ts){
+    if(!running)return;
+    const interval=Math.max(95,220-(level-1)*15);
+    if(ts-last>=interval){
+      movePlayer();
+      if(collided()){loseLife();draw();last=ts;raf=requestAnimationFrame(loop);return;}
+      moveEnemies();
+      if(collided())loseLife();
+      draw();last=ts;
+    }
+    if(running)raf=requestAnimationFrame(loop);
+  }
+
+  function request(dir){requested=dir;}
+  window.addEventListener('keydown',e=>{
+    const map={ArrowLeft:'left',ArrowRight:'right',ArrowUp:'up',ArrowDown:'down',a:'left',d:'right',w:'up',s:'down',A:'left',D:'right',W:'up',S:'down'};
+    if(map[e.key]){if(running)e.preventDefault();request(map[e.key]);}
+  });
+  btnLeft?.addEventListener('click',()=>request('left'));
+  btnRight?.addEventListener('click',()=>request('right'));
+  btnUp?.addEventListener('click',()=>request('up'));
+  btnDown?.addEventListener('click',()=>request('down'));
+  startBtn?.addEventListener('click',start);
+
+  let sx=null,sy=null;
+  canvas.addEventListener('pointerdown',e=>{if(!running)return;e.preventDefault();sx=e.clientX;sy=e.clientY;try{canvas.setPointerCapture(e.pointerId)}catch(_){}});
+  canvas.addEventListener('pointerup',e=>{
+    if(sx===null)return;e.preventDefault();
+    const dx=e.clientX-sx,dy=e.clientY-sy;
+    if(Math.max(Math.abs(dx),Math.abs(dy))>18){
+      request(Math.abs(dx)>Math.abs(dy)?(dx>0?'right':'left'):(dy>0?'down':'up'));
+    }
+    sx=sy=null;
+  });
+
+  score=0;lives=3;level=1;setupMaze();updateHud();draw();
+})();
+
+/* ==========================================================
+   LOVEJOY SUN-SIGN GUESSER
+   ========================================================== */
+(() => {
+  const root=document.querySelector('#sun-sign-quiz');
+  if(!root)return;
+
+  const signs=['aries','taurus','gemini','cancer','leo','virgo','libra','scorpio','sagittarius','capricorn','aquarius','pisces'];
+
+  const questions=[
+    {
+      q:'You enter a room where nobody knows each other. Your first instinct is:',
+      options:[
+        ['become the social thermostat without admitting it',{leo:2,libra:2,gemini:1}],
+        ['find the one person with an interesting face and investigate',{scorpio:2,aquarius:1,gemini:1}],
+        ['secure a comfortable seat and quietly assess the snacks',{taurus:2,cancer:1}],
+        ['accidentally start a side quest nobody planned',{aries:2,sagittarius:2}]
+      ]
+    },
+    {
+      q:'Your relationship with plans could best be described as:',
+      options:[
+        ['I made the spreadsheet. Do not touch the spreadsheet.',{virgo:3,capricorn:2}],
+        ['I made a plan so I could dramatically deviate from it later.',{libra:1,gemini:2,aquarius:1}],
+        ['Plans are spiritually limiting but I do need to know where I am sleeping.',{sagittarius:2,taurus:1,pisces:1}],
+        ['I will decide how I feel when the moment arrives.',{cancer:2,pisces:2,scorpio:1}]
+      ]
+    },
+    {
+      q:'Pick the sentence most likely to come out of your mouth after something mildly inconvenient:',
+      options:[
+        ['“Okay. New plan.”',{aries:2,capricorn:1}],
+        ['“That is actually so interesting.” (it is not interesting)',{gemini:2,aquarius:2}],
+        ['“I knew this was going to happen.”',{virgo:2,scorpio:2}],
+        ['“Whatever. Do you want food?”',{taurus:2,cancer:2}]
+      ]
+    },
+    {
+      q:'Someone compliments you. Internally, you:',
+      options:[
+        ['accept the tribute',{leo:3,aries:1}],
+        ['analyze why they chose that exact compliment',{virgo:1,scorpio:2,aquarius:1}],
+        ['say thank you and replay it later like archival footage',{cancer:2,pisces:2}],
+        ['compliment them back immediately and restore balance to the ecosystem',{libra:3,gemini:1}]
+      ]
+    },
+    {
+      q:'Choose your completely scientific final object:',
+      options:[
+        ['a matchbook from a bar that closed in 2009',{sagittarius:2,scorpio:1,aquarius:1}],
+        ['a heavy ceramic mug that is objectively better than your other mugs',{taurus:3,cancer:1}],
+        ['a tiny notebook with a terrifyingly specific list inside',{virgo:2,capricorn:2}],
+        ['a disco ball in daylight',{leo:1,libra:2,pisces:1,gemini:1}]
+      ]
+    }
+  ];
+
+  const copy={
+    aries:'You have been diagnosed with Aries because the machine detected forward motion before it detected a plan. You appear to treat hesitation as an administrative error. Your confidence is occasionally evidence-based.',
+    taurus:'The machine says Taurus because your nervous system seems to believe comfort is a civil right. You have standards, textures matter, and once you decide something is “your thing,” moving you becomes a municipal project.',
+    gemini:'Gemini. The machine noticed that your personality has tabs open. You are intellectually fast, conversationally dangerous, and fully capable of holding two contradictory opinions because both were funny at the time.',
+    cancer:'Cancer. You are carrying an emotional archive with excellent labeling and pretending this is just “being observant.” You remember tones, dates, snacks, betrayals, and exactly who looked weird when somebody said the thing.',
+    leo:'Leo. Not necessarily because you need attention, but because you seem to believe reality should have better lighting. You have a strong internal sense of occasion and a suspiciously cinematic relationship with being perceived.',
+    virgo:'Virgo. The machine detected pattern recognition, quiet judgment, and at least one invisible checklist. You do not need control. You simply need things to stop being done incorrectly in front of you.',
+    libra:'Libra. You are socially calibrated, aesthetically alert, and constantly trying to make the emotional furniture symmetrical. Your greatest enemy is choosing between two options that are both, annoyingly, valid.',
+    scorpio:'Scorpio. You look normal, but the machine found a basement. You clock subtext before most people finish the sentence and are extremely interested in things you have publicly claimed not to care about.',
+    sagittarius:'Sagittarius. The machine detected a philosophical monologue wearing sneakers. You are allergic to stagnation, suspicious of unnecessary rules, and always approximately one interesting invitation away from abandoning the original itinerary.',
+    capricorn:'Capricorn. Your coping mechanism may be competence. You appear to believe that if the infrastructure is strong enough, nobody will notice you also have feelings. Unfortunately, the feelings have quarterly goals.',
+    aquarius:'Aquarius. The machine cannot determine whether you are ahead of your time or simply refusing to stand where everyone else is standing. You are conceptually committed, emotionally elliptical, and weird in a highly organized way.',
+    pisces:'Pisces. You have been classified as emotionally porous with an unauthorized amount of symbolism. You are either deeply intuitive or just very good at making a narrative out of atmospheric pressure. Both can be true.'
+  };
+
+  const footnotes=[
+    'confidence level: medically inadmissible.',
+    'methodology: vibes, objects, and an irresponsible amount of pattern recognition.',
+    'please do not contact your actual astrologer about this.',
+    'the machine is extremely sure. the machine has never met you.',
+    'peer review status: absolutely not.'
+  ];
+
+  const intro=root.querySelector('[data-sun-intro]');
+  const panel=root.querySelector('[data-sun-panel]');
+  const result=root.querySelector('[data-sun-result]');
+  const start=root.querySelector('[data-sun-start]');
+  const qEl=root.querySelector('[data-sun-question]');
+  const opts=root.querySelector('[data-sun-options]');
+  const progress=root.querySelector('[data-sun-progress]');
+  const back=root.querySelector('[data-sun-back]');
+  const next=root.querySelector('[data-sun-next]');
+  const resultTitle=root.querySelector('[data-sun-result-title]');
+  const resultCopy=root.querySelector('[data-sun-result-copy]');
+  const resultFoot=root.querySelector('[data-sun-result-footnote]');
+  const retake=root.querySelector('[data-sun-retake]');
+
+  let index=0, answers=Array(questions.length).fill(null);
+
+  function renderQ(){
+    const q=questions[index];
+    progress.textContent=`question ${index+1} of ${questions.length}`;
+    qEl.textContent=q.q;
+    opts.replaceChildren();
+    q.options.forEach((o,i)=>{
+      const b=document.createElement('button');
+      b.type='button';b.className='sun-option';b.textContent=o[0];
+      if(answers[index]===i)b.classList.add('is-selected');
+      b.addEventListener('click',()=>{
+        answers[index]=i;
+        opts.querySelectorAll('.sun-option').forEach(x=>x.classList.remove('is-selected'));
+        b.classList.add('is-selected');next.disabled=false;
+      });
+      opts.appendChild(b);
+    });
+    back.style.visibility=index===0?'hidden':'visible';
+    next.disabled=answers[index]===null;
+    next.textContent=index===questions.length-1?'consult the machine ✦':'next question →';
+  }
+
+  function diagnose(){
+    const totals=Object.fromEntries(signs.map(s=>[s,0]));
+    questions.forEach((q,qi)=>{
+      const selected=q.options[answers[qi]];
+      Object.entries(selected[1]).forEach(([s,v])=>totals[s]+=v);
+    });
+    const ranked=Object.entries(totals).sort((a,b)=>b[1]-a[1]);
+    const top=ranked[0][1];
+    const near=ranked.filter(([,v])=>v>=top-1);
+    const sign=near[Math.floor(Math.random()*near.length)][0];
+    resultTitle.textContent=`The machine says ${sign.toUpperCase()}.`;
+    resultCopy.textContent=copy[sign];
+    resultFoot.textContent=footnotes[Math.floor(Math.random()*footnotes.length)];
+    panel.hidden=true;result.hidden=false;
+  }
+
+  start.addEventListener('click',()=>{intro.hidden=true;result.hidden=true;panel.hidden=false;index=0;answers=Array(questions.length).fill(null);renderQ();});
+  next.addEventListener('click',()=>{if(answers[index]===null)return;if(index<questions.length-1){index++;renderQ();}else diagnose();});
+  back.addEventListener('click',()=>{if(index>0){index--;renderQ();}});
+  retake.addEventListener('click',()=>{result.hidden=true;panel.hidden=false;index=0;answers=Array(questions.length).fill(null);renderQ();});
+})();

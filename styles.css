@@ -2164,3 +2164,175 @@ img { max-width: 100%; display: block; }
     letter-spacing: .04em;
   }
 }
+
+
+/* ================= STARCADE V3 ================= */
+.starcade-v3-main-title { width:min(100%,820px); margin:0 0 6px; }
+.starcade-portals-heading { width:min(100%,480px); margin:0 0 9px; }
+.starfall-heading { width:min(100%,440px); margin:0 0 8px; }
+.sun-quiz-heading { width:min(100%,680px); margin:0 0 0; }
+.sun-quiz-subheading { width:min(100%,560px); margin:0 0 10px; }
+
+.starcade-portals-section,
+.starfall-section,
+.sun-quiz-card,
+.arcade-game-card { margin-top:12px; }
+
+.portal-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+.portal-card {
+  min-height:230px;
+  display:grid;
+  grid-template-rows:110px 1fr;
+  border:1px solid var(--navy);
+  background:#fff;
+  color:var(--navy);
+  text-decoration:none;
+  box-shadow:4px 4px 0 rgba(7,24,44,.12);
+}
+.portal-symbol {
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,#07182c 0%,#102a4b 70%,#ff2d8d 160%);
+  color:var(--cream);
+  font-size:2rem;
+  letter-spacing:.08em;
+}
+.portal-block .portal-symbol { background:linear-gradient(135deg,#ff2d8d -20%,#07182c 90%); }
+.portal-heart .portal-symbol { background:linear-gradient(135deg,#07182c 5%,#ff2d8d 120%); }
+.portal-copy { padding:10px; }
+.portal-copy strong { display:block; color:var(--pink); font-size:.82rem; margin:2px 0 4px; }
+.portal-copy p { margin:0 0 6px !important; font-size:.59rem !important; line-height:1.43; }
+.portal-copy small { color:rgba(17,17,17,.55); font-size:.49rem; font-weight:800; }
+
+.starfall-copy { font-size:.68rem !important; line-height:1.45; }
+.starcade-v3-game-layout {
+  display:grid;
+  grid-template-columns:minmax(0,560px) minmax(220px,1fr);
+  gap:14px;
+  align-items:start;
+}
+.starcade-v3-screen { box-shadow:5px 5px 0 var(--pink); }
+.starcade-v3-screen .starcade-hud { grid-template-columns:repeat(4,1fr); }
+.starfall-side { display:grid; gap:8px; }
+
+.arcade-game-title { width:min(100%,620px); margin:0 0 4px; }
+
+.arcade-two-column {
+  display:grid;
+  grid-template-columns:minmax(0,560px) minmax(210px,1fr);
+  gap:14px;
+  align-items:start;
+}
+.arcade-hud-four {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:5px;
+  padding:7px;
+  background:#07182c;
+  color:var(--cream);
+  font:700 .5rem "Courier New",monospace;
+  border:1px solid var(--cream);
+  border-bottom:0;
+}
+.arcade-hud-four b { color:var(--pink); }
+.arcade-canvas-wrap {
+  position:relative;
+  border:1px solid var(--cream);
+  background:#07182c;
+}
+.arcade-canvas-wrap canvas {
+  display:block;
+  width:100%;
+  height:auto;
+  max-width:100%;
+  background:#07182c;
+  touch-action:none;
+  -webkit-user-select:none;
+  user-select:none;
+}
+.arcade-game-overlay {
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  align-content:center;
+  gap:8px;
+  padding:18px;
+  background:rgba(7,24,44,.85);
+  color:var(--cream);
+  text-align:center;
+}
+.arcade-game-overlay[hidden]{display:none}
+.arcade-game-overlay strong{color:var(--pink);font:900 1rem "Courier New",monospace}
+.arcade-game-overlay span{opacity:.75;font:.5rem "Courier New",monospace}
+.arcade-game-overlay button{
+  border:1px solid var(--cream);
+  background:var(--pink);
+  color:var(--navy);
+  padding:8px 10px;
+  font:900 .58rem Verdana,Arial,sans-serif;
+}
+.arcade-machine-side{display:grid;gap:8px}
+.next-piece-canvas{display:block;margin:4px auto;background:#07182c;border:1px solid var(--navy)}
+.desktop-game-controls{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:7px}
+.desktop-game-controls button{
+  min-height:45px;border:1px solid var(--navy);background:var(--navy);color:var(--cream);font-weight:900;
+}
+.desktop-game-controls .wide{grid-column:1/-1;background:var(--pink);color:var(--navy)}
+.heart-controls{grid-template-columns:1fr}
+.heart-control-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.arcade-status-card>strong{display:block;color:var(--pink);font:900 1.6rem "Courier New",monospace}
+
+.sun-quiz-card .module-body { padding:14px; }
+.sun-quiz-intro { max-width:720px; font-size:.72rem !important; line-height:1.48; }
+.sun-quiz-progress { color:var(--pink); font-size:.58rem; font-weight:900; margin-bottom:6px; }
+.sun-quiz-card h2 { font-size:.92rem !important; line-height:1.3; }
+.sun-options { display:grid; grid-template-columns:1fr 1fr; gap:7px; margin-top:10px; }
+.sun-option {
+  min-height:78px;
+  padding:10px;
+  border:1px solid var(--navy);
+  background:#fff;
+  color:var(--navy);
+  text-align:left;
+  font:700 .61rem Verdana,Arial,sans-serif;
+  cursor:pointer;
+}
+.sun-option:hover,.sun-option.is-selected { background:#ffe4f0; box-shadow:inset 0 0 0 2px var(--pink); }
+.sun-actions,.sun-result-actions { display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; align-items:center; margin-top:12px; }
+.sun-result-copy { max-width:760px; color:var(--navy); font-size:.8rem !important; line-height:1.55; }
+.sun-result-footnote { color:var(--pink); font-size:.59rem !important; font-weight:900; }
+[data-sun-result] h2 { color:var(--pink) !important; font-size:1.15rem !important; }
+
+.arcade-cabinet-grid .arcade-cabinet { text-decoration:none; }
+.arcade-cabinet-grid .arcade-cabinet.is-live { cursor:pointer; }
+
+@media (max-width:820px){
+  .portal-grid{grid-template-columns:1fr}
+  .portal-card{grid-template-columns:105px 1fr;grid-template-rows:1fr;min-height:130px}
+  .portal-symbol{font-size:1.55rem}
+  .starcade-v3-game-layout,.arcade-two-column{grid-template-columns:1fr}
+  .arcade-machine-side{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+  .starcade-v3-main-title,.starcade-portals-heading,.starfall-heading,.sun-quiz-heading,.sun-quiz-subheading,.arcade-game-title{width:100%}
+  .portal-card{grid-template-columns:86px 1fr;min-height:118px}
+  .sun-options{grid-template-columns:1fr}
+  .arcade-machine-side{grid-template-columns:1fr}
+  .desktop-game-controls{display:none}
+  .arcade-canvas-wrap::after{
+    display:block;
+    padding:6px 8px;
+    border-top:1px solid rgba(255,248,236,.25);
+    background:#07182c;
+    color:rgba(255,248,236,.72);
+    text-align:center;
+    font:700 .47rem "Courier New",monospace;
+  }
+  .block-party-page .arcade-canvas-wrap::after{content:"slide to move  •  tap to rotate  •  swipe down to drop"}
+  .heart-attack-page .arcade-canvas-wrap::after{content:"swipe to steer the heart"}
+}

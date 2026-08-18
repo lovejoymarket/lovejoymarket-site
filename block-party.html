@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Block Party — a LoveJoy Starcade falling-block puzzle.">
+  <title>Block Party | LoveJoy Starcade</title>
+  <link rel="stylesheet" href="styles.css?v=20260818-starv3">
+</head>
+<body class="starcade-page arcade-subpage">
+  <div class="star-rain" aria-hidden="true"></div>
+  <div class="ambient-stars" aria-hidden="true"></div>
+  <div class="profile-strip">
+    <div class="profile-strip-track">
+      <span>BLOCK PARTY ✦ STACK IT CUTE ✦ CLEAR THE ROWS ✦ DO NOT PANIC ✦</span>
+      <span aria-hidden="true">BLOCK PARTY ✦ STACK IT CUTE ✦ CLEAR THE ROWS ✦ DO NOT PANIC ✦</span>
+    </div>
+  </div>
+  <header class="site-header">
+    <div class="site-shell nav">
+      <a class="brand" href="starcade.html">← Starcade</a>
+      <nav class="nav-links arcade-subnav"><a href="starcade.html">Lobby</a><a href="heart-attack.html">Heart Attack</a></nav>
+    </div>
+  </header>
+
+  <main class="myspace-page">
+    <div class="myspace-shell">
+      <section class="profile-banner">
+        <div class="banner-status"><span class="status-dot"></span> puzzle room online</div>
+        <img class="unique-heading arcade-game-title" src="block-party-title.png" alt="Block Party">
+        <p class="profile-tagline">falling shapes. rapidly deteriorating confidence.</p>
+        <p class="profile-subline">Clear rows before the pile reaches the top.</p>
+        <div class="currently-line"><span>phone:</span> slide = move · tap = rotate · swipe down = drop ✦</div>
+      </section>
+
+      <section class="module-card arcade-game-card">
+        <div class="module-title">Block Party</div>
+        <div class="module-body arcade-two-column">
+          <div class="block-machine">
+            <div class="arcade-hud arcade-hud-four">
+              <span>SCORE <b data-block-score>0000</b></span>
+              <span>HIGH <b data-block-high>0000</b></span>
+              <span>LINES <b data-block-lines>00</b></span>
+              <span>LEVEL <b data-block-level>1</b></span>
+            </div>
+            <div class="arcade-canvas-wrap">
+              <canvas width="300" height="540" data-block-party aria-label="Block Party game"></canvas>
+              <div class="arcade-game-overlay" data-block-overlay>
+                <strong>BLOCK PARTY</strong>
+                <span>stack it cute</span>
+                <button type="button" data-block-start>start stacking ✦</button>
+              </div>
+            </div>
+            <div class="desktop-game-controls">
+              <button type="button" data-block-left>◀</button>
+              <button type="button" data-block-rotate>↻</button>
+              <button type="button" data-block-right>▶</button>
+              <button type="button" class="wide" data-block-drop>DROP ↓</button>
+            </div>
+          </div>
+
+          <aside class="arcade-machine-side">
+            <div class="arcade-card">
+              <span class="post-meta">NEXT PIECE</span>
+              <canvas width="120" height="120" data-block-next class="next-piece-canvas"></canvas>
+            </div>
+            <div class="arcade-card">
+              <span class="post-meta">PHONE</span>
+              <p>Slide horizontally to move. Tap to rotate. Swipe down to hard-drop.</p>
+            </div>
+            <div class="arcade-card">
+              <span class="post-meta">DESKTOP</span>
+              <p>← → move · ↑ rotate · ↓ soft drop · space hard drop.</p>
+            </div>
+            <div class="arcade-card arcade-status-card">
+              <span class="post-meta">LOCAL HIGH SCORE</span>
+              <strong data-block-high-card>0000</strong>
+              <p>Saved in this browser. Nobody from Guinness is coming.</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </div>
+  </main>
+  <script src="site.js?v=20260818-starv3"></script>
+</body>
+</html>

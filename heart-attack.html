@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Heart Attack — a LoveJoy Starcade maze-chase game.">
+  <title>Heart Attack | LoveJoy Starcade</title>
+  <link rel="stylesheet" href="styles.css?v=20260818-starv3">
+</head>
+<body class="starcade-page arcade-subpage">
+  <div class="star-rain" aria-hidden="true"></div>
+  <div class="ambient-stars" aria-hidden="true"></div>
+  <div class="profile-strip">
+    <div class="profile-strip-track">
+      <span>HEART ATTACK ✦ LOVE IS A MAZE ✦ COLLECT THE SPARKS ✦ AVOID THE SMILEYS ✦</span>
+      <span aria-hidden="true">HEART ATTACK ✦ LOVE IS A MAZE ✦ COLLECT THE SPARKS ✦ AVOID THE SMILEYS ✦</span>
+    </div>
+  </div>
+  <header class="site-header">
+    <div class="site-shell nav">
+      <a class="brand" href="starcade.html">← Starcade</a>
+      <nav class="nav-links arcade-subnav"><a href="starcade.html">Lobby</a><a href="block-party.html">Block Party</a></nav>
+    </div>
+  </header>
+
+  <main class="myspace-page">
+    <div class="myspace-shell">
+      <section class="profile-banner">
+        <div class="banner-status"><span class="status-dot"></span> maze room online</div>
+        <img class="unique-heading arcade-game-title" src="heart-attack-title.png" alt="Heart Attack">
+        <p class="profile-tagline">you are the heart. everybody else is being weird about it.</p>
+        <p class="profile-subline">Collect every LoveJoy spark without getting caught by the smileys.</p>
+        <div class="currently-line"><span>phone:</span> swipe anywhere on the maze to steer ✦</div>
+      </section>
+
+      <section class="module-card arcade-game-card">
+        <div class="module-title">Heart Attack</div>
+        <div class="module-body arcade-two-column">
+          <div class="heart-machine">
+            <div class="arcade-hud arcade-hud-four">
+              <span>SCORE <b data-heart-score>0000</b></span>
+              <span>HIGH <b data-heart-high>0000</b></span>
+              <span>LIVES <b data-heart-lives>3</b></span>
+              <span>LEVEL <b data-heart-level>1</b></span>
+            </div>
+            <div class="arcade-canvas-wrap">
+              <canvas width="420" height="420" data-heart-attack aria-label="Heart Attack maze game"></canvas>
+              <div class="arcade-game-overlay" data-heart-overlay>
+                <strong>HEART ATTACK</strong>
+                <span>collect every spark · avoid the smileys</span>
+                <button type="button" data-heart-start>enter the maze ♡</button>
+              </div>
+            </div>
+            <div class="desktop-game-controls heart-controls">
+              <button type="button" data-heart-up>▲</button>
+              <div class="heart-control-row">
+                <button type="button" data-heart-left>◀</button>
+                <button type="button" data-heart-down>▼</button>
+                <button type="button" data-heart-right>▶</button>
+              </div>
+            </div>
+          </div>
+
+          <aside class="arcade-machine-side">
+            <div class="arcade-card">
+              <span class="post-meta">PHONE</span>
+              <p>Swipe up, down, left, or right to steer the heart.</p>
+            </div>
+            <div class="arcade-card">
+              <span class="post-meta">DESKTOP</span>
+              <p>Arrow keys or WASD. Turns buffer until the path opens.</p>
+            </div>
+            <div class="arcade-card">
+              <span class="post-meta">OBJECTIVE</span>
+              <p>Collect every spark. Clearing the maze advances the level and speeds up the smileys.</p>
+            </div>
+            <div class="arcade-card arcade-status-card">
+              <span class="post-meta">LOCAL HIGH SCORE</span>
+              <strong data-heart-high-card>0000</strong>
+              <p>Saved in this browser, along with the memory of every poor turn.</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </div>
+  </main>
+  <script src="site.js?v=20260818-starv3"></script>
+</body>
+</html>
