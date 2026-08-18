@@ -1671,3 +1671,571 @@ runStarCascade();
   back.addEventListener('click',()=>{if(index>0){index--;renderQ();}});
   retake.addEventListener('click',()=>{result.hidden=true;panel.hidden=false;index=0;answers=Array(questions.length).fill(null);renderQ();});
 })();
+
+/* ==========================================================
+   MY LOVEJOY NAV LINK
+   Add the Profile destination to the shared main navigation.
+   ========================================================== */
+(() => {
+  document.querySelectorAll('.nav-links').forEach((nav) => {
+    if (nav.querySelector('a[href="profile.html"], a[href="/profile.html"]')) return;
+
+    const link = document.createElement('a');
+    link.href = 'profile.html';
+    link.textContent = 'Profile';
+
+    const about = Array.from(nav.querySelectorAll('a')).find((a) => {
+      const href = a.getAttribute('href') || '';
+      return href === 'about.html' || href === '/about.html';
+    });
+
+    if (about) nav.insertBefore(link, about);
+    else nav.appendChild(link);
+  });
+})();
+
+/* ==========================================================
+   DEEPLY UNSERIOUS PROFILE QUIZ
+   ========================================================== */
+(() => {
+  const root = document.querySelector('#profile-chaos-quiz');
+  if (!root) return;
+
+  const questions = [
+    {
+      q: 'If you had been born in 1954 but, due to a clerical error, you were legally classified as a farm animal, which situation feels most correct?',
+      options: [
+        ['A unionized dairy cow with excellent benefits and one extremely specific grievance.', {goose:1, cow:3, librarian:1}],
+        ['A barn cat who has never technically worked here but somehow has seniority.', {cat:3, cryptid:1}],
+        ['A horse who keeps leaving town because nobody understands the concept of personal growth.', {pony:3, cryptid:1}],
+        ['A goose banned from two county fairs for conduct unrelated to agriculture.', {goose:4}]
+      ]
+    },
+    {
+      q: 'You find a VHS tape labeled “DO NOT WATCH UNTIL THURSDAY.” It is Monday. What is your relationship to this information?',
+      options: [
+        ['The label has created a governance problem and I intend to respect the process.', {cow:2, librarian:2}],
+        ['I watch three seconds, stop it, and spend the next 72 hours building a theory.', {librarian:3, cryptid:2}],
+        ['Thursday is a social construct invented by people afraid of consequences.', {pony:2, goose:2}],
+        ['I put it back. Whatever is on that tape already knows I touched it.', {cat:2, cryptid:3}]
+      ]
+    },
+    {
+      q: 'A stranger silently hands you a soup spoon in a parking lot and says, “You’ll know when.” Your next move:',
+      options: [
+        ['Keep it. The object has entered the narrative and must now be honored.', {cryptid:3, librarian:1}],
+        ['Ask six follow-up questions and become visibly irritated when they walk away.', {cow:2, librarian:2}],
+        ['Use it immediately for something it was never designed to do.', {goose:2, pony:2}],
+        ['Put it in the glove box next to the other inexplicable evidence.', {cat:3, cryptid:1}]
+      ]
+    },
+    {
+      q: 'Select the gas-station object that contains the most emotional truth.',
+      options: [
+        ['A single banana sitting beside the register under fluorescent lighting.', {pony:1, cryptid:2}],
+        ['The rotating hot-dog machine at 2:14 AM.', {goose:2, cow:1}],
+        ['A novelty keychain with your name spelled almost, but not quite, correctly.', {librarian:2, cat:2}],
+        ['The bathroom key attached to an object the size of a municipal ordinance.', {cow:2, goose:1, librarian:1}]
+      ]
+    },
+    {
+      q: 'Which minor inconvenience would most plausibly become the central metaphor in your memoir?',
+      options: [
+        ['A fitted sheet that repeatedly rejects the mattress on moral grounds.', {cow:2, cat:1}],
+        ['Being forced to merge because somebody has stopped in the merge lane to think.', {goose:3, cow:1}],
+        ['Losing one AirPod and continuing to carry the surviving one for seventeen months.', {librarian:2, cryptid:1, cat:1}],
+        ['A decorative chair that nobody is allowed to sit in despite the housing crisis.', {pony:2, cat:2}]
+      ]
+    },
+    {
+      q: 'The moon owes you $14. It cannot pay cash. What form of repayment do you accept?',
+      options: [
+        ['One completely accurate piece of gossip about the year 2037.', {librarian:2, cryptid:2}],
+        ['A permanent 11% improvement in my ability to parallel park.', {cow:2, cat:1}],
+        ['Custody of one small cloud with no known medical conditions.', {pony:3, cryptid:1}],
+        ['Nothing. I need the moon to understand that this is about principle now.', {goose:4}]
+      ]
+    }
+  ];
+
+  const results = {
+    goose: {
+      title: 'THE MUNICIPAL GOOSE WITH TENURE',
+      copy: 'You possess the rare combination of institutional confidence and absolutely no respect for institutional peace. You are not “causing a scene.” You are conducting an unscheduled public hearing. Boundaries are clear, grievances are documented, and somewhere a folding chair has been knocked over for reasons you consider procedurally sound.'
+    },
+    cow: {
+      title: 'THE UNIONIZED COW WITH AN INTERNAL SPREADSHEET',
+      copy: 'You appear calm because the operational infrastructure underneath you is doing heroic work. Comfort matters. Competence matters. Lunch absolutely matters. You are capable of tremendous patience right up until somebody introduces a preventable inefficiency, at which point the meeting acquires minutes.'
+    },
+    cat: {
+      title: 'THE BARN CAT WITH UNDISCLOSED EQUITY',
+      copy: 'Nobody remembers hiring you, yet your influence over the property is increasingly difficult to challenge. You value autonomy, selective affection, and sitting approximately six feet away from whatever everyone else is doing. Your emotional availability is real but distributed through an invitation-only network.'
+    },
+    pony: {
+      title: 'THE EXISTENTIAL PONY IN A VERY GOOD JACKET',
+      copy: 'You keep mistaking restlessness for a philosophical emergency, but to your credit the jacket is excellent. You are romantic about escape routes, mildly suspicious of permanence, and one compelling roadside attraction away from changing the itinerary for everyone.'
+    },
+    librarian: {
+      title: 'THE FERAL LIBRARIAN OF THE SECONDARY NARRATIVE',
+      copy: 'You cannot simply experience an event when there are motifs to identify. You archive details other people accidentally discard, then return six months later with an interpretation nobody requested but everybody has to admit is weirdly persuasive. Your natural habitat is the footnote that changes the entire argument.'
+    },
+    cryptid: {
+      title: 'THE RURAL CRYPTID WITH EXCELLENT BOUNDARIES',
+      copy: 'Your presence has been reported by several credible witnesses but never under conditions you personally approved. You are perceptive, private, and deeply unwilling to explain yourself merely because somebody has become curious. People call you mysterious when what they mean is you declined to provide them administrative access.'
+    }
+  };
+
+  const footnotes = [
+    'confidence interval: legally decorative.',
+    'methodology: six questions, one soup spoon, no institutional oversight.',
+    'peer review was attempted but the goose became hostile.',
+    'the findings are conclusive in the sense that I have finished typing them.',
+    'secondary finding: your answer about the moon was disproportionately revealing.'
+  ];
+
+  const intro = root.querySelector('[data-chaos-intro]');
+  const panel = root.querySelector('[data-chaos-panel]');
+  const resultPanel = root.querySelector('[data-chaos-result]');
+  const start = root.querySelector('[data-chaos-start]');
+  const progress = root.querySelector('[data-chaos-progress]');
+  const questionEl = root.querySelector('[data-chaos-question]');
+  const optionsEl = root.querySelector('[data-chaos-options]');
+  const back = root.querySelector('[data-chaos-back]');
+  const next = root.querySelector('[data-chaos-next]');
+  const titleEl = root.querySelector('[data-chaos-result-title]');
+  const copyEl = root.querySelector('[data-chaos-result-copy]');
+  const footEl = root.querySelector('[data-chaos-result-footnote]');
+  const retake = root.querySelector('[data-chaos-retake]');
+
+  let index = 0;
+  let answers = Array(questions.length).fill(null);
+
+  function renderQuestion() {
+    const q = questions[index];
+    progress.textContent = `question ${index + 1} of ${questions.length}`;
+    questionEl.textContent = q.q;
+    optionsEl.replaceChildren();
+
+    q.options.forEach((option, optionIndex) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'chaos-option';
+      btn.textContent = option[0];
+      if (answers[index] === optionIndex) btn.classList.add('is-selected');
+
+      btn.addEventListener('click', () => {
+        answers[index] = optionIndex;
+        optionsEl.querySelectorAll('.chaos-option').forEach((item) => item.classList.remove('is-selected'));
+        btn.classList.add('is-selected');
+        next.disabled = false;
+      });
+
+      optionsEl.appendChild(btn);
+    });
+
+    back.style.visibility = index === 0 ? 'hidden' : 'visible';
+    next.disabled = answers[index] === null;
+    next.textContent = index === questions.length - 1 ? 'publish the findings ✦' : 'continue the study →';
+  }
+
+  function calculate() {
+    const totals = Object.fromEntries(Object.keys(results).map((key) => [key, 0]));
+
+    questions.forEach((q, qi) => {
+      const selected = q.options[answers[qi]];
+      Object.entries(selected[1]).forEach(([key, value]) => {
+        totals[key] += value;
+      });
+    });
+
+    const ranked = Object.entries(totals).sort((a, b) => b[1] - a[1]);
+    const highest = ranked[0][1];
+    const finalists = ranked.filter(([, value]) => value >= highest - 1);
+    const winner = finalists[Math.floor(Math.random() * finalists.length)][0];
+    const diagnosis = results[winner];
+
+    titleEl.textContent = diagnosis.title;
+    copyEl.textContent = diagnosis.copy;
+    footEl.textContent = footnotes[Math.floor(Math.random() * footnotes.length)];
+
+    panel.hidden = true;
+    resultPanel.hidden = false;
+  }
+
+  start?.addEventListener('click', () => {
+    intro.hidden = true;
+    resultPanel.hidden = true;
+    panel.hidden = false;
+    index = 0;
+    answers = Array(questions.length).fill(null);
+    renderQuestion();
+  });
+
+  next?.addEventListener('click', () => {
+    if (answers[index] === null) return;
+    if (index < questions.length - 1) {
+      index += 1;
+      renderQuestion();
+    } else {
+      calculate();
+    }
+  });
+
+  back?.addEventListener('click', () => {
+    if (index > 0) {
+      index -= 1;
+      renderQuestion();
+    }
+  });
+
+  retake?.addEventListener('click', () => {
+    resultPanel.hidden = true;
+    panel.hidden = false;
+    index = 0;
+    answers = Array(questions.length).fill(null);
+    renderQuestion();
+  });
+})();
+
+/* ==========================================================
+   GLITTERWORM
+   Sparkly snake-adjacent nonsense.
+   ========================================================== */
+(() => {
+  const canvas = document.querySelector('[data-glitterworm]');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  const overlay = document.querySelector('[data-worm-overlay]');
+  const startBtn = document.querySelector('[data-worm-start]');
+  const scoreEl = document.querySelector('[data-worm-score]');
+  const highEl = document.querySelector('[data-worm-high]');
+  const lengthEl = document.querySelector('[data-worm-length]');
+  const upBtn = document.querySelector('[data-worm-up]');
+  const downBtn = document.querySelector('[data-worm-down]');
+  const leftBtn = document.querySelector('[data-worm-left]');
+  const rightBtn = document.querySelector('[data-worm-right]');
+
+  const GRID = 21;
+  const CELL = canvas.width / GRID;
+  const highKey = 'lovejoyGlitterwormHigh';
+  const dirs = {
+    up: {x:0,y:-1},
+    down: {x:0,y:1},
+    left: {x:-1,y:0},
+    right: {x:1,y:0}
+  };
+  const opposite = {up:'down',down:'up',left:'right',right:'left'};
+
+  let worm = [];
+  let apple = {x:15,y:10};
+  let current = 'right';
+  let requested = 'right';
+  let score = 0;
+  let running = false;
+  let raf = 0;
+  let lastStep = 0;
+  let particles = [];
+
+  const getHigh = () => Number(localStorage.getItem(highKey) || 0) || 0;
+  const setHigh = (value) => {
+    try { localStorage.setItem(highKey, String(value)); } catch (error) {}
+  };
+
+  function updateHud() {
+    if (score > getHigh()) setHigh(score);
+    scoreEl.textContent = String(score).padStart(2,'0');
+    highEl.textContent = String(getHigh()).padStart(2,'0');
+    lengthEl.textContent = String(worm.length).padStart(2,'0');
+  }
+
+  function reset() {
+    worm = [
+      {x:8,y:10},
+      {x:7,y:10},
+      {x:6,y:10},
+      {x:5,y:10}
+    ];
+    current = requested = 'right';
+    score = 0;
+    particles = [];
+    placeApple();
+    updateHud();
+  }
+
+  function occupied(x,y) {
+    return worm.some((part) => part.x === x && part.y === y);
+  }
+
+  function placeApple() {
+    let tries = 0;
+    do {
+      apple = {
+        x: 1 + Math.floor(Math.random() * (GRID - 2)),
+        y: 1 + Math.floor(Math.random() * (GRID - 2))
+      };
+      tries += 1;
+    } while (occupied(apple.x, apple.y) && tries < 500);
+  }
+
+  function request(dir) {
+    if (opposite[current] === dir) return;
+    requested = dir;
+  }
+
+  function sparkleBurst(x,y,amount=13) {
+    for (let i=0;i<amount;i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = .45 + Math.random() * 1.3;
+      particles.push({
+        x, y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        life: 1,
+        pink: Math.random() > .5
+      });
+    }
+  }
+
+  function gameOver() {
+    running = false;
+    cancelAnimationFrame(raf);
+    if (score > getHigh()) setHigh(score);
+    updateHud();
+    overlay.hidden = false;
+    overlay.querySelector('strong').textContent = 'THE WORM HAS ENCOUNTERED ITSELF';
+    overlay.querySelector('span').textContent = `score ${score} · length ${worm.length}`;
+    startBtn.textContent = 'release another worm ✦';
+  }
+
+  function step() {
+    if (opposite[current] !== requested) current = requested;
+    const d = dirs[current];
+    const head = worm[0];
+    const next = {
+      x: (head.x + d.x + GRID) % GRID,
+      y: (head.y + d.y + GRID) % GRID
+    };
+
+    if (occupied(next.x,next.y)) {
+      gameOver();
+      return;
+    }
+
+    worm.unshift(next);
+
+    if (next.x === apple.x && next.y === apple.y) {
+      score += 1;
+      sparkleBurst(
+        apple.x * CELL + CELL/2,
+        apple.y * CELL + CELL/2,
+        18
+      );
+      placeApple();
+      updateHud();
+    } else {
+      worm.pop();
+    }
+  }
+
+  function drawSparkle(x,y,size,alpha,pink=false) {
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = pink ? '#ff2d8d' : '#fff8ec';
+    ctx.fillRect(x-size, y-1, size*2, 2);
+    ctx.fillRect(x-1, y-size, 2, size*2);
+    ctx.restore();
+  }
+
+  function drawApple() {
+    const cx = apple.x * CELL + CELL/2;
+    const cy = apple.y * CELL + CELL/2;
+    const t = performance.now()/250;
+    const pulse = 1 + Math.sin(t)*.06;
+    const r = CELL*.30*pulse;
+
+    ctx.save();
+    ctx.shadowColor = '#ff2d8d';
+    ctx.shadowBlur = 12;
+    ctx.fillStyle = '#ff2d8d';
+    ctx.beginPath();
+    ctx.arc(cx-r*.42,cy,r*.70,0,Math.PI*2);
+    ctx.arc(cx+r*.42,cy,r*.70,0,Math.PI*2);
+    ctx.fill();
+    ctx.restore();
+
+    ctx.fillStyle = '#fff8ec';
+    ctx.beginPath();
+    ctx.arc(cx-r*.25,cy-r*.24,Math.max(1.5,r*.12),0,Math.PI*2);
+    ctx.fill();
+
+    ctx.strokeStyle = '#fff8ec';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(cx,cy-r*.6);
+    ctx.quadraticCurveTo(cx+r*.1,cy-r*1.05,cx+r*.42,cy-r*1.06);
+    ctx.stroke();
+
+    for (let i=0;i<5;i++) {
+      const angle = t*.45 + i*(Math.PI*2/5);
+      const orbit = r*1.45;
+      drawSparkle(
+        cx + Math.cos(angle)*orbit,
+        cy + Math.sin(angle)*orbit,
+        2.3 + (i%2),
+        .5 + .4*Math.sin(t+i),
+        i%2===0
+      );
+    }
+  }
+
+  function drawWorm() {
+    const t = performance.now()/260;
+
+    worm.forEach((part,index) => {
+      const cx = part.x*CELL + CELL/2;
+      const cy = part.y*CELL + CELL/2;
+      const radius = index === 0 ? CELL*.36 : CELL*(.30 - Math.min(index,12)*.004);
+      const huePink = index % 3 !== 1;
+
+      ctx.save();
+      ctx.shadowColor = huePink ? '#ff2d8d' : '#fff8ec';
+      ctx.shadowBlur = index === 0 ? 11 : 7;
+      ctx.fillStyle = huePink ? '#ff2d8d' : '#fff8ec';
+      ctx.beginPath();
+      ctx.arc(cx,cy,radius,0,Math.PI*2);
+      ctx.fill();
+      ctx.restore();
+
+      if (index === 0) {
+        ctx.fillStyle = '#07182c';
+        const eyeOffsetX = current === 'left' ? -3 : current === 'right' ? 3 : 0;
+        const eyeOffsetY = current === 'up' ? -3 : current === 'down' ? 3 : 0;
+        ctx.beginPath();
+        ctx.arc(cx-4+eyeOffsetX,cy-3+eyeOffsetY,1.8,0,Math.PI*2);
+        ctx.arc(cx+4+eyeOffsetX,cy-3+eyeOffsetY,1.8,0,Math.PI*2);
+        ctx.fill();
+
+        ctx.strokeStyle = '#07182c';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.arc(cx,cy+1,5,.2,Math.PI-.2);
+        ctx.stroke();
+      }
+
+      if (index % 2 === 0) {
+        const angle = t + index*.8;
+        drawSparkle(
+          cx + Math.cos(angle)*radius*1.45,
+          cy + Math.sin(angle)*radius*1.45,
+          index === 0 ? 3.5 : 2.3,
+          .45 + .4*Math.sin(t*2+index),
+          index%4===0
+        );
+      }
+    });
+  }
+
+  function updateParticles() {
+    particles.forEach((p) => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vx *= .985;
+      p.vy *= .985;
+      p.life -= .025;
+    });
+    particles = particles.filter((p) => p.life > 0);
+  }
+
+  function drawParticles() {
+    particles.forEach((p) => drawSparkle(p.x,p.y,2.5,p.life,p.pink));
+  }
+
+  function draw() {
+    ctx.fillStyle = '#07182c';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    ctx.strokeStyle = 'rgba(255,248,236,.035)';
+    for (let i=1;i<GRID;i++) {
+      ctx.beginPath();
+      ctx.moveTo(i*CELL,0);
+      ctx.lineTo(i*CELL,canvas.height);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(0,i*CELL);
+      ctx.lineTo(canvas.width,i*CELL);
+      ctx.stroke();
+    }
+
+    drawApple();
+    drawWorm();
+    updateParticles();
+    drawParticles();
+  }
+
+  function loop(ts) {
+    if (!running) return;
+    if (ts - lastStep >= Math.max(78, 155 - score*2)) {
+      step();
+      lastStep = ts;
+    }
+    draw();
+    if (running) raf = requestAnimationFrame(loop);
+  }
+
+  function start() {
+    reset();
+    running = true;
+    overlay.hidden = true;
+    lastStep = performance.now();
+    draw();
+    raf = requestAnimationFrame(loop);
+  }
+
+  window.addEventListener('keydown', (event) => {
+    const map = {
+      ArrowUp:'up', ArrowDown:'down', ArrowLeft:'left', ArrowRight:'right',
+      w:'up', s:'down', a:'left', d:'right',
+      W:'up', S:'down', A:'left', D:'right'
+    };
+    if (!map[event.key]) return;
+    if (running) event.preventDefault();
+    request(map[event.key]);
+  });
+
+  upBtn?.addEventListener('click', () => request('up'));
+  downBtn?.addEventListener('click', () => request('down'));
+  leftBtn?.addEventListener('click', () => request('left'));
+  rightBtn?.addEventListener('click', () => request('right'));
+  startBtn?.addEventListener('click', start);
+
+  let startX = null;
+  let startY = null;
+
+  canvas.addEventListener('pointerdown', (event) => {
+    if (!running) return;
+    event.preventDefault();
+    startX = event.clientX;
+    startY = event.clientY;
+    try { canvas.setPointerCapture(event.pointerId); } catch (error) {}
+  });
+
+  canvas.addEventListener('pointerup', (event) => {
+    if (startX === null || startY === null) return;
+    event.preventDefault();
+
+    const dx = event.clientX - startX;
+    const dy = event.clientY - startY;
+
+    if (Math.max(Math.abs(dx), Math.abs(dy)) > 16) {
+      if (Math.abs(dx) > Math.abs(dy)) request(dx > 0 ? 'right' : 'left');
+      else request(dy > 0 ? 'down' : 'up');
+    }
+
+    startX = startY = null;
+  });
+
+  reset();
+  draw();
+})();

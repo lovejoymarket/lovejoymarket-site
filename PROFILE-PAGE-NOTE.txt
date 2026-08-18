@@ -1,0 +1,31 @@
+MY LOVEJOY PROFILE TEASER V1
+===========================
+
+FILES TO UPLOAD
+- profile.html
+- profile.css
+- site.js
+- profile-title.png
+- profile-coming.png
+- profile-future.png
+- profile-quiz.png
+- profile-worm.png
+
+WHAT site.js DOES
+The new shared JavaScript automatically adds "Profile" to any normal LoveJoy
+main navigation bar that does not already contain it. That means you do not
+have to replace every HTML page just to add one menu item.
+
+PROFILE PAGE
+- clearly says real client profiles are coming soon
+- does not collect login information
+- previews future client-profile features
+- includes a 6-question absurd personality quiz
+- includes playable Glitterworm
+
+GLITTERWORM CONTROLS
+Phone: swipe to steer
+Desktop: arrow keys or WASD
+
+All quiz data and game high scores remain local in the visitor's browser.
+No private client data is being collected yet.

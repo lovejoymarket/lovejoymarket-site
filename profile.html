@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="My LoveJoy — the future LoveJoy Market client profile portal, currently occupied by a personality quiz and a glitter worm.">
+  <title>Profile | LoveJoy Market</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="profile.css?v=20260818-profile1">
+</head>
+<body class="client-profile-page">
+  <div class="star-rain" aria-hidden="true"></div>
+  <div class="ambient-stars" aria-hidden="true"></div>
+
+  <div class="profile-strip">
+    <div class="profile-strip-track">
+      <span>MY LOVEJOY ✦ CLIENT PROFILES COMING SOON ✦ QUIZ CURRENTLY OPERATING WITHOUT A LICENSE ✦ GLITTERWORM ONLINE ✦</span>
+      <span aria-hidden="true">MY LOVEJOY ✦ CLIENT PROFILES COMING SOON ✦ QUIZ CURRENTLY OPERATING WITHOUT A LICENSE ✦ GLITTERWORM ONLINE ✦</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="site-shell nav">
+      <a class="brand" href="index.html">LoveJoy Market</a>
+      <button class="mobile-menu" type="button" data-menu-button aria-expanded="false" aria-controls="primary-nav">Menu</button>
+      <nav id="primary-nav" class="nav-links" data-menu aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="tattoos.html">Tattoos</a>
+        <a href="events.html">Events</a>
+        <a href="market.html">Market</a>
+        <a href="profile.html" aria-current="page">Profile</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="myspace-page">
+    <div class="myspace-shell">
+      <section class="profile-banner member-banner">
+        <div class="banner-status"><span class="status-dot"></span> member area under suspicious construction</div>
+        <img class="unique-heading member-main-title" src="profile-title.png" alt="My LoveJoy">
+        <p class="profile-tagline">your future little corner of LoveJoy.</p>
+        <p class="profile-subline">Eventually useful. Currently unserious.</p>
+        <div class="currently-line"><span>current access level:</span> emotionally invited, technologically premature ✦</div>
+      </section>
+
+      <section class="module-card coming-soon-card">
+        <div class="module-title">Member Login, Eventually</div>
+        <div class="module-body coming-soon-body">
+          <div>
+            <img class="unique-heading profile-coming-heading" src="profile-coming.png" alt="coming soon-ish">
+            <h2>Client profiles are not open yet.</h2>
+            <p>I’m building this into a real private client space instead of pretending a static website can safely hold your personal information.</p>
+            <p class="pink-copy">So no, there is nothing to sign up for yet. That part will appear when it is actually ready.</p>
+          </div>
+
+          <div class="fake-login-preview" aria-label="Preview of future client login">
+            <div class="fake-login-top"><span>MY LOVEJOY LOGIN</span><span>OFFLINE</span></div>
+            <label><span>email</span><input value="you@eventually.com" disabled></label>
+            <label><span>secret little password situation</span><input value="••••••••••" disabled></label>
+            <button type="button" disabled>not yet, babe ♡</button>
+            <small>this is a preview. it does not collect or send anything.</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="module-card future-card">
+        <div class="module-title">What This Is Becoming</div>
+        <div class="module-body">
+          <img class="unique-heading profile-future-heading" src="profile-future.png" alt="things future you gets">
+          <div class="future-grid">
+            <article><span>♡</span><strong>Tattoo History</strong><p>Your LoveJoy pieces, sessions, and future projects in one place.</p></article>
+            <article><span>▣</span><strong>Appointments + Paperwork</strong><p>See what is booked, what is complete, and what still needs your attention.</p></article>
+            <article><span>✎</span><strong>Idea Vault</strong><p>Save references, half-formed tattoo thoughts, and the thing you swear you will explain better later.</p></article>
+            <article><span>✦</span><strong>Aftercare</strong><p>The instructions you definitely read the first time but would like to locate again at 11:47 PM.</p></article>
+            <article><span>★</span><strong>LoveJoy Extras</strong><p>Coupons, rewards, event stuff, quiz nonsense, and whatever else earns its way in.</p></article>
+            <article><span>☺</span><strong>Your Weird Little Profile</strong><p>Because if you are going to have an account here, it should have more personality than a dentist portal.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="module-card profile-chaos-quiz" id="profile-chaos-quiz">
+        <div class="module-title">A Completely Unrelated Personality Assessment</div>
+        <div class="quiz-glitter-bar" aria-hidden="true">
+          <span>✦</span><span>★</span><span>☾</span><span>♡</span><span>✧</span><span>☺</span><span>✦</span>
+        </div>
+        <div class="module-body">
+          <div data-chaos-intro>
+            <img class="unique-heading profile-quiz-heading" src="profile-quiz.png" alt="deeply unserious assessment">
+            <p class="chaos-intro-copy">Six questions designed by nobody qualified to ask them. The resulting diagnosis is legally just a sentence I made up.</p>
+            <button class="quiz-primary-button" type="button" data-chaos-start>submit to analysis ✦</button>
+            <p class="quiz-fine-print">sample size: you. control group: unavailable.</p>
+          </div>
+
+          <div data-chaos-panel hidden>
+            <div class="quiz-progress-row">
+              <span data-chaos-progress>question 1 of 6</span>
+              <span class="quiz-progress-stars">✦ ☺ ✦ ☺ ✦ ☺</span>
+            </div>
+            <h2 class="chaos-question" data-chaos-question></h2>
+            <div class="chaos-options" data-chaos-options></div>
+            <div class="quiz-controls">
+              <button class="quiz-secondary-button" type="button" data-chaos-back>← back</button>
+              <button class="quiz-primary-button" type="button" data-chaos-next disabled>continue the study →</button>
+            </div>
+          </div>
+
+          <div class="chaos-result" data-chaos-result hidden>
+            <div class="post-meta">YOUR PEER-UNREVIEWED DIAGNOSIS</div>
+            <h2 data-chaos-result-title></h2>
+            <p data-chaos-result-copy></p>
+            <p class="chaos-footnote" data-chaos-result-footnote></p>
+            <button class="quiz-primary-button" type="button" data-chaos-retake>invalidate the findings</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="module-card glitterworm-card" id="glitterworm">
+        <div class="module-title">Glitterworm: A Serious Member Benefit</div>
+        <div class="module-body">
+          <img class="unique-heading profile-worm-heading" src="profile-worm.png" alt="Glitterworm">
+          <p class="glitterworm-intro">A sparkly worm wants a glittery apple. This is the entire intellectual premise.</p>
+
+          <div class="glitterworm-layout">
+            <div class="glitterworm-machine">
+              <div class="glitterworm-hud">
+                <span>SCORE <b data-worm-score>00</b></span>
+                <span>HIGH <b data-worm-high>00</b></span>
+                <span>LENGTH <b data-worm-length>04</b></span>
+              </div>
+              <div class="glitterworm-screen">
+                <canvas width="420" height="420" data-glitterworm aria-label="Glitterworm game"></canvas>
+                <div class="glitterworm-overlay" data-worm-overlay>
+                  <strong>GLITTERWORM</strong>
+                  <span>chase the apple · avoid your own increasingly elaborate body</span>
+                  <button type="button" data-worm-start>release the worm ✦</button>
+                </div>
+              </div>
+              <div class="worm-desktop-controls">
+                <button type="button" data-worm-up>▲</button>
+                <div>
+                  <button type="button" data-worm-left>◀</button>
+                  <button type="button" data-worm-down>▼</button>
+                  <button type="button" data-worm-right>▶</button>
+                </div>
+              </div>
+            </div>
+
+            <aside class="worm-side">
+              <div class="arcade-card">
+                <span class="post-meta">PHONE</span>
+                <strong>swipe to steer</strong>
+                <p>Swipe anywhere on the game screen. You do not need tiny arrow buttons like it is 2011.</p>
+              </div>
+              <div class="arcade-card">
+                <span class="post-meta">DESKTOP</span>
+                <strong>arrows / WASD</strong>
+                <p>Standard worm technology.</p>
+              </div>
+              <div class="arcade-card worm-lore">
+                <span class="post-meta">WORM LORE</span>
+                <strong>the apple is not running.</strong>
+                <p>This somehow makes the worm’s desperation more difficult to defend.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="module-card comments-card">
+        <div class="module-title">Member Area Status Update</div>
+        <div class="module-body comment-row">
+          <div class="comment-icon">♡</div>
+          <div>
+            <div class="post-meta">LAST UPDATED: WHEN IT GOT WEIRDER</div>
+            <p class="quote-line">profiles later.<br>glitterworm now.</p>
+            <div class="comment-links">
+              <a href="tattoos.html">get tattooed</a>
+              <a href="events.html">go somewhere</a>
+              <a href="starcade.html">waste more time</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-shell footer-grid">
+      <strong>My LoveJoy</strong>
+      <div class="footer-small">client profiles coming soon · glitterworm unfortunately available now</div>
+    </div>
+  </footer>
+
+  <script src="site.js?v=20260818-profile1"></script>
+</body>
+</html>
