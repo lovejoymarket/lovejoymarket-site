@@ -1,0 +1,17 @@
+LOVEJOY GALLERY FONT FIX
+=========================
+
+Upload these FOUR files to the repository root:
+- gallery.html
+- styles.css
+- gallery-title.png
+- gallery-submit.png
+
+Changes:
+- removes the off-brand serif display font from the Client Gallery page
+- main "client gallery" heading now uses a rasterized Unique heading, matching the rest of the site
+- "want in?" submission heading now uses the same treatment
+- body copy stays in the site's existing Verdana/Courier system
+- gallery CSS version bumped so the change should appear immediately
+
+Do not upload or expose the source font file.
