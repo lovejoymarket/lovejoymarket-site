@@ -2987,3 +2987,111 @@ a {
     animation: none;
   }
 }
+
+
+/* ==========================
+   HOME FRIEND REQUEST PLACEMENT
+   ========================== */
+.profile-left > .friend-request-slot {
+  margin: 0;
+  width: 100%;
+  align-self: start;
+}
+
+@media (max-width: 760px) {
+  .home-page .profile-left {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "photo photo"
+      "contact details"
+      "request details"
+      "music music";
+    align-items: start;
+  }
+
+  .home-page .profile-photo-card {
+    grid-area: photo;
+  }
+
+  .home-page .contact-card {
+    grid-area: contact;
+  }
+
+  .home-page .details-card {
+    grid-area: details;
+  }
+
+  .home-page .friend-request-slot {
+    grid-area: request;
+    margin: 0;
+  }
+
+  .home-page .music-card {
+    grid-area: music;
+  }
+
+  /* Compress the MySpace request just enough for the half-width column. */
+  .home-page .friend-request-slot .friend-request-top {
+    padding: 5px;
+    font-size: .47rem;
+  }
+
+  .home-page .friend-request-slot .friend-request-online {
+    font-size: .4rem;
+  }
+
+  .home-page .friend-request-slot .friend-request-body {
+    grid-template-columns: 42px 1fr;
+    gap: 6px;
+    padding: 6px;
+  }
+
+  .home-page .friend-request-slot .friend-request-avatar {
+    width: 42px;
+    height: 42px;
+  }
+
+  .home-page .friend-request-slot .friend-request-avatar span:nth-child(1) {
+    left: 5px;
+    top: 4px;
+    font-size: .68rem;
+  }
+
+  .home-page .friend-request-slot .friend-request-avatar span:nth-child(2) {
+    right: 4px;
+    bottom: 5px;
+    font-size: .9rem;
+  }
+
+  .home-page .friend-request-slot .friend-request-avatar span:nth-child(3) {
+    left: 15px;
+    top: 15px;
+    font-size: .83rem;
+  }
+
+  .home-page .friend-request-slot .friend-request-copy strong {
+    font-size: .52rem;
+    line-height: 1.22;
+  }
+
+  .home-page .friend-request-slot .friend-request-copy small {
+    font-size: .4rem;
+    line-height: 1.25;
+  }
+
+  .home-page .friend-request-slot .friend-request-action {
+    font-size: .45rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .home-page .profile-left {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "photo"
+      "contact"
+      "request"
+      "details"
+      "music";
+  }
+}

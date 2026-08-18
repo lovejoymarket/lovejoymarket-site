@@ -1,0 +1,14 @@
+LOVEJOY HOMEPAGE FRIEND REQUEST MOVE
+=====================================
+
+Upload these two files to the repository root:
+- index.html
+- styles.css
+
+Changes:
+- removes the Starcade friend request from inside the profile-photo card
+- places it directly under Contacting LoveJoy
+- on mobile, LoveJoy Details stays in the right column while the friend request occupies the previously empty left-side space
+- LoveJoy Music begins below both columns
+- friend request is slightly compacted on mobile so it fits that space cleanly
+- on very narrow screens (360px and below), everything returns to one stacked column
