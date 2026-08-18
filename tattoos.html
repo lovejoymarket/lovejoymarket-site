@@ -3,41 +3,247 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="LoveJoy Market — tattoos, art, events, and creative community in Fishers, Indiana.">
+  <meta name="description" content="Tattoo sessions, walk-in Saturdays, inquiries, pricing, deposits, policies, and consent information for Jessica LoveJoy.">
   <title>Tattoos | LoveJoy Market</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="tattoo-page">
+  <div class="star-rain" aria-hidden="true"></div>
+  <div class="ambient-stars" aria-hidden="true"></div>
+
+  <div class="profile-strip">
+    <div class="profile-strip-track">
+      <span>TATTOOS ✦ WALK-INS ✦ FLASH ✦ BIG IDEAS ✦ SMALL IDEAS ✦ BOOK THE TIME ✦ DO THE PAPERWORK ✦</span>
+      <span aria-hidden="true">TATTOOS ✦ WALK-INS ✦ FLASH ✦ BIG IDEAS ✦ SMALL IDEAS ✦ BOOK THE TIME ✦ DO THE PAPERWORK ✦</span>
+    </div>
+  </div>
+
   <header class="site-header">
     <div class="site-shell nav">
-      <a class="brand" href="/">LoveJoy Market</a>
+      <a class="brand" href="index.html">LoveJoy Market</a>
       <button class="mobile-menu" type="button" data-menu-button aria-expanded="false" aria-controls="primary-nav">Menu</button>
       <nav id="primary-nav" class="nav-links" data-menu aria-label="Primary navigation">
-        <a href="/" >Home</a>
-        <a href="/tattoos.html" aria-current="page">Tattoos</a>
-        <a href="/events.html" >Events</a>
-        <a href="/market.html" >Market</a>
-        <a href="/about.html" >About</a>
+        <a href="index.html">Home</a>
+        <a href="tattoos.html" aria-current="page">Tattoos</a>
+        <a href="events.html">Events</a>
+        <a href="market.html">Market</a>
+        <a href="about.html">About</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="site-shell">
-        <div class="eyebrow">LoveJoy Market</div>
-        <h1>Tattoos</h1>
-        <p class="lede">Booking, portfolio, policies, and tattoo information will live here.</p>
-      </div>
-    </section>
+  <main class="myspace-page">
+    <div class="myspace-shell">
+
+      <section class="profile-banner tattoo-banner">
+        <div class="banner-status"><span class="status-dot"></span> currently accepting tattoo inquiries</div>
+        <img class="unique-heading tattoo-main-title" src="tattoo-title.png" alt="get tattooed">
+        <p class="profile-tagline">book the amount of time you need. we'll decide what fits inside it together.</p>
+        <p class="profile-subline">One piece, several smaller pieces, an ongoing project, flash, custom work — the session is the container.</p>
+        <div class="currently-line"><span>booking rule:</span> scheduled appointments are confirmed only after the Square deposit is paid. the exact studio address comes with confirmation. ✦</div>
+      </section>
+
+      <section class="module-card tattoo-flow-card">
+        <div class="module-title">How This Works Without Seventeen DMs</div>
+        <div class="module-body tattoo-flow">
+          <div><b>1</b><strong>Send the inquiry</strong><span>Tell Jessie the idea, placement, rough size, references, and the amount of time you think you need.</span></div>
+          <div><b>2</b><strong>Get the right session</strong><span>Jessie confirms what time block makes sense and sends the correct Square booking link.</span></div>
+          <div><b>3</b><strong>Book + pay deposit</strong><span>Square handles the appointment and 50% deposit. That is what officially reserves your time.</span></div>
+          <div><b>4</b><strong>Do the paperwork</strong><span>Complete the client intake + consent form before arrival. Your confirmation includes appointment details and studio address.</span></div>
+        </div>
+      </section>
+
+      <section class="module-card" id="sessions">
+        <div class="module-title">Tattoo Time Menu</div>
+        <div class="module-body">
+          <img class="unique-heading tattoo-section-heading" src="tattoo-sessions.png" alt="pick your time">
+          <p class="tattoo-time-note"><strong>You are booking time, not a guaranteed amount of tattooing.</strong> Your session can be used for one tattoo, multiple tattoos, continued work, or any approved work we can reasonably complete inside your reserved time.</p>
+
+          <div class="tattoo-session-grid">
+            <article class="tattoo-session-card">
+              <div class="session-top"><span>01</span><small>quick & cute</small></div>
+              <h2>1-Hour Session</h2>
+              <div class="session-price">$100</div>
+              <div class="session-deposit">$50 deposit</div>
+              <p>Flash, smaller custom work, touch-ups/additions, or other approved work that fits the hour.</p>
+              <a href="#inquiry" class="session-button">start an inquiry →</a>
+            </article>
+
+            <article class="tattoo-session-card">
+              <div class="session-top"><span>03</span><small>more room to work</small></div>
+              <h2>3-Hour Session</h2>
+              <div class="session-price">$250</div>
+              <div class="session-deposit">$125 deposit</div>
+              <p>One larger piece, multiple smaller pieces, ongoing work, or whatever approved plan makes sense for three hours.</p>
+              <a href="#inquiry" class="session-button">start an inquiry →</a>
+            </article>
+
+            <article class="tattoo-session-card full-day-card">
+              <div class="session-top"><span>06</span><small>full day</small></div>
+              <h2>6-Hour Full Day</h2>
+              <div class="session-price">$500</div>
+              <div class="session-deposit">$250 deposit</div>
+              <p>Large-format work, multiple pieces, ongoing projects, or any approved plan we can reasonably work through in six hours.</p>
+              <div class="session-rule">SATURDAY + SUNDAY ONLY · BOOK AT LEAST 2 WEEKS AHEAD</div>
+              <a href="#inquiry" class="session-button">start an inquiry →</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="module-card walkin-card" id="walkins">
+        <div class="module-title">Walk-In Saturdays</div>
+        <div class="quiz-glitter-bar" aria-hidden="true">
+          <span>✦</span><span>★</span><span>✧</span><span>♡</span><span>✦</span><span>★</span><span>✧</span>
+        </div>
+        <div class="module-body">
+          <img class="unique-heading tattoo-section-heading walkin-heading" src="tattoo-walkins.png" alt="walk in, sit down, get tattooed">
+          <div class="walkin-layout">
+            <div class="walkin-calendar">
+              <span>2ND</span><b>+</b><span>4TH</span>
+              <small>SATURDAY OF EVERY MONTH</small>
+            </div>
+            <div class="walkin-copy">
+              <p><strong>$100 flat.</strong> Quick, easy tattoos intended to take about 30–45 minutes, with roughly one hour allowed per person so nobody has to be rushed.</p>
+              <p>Walk-in means walk-in: no advance reservation and no deposit. Valid LoveJoy coupons personally issued to you can still be used according to their terms.</p>
+              <p class="pink-copy">Second and fourth Saturdays are reserved for walk-in flow, not full-day appointments.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="module-card tattoo-inquiry-card" id="inquiry">
+        <div class="module-title">Tattoo Inquiry</div>
+        <div class="module-body">
+          <img class="unique-heading tattoo-section-heading inquiry-heading" src="tattoo-inquiry.png" alt="tell me what we're doing">
+          <p class="tattoo-inquiry-intro">For now, every scheduled tattoo starts here. Fill this out and the site will build a clean email for you. Attach your reference images and a clear photo of the placement before you hit send.</p>
+
+          <form class="tattoo-inquiry-form" data-tattoo-inquiry data-email="hello@lovejoymarket.co">
+            <div class="tattoo-form-grid">
+              <label>
+                <span>Your name *</span>
+                <input name="name" type="text" required autocomplete="name">
+              </label>
+              <label>
+                <span>Your email *</span>
+                <input name="email" type="email" required autocomplete="email">
+              </label>
+              <label>
+                <span>Phone</span>
+                <input name="phone" type="tel" autocomplete="tel">
+              </label>
+              <label>
+                <span>Which session?</span>
+                <select name="session">
+                  <option>Not sure — recommend one</option>
+                  <option>1-Hour Session — $100</option>
+                  <option>3-Hour Session — $250</option>
+                  <option>6-Hour Full Day — $500</option>
+                </select>
+              </label>
+              <label>
+                <span>Placement *</span>
+                <input name="placement" type="text" required placeholder="ex: outer forearm">
+              </label>
+              <label>
+                <span>Approx. size *</span>
+                <input name="size" type="text" required placeholder="ex: 5–6 inches">
+              </label>
+            </div>
+
+            <label class="tattoo-form-wide">
+              <span>What are we making? *</span>
+              <textarea name="idea" required rows="5" placeholder="Describe the idea, subject, style, text, existing work we're adding to, etc."></textarea>
+            </label>
+
+            <div class="tattoo-form-grid">
+              <label>
+                <span>Color direction</span>
+                <select name="color">
+                  <option>Black & gray</option>
+                  <option>Color</option>
+                  <option>Mostly black & gray with color</option>
+                  <option>Not sure</option>
+                </select>
+              </label>
+              <label>
+                <span>General availability</span>
+                <input name="availability" type="text" placeholder="days / evenings / weekends">
+              </label>
+            </div>
+
+            <label class="tattoo-form-wide">
+              <span>Anything Jessie should know?</span>
+              <textarea name="notes" rows="3" placeholder="cover-up, sensitive placement, accessibility needs, time constraints, etc."></textarea>
+            </label>
+
+            <div class="tattoo-attachment-note">
+              <strong>Before sending the email:</strong>
+              <span>attach reference images + a clear photo of the exact body area. If there is existing tattoo work in/near the placement, show all of it.</span>
+            </div>
+
+            <div class="tattoo-form-actions">
+              <button type="submit" class="session-button tattoo-email-button">create my inquiry email ♡</button>
+              <button type="button" class="text-link tattoo-copy-button" data-tattoo-copy>copy inquiry instead</button>
+            </div>
+            <p class="tattoo-form-status" data-tattoo-status aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+      <section class="module-card" id="policies">
+        <div class="module-title">Client Policies</div>
+        <div class="module-body">
+          <img class="unique-heading tattoo-section-heading policies-heading" src="tattoo-policies.png" alt="rules before needles">
+          <div class="tattoo-policy-grid">
+            <div><strong>50% deposit</strong><p>Scheduled sessions require a 50% deposit through Square. The deposit applies toward your session total and is what reserves the appointment.</p></div>
+            <div><strong>One reschedule</strong><p>If plans change, contact LoveJoy as soon as possible. One reschedule is allowed before a new deposit is required.</p></div>
+            <div><strong>Cancellation / no-show</strong><p>Deposits are nonrefundable. A cancelled or missed appointment forfeits the deposit and requires a new deposit to book again.</p></div>
+            <div><strong>Private address</strong><p>The exact studio address is not posted publicly on the tattoo page. It is released with your confirmed appointment information.</p></div>
+            <div><strong>Complete consent first</strong><p>Your client intake, medical questionnaire, and tattoo consent must be completed before arrival. Bring the identification required by the consent form to the appointment.</p></div>
+            <div><strong>Work within the block</strong><p>Your session is a reserved time block. If the approved plan needs more time than remains, additional work moves to another session.</p></div>
+            <div><strong>Body-area limits</strong><p>LoveJoy does not tattoo feet or intimate areas.</p></div>
+            <div><strong>Come able to consent</strong><p>Do not arrive impaired. If there is a consent, health, safety, or sanitation concern, tattooing can be paused or declined.</p></div>
+            <div><strong>Questions belong in writing</strong><p>Email <a href="mailto:hello@lovejoymarket.co">hello@lovejoymarket.co</a> so there is a clean record of booking questions, changes, and paperwork.</p></div>
+          </div>
+
+          <div class="consent-cta">
+            <div>
+              <span class="post-meta">ALREADY BOOKED?</span>
+              <strong>Do your intake + consent form before appointment day.</strong>
+              <p>It is much cuter to spend your appointment looking at stencils than filling out paperwork.</p>
+            </div>
+            <a href="tattoo-consent.html" class="market-primary-link">open consent page →</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="module-card comments-card tattoo-signoff">
+        <div class="module-title">Questions?</div>
+        <div class="module-body comment-row">
+          <div class="comment-icon">@</div>
+          <div>
+            <div class="post-meta">ONE INBOX. PLEASE. I AM BEGGING.</div>
+            <p class="about-signoff-copy">booking question, policy question, paperwork question? email it.</p>
+            <div class="comment-links">
+              <a href="mailto:hello@lovejoymarket.co">hello@lovejoymarket.co</a>
+              <a href="tattoo-consent.html">consent form</a>
+              <a href="index.html">back home</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
   </main>
 
   <footer class="site-footer">
     <div class="site-shell footer-grid">
       <strong>LoveJoy Market</strong>
-      <div class="footer-small">lovejoymarket.co · @amoajessie</div>
+      <div class="footer-small">lovejoymarket.co · hello@lovejoymarket.co · Fishers, Indiana</div>
     </div>
   </footer>
+
   <script src="site.js"></script>
 </body>
 </html>

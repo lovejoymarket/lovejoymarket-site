@@ -352,3 +352,75 @@ runStarCascade();
     }
   });
 })();
+
+
+/* Tattoo inquiry -> structured email */
+(() => {
+  const form = document.querySelector('[data-tattoo-inquiry]');
+  if (!form) return;
+
+  const status = form.querySelector('[data-tattoo-status]');
+  const copyButton = form.querySelector('[data-tattoo-copy]');
+  const destination = form.dataset.email || 'hello@lovejoymarket.co';
+
+  function value(name) {
+    const field = form.elements.namedItem(name);
+    return field ? String(field.value || '').trim() : '';
+  }
+
+  function buildInquiry() {
+    const lines = [
+      'LOVEJOY TATTOO INQUIRY',
+      '',
+      `Name: ${value('name')}`,
+      `Email: ${value('email')}`,
+      `Phone: ${value('phone') || 'not provided'}`,
+      `Session: ${value('session')}`,
+      `Placement: ${value('placement')}`,
+      `Approx. size: ${value('size')}`,
+      `Color direction: ${value('color')}`,
+      `Availability: ${value('availability') || 'not provided'}`,
+      '',
+      'IDEA:',
+      value('idea'),
+      '',
+      'OTHER NOTES:',
+      value('notes') || 'none',
+      '',
+      'ATTACHMENTS TO ADD BEFORE SENDING:',
+      '- reference images',
+      '- clear photo of the exact placement area',
+      '- photos of existing tattoo work in/near the area, if applicable'
+    ];
+    return lines.join('\n');
+  }
+
+  function subject() {
+    const name = value('name') || 'Client';
+    const session = value('session') || 'Tattoo';
+    return `TATTOO INQUIRY | ${name} | ${session}`;
+  }
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+
+    const body = buildInquiry();
+    const mailto = `mailto:${encodeURIComponent(destination)}?subject=${encodeURIComponent(subject())}&body=${encodeURIComponent(body)}`;
+    status.textContent = 'Email ready. Add your reference + placement photos before sending. ♡';
+    window.location.href = mailto;
+  });
+
+  if (copyButton) {
+    copyButton.addEventListener('click', async () => {
+      if (!form.reportValidity()) return;
+      const text = `${subject()}\n\n${buildInquiry()}`;
+      try {
+        await navigator.clipboard.writeText(text);
+        status.textContent = 'Copied. Paste it into an email to ' + destination + ' and add your photos. ✦';
+      } catch (error) {
+        status.textContent = 'Copy was blocked by the browser. Use “create my inquiry email” instead.';
+      }
+    });
+  }
+})();
