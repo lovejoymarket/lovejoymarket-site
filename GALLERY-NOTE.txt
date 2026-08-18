@@ -1,0 +1,56 @@
+LOVEJOY CLIENT GALLERY V1
+===========================
+
+UPLOAD THESE FILES TO THE REPO ROOT:
+- index.html
+- gallery.html
+- styles.css
+- gallery.json
+- sitemap.xml
+
+WHAT THIS DOES
+- Homepage Top 8 "Gallery" now opens gallery.html
+- Gallery is curated manually; visitors cannot publish or upload directly
+- Clients fill out a submission form
+- Form opens a pre-addressed email to hello@lovejoymarket.co with their answers
+- Client must attach 1–5 actual photos before sending
+- Includes permission / face-display / photo-credit questions
+- Makes clear that submission does not guarantee posting
+- Includes removal-request language
+
+HOW TO ADD PHOTOS YOURSELF LATER
+1. Upload the image file to the GitHub repo root, for example:
+   client-jordan-butterfly.jpg
+
+2. Open gallery.json and add an item inside "items":
+
+   {
+     "src": "client-jordan-butterfly.jpg",
+     "alt": "Healed butterfly tattoo on upper arm",
+     "caption": "healed butterfly ♡",
+     "credit": "@clienthandle"
+   }
+
+3. Add a comma between items. Example:
+
+   {
+     "items": [
+       {
+         "src": "client-one.jpg",
+         "alt": "Description of photo one",
+         "caption": "caption one",
+         "credit": "@credit"
+       },
+       {
+         "src": "client-two.jpg",
+         "alt": "Description of photo two",
+         "caption": "caption two",
+         "credit": "@credit"
+       }
+     ]
+   }
+
+If "items" is empty, the site shows the intentional empty-gallery message.
+
+NOTE:
+The submission email points to hello@lovejoymarket.co. The website form is ready now; actual delivery depends on that mailbox receiving mail.
