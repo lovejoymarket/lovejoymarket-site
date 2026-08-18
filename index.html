@@ -3,12 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="LoveJoy Market — tattoos, art, events, and creative community in Fishers, Indiana.">
+  <meta name="description" content="LoveJoy Market: tattoos, art, events, and community in Fishers, Indiana. Presented by Jessica LoveJoy.">
   <title>LoveJoy Market</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <header class="site-header">
+<body class="home-page">
+  <div class="profile-strip" aria-label="LoveJoy Market introduction">
+    <div class="profile-strip-track">
+      <span>LOVEJOY MARKET ✦ TATTOOS ✦ ART ✦ EVENTS ✦ COMMUNITY ✦ FISHERS, IN ✦</span>
+      <span aria-hidden="true">LOVEJOY MARKET ✦ TATTOOS ✦ ART ✦ EVENTS ✦ COMMUNITY ✦ FISHERS, IN ✦</span>
+    </div>
+  </div>
+
+  <header class="site-header home-header">
     <div class="site-shell nav">
       <a class="brand" href="/">LoveJoy Market</a>
       <button class="mobile-menu" type="button" data-menu-button aria-expanded="false" aria-controls="primary-nav">Menu</button>
@@ -23,33 +30,153 @@
   </header>
 
   <main>
-    <section class="hero">
+    <section class="home-hero">
+      <div class="pixel-field" aria-hidden="true">
+        <i class="pixel-star s1"></i><i class="pixel-star s2"></i><i class="pixel-star s3"></i><i class="pixel-star s4"></i>
+        <i class="pixel-star s5"></i><i class="pixel-star s6"></i><i class="pixel-star s7"></i><i class="pixel-star s8"></i>
+        <i class="pixel-star s9"></i><i class="pixel-star s10"></i><i class="pixel-star s11"></i><i class="pixel-star s12"></i>
+      </div>
+
+      <div class="site-shell hero-grid">
+        <div class="hero-copy">
+          <div class="profile-status"><span class="status-dot"></span> online now</div>
+          <img class="hero-wordmark" src="lovejoy-wordmark.png" alt="LoveJoy Market">
+          <p class="hero-kicker">tattoos, art, events, and community.</p>
+          <p class="hero-subcopy">made with taste. a little weird. always up to something.</p>
+          <div class="currently-box">
+            <span>currently thinking about:</span>
+            <strong>the more you know, the less you know ✦</strong>
+          </div>
+          <p class="presented-by">Presented by <strong>Jessica LoveJoy</strong></p>
+          <div class="actions hero-actions">
+            <a class="button pink-button" href="/tattoos.html">Book a Tattoo</a>
+            <a class="button cream-button" href="/events.html">What's Happening</a>
+          </div>
+        </div>
+
+        <figure class="hero-photo-wrap">
+          <img class="hero-photo" src="hero-lovejoy.jpeg" alt="LoveJoy Market creative portrait">
+          <figcaption>
+            <span>profile pic</span>
+            <span>Fishers, IN</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="directory-section section-cream" id="top-8">
       <div class="site-shell">
-        <div class="eyebrow">Fishers, Indiana</div>
-        <h1>LoveJoy Market</h1>
-        <p class="lede">Tattoo studio, art space, market, and home for creative programming. This is the structural first pass; final Home page copy and art direction come next.</p>
-        <div class="actions">
-          <a class="button" href="/tattoos.html">Book a Tattoo</a>
-          <a class="button secondary" href="/events.html">Upcoming Events</a>
+        <div class="section-heading-row">
+          <div>
+            <div class="eyebrow">quick directory</div>
+            <h2>LOVEJOY'S TOP 8</h2>
+          </div>
+          <p>click around. no algorithm required.</p>
+        </div>
+
+        <div class="top-eight-grid">
+          <a class="top-eight-card" href="/tattoos.html"><span class="top-eight-number">01</span><strong>TATTOOS</strong><small>book + browse</small></a>
+          <a class="top-eight-card" href="/events.html"><span class="top-eight-number">02</span><strong>EVENTS</strong><small>what's next</small></a>
+          <a class="top-eight-card" href="/market.html"><span class="top-eight-number">03</span><strong>MARKET</strong><small>shop + pop-ups</small></a>
+          <a class="top-eight-card" href="/market.html#featured-artist"><span class="top-eight-number">04</span><strong>FEATURED ARTIST</strong><small>on the walls</small></a>
+          <a class="top-eight-card" href="/market.html#gallery"><span class="top-eight-number">05</span><strong>GALLERY</strong><small>look around</small></a>
+          <a class="top-eight-card" href="/about.html"><span class="top-eight-number">06</span><strong>ABOUT</strong><small>who + why</small></a>
+          <a class="top-eight-card" href="https://www.google.com/maps/search/?api=1&query=Elevated+Image+Suites+10085+Allisonville+Rd+Fishers+IN+46038" target="_blank" rel="noopener"><span class="top-eight-number">07</span><strong>VISIT</strong><small>Elevated Image Suites</small></a>
+          <a class="top-eight-card" href="https://www.instagram.com/amoajessie/" target="_blank" rel="noopener"><span class="top-eight-number">08</span><strong>INSTAGRAM</strong><small>@amoajessie</small></a>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="next-section">
+      <div class="site-shell next-grid">
+        <div class="next-label-block">
+          <div class="eyebrow cream-text">next at lovejoy</div>
+          <div class="date-stack"><span>SEP</span><strong>25</strong><small>FRI</small></div>
+        </div>
+        <div class="next-copy">
+          <p class="tiny-meta">LOVEJOY MARKET · FISHERS, IN</p>
+          <h2>Gallery Soft Opening</h2>
+          <p>A first look at the space, the work on the walls, and what LoveJoy is becoming. Keep it cute. Come see it in person.</p>
+          <a class="text-link" href="/events.html">see what's coming up →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="presented-section section-cream">
+      <div class="site-shell presented-grid">
+        <div>
+          <div class="eyebrow">presented by</div>
+          <h2>Jessica LoveJoy</h2>
+        </div>
+        <div class="presented-copy">
+          <p>Artist, tattooer, curator. LoveJoy Market is where all of it gets to exist in the same room.</p>
+          <a class="text-link dark-link" href="/about.html">more about LoveJoy →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="instagram-section">
       <div class="site-shell">
-        <div class="placeholder-card">
-          <div class="eyebrow">Next build step</div>
-          <h2>Home page</h2>
-          <p>We will design this page section-by-section before moving right to Tattoos, Events, Market, and About.</p>
+        <div class="section-heading-row light-heading">
+          <div>
+            <div class="eyebrow cream-text">recently</div>
+            <h2>@AMOAJESSIE</h2>
+          </div>
+          <a class="mini-pill" href="https://www.instagram.com/amoajessie/" target="_blank" rel="noopener">open Instagram ↗</a>
+        </div>
+
+        <div class="ig-preview" aria-label="Instagram preview placeholder">
+          <a href="https://www.instagram.com/amoajessie/" target="_blank" rel="noopener" class="ig-tile"><span>tattoos</span></a>
+          <a href="https://www.instagram.com/amoajessie/" target="_blank" rel="noopener" class="ig-tile"><span>art</span></a>
+          <a href="https://www.instagram.com/amoajessie/" target="_blank" rel="noopener" class="ig-tile"><span>events</span></a>
+          <a href="https://www.instagram.com/amoajessie/" target="_blank" rel="noopener" class="ig-tile"><span>whatever's going on</span></a>
+        </div>
+        <p class="ig-note">live feed connection comes next. for now, this gets you there without turning the homepage into a wall of posts.</p>
+      </div>
+    </section>
+
+    <section class="playlist-section section-cream">
+      <div class="site-shell playlist-grid">
+        <div class="playlist-copy">
+          <div class="eyebrow">now playing</div>
+          <h2>LOVECLUB</h2>
+          <p>The current soundtrack. Updated whenever the mood changes.</p>
+          <p class="tiny-note">Your browser may make you tap play first. Very anti-MySpace of it.</p>
+        </div>
+        <div class="spotify-frame-wrap">
+          <iframe
+            style="border-radius:12px"
+            src="https://open.spotify.com/embed/playlist/2WQ8sEnHAY2HiWoParmeC7?utm_source=generator&theme=0"
+            width="100%"
+            height="352"
+            frameborder="0"
+            allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            title="LOVECLUB playlist on Spotify"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer-prompt">
+      <div class="site-shell footer-prompt-grid">
+        <div>
+          <span class="mini-status">last updated: whenever something happens</span>
+          <h2>the more you know,<br>the less you know.</h2>
+        </div>
+        <div class="footer-prompt-links">
+          <a href="/tattoos.html">book something</a>
+          <a href="/events.html">go somewhere</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Elevated+Image+Suites+10085+Allisonville+Rd+Fishers+IN+46038" target="_blank" rel="noopener">find us</a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer home-footer">
     <div class="site-shell footer-grid">
       <strong>LoveJoy Market</strong>
-      <div class="footer-small">lovejoymarket.co · @amoajessie</div>
+      <div class="footer-small">lovejoymarket.co · @amoajessie · Fishers, Indiana</div>
     </div>
   </footer>
   <script src="site.js"></script>
