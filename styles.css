@@ -246,16 +246,26 @@ img { max-width: 100%; display: block; }
 .friend-card:hover .friend-pic { outline: 2px solid var(--pink); outline-offset: 2px; }
 .view-all-line { margin-top: 10px; text-align: right; }
 .view-all-line a { color: var(--pink); font-size: .66rem; font-weight: 900; }
-.pics-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 6px; }
-.pic-tile {
-  position: relative;
-  aspect-ratio: 1 / 1;
-  border: 1px solid var(--navy);
-  background: radial-gradient(circle at 25% 25%, rgba(255,45,141,.55), transparent 24%), linear-gradient(135deg,#0e2848,#11182f 60%,#4f1d46);
-  color: var(--cream);
-  text-decoration: none;
+.pics-intro {
+  margin: 0 0 8px;
+  color: var(--navy);
+  font-size: .72rem;
 }
-.pic-tile span { position: absolute; left: 6px; bottom: 5px; font-size: .56rem; font-weight: 900; text-shadow: 0 1px 2px rgba(0,0,0,.6); }
+.pics-intro strong { color: var(--pink); }
+.lightwidget-shell {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--navy);
+  background: var(--cream);
+  padding: 5px;
+  box-shadow: 4px 4px 0 rgba(255,45,141,.16);
+}
+.lightwidget-widget {
+  display: block;
+  width: 100% !important;
+  margin: 0;
+  background: transparent;
+}
 .comment-row { display: grid; grid-template-columns: 48px 1fr; gap: 10px; }
 .comment-icon { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--navy); background: var(--navy); color: var(--cream); font-size: 1.4rem; }
 .quote-line { color: var(--pink); font-size: 1.5rem !important; line-height: 1.02; font-weight: 900; margin: 2px 0 10px !important; }
@@ -298,7 +308,6 @@ img { max-width: 100%; display: block; }
   .top-eight-grid { grid-template-columns: repeat(4, 1fr); gap: 7px 5px; }
   .friend-name { font-size: .56rem; min-height: 26px; }
   .friend-card small { font-size: .48rem; }
-  .pics-grid { grid-template-columns: repeat(2,1fr); }
 }
 
 @media (max-width: 430px) {
