@@ -2437,3 +2437,87 @@ a {
   font-weight: 900;
   font-size: .68rem;
 }
+
+
+/* ==========================
+   MAIN NAV SHIMMER
+   ========================== */
+.nav-links a {
+  position: relative;
+  transition:
+    color .18s ease,
+    text-shadow .18s ease,
+    transform .18s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible,
+.nav-links a:active {
+  color: transparent;
+  background-image:
+    linear-gradient(
+      100deg,
+      var(--cream) 0%,
+      var(--cream) 18%,
+      var(--pink) 34%,
+      #ffffff 48%,
+      var(--pink) 62%,
+      var(--cream) 80%,
+      var(--cream) 100%
+    );
+  background-size: 230% 100%;
+  background-position: 200% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow:
+    0 0 5px rgba(255,248,236,.22),
+    0 0 10px rgba(255,45,141,.28);
+  animation: lovejoyNavShimmer .78s linear infinite;
+  transform: translateY(-1px);
+}
+
+.nav-links a[aria-current="page"] {
+  color: var(--pink);
+  -webkit-text-fill-color: var(--pink);
+  background: none;
+  text-shadow: 0 0 7px rgba(255,45,141,.2);
+}
+
+.nav-links a[aria-current="page"]:hover,
+.nav-links a[aria-current="page"]:focus-visible,
+.nav-links a[aria-current="page"]:active {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-image:
+    linear-gradient(
+      100deg,
+      var(--pink) 0%,
+      #ffffff 35%,
+      var(--cream) 50%,
+      #ffffff 65%,
+      var(--pink) 100%
+    );
+  background-size: 230% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: lovejoyNavShimmer .78s linear infinite;
+}
+
+@keyframes lovejoyNavShimmer {
+  from { background-position: 210% 0; }
+  to   { background-position: -110% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-links a:hover,
+  .nav-links a:focus-visible,
+  .nav-links a:active,
+  .nav-links a[aria-current="page"]:hover,
+  .nav-links a[aria-current="page"]:focus-visible,
+  .nav-links a[aria-current="page"]:active {
+    animation: none;
+    background-position: 50% 0;
+    transform: none;
+  }
+}

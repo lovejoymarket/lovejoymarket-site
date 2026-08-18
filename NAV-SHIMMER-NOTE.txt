@@ -1,0 +1,16 @@
+LOVEJOY MAIN MENU SHIMMER
+==========================
+
+Main menu order:
+Home · Tattoos · Events · Market · Profile · About · Starcade
+
+Hover/focus behavior:
+- only the link being hovered/focused shimmers
+- cream → hot pink → white → hot pink → cream sweep
+- soft glow, slight lift
+- current-page link stays pink until hovered
+- keyboard focus gets the same effect
+- touch/active state gets the shimmer while pressed
+- reduced-motion users get a static glow instead of animation
+
+Upload all HTML files + styles.css from this ZIP to the repo root.
