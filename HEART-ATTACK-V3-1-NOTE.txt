@@ -1,0 +1,16 @@
+LOVEJOY STARCADE V3.1 — HEART ATTACK VISUAL FIX
+================================================
+
+Changes:
+- player heart is noticeably larger
+- animated sparkle halo around the heart
+- slight pulse/glow and cream highlight
+- collision and maze mechanics are unchanged
+- shared JavaScript version bumped so mobile Safari fetches the update
+
+Upload these replacement files to the repo root:
+site.js
+heart-attack.html
+starcade.html
+block-party.html
+events.html

@@ -1411,12 +1411,51 @@ runStarCascade();
   }
 
   function drawHeart(cx,cy,s,fill='#ff2d8d'){
-    ctx.fillStyle=fill;
+    // Bigger visual heart, while collision logic remains tile-based.
+    const pulse = 1 + Math.sin(performance.now()/180) * 0.045;
+    const size = s * pulse;
+
+    // Soft glow behind the heart.
+    ctx.save();
+    ctx.shadowColor = '#ff2d8d';
+    ctx.shadowBlur = 11;
+    ctx.fillStyle = fill;
     ctx.beginPath();
-    ctx.moveTo(cx,cy+s*.35);
-    ctx.bezierCurveTo(cx-s*.65,cy-s*.15,cx-s*.55,cy-s*.7,cx,cy-s*.25);
-    ctx.bezierCurveTo(cx+s*.55,cy-s*.7,cx+s*.65,cy-s*.15,cx,cy+s*.35);
+    ctx.moveTo(cx,cy+size*.42);
+    ctx.bezierCurveTo(cx-size*.76,cy-size*.16,cx-size*.64,cy-size*.82,cx,cy-size*.29);
+    ctx.bezierCurveTo(cx+size*.64,cy-size*.82,cx+size*.76,cy-size*.16,cx,cy+size*.42);
     ctx.fill();
+    ctx.restore();
+
+    // Tiny cream highlight so it reads as glossy/sparkly.
+    ctx.fillStyle = '#fff8ec';
+    ctx.beginPath();
+    ctx.arc(cx-size*.27,cy-size*.30,Math.max(1.5,size*.10),0,Math.PI*2);
+    ctx.fill();
+
+    // Animated sparkle halo.
+    const t = performance.now()/320;
+    const sparkleData = [
+      {a:0.20,r:size*1.55,p:0},
+      {a:1.65,r:size*1.75,p:1},
+      {a:3.00,r:size*1.50,p:2},
+      {a:4.55,r:size*1.72,p:3}
+    ];
+
+    sparkleData.forEach((sp,i)=>{
+      const twinkle = .55 + .45*Math.sin(t*2.2 + sp.p);
+      const angle = sp.a + Math.sin(t*.45+i)*.10;
+      const x = cx + Math.cos(angle)*sp.r;
+      const y = cy + Math.sin(angle)*sp.r;
+      const arm = 2.5 + twinkle*2.4;
+
+      ctx.save();
+      ctx.globalAlpha = .35 + twinkle*.65;
+      ctx.fillStyle = i % 2 ? '#ff2d8d' : '#fff8ec';
+      ctx.fillRect(x-arm, y-1, arm*2, 2);
+      ctx.fillRect(x-1, y-arm, 2, arm*2);
+      ctx.restore();
+    });
   }
 
   function drawSmiley(cx,cy,s,phase){
@@ -1439,7 +1478,7 @@ runStarCascade();
         ctx.fillStyle='#fff8ec';ctx.fillRect(px+TILE/2-1,py+TILE/2-1,3,3);
       }
     }
-    drawHeart(player.x*TILE+TILE/2,player.y*TILE+TILE/2,10);
+    drawHeart(player.x*TILE+TILE/2,player.y*TILE+TILE/2,14);
     enemies.forEach(e=>drawSmiley(e.x*TILE+TILE/2,e.y*TILE+TILE/2,9,e.phase));
   }
 
