@@ -2336,3 +2336,104 @@ img { max-width: 100%; display: block; }
   .block-party-page .arcade-canvas-wrap::after{content:"slide to move  •  tap to rotate  •  swipe down to drop"}
   .heart-attack-page .arcade-canvas-wrap::after{content:"swipe to steer the heart"}
 }
+
+
+/* ==========================
+   SITE CLEANUP / ACCESSIBILITY
+   ========================== */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.anchor-target {
+  display: block;
+  position: relative;
+  top: -76px;
+  visibility: hidden;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--pink);
+  outline-offset: 3px;
+}
+
+button,
+summary,
+a {
+  -webkit-tap-highlight-color: rgba(255,45,141,.18);
+}
+
+@media (max-width: 560px) {
+  .calendar-chip,
+  .calendar-more,
+  .calendar-weekdays span {
+    font-size: .5rem;
+  }
+
+  .post-meta,
+  .market-smallcopy,
+  .application-meta,
+  .footer-small {
+    font-size: max(.54rem, 9px);
+  }
+}
+
+/* Custom 404 */
+.not-found-shell {
+  min-height: 70vh;
+  display: grid;
+  align-content: center;
+}
+
+.not-found-card {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.not-found-number {
+  margin: 0;
+  color: var(--pink);
+  font: 900 clamp(4rem, 18vw, 9rem) / .85 "Courier New", monospace;
+  letter-spacing: -.08em;
+}
+
+.not-found-card h1 {
+  margin: 12px 0 6px;
+  color: var(--pink);
+  font-size: clamp(1.1rem, 4vw, 1.7rem);
+}
+
+.not-found-card p {
+  max-width: 620px;
+  line-height: 1.55;
+}
+
+.not-found-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.not-found-links a {
+  padding: 8px 10px;
+  border: 1px solid var(--navy);
+  background: var(--pink);
+  color: var(--navy);
+  text-decoration: none;
+  font-weight: 900;
+  font-size: .68rem;
+}

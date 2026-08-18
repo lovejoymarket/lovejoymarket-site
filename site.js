@@ -1673,28 +1673,6 @@ runStarCascade();
 })();
 
 /* ==========================================================
-   MY LOVEJOY NAV LINK
-   Add the Profile destination to the shared main navigation.
-   ========================================================== */
-(() => {
-  document.querySelectorAll('.nav-links').forEach((nav) => {
-    if (nav.querySelector('a[href="profile.html"], a[href="/profile.html"]')) return;
-
-    const link = document.createElement('a');
-    link.href = 'profile.html';
-    link.textContent = 'Profile';
-
-    const about = Array.from(nav.querySelectorAll('a')).find((a) => {
-      const href = a.getAttribute('href') || '';
-      return href === 'about.html' || href === '/about.html';
-    });
-
-    if (about) nav.insertBefore(link, about);
-    else nav.appendChild(link);
-  });
-})();
-
-/* ==========================================================
    DEEPLY UNSERIOUS PROFILE QUIZ
    ========================================================== */
 (() => {
@@ -1841,22 +1819,35 @@ runStarCascade();
   function calculate() {
     const totals = Object.fromEntries(Object.keys(results).map((key) => [key, 0]));
 
+    // Every question gets exactly one vote worth of influence.
+    // Some answers contain multiple personality signals, so their points are
+    // normalized instead of allowing a high-weight early answer to dominate.
     questions.forEach((q, qi) => {
       const selected = q.options[answers[qi]];
-      Object.entries(selected[1]).forEach(([key, value]) => {
-        totals[key] += value;
+      const scores = selected[1];
+      const totalWeight = Object.values(scores).reduce((sum, value) => sum + value, 0) || 1;
+
+      Object.entries(scores).forEach(([key, value]) => {
+        totals[key] += value / totalWeight;
       });
     });
 
     const ranked = Object.entries(totals).sort((a, b) => b[1] - a[1]);
     const highest = ranked[0][1];
-    const finalists = ranked.filter(([, value]) => value >= highest - 1);
-    const winner = finalists[Math.floor(Math.random() * finalists.length)][0];
+    const finalists = ranked.filter(([, value]) => Math.abs(value - highest) < 0.000001);
+
+    // If there is a genuine tie, use the full six-answer pattern as the
+    // tie-breaker. No single answer controls the diagnosis.
+    const tieHash = answers.reduce(
+      (sum, answer, i) => sum + (answer + 1) * (i + 3) * [5, 7, 11, 13, 17, 19][i],
+      0
+    );
+    const winner = finalists[tieHash % finalists.length][0];
     const diagnosis = results[winner];
 
     titleEl.textContent = diagnosis.title;
     copyEl.textContent = diagnosis.copy;
-    footEl.textContent = footnotes[Math.floor(Math.random() * footnotes.length)];
+    footEl.textContent = footnotes[tieHash % footnotes.length];
 
     panel.hidden = true;
     resultPanel.hidden = false;
@@ -2238,4 +2229,92 @@ runStarCascade();
 
   reset();
   draw();
+})();
+
+/* ==========================================================
+   HOMEPAGE NEXT CONFIRMED EVENT
+   Uses events.json so Home and Events cannot drift apart.
+   ========================================================== */
+(() => {
+  const root = document.querySelector('[data-home-event]');
+  if (!root) return;
+
+  const dateBox = root.querySelector('[data-home-event-date]');
+  const title = root.querySelector('[data-home-event-title]');
+  const description = root.querySelector('[data-home-event-description]');
+  const meta = root.querySelector('[data-home-event-meta]');
+  const link = root.querySelector('[data-home-event-link]');
+
+  function showEmpty() {
+    if (dateBox) {
+      dateBox.setAttribute('aria-label', 'No confirmed event yet');
+      const parts = dateBox.querySelectorAll('span,strong,small');
+      if (parts[0]) parts[0].textContent = '--';
+      if (parts[1]) parts[1].textContent = '--';
+      if (parts[2]) parts[2].textContent = '---';
+    }
+    if (meta) meta.textContent = 'LOVEJOY MARKET · FISHERS, IN';
+    if (title) title.textContent = 'Nothing officially on the books yet.';
+    if (description) description.textContent = 'The rumor mill is active. Confirmed dates will appear here automatically.';
+    if (link) {
+      link.href = 'events.html';
+      link.textContent = "see what's coming up →";
+      link.removeAttribute('target');
+      link.removeAttribute('rel');
+    }
+  }
+
+  function showEvent(event) {
+    const date = new Date(`${event.date}T12:00:00`);
+    if (Number.isNaN(date.getTime())) return showEmpty();
+
+    if (dateBox) {
+      const parts = dateBox.querySelectorAll('span,strong,small');
+      if (parts[0]) parts[0].textContent = date.toLocaleDateString(undefined, { month: 'short' }).toUpperCase();
+      if (parts[1]) parts[1].textContent = String(date.getDate());
+      if (parts[2]) parts[2].textContent = date.toLocaleDateString(undefined, { weekday: 'short' }).toUpperCase();
+      dateBox.setAttribute(
+        'aria-label',
+        date.toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })
+      );
+    }
+
+    if (meta) {
+      meta.textContent = ['LOVEJOY MARKET', event.time, 'FISHERS, IN'].filter(Boolean).join(' · ');
+    }
+    if (title) title.textContent = event.title || 'LoveJoy event';
+    if (description) {
+      description.textContent = event.description || 'Confirmed. Details are on the Events page.';
+    }
+    if (link) {
+      link.href = event.url || 'events.html';
+      link.textContent = event.linkLabel || 'event details →';
+      if (event.url && /^https?:/i.test(event.url)) {
+        link.target = '_blank';
+        link.rel = 'noopener';
+      } else {
+        link.removeAttribute('target');
+        link.removeAttribute('rel');
+      }
+    }
+  }
+
+  fetch('events.json', { cache: 'no-store' })
+    .then((response) => response.ok ? response.json() : Promise.reject(new Error('events.json')))
+    .then((data) => {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      const upcoming = (Array.isArray(data.events) ? data.events : [])
+        .filter((event) => {
+          if (!event || !event.date) return false;
+          const date = new Date(`${event.date}T12:00:00`);
+          return !Number.isNaN(date.getTime()) && date >= today;
+        })
+        .sort((a, b) => a.date.localeCompare(b.date));
+
+      if (upcoming.length) showEvent(upcoming[0]);
+      else showEmpty();
+    })
+    .catch(showEmpty);
 })();
