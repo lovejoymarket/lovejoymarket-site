@@ -754,3 +754,347 @@ img { max-width: 100%; display: block; }
   .lore-heading { width: 100%; }
   .lore-heading.small { width: 100%; }
 }
+
+
+/* Market + Merch */
+.market-main-title { width:min(100%,760px); margin:0 0 5px; }
+.merch-main-title { width:min(100%,520px); margin:0 0 5px; }
+.market-section-heading { width:min(100%,560px); margin:0 0 7px; }
+.rules-heading { width:min(100%,680px); }
+.waitlist-heading { width:min(100%,650px); }
+.faq-heading { width:min(100%,520px); }
+
+.market-jumpbar { margin-bottom:12px; }
+.market-jump-grid {
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+}
+.market-jump-grid a {
+  padding:9px 6px;
+  border-right:1px solid #d8c8bc;
+  color:var(--navy);
+  text-align:center;
+  text-decoration:none;
+  font-size:.62rem;
+  font-weight:900;
+}
+.market-jump-grid a:last-child { border-right:0; }
+.market-jump-grid a:hover { background:#ffe4f0; color:var(--pink); }
+
+.market-merch-preview { margin-bottom:12px; }
+.merch-preview-grid {
+  display:grid;
+  grid-template-columns:minmax(0,1.25fr) minmax(240px,.75fr);
+  gap:18px;
+  align-items:center;
+}
+.merch-preview-grid p { font-size:.78rem; }
+.market-smallcopy { color:rgba(17,17,17,.62); font-size:.64rem !important; line-height:1.45; }
+.market-primary-link,
+.download-button {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:34px;
+  border:1px solid var(--navy);
+  background:var(--pink);
+  color:var(--navy);
+  padding:8px 10px;
+  box-shadow:3px 3px 0 var(--navy);
+  text-decoration:none;
+  font-size:.64rem;
+  font-weight:900;
+}
+.market-primary-link:hover,
+.download-button:hover { transform:translate(1px,1px); box-shadow:2px 2px 0 var(--navy); }
+
+.merch-mini-stack {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px;
+}
+.merch-mini-stack > div {
+  min-height:90px;
+  display:grid;
+  place-items:center;
+  align-content:center;
+  gap:2px;
+  border:1px solid var(--navy);
+  background:linear-gradient(135deg,#102a4b 0%,#ff2d8d 145%);
+  color:var(--cream);
+  text-align:center;
+}
+.merch-mini-stack > div:nth-child(even) { background:linear-gradient(135deg,#ff2d8d -25%,#102a4b 83%); }
+.merch-mini-stack span { font-size:1.25rem; }
+.merch-mini-stack strong { font-size:.66rem; }
+.merch-mini-stack small { font-size:.49rem; opacity:.72; }
+
+.market-section-intro {
+  max-width:760px;
+  color:var(--navy);
+  font-size:.76rem !important;
+  line-height:1.5;
+}
+.application-grid {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+  margin-top:12px;
+}
+.application-card {
+  position:relative;
+  padding:12px;
+  border:1px solid var(--navy);
+  background:#fff;
+  box-shadow:3px 3px 0 rgba(7,24,44,.11);
+}
+.application-icon {
+  position:absolute;
+  right:9px;
+  top:8px;
+  color:var(--pink);
+  font-size:1.35rem;
+}
+.application-card h2 {
+  padding-right:28px;
+  margin:0 0 5px !important;
+  color:var(--pink);
+  font-size:.86rem !important;
+}
+.application-card p {
+  margin:0 0 9px !important;
+  max-width:93%;
+  font-size:.67rem !important;
+  line-height:1.45;
+}
+.application-meta {
+  margin:5px 0;
+  padding:6px 7px;
+  background:#fff8ec;
+  border-left:3px solid var(--pink);
+  font-size:.58rem;
+  line-height:1.38;
+}
+.application-meta span { color:var(--pink); font-weight:900; }
+.download-button { margin-top:7px; width:100%; }
+.accepted-card { background:#f8f1e8; }
+
+.market-instructions { margin-top:12px; }
+.instruction-steps { display:grid; gap:8px; }
+.instruction-step {
+  display:grid;
+  grid-template-columns:38px 1fr;
+  gap:9px;
+  align-items:start;
+}
+.instruction-step > b {
+  width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--navy);
+  background:var(--pink);
+  color:var(--navy);
+  box-shadow:2px 2px 0 var(--navy);
+  font-size:.78rem;
+}
+.instruction-step strong {
+  color:var(--pink);
+  font-size:.72rem;
+}
+.instruction-step p {
+  margin:2px 0 0 !important;
+  font-size:.65rem !important;
+  line-height:1.45;
+}
+.instruction-step a { color:var(--pink); font-weight:900; }
+.email-callout {
+  margin-top:14px;
+  padding:10px;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  border:1px dashed var(--navy);
+  background:#ffe4f0;
+}
+.email-callout > span { color:var(--pink); font-size:1.5rem; }
+.email-callout > div { display:grid; gap:1px; }
+.email-callout strong { font-size:.64rem; text-transform:uppercase; letter-spacing:.06em; }
+.email-callout a { color:var(--pink); font-size:.78rem; font-weight:900; }
+.email-callout small { color:rgba(17,17,17,.58); font-size:.51rem; }
+
+.policy-body { padding-top:10px; }
+.policy-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:7px;
+}
+.policy-grid > div {
+  min-height:115px;
+  padding:10px;
+  border:1px solid #d7c5b9;
+  background:#fff;
+}
+.policy-grid strong { color:var(--pink); font-size:.67rem; }
+.policy-grid p { margin:5px 0 0 !important; font-size:.59rem !important; line-height:1.43; }
+.policy-footnote {
+  margin-top:10px !important;
+  padding-top:8px;
+  border-top:1px dotted #cdb9ac;
+  color:rgba(17,17,17,.6);
+  font-size:.56rem !important;
+}
+
+.waitlist-card { margin-top:12px; }
+.waitlist-big { font-size:.86rem !important; }
+.waitlist-big strong { color:var(--pink); }
+.waitlist-times {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
+  margin:10px 0;
+}
+.waitlist-times > div {
+  padding:9px;
+  border:1px solid var(--navy);
+  background:#fff;
+}
+.waitlist-times strong {
+  display:block;
+  margin-bottom:3px;
+  color:var(--pink);
+  font-size:.63rem;
+}
+.waitlist-times span {
+  display:block;
+  font-size:.58rem;
+  line-height:1.4;
+}
+
+.market-faq-list { display:grid; gap:6px; }
+.market-faq-list details {
+  border:1px solid #d8c8bc;
+  background:#fff;
+}
+.market-faq-list summary {
+  cursor:pointer;
+  padding:9px 10px;
+  color:var(--navy);
+  font-size:.65rem;
+  font-weight:900;
+  list-style:none;
+}
+.market-faq-list summary::-webkit-details-marker { display:none; }
+.market-faq-list summary::before { content:"✦"; color:var(--pink); margin-right:7px; }
+.market-faq-list details[open] summary { background:#ffe4f0; }
+.market-faq-list details p {
+  margin:0 !important;
+  padding:0 10px 10px 28px;
+  font-size:.61rem !important;
+  line-height:1.45;
+}
+.market-faq-list details a { color:var(--pink); font-weight:900; }
+.market-signoff { margin-top:12px; }
+
+/* Merch */
+.merch-square-card { margin-bottom:12px; }
+.merch-square-layout {
+  display:grid;
+  grid-template-columns:minmax(0,1.3fr) minmax(220px,.7fr);
+  gap:18px;
+  align-items:center;
+}
+.merch-square-layout p { font-size:.73rem; }
+.square-steps { display:grid; gap:6px; }
+.square-steps > div {
+  display:grid;
+  grid-template-columns:34px 1fr;
+  gap:8px;
+  align-items:center;
+  padding:7px;
+  border:1px solid var(--navy);
+  background:#fff;
+}
+.square-steps b {
+  width:32px;
+  height:32px;
+  display:grid;
+  place-items:center;
+  background:var(--pink);
+  color:var(--navy);
+  border:1px solid var(--navy);
+}
+.square-steps span { font-size:.61rem; font-weight:800; }
+
+.merch-product-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:12px;
+}
+.merch-product-card {
+  display:grid;
+  grid-template-columns:96px 1fr;
+  min-height:160px;
+  border:1px solid var(--navy);
+  background:#fff;
+  overflow:hidden;
+}
+.merch-product-art {
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,#102a4b 0%,#ff2d8d 145%);
+  color:var(--cream);
+  font-size:2.2rem;
+}
+.merch-product-card:nth-child(even) .merch-product-art { background:linear-gradient(135deg,#ff2d8d -25%,#102a4b 83%); }
+.merch-product-copy { padding:10px; }
+.merch-product-copy h2 { margin:2px 0 4px !important; color:var(--pink); font-size:.83rem !important; }
+.merch-product-copy p { margin:0 0 8px !important; font-size:.61rem !important; line-height:1.42; }
+.square-button {
+  width:100%;
+  min-height:34px;
+  border:1px solid var(--navy);
+  background:var(--pink);
+  color:var(--navy);
+  font:900 .59rem Verdana,Arial,Helvetica,sans-serif;
+  cursor:pointer;
+}
+.square-button.is-coming {
+  background:#ece4dc;
+  color:#74695f;
+  cursor:not-allowed;
+}
+.merch-tech-note {
+  margin-top:12px;
+  padding:9px;
+  border:1px dashed var(--navy);
+  background:#fff8ec;
+  font-size:.57rem;
+  line-height:1.45;
+}
+.merch-tech-note strong { color:var(--pink); margin-right:4px; }
+
+@media (max-width:820px) {
+  .market-jump-grid { grid-template-columns:repeat(3,1fr); }
+  .market-jump-grid a { border-bottom:1px solid #d8c8bc; }
+  .merch-preview-grid,
+  .merch-square-layout { grid-template-columns:1fr; }
+  .policy-grid { grid-template-columns:1fr 1fr; }
+}
+@media (max-width:560px) {
+  .market-main-title { width:100%; }
+  .merch-main-title { width:min(100%,390px); }
+  .market-jump-grid { grid-template-columns:repeat(2,1fr); }
+  .application-grid,
+  .policy-grid,
+  .waitlist-times,
+  .merch-product-grid { grid-template-columns:1fr; }
+  .merch-mini-stack { grid-template-columns:1fr 1fr; }
+  .merch-product-card { grid-template-columns:78px 1fr; min-height:145px; }
+  .merch-product-art { font-size:1.7rem; }
+  .market-section-heading,
+  .rules-heading,
+  .waitlist-heading,
+  .faq-heading { width:100%; }
+}
