@@ -1,0 +1,12 @@
+LOVEJOY HOME PAGE: 2000s GLITTER + FRIEND REQUEST
+==================================================
+
+Adds:
+- intentionally Y2K-style animated glitter sticker to the homepage banner
+- fake MySpace-style "1 New Friend Request!" under the homepage profile picture
+- request says Starcade wants to be your friend
+- clicking the request / Accept Request opens starcade.html
+- CSS cache version bumped so it appears immediately
+- reduced-motion fallback included
+
+Upload index.html and styles.css to the repository root and replace the matching files.
