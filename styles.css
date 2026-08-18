@@ -1862,3 +1862,305 @@ img { max-width: 100%; display: block; }
   .starcade-side { grid-template-columns:1fr; }
   .starcade-controls { grid-column:auto; }
 }
+
+
+/* Full Starcade page */
+.starcade-main-title { width:min(100%,760px); margin:0 0 5px; }
+.starcade-cabinet-heading { width:min(100%,390px); margin:0 0 8px; }
+.starcade-score-heading { width:min(100%,610px); margin:0 0 8px; }
+.starcade-coming-heading { width:min(100%,700px); margin:0 0 8px; }
+
+.starcade-feature-card,
+.starcade-score-card,
+.starcade-coming-card,
+.starcade-signoff { margin-top:12px; }
+
+.starcade-feature-layout {
+  display:grid;
+  grid-template-columns:minmax(0,560px) minmax(220px,1fr);
+  gap:15px;
+  align-items:start;
+}
+
+.starcade-machine {
+  border:1px solid var(--navy);
+  background:#111;
+  padding:10px;
+  box-shadow:6px 6px 0 var(--pink);
+}
+.starcade-machine-top {
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:8px 5px 10px;
+  border:1px solid var(--cream);
+  border-bottom:0;
+  background:linear-gradient(135deg,#ff2d8d 0%,#07182c 92%);
+  color:var(--cream);
+}
+.starcade-machine-top span {
+  font:.48rem "Courier New",monospace;
+  letter-spacing:.24em;
+}
+.starcade-machine-top strong {
+  color:var(--cream);
+  font:900 1.45rem "Courier New",monospace;
+  text-shadow:2px 2px 0 #07182c;
+}
+.starcade-machine-top small {
+  font:.44rem "Courier New",monospace;
+  opacity:.7;
+}
+.starcade-screen-large {
+  box-shadow:none;
+  border-color:var(--cream);
+}
+.starcade-screen-large .starcade-overlay {
+  inset:29px 0 0;
+}
+.starcade-controls-large {
+  margin-top:9px;
+}
+.starcade-controls-large button {
+  min-height:60px;
+  font-size:1rem;
+}
+.starcade-controls-large button.fire {
+  font-size:.62rem;
+  letter-spacing:.05em;
+}
+
+.starcade-machine-side {
+  display:grid;
+  gap:8px;
+}
+.arcade-card {
+  padding:10px;
+  border:1px solid var(--navy);
+  background:#fff;
+}
+.arcade-card > strong {
+  display:block;
+  margin:2px 0 5px;
+  color:var(--pink);
+  font-size:.76rem;
+}
+.arcade-card p {
+  margin:0 !important;
+  font-size:.59rem !important;
+  line-height:1.45;
+}
+.arcade-score-rules {
+  display:grid;
+  gap:5px;
+}
+.arcade-score-rules > div {
+  display:grid;
+  grid-template-columns:52px 1fr;
+  gap:7px;
+  align-items:center;
+  padding:6px;
+  border:1px solid #dccdc2;
+  background:#fff8ec;
+}
+.arcade-score-rules b {
+  color:var(--pink);
+  font:.75rem "Courier New",monospace;
+}
+.arcade-score-rules span {
+  font-size:.55rem;
+}
+.arcade-status-card {
+  background:#ffe4f0;
+}
+.arcade-status-card > strong {
+  font:900 2rem "Courier New",monospace;
+  letter-spacing:.05em;
+}
+
+.fake-scoreboard {
+  border:2px solid var(--navy);
+  background:var(--navy);
+  color:var(--cream);
+  font-family:"Courier New",monospace;
+}
+.fake-scoreboard > div {
+  display:grid;
+  grid-template-columns:36px 1fr auto;
+  gap:9px;
+  padding:8px 9px;
+  border-bottom:1px dotted rgba(255,248,236,.28);
+  align-items:center;
+}
+.fake-scoreboard > div:last-child { border-bottom:0; }
+.fake-scoreboard span {
+  color:var(--pink);
+  font-size:.58rem;
+}
+.fake-scoreboard strong {
+  font-size:.61rem;
+}
+.fake-scoreboard b {
+  color:var(--pink);
+  font-size:.64rem;
+}
+.starcade-fineprint {
+  margin:8px 0 0 !important;
+  color:rgba(17,17,17,.55);
+  font-size:.52rem !important;
+}
+
+.arcade-cabinet-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+}
+.arcade-cabinet {
+  min-height:175px;
+  padding:10px 8px;
+  display:grid;
+  place-items:center;
+  align-content:center;
+  text-align:center;
+  gap:4px;
+  border:1px solid var(--navy);
+  background:linear-gradient(180deg,#102a4b 0%,#07182c 100%);
+  color:var(--cream);
+  opacity:.72;
+}
+.arcade-cabinet.is-live {
+  opacity:1;
+  box-shadow:3px 3px 0 var(--pink);
+}
+.cabinet-screen {
+  width:78px;
+  height:58px;
+  display:grid;
+  place-items:center;
+  margin-bottom:5px;
+  border:3px solid #111;
+  background:#020a12;
+  color:var(--pink);
+  font-size:1.8rem;
+  box-shadow:inset 0 0 0 2px rgba(255,248,236,.12);
+}
+.arcade-cabinet strong {
+  color:var(--pink);
+  font:.65rem "Courier New",monospace;
+}
+.arcade-cabinet span {
+  font-size:.5rem;
+  opacity:.75;
+}
+.arcade-cabinet small {
+  margin-top:4px;
+  padding:3px 5px;
+  border:1px solid currentColor;
+  font:.43rem "Courier New",monospace;
+}
+.arcade-cabinet.is-live small {
+  background:var(--pink);
+  color:var(--navy);
+}
+
+.starcade-full-link {
+  display:block;
+  margin-top:7px;
+  padding:8px 9px;
+  border:1px solid var(--navy);
+  background:var(--pink);
+  color:var(--navy);
+  text-align:center;
+  text-decoration:none;
+  font-size:.58rem;
+  font-weight:900;
+  box-shadow:3px 3px 0 var(--navy);
+}
+.starcade-full-link:hover {
+  transform:translate(1px,1px);
+  box-shadow:2px 2px 0 var(--navy);
+}
+
+@media (max-width:820px) {
+  .starcade-feature-layout { grid-template-columns:1fr; }
+  .starcade-machine-side { grid-template-columns:1fr 1fr; }
+  .arcade-status-card { grid-column:1/-1; }
+  .arcade-cabinet-grid { grid-template-columns:1fr 1fr; }
+}
+
+@media (max-width:560px) {
+  .starcade-main-title,
+  .starcade-cabinet-heading,
+  .starcade-score-heading,
+  .starcade-coming-heading { width:100%; }
+  .starcade-machine { padding:7px; }
+  .starcade-machine-side { grid-template-columns:1fr; }
+  .arcade-status-card { grid-column:auto; }
+  .arcade-cabinet-grid { grid-template-columns:1fr 1fr; }
+  .arcade-cabinet { min-height:145px; }
+}
+
+
+/* Starcade mobile rendering guardrails */
+.starcade-screen canvas,
+.starcade-screen-large canvas {
+  max-width: 100%;
+  background: #07182c;
+}
+
+@media (max-width: 560px) {
+  .starcade-screen,
+  .starcade-screen-large {
+    width: 100%;
+    min-height: 0;
+  }
+
+  .starcade-screen canvas,
+  .starcade-screen-large canvas {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: auto;
+  }
+
+  .starcade-overlay {
+    min-height: 0;
+  }
+}
+
+
+/* Starcade touch controls */
+.starcade-screen canvas,
+.starcade-screen-large canvas {
+  cursor: crosshair;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: none;
+}
+
+.starcade-touch-hint {
+  display: none;
+}
+
+@media (max-width: 560px) {
+  .starcade-controls {
+    display: none !important;
+  }
+
+  .starcade-reset {
+    margin-top: 8px;
+  }
+
+  .starcade-screen::after,
+  .starcade-screen-large::after {
+    content: "slide to move  •  tap to fire";
+    display: block;
+    padding: 6px 8px;
+    border-top: 1px solid rgba(255,248,236,.28);
+    background: #07182c;
+    color: rgba(255,248,236,.72);
+    text-align: center;
+    font: 700 .48rem "Courier New", monospace;
+    letter-spacing: .04em;
+  }
+}

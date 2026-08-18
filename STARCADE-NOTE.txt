@@ -1,0 +1,12 @@
+LOVEJOY STARCADE
+=================
+
+starcade.html is a bonus page and is intentionally NOT in the main navigation.
+
+events.html now links to it from the event-page arcade teaser.
+
+The high score is stored in the visitor's own browser using localStorage.
+It is not a public/global leaderboard.
+
+Future games can be added as additional cabinets without changing the main
+site navigation.

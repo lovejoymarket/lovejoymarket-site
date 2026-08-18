@@ -1,0 +1,17 @@
+LOVEJOY STARCADE V1.2 TOUCH
+===========================
+
+Mobile:
+- slide/drag anywhere on the game canvas to move
+- quick tap on the canvas to fire
+- on-screen direction/fire buttons are hidden on small screens
+
+Desktop:
+- arrow keys or A/D to move
+- space to fire
+- buttons remain available
+
+Also keeps:
+- LoveJoy heart + smiley targets
+- local browser high score
+- cache-busted CSS/JS for mobile browsers

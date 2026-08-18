@@ -669,6 +669,9 @@ runStarCascade();
   const scoreEl = document.querySelector('[data-game-score]');
   const livesEl = document.querySelector('[data-game-lives]');
   const waveEl = document.querySelector('[data-game-wave]');
+  const highEl = document.querySelector('[data-game-high]');
+  const highCard = document.querySelector('[data-high-score-card]');
+  const scoreboardHigh = document.querySelector('[data-scoreboard-high]');
   const overlay = document.querySelector('[data-game-overlay]');
   const startBtn = document.querySelector('[data-game-start]');
   const resetBtn = document.querySelector('[data-game-reset]');
@@ -679,6 +682,7 @@ runStarCascade();
   const W = canvas.width;
   const H = canvas.height;
   const keys = new Set();
+  const highKey = 'lovejoyStarcadeHighScore';
 
   let running = false;
   let raf = 0;
@@ -693,29 +697,51 @@ runStarCascade();
   let lastFire = 0;
   let lastFrame = 0;
 
+  function getHigh() {
+    const value = Number(localStorage.getItem(highKey) || 0);
+    return Number.isFinite(value) ? value : 0;
+  }
+
+  function setHigh(value) {
+    try {
+      localStorage.setItem(highKey, String(value));
+    } catch (error) {}
+  }
+
+  function refreshHigh() {
+    const high = getHigh();
+    const text = String(high).padStart(4,'0');
+    if (highEl) highEl.textContent = text;
+    if (highCard) highCard.textContent = text;
+    if (scoreboardHigh) scoreboardHigh.textContent = text;
+  }
+
   function resetState() {
     score = 0;
     lives = 3;
     wave = 1;
-    player = { x: W/2 - 14, y: H - 35, w: 28, h: 16, speed: 3.5 };
+    player = { x: W/2 - 14, y: H - 38, w: 28, h: 16, speed: 3.7 };
     bullets = [];
     enemyDir = 1;
     enemySpeed = .35;
     makeWave();
     updateHud();
+    refreshHigh();
   }
 
   function makeWave() {
     enemies = [];
     const rows = Math.min(3 + Math.floor((wave-1)/2), 5);
-    const cols = 7;
+    const cols = W >= 400 ? 8 : 7;
+    const spacing = W >= 400 ? 45 : 38;
+    const startX = W >= 400 ? 31 : 28;
     for (let row = 0; row < rows; row += 1) {
       for (let col = 0; col < cols; col += 1) {
         enemies.push({
-          x: 28 + col * 38,
-          y: 42 + row * 29,
+          x: startX + col * spacing,
+          y: 46 + row * 30,
           w: 18,
-          h: 14,
+          h: 17,
           alive: true,
           phase: (row + col) % 3
         });
@@ -725,9 +751,14 @@ runStarCascade();
   }
 
   function updateHud() {
-    scoreEl.textContent = String(score).padStart(4,'0');
-    livesEl.textContent = lives;
-    waveEl.textContent = wave;
+    if (scoreEl) scoreEl.textContent = String(score).padStart(4,'0');
+    if (livesEl) livesEl.textContent = lives;
+    if (waveEl) waveEl.textContent = wave;
+
+    if (score > getHigh()) {
+      setHigh(score);
+      refreshHigh();
+    }
   }
 
   function fire() {
@@ -744,6 +775,8 @@ runStarCascade();
   function endGame(message) {
     running = false;
     cancelAnimationFrame(raf);
+    if (score > getHigh()) setHigh(score);
+    refreshHigh();
     overlay.hidden = false;
     overlay.querySelector('strong').textContent = message;
     overlay.querySelector('span').textContent = `score ${String(score).padStart(4,'0')} · wave ${wave}`;
@@ -767,7 +800,7 @@ runStarCascade();
     if (keys.has('ArrowRight') || keys.has('d') || keys.has('D')) player.x += move;
     player.x = Math.max(8, Math.min(W-player.w-8, player.x));
 
-    bullets.forEach((b) => b.y -= 5.4 * (dt/16.67));
+    bullets.forEach((b) => b.y -= 5.5 * (dt/16.67));
     bullets = bullets.filter((b) => b.y + b.h > 0);
 
     let left = Infinity, right = -Infinity;
@@ -785,7 +818,6 @@ runStarCascade();
     enemies.forEach((e) => {
       if (!e.alive) return;
       e.x += enemyDir * enemySpeed * (dt/16.67);
-
       if (e.y + e.h >= player.y) {
         if (hitPlayer()) return;
       }
@@ -812,16 +844,55 @@ runStarCascade();
     }
   }
 
-  function drawPixelStar(x,y,phase) {
+  function drawHeartTarget(x,y,phase) {
     const cream = '#fff8ec';
     const pink = '#ff2d8d';
+    const ink = '#07182c';
+
+    // chunky pixel heart
     ctx.fillStyle = phase === 1 ? pink : cream;
-    ctx.fillRect(x+7,y,4,14);
-    ctx.fillRect(x+2,y+5,14,4);
+    ctx.fillRect(x+3, y+2, 5, 5);
+    ctx.fillRect(x+10, y+2, 5, 5);
+    ctx.fillRect(x+1, y+5, 16, 5);
+    ctx.fillRect(x+4, y+10, 10, 4);
+    ctx.fillRect(x+7, y+14, 4, 3);
+
+    // tiny dark center detail so cream hearts still read
+    if (phase === 2) {
+      ctx.fillStyle = ink;
+      ctx.fillRect(x+8, y+7, 2, 2);
+    }
+  }
+
+  function drawSmileyTarget(x,y,phase) {
+    const cream = '#fff8ec';
+    const pink = '#ff2d8d';
+    const ink = '#07182c';
+
+    // pixel face
+    ctx.fillStyle = phase === 1 ? pink : cream;
+    ctx.fillRect(x+3, y+1, 12, 2);
+    ctx.fillRect(x+1, y+3, 16, 10);
+    ctx.fillRect(x+3, y+13, 12, 2);
+
+    // eyes + smile
+    ctx.fillStyle = ink;
+    ctx.fillRect(x+5, y+5, 2, 2);
+    ctx.fillRect(x+11, y+5, 2, 2);
+    ctx.fillRect(x+5, y+10, 2, 1);
+    ctx.fillRect(x+7, y+11, 4, 1);
+    ctx.fillRect(x+11, y+10, 2, 1);
+
+    // little LoveJoy pink cheek/detail
     if (phase === 2) {
       ctx.fillStyle = pink;
-      ctx.fillRect(x+7,y+5,4,4);
+      ctx.fillRect(x+14, y+8, 2, 2);
     }
+  }
+
+  function drawLoveJoyTarget(x,y,phase) {
+    if (phase % 2 === 0) drawHeartTarget(x,y,phase);
+    else drawSmileyTarget(x,y,phase);
   }
 
   function draw() {
@@ -830,7 +901,7 @@ runStarCascade();
 
     ctx.globalAlpha = .22;
     ctx.fillStyle = '#fff8ec';
-    for (let i=0;i<28;i+=1) {
+    for (let i=0;i<34;i+=1) {
       const x = (i*73 + wave*17) % W;
       const y = (i*47 + score) % H;
       ctx.fillRect(x,y,1,1);
@@ -838,13 +909,12 @@ runStarCascade();
     ctx.globalAlpha = 1;
 
     enemies.forEach((e) => {
-      if (e.alive) drawPixelStar(e.x,e.y,e.phase);
+      if (e.alive) drawLoveJoyTarget(e.x,e.y,e.phase);
     });
 
     ctx.fillStyle = '#ff2d8d';
     bullets.forEach((b) => ctx.fillRect(b.x,b.y,b.w,b.h));
 
-    // Player: little cream/pink retro ship-heart hybrid.
     ctx.fillStyle = '#fff8ec';
     ctx.fillRect(player.x+10, player.y, 8, 4);
     ctx.fillRect(player.x+6, player.y+4, 16, 4);
@@ -872,15 +942,10 @@ runStarCascade();
     raf = requestAnimationFrame(loop);
   }
 
-  function press(key) {
-    keys.add(key);
-  }
-  function release(key) {
-    keys.delete(key);
-  }
+  function press(key) { keys.add(key); }
+  function release(key) { keys.delete(key); }
 
   window.addEventListener('keydown', (event) => {
-    if (!canvas.closest('.starcade-card')) return;
     if (['ArrowLeft','ArrowRight',' ','a','A','d','D'].includes(event.key)) {
       if (running) event.preventDefault();
       if (event.key === ' ') fire();
@@ -892,10 +957,12 @@ runStarCascade();
   function holdButton(button,key) {
     if (!button) return;
     ['pointerdown','touchstart'].forEach((name) => button.addEventListener(name, (e) => {
-      e.preventDefault(); press(key);
+      e.preventDefault();
+      press(key);
     }, { passive:false }));
     ['pointerup','pointercancel','pointerleave','touchend'].forEach((name) => button.addEventListener(name, (e) => {
-      e.preventDefault(); release(key);
+      e.preventDefault();
+      release(key);
     }, { passive:false }));
   }
 
@@ -906,6 +973,78 @@ runStarCascade();
     fireBtn.addEventListener('pointerdown', (e) => { e.preventDefault(); fire(); });
     fireBtn.addEventListener('touchstart', (e) => { e.preventDefault(); fire(); }, { passive:false });
   }
+
+  /* Mobile gesture controls:
+     - drag/slide anywhere on the canvas to move horizontally
+     - quick tap on the canvas to fire
+  */
+  let gesturePointerId = null;
+  let gestureStartX = 0;
+  let gestureStartY = 0;
+  let gestureStartTime = 0;
+  let gestureMoved = false;
+
+  function canvasXFromPointer(event) {
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = W / rect.width;
+    return (event.clientX - rect.left) * scaleX;
+  }
+
+  function movePlayerToPointer(event) {
+    if (!running || !player) return;
+    const targetX = canvasXFromPointer(event) - player.w / 2;
+    player.x = Math.max(8, Math.min(W - player.w - 8, targetX));
+    draw();
+  }
+
+  canvas.addEventListener('pointerdown', (event) => {
+    if (!running) return;
+    event.preventDefault();
+
+    gesturePointerId = event.pointerId;
+    gestureStartX = event.clientX;
+    gestureStartY = event.clientY;
+    gestureStartTime = performance.now();
+    gestureMoved = false;
+
+    try { canvas.setPointerCapture(event.pointerId); } catch (error) {}
+    movePlayerToPointer(event);
+  });
+
+  canvas.addEventListener('pointermove', (event) => {
+    if (!running || event.pointerId !== gesturePointerId) return;
+    event.preventDefault();
+
+    const dx = event.clientX - gestureStartX;
+    const dy = event.clientY - gestureStartY;
+
+    if (Math.hypot(dx, dy) > 8) gestureMoved = true;
+    movePlayerToPointer(event);
+  });
+
+  canvas.addEventListener('pointerup', (event) => {
+    if (event.pointerId !== gesturePointerId) return;
+    event.preventDefault();
+
+    const elapsed = performance.now() - gestureStartTime;
+    const dx = event.clientX - gestureStartX;
+    const dy = event.clientY - gestureStartY;
+    const distance = Math.hypot(dx, dy);
+
+    // A short, mostly-stationary tap fires.
+    if (running && !gestureMoved && distance < 10 && elapsed < 320) {
+      fire();
+    }
+
+    try { canvas.releasePointerCapture(event.pointerId); } catch (error) {}
+    gesturePointerId = null;
+  });
+
+  canvas.addEventListener('pointercancel', (event) => {
+    if (event.pointerId === gesturePointerId) {
+      gesturePointerId = null;
+    }
+  });
 
   if (startBtn) startBtn.addEventListener('click', start);
   if (resetBtn) resetBtn.addEventListener('click', start);

@@ -1,0 +1,11 @@
+LOVEJOY STARCADE V1.1
+=====================
+
+This update:
+- cache-busts styles.css and site.js on Events + Starcade
+- fixes the mobile game area rendering
+- changes enemies to LoveJoy hearts + smiley faces
+- keeps desktop keyboard controls and mobile touch controls
+- keeps local-browser high score behavior
+
+Upload every file in this ZIP to the repo root.
