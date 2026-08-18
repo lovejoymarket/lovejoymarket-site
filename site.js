@@ -8,6 +8,14 @@ if (menuButton && menu) {
   });
 }
 
+
+/* Starcade carousel helper.
+   Standalone game pages remain active because they have no data-arcade-panel ancestor. */
+function lovejoyArcadeGameIsActive(node) {
+  const panel = node?.closest?.('[data-arcade-panel]');
+  return !panel || panel.dataset.arcadeActive === 'true';
+}
+
 const starGlyphs = ['✦', '★', '✧'];
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -1040,6 +1048,11 @@ runStarCascade();
 
   function loop(ts) {
     if (!running) return;
+    if (!lovejoyArcadeGameIsActive(canvas)) {
+      lastFrame = ts;
+      raf = requestAnimationFrame(loop);
+      return;
+    }
     const dt = Math.min(32, ts - lastFrame || 16.67);
     lastFrame = ts;
     update(dt);
@@ -1060,6 +1073,7 @@ runStarCascade();
   function release(key) { keys.delete(key); }
 
   window.addEventListener('keydown', (event) => {
+    if (!lovejoyArcadeGameIsActive(canvas)) return;
     if (['ArrowLeft','ArrowRight',' ','a','A','d','D'].includes(event.key)) {
       if (running) event.preventDefault();
       if (event.key === ' ') fire();
@@ -1358,11 +1372,17 @@ runStarCascade();
 
   function loop(ts) {
     if(!running)return;
+    if(!lovejoyArcadeGameIsActive(canvas)){
+      lastDrop=ts;
+      raf=requestAnimationFrame(loop);
+      return;
+    }
     if(ts-lastDrop>=dropEvery){softDrop(false);lastDrop=ts;}
     raf=requestAnimationFrame(loop);
   }
 
   window.addEventListener('keydown',(e)=>{
+    if(!lovejoyArcadeGameIsActive(canvas))return;
     if(!running)return;
     if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown',' '].includes(e.key)) e.preventDefault();
     if(e.key==='ArrowLeft')move(-1);
@@ -1611,6 +1631,11 @@ runStarCascade();
 
   function loop(ts){
     if(!running)return;
+    if(!lovejoyArcadeGameIsActive(canvas)){
+      last=ts;
+      raf=requestAnimationFrame(loop);
+      return;
+    }
     const interval=Math.max(95,220-(level-1)*15);
     if(ts-last>=interval){
       movePlayer();
@@ -1624,6 +1649,7 @@ runStarCascade();
 
   function request(dir){requested=dir;}
   window.addEventListener('keydown',e=>{
+    if(!lovejoyArcadeGameIsActive(canvas))return;
     const map={ArrowLeft:'left',ArrowRight:'right',ArrowUp:'up',ArrowDown:'down',a:'left',d:'right',w:'up',s:'down',A:'left',D:'right',W:'up',S:'down'};
     if(map[e.key]){if(running)e.preventDefault();request(map[e.key]);}
   });
@@ -2281,6 +2307,11 @@ runStarCascade();
 
   function loop(ts) {
     if (!running) return;
+    if (!lovejoyArcadeGameIsActive(canvas)) {
+      lastStep = ts;
+      raf = requestAnimationFrame(loop);
+      return;
+    }
     if (ts - lastStep >= Math.max(78, 155 - score*2)) {
       step();
       lastStep = ts;
@@ -2299,6 +2330,7 @@ runStarCascade();
   }
 
   window.addEventListener('keydown', (event) => {
+    if (!lovejoyArcadeGameIsActive(canvas)) return;
     const map = {
       ArrowUp:'up', ArrowDown:'down', ArrowLeft:'left', ArrowRight:'right',
       w:'up', s:'down', a:'left', d:'right',
@@ -2431,4 +2463,87 @@ runStarCascade();
       else showEmpty();
     })
     .catch(showEmpty);
+})();
+
+/* ==========================================================
+   STARCADE IN-PAGE CAROUSEL
+   Portals, arrows and dots all swap the one game stage.
+   ========================================================== */
+(() => {
+  const stage = document.querySelector('#arcade-stage');
+  if (!stage) return;
+
+  const panels = [...stage.querySelectorAll('[data-arcade-panel]')];
+  if (!panels.length) return;
+
+  const portalButtons = [...document.querySelectorAll('[data-arcade-select]')];
+  const dots = [...stage.querySelectorAll('[data-arcade-dot]')];
+  const prevButtons = [...stage.querySelectorAll('[data-arcade-prev]')];
+  const nextButtons = [...stage.querySelectorAll('[data-arcade-next]')];
+  const nowPlaying = stage.querySelector('[data-arcade-now-playing]');
+  const count = stage.querySelector('[data-arcade-count]');
+
+  let activeIndex = Math.max(0, panels.findIndex((panel) => panel.dataset.arcadeActive === 'true'));
+
+  function activate(index, {scroll=false} = {}) {
+    activeIndex = (index + panels.length) % panels.length;
+    const active = panels[activeIndex];
+    const id = active.dataset.arcadePanel;
+    const label = active.dataset.arcadeLabel || id;
+
+    panels.forEach((panel, panelIndex) => {
+      const selected = panelIndex === activeIndex;
+      panel.hidden = !selected;
+      panel.classList.toggle('is-active', selected);
+      panel.dataset.arcadeActive = selected ? 'true' : 'false';
+      panel.setAttribute('aria-hidden', selected ? 'false' : 'true');
+    });
+
+    portalButtons.forEach((button) => {
+      const selected = button.dataset.arcadeSelect === id;
+      button.classList.toggle('is-selected', selected);
+      if (selected) button.setAttribute('aria-current', 'true');
+      else button.removeAttribute('aria-current');
+    });
+
+    dots.forEach((dot) => {
+      const selected = dot.dataset.arcadeDot === id;
+      dot.classList.toggle('is-active', selected);
+      dot.setAttribute('aria-selected', selected ? 'true' : 'false');
+    });
+
+    if (nowPlaying) nowPlaying.textContent = `Now Playing: ${label}`;
+    if (count) count.textContent = `${activeIndex + 1} / ${panels.length}`;
+
+    document.dispatchEvent(new CustomEvent('lovejoy:arcade-panel-change', {
+      detail: { id, index: activeIndex }
+    }));
+
+    if (scroll) {
+      stage.scrollIntoView({
+        behavior: reduceMotion ? 'auto' : 'smooth',
+        block: 'start'
+      });
+    }
+  }
+
+  portalButtons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      const index = panels.findIndex((panel) => panel.dataset.arcadePanel === button.dataset.arcadeSelect);
+      if (index >= 0) activate(index, {scroll:true});
+    });
+  });
+
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const index = panels.findIndex((panel) => panel.dataset.arcadePanel === dot.dataset.arcadeDot);
+      if (index >= 0) activate(index);
+    });
+  });
+
+  prevButtons.forEach((button) => button.addEventListener('click', () => activate(activeIndex - 1)));
+  nextButtons.forEach((button) => button.addEventListener('click', () => activate(activeIndex + 1)));
+
+  activate(activeIndex);
 })();

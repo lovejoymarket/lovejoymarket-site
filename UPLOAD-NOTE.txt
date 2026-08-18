@@ -1,0 +1,20 @@
+LOVEJOY STARCADE CAROUSEL + HOMEPAGE CORRECTION
+================================================
+
+Upload these FOUR files to the repository root:
+- index.html
+- starcade.html
+- styles.css
+- site.js
+
+This batch:
+- removes the "internet angel / LOVEJOY" glitter sticker completely
+- keeps the Starcade friend-request notification under the homepage profile picture
+- turns the Starcade "Now Playing" area into a four-game in-page carousel
+- portal cards switch the game shown below instead of leaving Starcade
+- desktop gets left/right side arrows
+- mobile gets prev/next buttons and sparkle dots
+- Starfall, Block Party, Heart Attack, and Glitterworm all play in that block
+- hidden active games pause and resume
+- keyboard controls affect only the visible game
+- Home + Starcade cache versions are bumped
