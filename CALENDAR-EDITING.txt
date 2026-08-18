@@ -1,0 +1,22 @@
+LOVEJOY EVENTS CALENDAR EDITING
+================================
+
+The public calendar reads events.json automatically and only displays events
+whose date falls inside the visitor's current month.
+
+To add a confirmed event, edit events.json and add an item like:
+
+{
+  "date": "2026-09-25",
+  "title": "Gallery Soft Opening",
+  "time": "7–10 PM",
+  "description": "Optional short description.",
+  "url": "https://...",
+  "linkLabel": "tickets →"
+}
+
+Only "date" and "title" are really necessary.
+Do not add an event until the date is actually confirmed.
+
+After editing, upload ONLY events.json to GitHub with the same filename.
+No HTML/CSS rebuild is needed for normal calendar updates.

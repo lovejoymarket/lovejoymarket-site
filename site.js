@@ -424,3 +424,492 @@ runStarCascade();
     });
   }
 })();
+
+
+/* LoveJoy events calendar: current month only, data from events.json */
+(() => {
+  const root = document.querySelector('[data-event-calendar]');
+  if (!root) return;
+
+  const grid = root.querySelector('[data-calendar-grid]');
+  const monthLabel = document.querySelector('[data-calendar-month]');
+  const list = document.querySelector('[data-calendar-events]');
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth();
+  const monthName = now.toLocaleDateString(undefined, { month: 'long', year: 'numeric' });
+
+  if (monthLabel) monthLabel.textContent = monthName;
+
+  function render(events) {
+    grid.replaceChildren();
+
+    const first = new Date(year, month, 1);
+    const days = new Date(year, month + 1, 0).getDate();
+    const offset = first.getDay();
+
+    for (let i = 0; i < offset; i += 1) {
+      const blank = document.createElement('div');
+      blank.className = 'calendar-day is-empty';
+      blank.setAttribute('aria-hidden', 'true');
+      grid.appendChild(blank);
+    }
+
+    const currentEvents = events.filter((event) => {
+      if (!event.date) return false;
+      const date = new Date(`${event.date}T12:00:00`);
+      return date.getFullYear() === year && date.getMonth() === month;
+    });
+
+    const byDay = new Map();
+    currentEvents.forEach((event) => {
+      const day = Number(event.date.split('-')[2]);
+      if (!byDay.has(day)) byDay.set(day, []);
+      byDay.get(day).push(event);
+    });
+
+    for (let day = 1; day <= days; day += 1) {
+      const cell = document.createElement('div');
+      cell.className = 'calendar-day';
+      const isToday = day === now.getDate() &&
+        month === now.getMonth() &&
+        year === now.getFullYear();
+      if (isToday) cell.classList.add('is-today');
+
+      const number = document.createElement('span');
+      number.className = 'calendar-day-number';
+      number.textContent = day;
+      cell.appendChild(number);
+
+      const dayEvents = byDay.get(day) || [];
+      dayEvents.slice(0, 3).forEach((event) => {
+        const chip = document.createElement(event.url ? 'a' : 'div');
+        chip.className = 'calendar-chip';
+        chip.textContent = event.title || 'LoveJoy event';
+        if (event.url) chip.href = event.url;
+        if (event.url && /^https?:/.test(event.url)) {
+          chip.target = '_blank';
+          chip.rel = 'noopener';
+        }
+        cell.appendChild(chip);
+      });
+
+      if (dayEvents.length > 3) {
+        const more = document.createElement('small');
+        more.className = 'calendar-more';
+        more.textContent = `+${dayEvents.length - 3} more`;
+        cell.appendChild(more);
+      }
+
+      grid.appendChild(cell);
+    }
+
+    list.replaceChildren();
+    if (!currentEvents.length) {
+      const empty = document.createElement('div');
+      empty.className = 'calendar-empty-card';
+      empty.innerHTML = '<strong>nothing confirmed here yet ♡</strong><span>That means the rumor mill is still doing its job. Confirmed dates will appear automatically.</span>';
+      list.appendChild(empty);
+      return;
+    }
+
+    currentEvents
+      .sort((a,b) => a.date.localeCompare(b.date))
+      .forEach((event) => {
+        const item = document.createElement('article');
+        item.className = 'calendar-list-item';
+
+        const date = new Date(`${event.date}T12:00:00`);
+        const dateText = date.toLocaleDateString(undefined, { weekday:'short', month:'short', day:'numeric' });
+
+        const meta = document.createElement('span');
+        meta.className = 'calendar-list-date';
+        meta.textContent = [dateText, event.time].filter(Boolean).join(' · ');
+
+        const title = document.createElement('strong');
+        title.textContent = event.title || 'LoveJoy event';
+
+        const desc = document.createElement('p');
+        desc.textContent = event.description || '';
+
+        const copy = document.createElement('div');
+        copy.append(meta, title);
+        if (event.description) copy.appendChild(desc);
+
+        item.appendChild(copy);
+
+        if (event.url) {
+          const link = document.createElement('a');
+          link.href = event.url;
+          link.className = 'calendar-event-link';
+          link.textContent = event.linkLabel || 'details →';
+          if (/^https?:/.test(event.url)) {
+            link.target = '_blank';
+            link.rel = 'noopener';
+          }
+          item.appendChild(link);
+        }
+
+        list.appendChild(item);
+      });
+  }
+
+  fetch('events.json', { cache: 'no-store' })
+    .then((response) => response.ok ? response.json() : Promise.reject())
+    .then((data) => render(Array.isArray(data.events) ? data.events : []))
+    .catch(() => render([]));
+})();
+
+/* Event inquiry -> structured email */
+(() => {
+  const forms = document.querySelectorAll('[data-event-inquiry]');
+  if (!forms.length) return;
+
+  function formValue(form, name) {
+    const field = form.elements.namedItem(name);
+    return field ? String(field.value || '').trim() : '';
+  }
+
+  function buildPrivate(form) {
+    return [
+      'LOVEJOY PRIVATE EVENT INQUIRY',
+      '',
+      `Name: ${formValue(form,'name')}`,
+      `Email: ${formValue(form,'email')}`,
+      `Phone: ${formValue(form,'phone') || 'not provided'}`,
+      `Event type: ${formValue(form,'event_type')}`,
+      `Estimated guests: ${formValue(form,'guests')}`,
+      `Preferred date / range: ${formValue(form,'date') || 'flexible / not provided'}`,
+      `Preferred time / duration: ${formValue(form,'time') || 'not provided'}`,
+      `Budget range: ${formValue(form,'budget') || 'not provided'}`,
+      '',
+      'EVENT CONCEPT:',
+      formValue(form,'concept'),
+      '',
+      'SPACE / SETUP NEEDS:',
+      formValue(form,'needs') || 'none listed'
+    ].join('\n');
+  }
+
+  function buildLoveJoy(form) {
+    return [
+      'LOVEJOY EVENT / COLLABORATION INQUIRY',
+      '',
+      `Name / organization: ${formValue(form,'name')}`,
+      `Email: ${formValue(form,'email')}`,
+      `Phone: ${formValue(form,'phone') || 'not provided'}`,
+      `Role: ${formValue(form,'role')}`,
+      `Program fit: ${formValue(form,'program')}`,
+      `Timing: ${formValue(form,'timing') || 'flexible / not provided'}`,
+      '',
+      'THE PITCH:',
+      formValue(form,'concept'),
+      '',
+      'WHAT I / WE BRING:',
+      formValue(form,'bring'),
+      '',
+      'WHAT I / WE NEED FROM LOVEJOY:',
+      formValue(form,'needs') || 'none listed',
+      '',
+      'LINKS:',
+      formValue(form,'links') || 'none provided',
+      '',
+      'ATTACHMENTS:',
+      'Add any deck, images, references, or files that would help Jessie understand the idea before sending.'
+    ].join('\n');
+  }
+
+  forms.forEach((form) => {
+    const type = form.dataset.inquiryType;
+    const destination = form.dataset.email || 'hello@lovejoymarket.co';
+    const status = form.querySelector('[data-event-status]');
+    const copyButton = form.querySelector('[data-event-copy]');
+
+    function build() {
+      return type === 'private' ? buildPrivate(form) : buildLoveJoy(form);
+    }
+
+    function subject() {
+      const name = formValue(form,'name') || 'Inquiry';
+      if (type === 'private') {
+        return `PRIVATE EVENT INQUIRY | ${name} | ${formValue(form,'event_type') || 'Event'}`;
+      }
+      return `LOVEJOY EVENT IDEA | ${name} | ${formValue(form,'role') || 'Collaboration'}`;
+    }
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      const mailto = `mailto:${encodeURIComponent(destination)}?subject=${encodeURIComponent(subject())}&body=${encodeURIComponent(build())}`;
+      if (status) status.textContent = 'Email ready. Add any useful attachments before sending. ✦';
+      window.location.href = mailto;
+    });
+
+    if (copyButton) {
+      copyButton.addEventListener('click', async () => {
+        if (!form.reportValidity()) return;
+        const text = `${subject()}\n\n${build()}`;
+        try {
+          await navigator.clipboard.writeText(text);
+          if (status) status.textContent = `Copied. Paste it into an email to ${destination}. ♡`;
+        } catch (error) {
+          if (status) status.textContent = 'Copy was blocked by the browser. Use the email button instead.';
+        }
+      });
+    }
+  });
+})();
+
+/* LoveJoy Starcade - original retro space shooter */
+(() => {
+  const canvas = document.querySelector('[data-lovejoy-game]');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  const scoreEl = document.querySelector('[data-game-score]');
+  const livesEl = document.querySelector('[data-game-lives]');
+  const waveEl = document.querySelector('[data-game-wave]');
+  const overlay = document.querySelector('[data-game-overlay]');
+  const startBtn = document.querySelector('[data-game-start]');
+  const resetBtn = document.querySelector('[data-game-reset]');
+  const leftBtn = document.querySelector('[data-game-left]');
+  const rightBtn = document.querySelector('[data-game-right]');
+  const fireBtn = document.querySelector('[data-game-fire]');
+
+  const W = canvas.width;
+  const H = canvas.height;
+  const keys = new Set();
+
+  let running = false;
+  let raf = 0;
+  let score = 0;
+  let lives = 3;
+  let wave = 1;
+  let player;
+  let bullets = [];
+  let enemies = [];
+  let enemyDir = 1;
+  let enemySpeed = .35;
+  let lastFire = 0;
+  let lastFrame = 0;
+
+  function resetState() {
+    score = 0;
+    lives = 3;
+    wave = 1;
+    player = { x: W/2 - 14, y: H - 35, w: 28, h: 16, speed: 3.5 };
+    bullets = [];
+    enemyDir = 1;
+    enemySpeed = .35;
+    makeWave();
+    updateHud();
+  }
+
+  function makeWave() {
+    enemies = [];
+    const rows = Math.min(3 + Math.floor((wave-1)/2), 5);
+    const cols = 7;
+    for (let row = 0; row < rows; row += 1) {
+      for (let col = 0; col < cols; col += 1) {
+        enemies.push({
+          x: 28 + col * 38,
+          y: 42 + row * 29,
+          w: 18,
+          h: 14,
+          alive: true,
+          phase: (row + col) % 3
+        });
+      }
+    }
+    enemySpeed = .32 + (wave-1) * .08;
+  }
+
+  function updateHud() {
+    scoreEl.textContent = String(score).padStart(4,'0');
+    livesEl.textContent = lives;
+    waveEl.textContent = wave;
+  }
+
+  function fire() {
+    const now = performance.now();
+    if (!running || now - lastFire < 220) return;
+    lastFire = now;
+    bullets.push({ x: player.x + player.w/2 - 2, y: player.y - 8, w: 4, h: 10 });
+  }
+
+  function rects(a,b) {
+    return a.x < b.x+b.w && a.x+a.w > b.x && a.y < b.y+b.h && a.y+a.h > b.y;
+  }
+
+  function endGame(message) {
+    running = false;
+    cancelAnimationFrame(raf);
+    overlay.hidden = false;
+    overlay.querySelector('strong').textContent = message;
+    overlay.querySelector('span').textContent = `score ${String(score).padStart(4,'0')} · wave ${wave}`;
+    startBtn.textContent = 'play again ✦';
+  }
+
+  function hitPlayer() {
+    lives -= 1;
+    updateHud();
+    if (lives <= 0) {
+      endGame('GAME OVER, BABE');
+      return true;
+    }
+    enemies.forEach((enemy) => { enemy.y -= 42; });
+    return false;
+  }
+
+  function update(dt) {
+    const move = player.speed * (dt/16.67);
+    if (keys.has('ArrowLeft') || keys.has('a') || keys.has('A')) player.x -= move;
+    if (keys.has('ArrowRight') || keys.has('d') || keys.has('D')) player.x += move;
+    player.x = Math.max(8, Math.min(W-player.w-8, player.x));
+
+    bullets.forEach((b) => b.y -= 5.4 * (dt/16.67));
+    bullets = bullets.filter((b) => b.y + b.h > 0);
+
+    let left = Infinity, right = -Infinity;
+    enemies.forEach((e) => {
+      if (!e.alive) return;
+      left = Math.min(left, e.x);
+      right = Math.max(right, e.x + e.w);
+    });
+
+    if ((right >= W-9 && enemyDir > 0) || (left <= 9 && enemyDir < 0)) {
+      enemyDir *= -1;
+      enemies.forEach((e) => { if (e.alive) e.y += 10; });
+    }
+
+    enemies.forEach((e) => {
+      if (!e.alive) return;
+      e.x += enemyDir * enemySpeed * (dt/16.67);
+
+      if (e.y + e.h >= player.y) {
+        if (hitPlayer()) return;
+      }
+    });
+
+    bullets.forEach((b) => {
+      enemies.forEach((e) => {
+        if (!e.alive) return;
+        if (rects(b,e)) {
+          e.alive = false;
+          b.y = -99;
+          score += 10;
+          updateHud();
+        }
+      });
+    });
+    bullets = bullets.filter((b) => b.y > -20);
+
+    if (enemies.every((e) => !e.alive)) {
+      wave += 1;
+      score += 50;
+      updateHud();
+      makeWave();
+    }
+  }
+
+  function drawPixelStar(x,y,phase) {
+    const cream = '#fff8ec';
+    const pink = '#ff2d8d';
+    ctx.fillStyle = phase === 1 ? pink : cream;
+    ctx.fillRect(x+7,y,4,14);
+    ctx.fillRect(x+2,y+5,14,4);
+    if (phase === 2) {
+      ctx.fillStyle = pink;
+      ctx.fillRect(x+7,y+5,4,4);
+    }
+  }
+
+  function draw() {
+    ctx.fillStyle = '#07182c';
+    ctx.fillRect(0,0,W,H);
+
+    ctx.globalAlpha = .22;
+    ctx.fillStyle = '#fff8ec';
+    for (let i=0;i<28;i+=1) {
+      const x = (i*73 + wave*17) % W;
+      const y = (i*47 + score) % H;
+      ctx.fillRect(x,y,1,1);
+    }
+    ctx.globalAlpha = 1;
+
+    enemies.forEach((e) => {
+      if (e.alive) drawPixelStar(e.x,e.y,e.phase);
+    });
+
+    ctx.fillStyle = '#ff2d8d';
+    bullets.forEach((b) => ctx.fillRect(b.x,b.y,b.w,b.h));
+
+    // Player: little cream/pink retro ship-heart hybrid.
+    ctx.fillStyle = '#fff8ec';
+    ctx.fillRect(player.x+10, player.y, 8, 4);
+    ctx.fillRect(player.x+6, player.y+4, 16, 4);
+    ctx.fillRect(player.x+2, player.y+8, 24, 4);
+    ctx.fillRect(player.x, player.y+12, 28, 4);
+    ctx.fillStyle = '#ff2d8d';
+    ctx.fillRect(player.x+11, player.y+6, 6, 6);
+  }
+
+  function loop(ts) {
+    if (!running) return;
+    const dt = Math.min(32, ts - lastFrame || 16.67);
+    lastFrame = ts;
+    update(dt);
+    draw();
+    if (running) raf = requestAnimationFrame(loop);
+  }
+
+  function start() {
+    resetState();
+    overlay.hidden = true;
+    running = true;
+    lastFrame = performance.now();
+    draw();
+    raf = requestAnimationFrame(loop);
+  }
+
+  function press(key) {
+    keys.add(key);
+  }
+  function release(key) {
+    keys.delete(key);
+  }
+
+  window.addEventListener('keydown', (event) => {
+    if (!canvas.closest('.starcade-card')) return;
+    if (['ArrowLeft','ArrowRight',' ','a','A','d','D'].includes(event.key)) {
+      if (running) event.preventDefault();
+      if (event.key === ' ') fire();
+      else press(event.key);
+    }
+  });
+  window.addEventListener('keyup', (event) => release(event.key));
+
+  function holdButton(button,key) {
+    if (!button) return;
+    ['pointerdown','touchstart'].forEach((name) => button.addEventListener(name, (e) => {
+      e.preventDefault(); press(key);
+    }, { passive:false }));
+    ['pointerup','pointercancel','pointerleave','touchend'].forEach((name) => button.addEventListener(name, (e) => {
+      e.preventDefault(); release(key);
+    }, { passive:false }));
+  }
+
+  holdButton(leftBtn,'ArrowLeft');
+  holdButton(rightBtn,'ArrowRight');
+
+  if (fireBtn) {
+    fireBtn.addEventListener('pointerdown', (e) => { e.preventDefault(); fire(); });
+    fireBtn.addEventListener('touchstart', (e) => { e.preventDefault(); fire(); }, { passive:false });
+  }
+
+  if (startBtn) startBtn.addEventListener('click', start);
+  if (resetBtn) resetBtn.addEventListener('click', start);
+
+  resetState();
+  draw();
+})();
