@@ -13,7 +13,7 @@ Custom-coded website for LoveJoy Market.
 ## Architecture
 
 - Static HTML/CSS/JavaScript for a lightweight first release
-- Content separated into `/data` files where practical
+- Lightweight flat-file structure for the initial mobile-friendly setup; content JSON can be reorganized later
 - Square will remain the system for appointments, checkout, payments, and event transactions
 - The public website will be hosted independently and connected to `lovejoymarket.co`
 

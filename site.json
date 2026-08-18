@@ -1,0 +1,12 @@
+{
+  "brand": "LoveJoy Market",
+  "domain": "lovejoymarket.co",
+  "instagram": "@amoajessie",
+  "primaryNavigation": [
+    {"label": "Home", "href": "/"},
+    {"label": "Tattoos", "href": "/tattoos.html"},
+    {"label": "Events", "href": "/events.html"},
+    {"label": "Market", "href": "/market.html"},
+    {"label": "About", "href": "/about.html"}
+  ]
+}
