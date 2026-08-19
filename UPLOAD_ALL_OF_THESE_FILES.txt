@@ -1,0 +1,63 @@
+LOVEJOY TATTOO SECTION — MULTI-PAGE V1
+
+Upload ALL of these files to the ROOT of:
+lovejoymarket/lovejoymarket-site
+
+REPLACE EXISTING:
+- tattoos.html
+- events.html
+- tattoo-consent.html
+- tattoo-parties.js
+- sitemap.xml
+
+ADD NEW:
+- tattoo-sessions.html
+- tattoo-walkins.html
+- tattoo-parties.html
+- tattoo-inquiry.html
+- tattoo-policies.html
+- tattoo-pages.css
+
+WHAT THIS DOES
+
+TATTOOS.HTML IS NOW THE HUB
+- Keeps the main Tattoo page short and browseable.
+- Adds a clear Tattoo Menu near the top.
+- Gives Sessions, Walk-Ins, Tattoo Parties, Inquiry, Consent, and Policies their own pages.
+- Keeps the main Tattoo page as the place for interactive / fun content.
+- The existing site game/quiz pages are linked from the fun area rather than stuffing service rules into one endless page.
+
+TATTOO PARTIES
+- Full dedicated page.
+- PRIVATE vs. CO-PROMOTED is shown as two visually separate columns.
+- “VS.” is centered between the two party types.
+- Each column explains the plan as if the reader has never heard it before.
+- Clear host promotion responsibilities.
+- Clear LoveJoy organic promotion scope.
+- Required Jessica LoveJoy / @amoajessie + LoveJoy Market public credit.
+- Public pricing must say tattoos START at $50 / $50 minimum.
+- $250 nonrefundable reservation deposit does NOT cover tattoo costs.
+- Minimum 30-day booking.
+- Final planning requested 14 days before.
+- 18+ / valid ID / normal consent requirements.
+- Capacity is approved, not unlimited.
+- Full inquiry form + detailed policies remain on the Tattoo Party page.
+
+REGULAR TATTOO INQUIRY
+- Now lives on tattoo-inquiry.html.
+- The consent-form box is DIRECTLY BELOW the inquiry submission area, not buried at the bottom of a long page.
+
+EVENTS
+- Keeps Tattoo Parties visible on the Events page.
+- Uses a concise Private VS. Co-Promoted teaser.
+- Sends people to the dedicated Tattoo Party page for the full comparison, inquiry, and policies.
+
+NOT TOUCHED
+- styles.css
+- site.js
+- your existing images
+- the fillable consent PDF
+- the main site navigation order
+
+NOTE ABOUT GAMES / SURVEYS
+The current live tattoos.html did not contain an embedded game or survey block to physically preserve. This version intentionally leaves the main Tattoo page as the hub for that interactive content and links to the existing LoveJoy quiz / profile assessment / Starcade instead of putting those inside the service pages.
