@@ -1,0 +1,23 @@
+LOVEJOY VISITOR COUNTER — GITHUB UPLOAD
+
+Upload both files to the ROOT of the lovejoymarket-site repository:
+
+1. index.html
+   - Replace the existing index.html with this one.
+   - It is based on the current live GitHub version at the time this package was built.
+   - The only change is one new script tag for visitor-counter.js.
+
+2. visitor-counter.js
+   - New file. Upload to the repository root.
+
+What it does:
+- Adds a pink glittery old-school hit counter directly above the homepage footer.
+- White digits, six-digit padding, 2000s-style sparkle/shimmer.
+- Increments once per homepage load.
+- Polls the shared counter every 15 seconds so the displayed number can catch up when other visitors arrive.
+- Uses CounterAPI v1 (public, authentication-free) for the shared count.
+
+Counter label:
+YOU ARE VISITOR
+000001
+COUNTING SINCE 08.19.26
