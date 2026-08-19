@@ -1,0 +1,22 @@
+LOVEJOY DESKTOP EMAIL BUTTON FIX
+
+1. Upload mail-fix.js to the ROOT of the GitHub repository.
+
+2. In tattoos.html, immediately after the existing site.js script near the bottom, add:
+   <script src="mail-fix.js?v=20260819-mailfix1"></script>
+
+3. In events.html, add the same line immediately after the existing site.js script:
+   <script src="mail-fix.js?v=20260819-mailfix1"></script>
+
+4. Commit the changes and let GitHub Pages deploy.
+
+WHAT IT DOES
+- Mobile keeps the current behavior and opens the phone's mail chooser/app.
+- Desktop no longer silently does nothing.
+- Desktop shows a LoveJoy-styled choice box with:
+  * Open Gmail in browser
+  * Use the computer's default email app
+  * Copy the prepared email
+- Fix applies to BOTH the tattoo inquiry and the event/collaboration email forms.
+
+No changes to site.js or styles.css are required.
