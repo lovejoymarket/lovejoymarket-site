@@ -1,0 +1,363 @@
+/* LoveJoy Tattoo Parties
+   Intentionally lives in its own file so the shared site stylesheet stays untouched. */
+
+.tattoo-party-card { margin-top: 12px; }
+.tattoo-party-card .module-body { padding: 14px; }
+.party-intro { margin-bottom: 14px; }
+.party-intro h2 {
+  margin: 2px 0 6px;
+  color: var(--pink);
+  font-size: clamp(1.15rem, 2.4vw, 1.6rem);
+  line-height: 1.05;
+}
+.party-intro p { max-width: 820px; }
+.party-intro .post-meta { color: rgba(17,17,17,.58); }
+
+.party-compare {
+  border: 1px solid var(--navy);
+  background: #fff;
+  box-shadow: 4px 4px 0 rgba(7,24,44,.12);
+}
+.party-compare-head,
+.party-compare-row {
+  display: grid;
+  grid-template-columns: 150px minmax(0,1fr) minmax(0,1fr);
+}
+.party-compare-head {
+  background: var(--navy);
+  color: var(--cream);
+  font-size: .75rem;
+  font-weight: 900;
+  text-align: center;
+}
+.party-compare-head > div {
+  padding: 9px 8px;
+  border-right: 1px solid rgba(255,248,236,.28);
+}
+.party-compare-head > div:last-child { border-right: 0; }
+.party-compare-corner {
+  color: var(--pink);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: .58rem;
+  display: grid;
+  place-items: center;
+}
+.party-compare-row { border-top: 1px solid #d8c8bc; }
+.party-compare-row > strong {
+  padding: 10px 9px;
+  background: #ffe3ef;
+  color: var(--navy);
+  font-size: .7rem;
+  display: flex;
+  align-items: center;
+}
+.party-cell {
+  padding: 10px 11px;
+  border-left: 1px solid #d8c8bc;
+  font-size: .72rem;
+  line-height: 1.42;
+}
+.party-cell:nth-child(3) { background: #fffaf4; }
+
+.party-shared-title {
+  margin: 16px 0 8px;
+  padding: 7px 10px;
+  background: var(--pink);
+  color: var(--navy);
+  text-align: center;
+  font-size: .73rem;
+  font-weight: 900;
+  letter-spacing: .04em;
+}
+.party-basics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--navy);
+  background: var(--navy);
+  gap: 1px;
+}
+.party-basics > div {
+  padding: 11px;
+  background: var(--cream);
+  min-height: 120px;
+}
+.party-basics span {
+  display: inline-grid;
+  place-items: center;
+  width: 25px;
+  height: 25px;
+  margin-bottom: 7px;
+  background: var(--pink);
+  color: var(--navy);
+  border: 1px solid var(--navy);
+  font-size: .62rem;
+  font-weight: 900;
+}
+.party-basics strong {
+  display: block;
+  color: var(--pink);
+  font-size: .76rem;
+  line-height: 1.18;
+  margin-bottom: 5px;
+}
+.party-basics small {
+  display: block;
+  color: rgba(17,17,17,.72);
+  font-size: .64rem;
+  line-height: 1.4;
+}
+.party-callout {
+  margin: 12px 0 16px;
+  border: 1px dashed var(--navy);
+  background: #ffe3ef;
+  padding: 11px 12px;
+}
+.party-callout strong { color: var(--pink); font-size: .82rem; }
+.party-callout p { margin: 4px 0 0 !important; }
+
+.party-inquiry-panel,
+.party-policy-panel {
+  margin-top: 14px;
+  border: 1px solid var(--navy);
+  background: #fffaf4;
+}
+.party-panel-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+  padding: 9px 11px;
+  background: var(--navy);
+  color: var(--cream);
+}
+.party-panel-title span {
+  color: var(--pink);
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .04em;
+}
+.party-panel-title small {
+  font-size: .6rem;
+  color: rgba(255,248,236,.72);
+}
+
+.tattoo-party-form { padding: 12px; }
+.tattoo-party-form fieldset {
+  margin: 0 0 12px;
+  padding: 11px;
+  border: 1px solid #d8c8bc;
+  background: var(--cream);
+}
+.tattoo-party-form legend {
+  padding: 0 7px;
+  color: var(--pink);
+  font-size: .72rem;
+  font-weight: 900;
+}
+.tattoo-party-form legend small {
+  color: rgba(17,17,17,.55);
+  font-weight: 700;
+}
+.party-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 9px;
+}
+.tattoo-party-form label {
+  display: grid;
+  gap: 4px;
+  font-size: .68rem;
+  font-weight: 900;
+  color: var(--pink);
+}
+.tattoo-party-form input,
+.tattoo-party-form select,
+.tattoo-party-form textarea {
+  width: 100%;
+  border: 1px solid var(--navy);
+  border-radius: 0;
+  background: #fff;
+  color: var(--ink);
+  padding: 9px 10px;
+  font: inherit;
+  font-size: .76rem;
+  font-weight: 400;
+}
+.tattoo-party-form textarea { resize: vertical; min-height: 74px; }
+.party-form-wide { margin-top: 9px; }
+.party-check {
+  grid-template-columns: auto 1fr !important;
+  align-items: start;
+  gap: 8px !important;
+  color: var(--ink) !important;
+  font-weight: 700 !important;
+  line-height: 1.4;
+  margin-top: 9px;
+}
+.party-check input {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  accent-color: var(--pink);
+}
+.party-promo-fields[hidden] { display: none; }
+.party-policy-ack {
+  margin: 12px 0;
+  padding: 10px;
+  border: 1px dashed var(--navy);
+  background: #ffe3ef;
+}
+.party-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.party-form-actions .text-link {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.tattoo-party-form .tattoo-form-status { margin-top: 9px; color: var(--pink); font-weight: 900; }
+
+.party-policy-list { padding: 10px; display: grid; gap: 7px; }
+.party-policy-list details {
+  border: 1px solid #d8c8bc;
+  background: var(--cream);
+}
+.party-policy-list summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 9px 11px;
+  color: var(--navy);
+  font-size: .72rem;
+  font-weight: 900;
+  position: relative;
+  padding-right: 32px;
+}
+.party-policy-list summary::-webkit-details-marker { display: none; }
+.party-policy-list summary::after {
+  content: "♡";
+  position: absolute;
+  right: 10px;
+  color: var(--pink);
+}
+.party-policy-list details[open] summary {
+  background: #ffe3ef;
+  border-bottom: 1px solid #d8c8bc;
+}
+.party-policy-list details[open] summary::after { content: "✦"; }
+.party-policy-list p {
+  margin: 0 !important;
+  padding: 10px 11px 12px;
+  font-size: .7rem !important;
+  line-height: 1.55;
+}
+
+.party-events-cta {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px dashed var(--navy);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  background: #ffe3ef;
+}
+.party-events-cta strong { color: var(--pink); font-size: .85rem; }
+.party-events-cta p { margin: 3px 0 0 !important; }
+.party-events-cta .session-button { flex: 0 0 auto; }
+
+.party-mail-choice-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(7,24,44,.72);
+  display: grid;
+  place-items: center;
+  padding: 18px;
+}
+.party-mail-choice {
+  width: min(100%, 470px);
+  border: 1px solid var(--cream);
+  background: var(--cream);
+  color: var(--ink);
+  box-shadow: 8px 8px 0 var(--pink);
+}
+.party-mail-choice-head {
+  background: var(--pink);
+  color: var(--navy);
+  padding: 9px 11px;
+  font-size: .8rem;
+  font-weight: 900;
+}
+.party-mail-choice-body { padding: 12px; }
+.party-mail-choice-body p { font-size: .75rem; margin: 0 0 10px; }
+.party-mail-choice-actions { display: grid; gap: 7px; }
+.party-mail-choice-actions a,
+.party-mail-choice-actions button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--navy);
+  background: #fff;
+  color: var(--navy);
+  padding: 10px 11px;
+  font: inherit;
+  font-size: .72rem;
+  font-weight: 900;
+  cursor: pointer;
+  text-decoration: none;
+}
+.party-mail-choice-actions a:hover,
+.party-mail-choice-actions button:hover { background: #ffe3ef; }
+.party-mail-choice-close {
+  margin-top: 8px;
+  border: 0 !important;
+  text-align: center !important;
+  text-decoration: underline !important;
+  background: transparent !important;
+}
+
+@media (max-width: 760px) {
+  .party-compare-head {
+    grid-template-columns: 1fr 1fr;
+  }
+  .party-compare-corner { display: none; }
+  .party-compare-row {
+    display: block;
+    border-top: 1px solid var(--navy);
+  }
+  .party-compare-row > strong {
+    display: block;
+    padding: 7px 9px;
+    background: var(--navy);
+    color: var(--pink);
+    font-size: .66rem;
+  }
+  .party-cell {
+    border-left: 0;
+    border-top: 1px solid #d8c8bc;
+    padding: 9px 10px;
+  }
+  .party-cell::before {
+    content: attr(data-label) ": ";
+    color: var(--pink);
+    font-weight: 900;
+  }
+  .party-basics { grid-template-columns: 1fr 1fr; }
+  .party-basics > div { min-height: 0; }
+  .party-form-grid { grid-template-columns: 1fr; }
+  .party-panel-title { align-items: flex-start; flex-direction: column; gap: 2px; }
+  .party-events-cta { align-items: stretch; flex-direction: column; }
+  .party-events-cta .session-button { text-align: center; }
+}
+
+@media (max-width: 420px) {
+  .party-basics { grid-template-columns: 1fr; }
+  .party-compare-head { font-size: .63rem; }
+  .tattoo-party-card .module-body { padding: 10px; }
+}

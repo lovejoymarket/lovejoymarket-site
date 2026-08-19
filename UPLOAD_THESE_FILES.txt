@@ -1,0 +1,35 @@
+LOVEJOY TATTOO PARTIES — GITHUB UPLOAD
+
+Upload these 4 files to the ROOT of lovejoymarket/lovejoymarket-site:
+
+REPLACE:
+1. tattoos.html
+2. events.html
+
+ADD:
+3. tattoo-parties.css
+4. tattoo-parties.js
+
+This package was built from the CURRENT GitHub versions of tattoos.html and events.html.
+
+WHAT IT ADDS
+- A coded LoveJoy-style Private vs Co-Promoted Tattoo Party comparison chart
+- The chart appears on BOTH Tattoos and Events
+- A full Tattoo Party inquiry form on Tattoos
+- Events links directly to that dedicated inquiry
+- $250 party reservation deposit policy
+- $50 tattoo minimum / individual pricing language
+- 30-day booking minimum
+- 18+ / valid ID requirement
+- detailed reschedule, cancellation, timing, safety, capacity, and guest policies
+- Private vs Co-Promoted promotion responsibilities
+- artist-credit requirements for Jessica LoveJoy / @amoajessie + LoveJoy Market
+- public promo pricing-language rules
+- LoveJoy organic promo scope and host promo responsibilities
+- desktop email chooser for the new Tattoo Party form:
+  Gmail in browser / computer email app / copy inquiry
+- mobile keeps the normal mail-app opening behavior
+
+IMPORTANT
+This does NOT replace or edit styles.css or site.js.
+The new Tattoo Party code is isolated in tattoo-parties.css and tattoo-parties.js.
