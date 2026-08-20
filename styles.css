@@ -3646,3 +3646,132 @@ summary,
   font-family: var(--heading-font) !important;
   font-weight: 600 !important;
 }
+
+
+/* ==========================
+   MOBILE UNIQUE TYPE SCALE
+   Unique draws smaller than Verdana, so mobile headings need real display sizes.
+   ========================== */
+@media (max-width: 760px) {
+  .profile-strip {
+    font-size: .86rem !important;
+    line-height: 1.2;
+  }
+
+  .brand {
+    font-size: 1.25rem !important;
+    line-height: 1;
+  }
+
+  .mobile-menu {
+    padding: 8px 10px;
+    font-size: 1.05rem !important;
+    line-height: 1;
+  }
+
+  .nav-links.open a {
+    padding: 10px 6px;
+    font-size: 1.05rem !important;
+    line-height: 1.2;
+  }
+
+  .banner-status {
+    font-size: .9rem !important;
+    line-height: 1.2;
+  }
+
+  h1,
+  .section-hub-title,
+  .tattoo-help-title {
+    font-size: clamp(2.65rem, 10vw, 4rem) !important;
+    line-height: .94 !important;
+    letter-spacing: -.02em !important;
+    text-wrap: balance;
+  }
+
+  .profile-tagline {
+    font-size: 1.2rem !important;
+    line-height: 1.15;
+  }
+
+  .module-title {
+    padding: 10px 11px;
+    font-size: 1.15rem !important;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  h2,
+  .module-body h2 {
+    font-size: 1.3rem !important;
+    line-height: 1.15;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 1.12rem !important;
+    line-height: 1.2;
+  }
+
+  .section-route-grid::before {
+    font-size: .82rem !important;
+    line-height: 1.25;
+  }
+
+  .section-route-copy strong {
+    font-size: 1.25rem !important;
+    line-height: 1.08;
+  }
+
+  .section-route-copy strong::before {
+    font-size: .76rem !important;
+    line-height: 1.15;
+  }
+
+  summary,
+  .market-faq-list summary,
+  .party-policy-list summary,
+  .gallery-faq summary {
+    font-size: 1rem !important;
+    line-height: 1.3;
+  }
+
+  .post-meta,
+  .friend-name {
+    font-size: .76rem !important;
+    line-height: 1.2;
+  }
+
+  .profile-mini-copy strong,
+  .pics-intro strong,
+  .what-card strong,
+  .timeline-item strong,
+  .final-path-grid strong,
+  .merch-mini-stack strong,
+  .instruction-step strong,
+  .email-callout strong,
+  .waitlist-times strong,
+  .merch-tech-note strong,
+  .tattoo-route-card strong,
+  .tattoo-flow strong,
+  .tattoo-time-note strong,
+  .tattoo-attachment-note strong,
+  .tattoo-policy-grid strong,
+  .party-compare-row > strong,
+  .party-detail strong,
+  .party-basics strong,
+  .party-callout strong,
+  .events-party-mini-grid strong,
+  .party-events-cta strong,
+  .consent-cta strong,
+  .consent-file-card strong,
+  .event-form-route strong,
+  .friend-request-copy strong,
+  .gallery-toolbar strong,
+  .gallery-empty strong {
+    font-size: .98rem !important;
+    line-height: 1.2;
+  }
+}
