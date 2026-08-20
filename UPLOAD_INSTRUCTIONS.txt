@@ -1,115 +1,64 @@
-LOVEJOY SITE — SECTION PAGES V1
+LOVEJOY SITE — SECTION PAGES V2
 ================================
 
-This restructures every major information-heavy section EXCEPT Starcade.
+THIS IS THE READABILITY / MYSPACE-INBOX MENU REVISION.
 
-UPLOAD EVERYTHING IN THIS ZIP TO THE ROOT OF:
+UPLOAD ALL FILES IN THIS ZIP TO THE ROOT OF:
 lovejoymarket/lovejoymarket-site
 
-REPLACE EXISTING FILES
-----------------------
-tattoos.html
-tattoo-sessions.html
-tattoo-walkins.html
-tattoo-parties.html
-tattoo-inquiry.html
-tattoo-consent.html
-tattoo-policies.html
-tattoo-pages.css
-tattoo-parties.js
-
-events.html
-
-market.html
-merch.html
-
-profile.html
-about.html
-gallery.html
-
-sitemap.xml
-
-ADD NEW FILES
--------------
-section-pages.css
-
-events-calendar.html
-events-programming.html
-events-private.html
-events-collaborate.html
-events-faq.html
-
-market-applications.html
-market-submit.html
-market-policies.html
-market-waitlist.html
-market-faq.html
-
-profile-future.html
-
-about-jessica.html
-about-what-is-lovejoy.html
-about-market.html
-about-timeline.html
-about-purpose.html
-
-WHAT CHANGED
+MAIN CHANGES
 ------------
-1. MAIN SECTIONS ARE HUBS NOW
-Tattoos, Events, Market, Profile, and About no longer try to explain everything in one endless scroll.
-Each main page routes people to dedicated pages.
+1. NO SHIMMER ON THE SECONDARY DROP-DOWN MENUS.
+   The main site navigation is untouched.
+   Only the section drop-down menus lost the shimmer.
 
-2. STARCADE IS UNTOUCHED
-No Starcade file is included.
+2. SECTION MENUS NOW LOOK LIKE AN OLD MYSPACE MESSAGE INBOX.
+   - navy inbox header
+   - pink envelope icon
+   - Inbox / Navigation toolbar
+   - From / Subject columns on desktop
+   - alternating message rows
+   - pink unread dots
+   - current page gets a pink left marker
+   - simple pink hover highlight
+   - mobile turns each message into a compact From + Subject row
+   - no animated text, so it is much easier to read
 
-3. GAMES + SURVEYS STAY WHERE THEY ALREADY LIVE
-- Home page is untouched, so the LoveJoy homepage quiz remains exactly where it is.
-- Events still contains its existing Starcade mini-game on the main Events page.
-- Profile still contains the existing absurd personality assessment and Glitterworm on the main Profile page.
-- Starcade itself is untouched.
+3. ABOUT.HTML IS BACK TO THE ORIGINAL FULL LORE PAGE.
+   The photo, Quick Facts, chapters, timeline, “What Is It?” section,
+   and the full long-form layout are restored.
 
-4. TATTOO HOME IS SIMPLER
-The old top blurb is gone.
-It now says:
-"how can I help you? ♡"
-"Choose what you need below."
+4. THE OLD SPLIT ABOUT URLS NOW REDIRECT BACK TO ABOUT.HTML.
+   This prevents stale links from opening the temporary split About pages:
+   - about-jessica.html
+   - about-what-is-lovejoy.html
+   - about-market.html
+   - about-timeline.html
+   - about-purpose.html
 
-5. SECTION MENUS ARE DROPDOWNS
-Each section has one compact drop-down menu near the top.
-The links use the same cream → pink → white → pink → cream shimmer idea as the main-site menu.
-There are sparkles throughout the menu and route cards.
+5. GAMES + SURVEYS ARE STILL UNTOUCHED.
+   - Events arcade game remains on Events home.
+   - Profile personality assessment remains on Profile home.
+   - Glitterworm remains on Profile home.
+   - Homepage quiz is untouched.
+   - Starcade is untouched.
 
-6. OLD ANCHOR LINKS STILL HAVE LANDING POINTS
-The hub pages keep important old IDs such as:
-#sessions
-#walkins
-#tattoo-parties
-#inquiry
-#policies
-#calendar
-#coming
-#private-inquiry
-#lovejoy-inquiry
-#faq
-#featured-artist
-#gallery
-So older internal links do not just land nowhere.
+6. TATTOO HOME STILL USES:
+   “how can I help you? ♡”
+   “Choose what you need below.”
 
-7. EMAIL FORM FIX
-The new regular Tattoo Inquiry and Event inquiry pages reference the existing mail-fix.js already in the GitHub repo.
-Tattoo Party keeps its own tattoo-parties.js behavior.
+7. ALL THE OTHER DEDICATED PAGES REMAIN.
+   Tattoos, Events, Market, and Profile keep the lighter hub + dedicated-page structure.
 
-8. CONSENT
-The regular Tattoo Inquiry page still has the consent-form box directly beneath the inquiry submission area.
+IMPORTANT
+---------
+Do NOT replace or delete:
+- styles.css
+- site.js
+- mail-fix.js
+- profile.css
+- any image
+- any PDF
+- any Starcade file
 
-9. NOT REPLACED
-Do NOT delete or replace:
-styles.css
-site.js
-mail-fix.js
-profile.css
-events.json
-gallery.json
-any image assets
-any PDF assets
-Starcade files
+The ZIP includes replacement HTML/CSS/JS and sitemap files only.
