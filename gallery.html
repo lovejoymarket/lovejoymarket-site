@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="LoveJoy Client Gallery — client-submitted photos, healed tattoos, LoveJoy pieces out in the world, and instructions for submitting your own photo.">
+  <meta name="description" content="See client-submitted LoveJoy photos, healed tattoos, art, merch, and the good pictures Jessie was absolutely going to ask for.">
   <title>Client Gallery | LoveJoy Market</title>
-  <link rel="stylesheet" href="styles.css?v=20260820-unique5">
+  <link rel="stylesheet" href="styles.css?v=20260820-unique6">
   <link rel="stylesheet" href="section-pages.css?v=20260819-sectionpages1">
   <link rel="canonical" href="https://lovejoymarket.co/gallery.html">
   <meta name="theme-color" content="#07182c">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Client Gallery | LoveJoy Market">
-  <meta property="og:description" content="Client-submitted LoveJoy photos, healed tattoos, and pieces out in the world.">
+  <meta property="og:description" content="See client-submitted LoveJoy photos, healed tattoos, art, merch, and the good pictures Jessie was absolutely going to ask for.">
   <meta property="og:url" content="https://lovejoymarket.co/gallery.html">
   <meta property="og:image" content="https://lovejoymarket.co/hero-lovejoy.jpeg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Client Gallery | LoveJoy Market">
-  <meta name="twitter:description" content="Client-submitted LoveJoy photos, healed tattoos, and pieces out in the world.">
+  <meta name="twitter:description" content="See client-submitted LoveJoy photos, healed tattoos, art, merch, and the good pictures Jessie was absolutely going to ask for.">
   <meta name="twitter:image" content="https://lovejoymarket.co/hero-lovejoy.jpeg">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
@@ -77,8 +77,8 @@
           <div class="gallery-empty" data-gallery-empty hidden>
             <span aria-hidden="true">▣ ✦ ♡</span>
             <strong>the folder is suspiciously empty.</strong>
-            <p>Client photos will show up here as LoveJoy adds them. You can absolutely volunteer your camera roll for the cause.</p>
-            <a href="#submit-photo">submit a photo →</a>
+            <p>This page fills up as clients send photos in. If your LoveJoy tattoo, print, merch, or event photo has been looking good in your camera roll, I would like to see it.</p>
+            <a href="#submit-photo">let me see it →</a>
           </div>
         </div>
       </section>
@@ -91,8 +91,8 @@
         <div class="module-body gallery-submit-layout">
           <div class="gallery-submit-copy">
             <img class="unique-heading gallery-submit-title" src="gallery-submit.png" alt="want in?">
-            <p>Fill this out and your email app will open with the submission already written for you.</p>
-            <p class="pink-copy">Before you hit send, attach the actual photos to the email. The website cannot attach them for you.</p>
+            <p>Tell me whose photo it is and what I am looking at. Your email app will do the rest.</p>
+            <p class="pink-copy">Very important little step: attach the photos before you hit send. The website is cute, not psychic.</p>
 
             <div class="gallery-submit-rules">
               <div><b>1</b><span>Send <strong>1–5 clear photos</strong>. Healed photos are especially welcome.</span></div>
@@ -161,7 +161,7 @@
 
             <button class="gallery-submit-button" type="submit">prepare my submission email ✦</button>
             <p class="gallery-submit-status" data-gallery-submit-status aria-live="polite"></p>
-            <p class="gallery-form-fineprint">Nothing uploads from this form. Your email app opens next so you can add the photo attachments yourself.</p>
+            <p class="gallery-form-fineprint">This form does not upload anything. It opens an email so you can attach the photos yourself.</p>
           </form>
         </div>
       </section>
@@ -171,19 +171,19 @@
         <div class="module-body gallery-faq">
           <details>
             <summary>Does submitting mean my photo will definitely be posted?</summary>
-            <p>No. The gallery is curated manually. A submission is permission to review the photo, not a promise that it will be published.</p>
+            <p>Not necessarily. I look through everything and choose what fits the gallery. Sending it means I can consider it, not that it automatically goes up.</p>
           </details>
           <details>
             <summary>Can I submit a healed tattoo even if Jessie already has a fresh photo?</summary>
-            <p>Yes. Healed work is useful, and the gallery does not need to be a duplicate of the tattoo portfolio.</p>
+            <p>Please do. I love seeing how tattoos settle in, and this page does not need to be a copy of Instagram.</p>
           </details>
           <details>
             <summary>Can I ask you to remove a photo later?</summary>
-            <p>Yes. Email LoveJoy with enough information to identify the image and request removal.</p>
+            <p>Of course. Email me enough information to find the photo and I will take care of it.</p>
           </details>
           <details>
             <summary>Why can't I upload directly to the website?</summary>
-            <p>Because nothing from a public form should get to publish itself. Photos are reviewed first, then added manually.</p>
+            <p>Because I want to see everything before it lands on a public page. The form opens an email so you stay in control of what gets sent.</p>
           </details>
         </div>
       </section>
@@ -197,7 +197,7 @@
     </div>
   </footer>
 
-  <script src="site.js?v=20260818-arcadecarousel2"></script>
+  <script src="site.js?v=20260820-voice1"></script>
   <script>
   (() => {
     const grid = document.querySelector('[data-client-gallery]');
@@ -208,7 +208,7 @@
       if (!Array.isArray(items) || !items.length) {
         if (grid) grid.replaceChildren();
         if (empty) empty.hidden = false;
-        if (count) count.textContent = '0 photos posted right now';
+        if (count) count.textContent = '0 photos on the wall, for now';
         return;
       }
 
@@ -291,7 +291,7 @@
 
         const mailto = `mailto:hello@lovejoymarket.co?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-        if (status) status.textContent = 'opening your email app — add the photos before you hit send ♡';
+        if (status) status.textContent = 'opening your email app. add the photos before you hit send, gorgeous ♡';
         window.location.href = mailto;
       });
     }

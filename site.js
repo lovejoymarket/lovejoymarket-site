@@ -340,7 +340,7 @@ runStarCascade();
 
   shareButton.addEventListener('click', async () => {
     if (!currentResult) return;
-    const shareText = `${currentResult.title} — ${currentResult.copy} lovejoymarket.co`;
+    const shareText = `${currentResult.title} | ${currentResult.copy} lovejoymarket.co`;
     try {
       if (navigator.share) {
         await navigator.share({
@@ -415,7 +415,7 @@ runStarCascade();
 
     const body = buildInquiry();
     const mailto = `mailto:${encodeURIComponent(destination)}?subject=${encodeURIComponent(subject())}&body=${encodeURIComponent(body)}`;
-    status.textContent = 'Email ready. Add your reference + placement photos before sending. ♡';
+    status.textContent = 'Email ready. Add the reference and placement photos before you send it, gorgeous. ♡';
     window.location.href = mailto;
   });
 
@@ -425,9 +425,9 @@ runStarCascade();
       const text = `${subject()}\n\n${buildInquiry()}`;
       try {
         await navigator.clipboard.writeText(text);
-        status.textContent = 'Copied. Paste it into an email to ' + destination + ' and add your photos. ✦';
+        status.textContent = 'Copied. Go paste it into an email to ' + destination + ' and add your photos. ✦';
       } catch (error) {
-        status.textContent = 'Copy was blocked by the browser. Use “create my inquiry email” instead.';
+        status.textContent = 'The browser is being possessive. Use “create my inquiry email” instead.';
       }
     });
   }
@@ -516,7 +516,7 @@ runStarCascade();
     if (!currentEvents.length) {
       const empty = document.createElement('div');
       empty.className = 'calendar-empty-card';
-      empty.innerHTML = '<strong>nothing confirmed here yet ♡</strong><span>That means the rumor mill is still doing its job. Confirmed dates will appear automatically.</span>';
+      empty.innerHTML = '<strong>nothing confirmed here yet ♡</strong><span>The group chat can speculate. When I confirm a date, it will show up here by itself.</span>';
       list.appendChild(empty);
       return;
     }
@@ -649,7 +649,7 @@ runStarCascade();
       event.preventDefault();
       if (!form.reportValidity()) return;
       const mailto = `mailto:${encodeURIComponent(destination)}?subject=${encodeURIComponent(subject())}&body=${encodeURIComponent(build())}`;
-      if (status) status.textContent = 'Email ready. Add any useful attachments before sending. ✦';
+      if (status) status.textContent = 'Email ready. Add anything useful before you send it, cutie. ✦';
       window.location.href = mailto;
     });
 
@@ -659,9 +659,9 @@ runStarCascade();
         const text = `${subject()}\n\n${build()}`;
         try {
           await navigator.clipboard.writeText(text);
-          if (status) status.textContent = `Copied. Paste it into an email to ${destination}. ♡`;
+          if (status) status.textContent = `Copied. Go paste it into an email to ${destination}. ♡`;
         } catch (error) {
-          if (status) status.textContent = 'Copy was blocked by the browser. Use the email button instead.';
+          if (status) status.textContent = 'The browser is being possessive. Use the email button instead.';
         }
       });
     }
@@ -2400,8 +2400,8 @@ runStarCascade();
       if (parts[2]) parts[2].textContent = '---';
     }
     if (meta) meta.textContent = 'LOVEJOY MARKET · FISHERS, IN';
-    if (title) title.textContent = 'Nothing officially on the books yet.';
-    if (description) description.textContent = 'The rumor mill is active. Confirmed dates will appear here automatically.';
+    if (title) title.textContent = 'Nothing official yet. Suspicious, I know.';
+    if (description) description.textContent = 'The group chat can speculate. When I confirm a date, it will show up here by itself.';
     if (link) {
       link.href = 'events.html';
       link.textContent = "see what's coming up →";

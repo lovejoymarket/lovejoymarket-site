@@ -96,7 +96,7 @@
       if (status) status.textContent = `Copied. Paste it into an email to ${destination}. ♡`;
       return true;
     } catch (error) {
-      if (status) status.textContent = 'Copy was blocked by the browser. Try the email-app option instead.';
+      if (status) status.textContent = 'The browser is being possessive. Try the email-app option instead.';
       return false;
     }
   }
@@ -141,7 +141,7 @@
     if (!form.reportValidity()) return;
 
     const urls = composeUrls();
-    if (status) status.textContent = 'Email ready. Add any useful reference images before sending. ♡';
+    if (status) status.textContent = 'Email ready. Add the useful reference images before you send it, cutie. ♡';
 
     if (isMobileLike()) {
       window.location.href = urls.mailto;

@@ -235,7 +235,7 @@
       setStatus(form, `Copied. Paste it into an email to ${payload.destination}. ♡`);
       closeChooser();
     } catch (error) {
-      setStatus(form, 'Copy was blocked by the browser. Try Gmail or your default email app instead.');
+      setStatus(form, 'The browser is being possessive. Try Gmail or your email app instead.');
     }
   }
 
@@ -252,7 +252,7 @@
           <button type="button" class="lj-mail-choice-close" aria-label="Close email options">×</button>
         </div>
         <div class="lj-mail-choice-body">
-          <p>Your email is ready for <span class="lj-mail-choice-destination"></span>.</p>
+          <p>Your email for <span class="lj-mail-choice-destination"></span> is dressed and ready to leave.</p>
           <div class="lj-mail-choice-actions">
             <button type="button" class="lj-mail-choice-button" data-lj-mail-gmail>open Gmail in browser →</button>
             <button type="button" class="lj-mail-choice-button secondary" data-lj-mail-default>use my computer's email app →</button>
@@ -276,7 +276,7 @@
       if (!opened) {
         window.location.href = gmailUrl(payload);
       }
-      setStatus(form, `Opened Gmail. ${payload.attachmentReminder} ♡`);
+      setStatus(form, `Gmail is open. ${payload.attachmentReminder} ♡`);
       closeChooser();
     });
 
@@ -315,7 +315,7 @@
       return;
     }
 
-    setStatus(form, 'Email ready. Choose where to open it. ♡');
+    setStatus(form, 'Email ready. Pick its little exit route. ♡');
     openChooser(payload, form);
   }, true);
 })();

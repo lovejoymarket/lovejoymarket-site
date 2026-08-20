@@ -6,6 +6,7 @@
   font-display: swap;
 }
 
+
 @font-face {
   font-family: "Unique";
   src: url("unique-extralight.ttf") format("truetype");
@@ -3932,5 +3933,446 @@ summary,
   body .myspace-page .gallery-empty strong {
     font-size: 1.2rem !important;
     line-height: 1.2 !important;
+  }
+}
+/* ==========================
+   SITEWIDE SEMANTIC HEADER HIERARCHY
+   The same kind of heading now keeps the same visual weight on every page.
+   Paragraph and helper-copy sizes are intentionally left alone.
+   ========================== */
+body .profile-strip {
+  font-family: var(--heading-font) !important;
+  font-size: .95rem !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  letter-spacing: .08em;
+}
+
+body .profile-strip-track {
+  padding: 8px 0;
+}
+
+body .brand {
+  font-size: 1.4rem !important;
+  line-height: 1 !important;
+}
+
+body .nav-links a,
+body .mobile-menu {
+  font-family: var(--heading-font) !important;
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  line-height: 1.1 !important;
+}
+
+body .myspace-page .banner-status {
+  color: var(--cream);
+  font-size: .95rem !important;
+  line-height: 1.2 !important;
+}
+
+body .myspace-page h1:not(.sr-only),
+body .myspace-page .section-hub-title,
+body .myspace-page .tattoo-help-title {
+  margin: 3px 0 8px;
+  color: var(--pink) !important;
+  font-family: var(--heading-font) !important;
+  font-size: clamp(3.4rem, 6.8vw, 5.6rem) !important;
+  font-weight: 700 !important;
+  line-height: .94 !important;
+  letter-spacing: -.025em !important;
+  text-wrap: balance;
+}
+
+body .myspace-page .profile-tagline {
+  font-size: 1.35rem !important;
+  line-height: 1.15 !important;
+}
+
+body .myspace-page .profile-subline,
+body .myspace-page .section-hub-sub,
+body .myspace-page .tattoo-help-sub {
+  font-family: var(--heading-font) !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+}
+
+body .myspace-page .module-title {
+  padding: 11px 12px !important;
+  background: var(--pink) !important;
+  color: var(--navy) !important;
+  font-family: var(--heading-font) !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  line-height: 1.15 !important;
+  text-wrap: balance;
+}
+
+body .myspace-page h2,
+body .myspace-page .module-body h2,
+body .myspace-page .party-type-top h2,
+body .myspace-page .coming-soon-body h2,
+body .myspace-page .sun-quiz-card h2,
+body .myspace-page [data-sun-result] h2 {
+  color: var(--pink) !important;
+  font-family: var(--heading-font) !important;
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  line-height: 1.15 !important;
+}
+
+body .myspace-page h3,
+body .myspace-page h4,
+body .myspace-page h5,
+body .myspace-page h6 {
+  color: var(--pink) !important;
+  font-family: var(--heading-font) !important;
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+}
+
+body .myspace-page legend {
+  color: var(--pink) !important;
+  font-family: var(--heading-font) !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+}
+
+body .myspace-page summary,
+body .myspace-page .market-faq-list summary,
+body .myspace-page .party-policy-list summary,
+body .myspace-page .gallery-faq summary {
+  color: var(--navy) !important;
+  font-family: var(--heading-font) !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.3 !important;
+}
+
+body .myspace-page .section-route-grid::before,
+body .myspace-page .party-vs-title span,
+body .myspace-page .party-type-top span,
+body .myspace-page .party-shared-title,
+body .myspace-page .party-panel-title span,
+body .myspace-page .quiz-kicker {
+  font-family: var(--heading-font) !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+}
+
+body .myspace-page .section-route-copy strong {
+  color: var(--pink) !important;
+  font-size: 1.4rem !important;
+  line-height: 1.08 !important;
+}
+
+body .myspace-page .section-route-copy strong::before {
+  color: var(--navy) !important;
+  font-size: .9rem !important;
+  line-height: 1.15 !important;
+}
+
+body .myspace-page .section-backbar a,
+body .myspace-page .section-backbar span,
+body .myspace-page .market-jump-grid a {
+  font-family: var(--heading-font) !important;
+  font-weight: 600 !important;
+}
+
+body .myspace-page .section-backbar a,
+body .myspace-page .market-jump-grid a {
+  font-size: .95rem !important;
+  line-height: 1.15 !important;
+}
+
+body .myspace-page .section-backbar span {
+  font-size: .82rem !important;
+}
+
+body .myspace-page .session-button,
+body .myspace-page .download-button,
+body .myspace-page .market-primary-link,
+body .myspace-page .gallery-submit-button,
+body .myspace-page .square-button {
+  font-family: var(--heading-font) !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.1 !important;
+}
+
+body .myspace-page .application-meta span,
+body .myspace-page .currently-line span {
+  color: var(--pink) !important;
+  font-family: var(--heading-font) !important;
+  font-size: .95rem !important;
+  font-weight: 600 !important;
+}
+
+body .myspace-page .profile-mini-copy strong,
+body .myspace-page .pics-intro strong,
+body .myspace-page .what-card strong,
+body .myspace-page .timeline-item strong,
+body .myspace-page .final-path-grid strong,
+body .myspace-page .merch-mini-stack strong,
+body .myspace-page .instruction-step strong,
+body .myspace-page .email-callout strong,
+body .myspace-page .waitlist-times strong,
+body .myspace-page .merch-tech-note strong,
+body .myspace-page .tattoo-route-card strong,
+body .myspace-page .tattoo-flow strong,
+body .myspace-page .tattoo-time-note strong,
+body .myspace-page .tattoo-attachment-note strong,
+body .myspace-page .tattoo-policy-grid strong,
+body .myspace-page .party-compare-row > strong,
+body .myspace-page .party-detail strong,
+body .myspace-page .party-basics strong,
+body .myspace-page .party-callout strong,
+body .myspace-page .events-party-mini-grid strong,
+body .myspace-page .party-events-cta strong,
+body .myspace-page .consent-cta strong,
+body .myspace-page .consent-file-card strong,
+body .myspace-page .event-form-route strong,
+body .myspace-page .friend-request-copy strong,
+body .myspace-page .gallery-toolbar strong,
+body .myspace-page .gallery-empty strong {
+  color: var(--pink);
+  font-family: var(--heading-font) !important;
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+}
+
+/* Main page titles: one visual tier, regardless of the image's native width. */
+body .myspace-page .about-page-title,
+body .myspace-page .gallery-main-title,
+body .myspace-page .market-main-title,
+body .myspace-page .merch-main-title,
+body .myspace-page .tattoo-main-title,
+body .myspace-page .consent-main-title,
+body .myspace-page .events-main-title,
+body .myspace-page .starcade-v3-main-title,
+body .myspace-page .arcade-game-title {
+  width: auto !important;
+  max-width: 100% !important;
+  height: clamp(92px, 9.2vw, 118px) !important;
+  margin: 2px 0 8px !important;
+  object-fit: contain;
+  object-position: left center;
+}
+
+/* Section display titles: smaller than a page title, larger than a card title. */
+body .myspace-page .lore-heading,
+body .myspace-page .lore-heading.small,
+body .myspace-page .market-section-heading,
+body .myspace-page .tattoo-section-heading,
+body .myspace-page .events-section-heading,
+body .myspace-page .event-form-heading,
+body .myspace-page .events-game-heading,
+body .myspace-page .consent-steps-heading,
+body .myspace-page .profile-coming-heading,
+body .myspace-page .profile-future-heading,
+body .myspace-page .gallery-submit-title,
+body .myspace-page .starcade-portals-heading,
+body .myspace-page .starfall-heading,
+body .myspace-page .sun-quiz-heading,
+body .myspace-page .profile-quiz-heading,
+body .myspace-page .profile-worm-heading,
+body .myspace-page .quiz-title-image,
+body .myspace-page .arcade-carousel-game-title {
+  width: auto !important;
+  max-width: 100% !important;
+  height: clamp(58px, 5.8vw, 74px) !important;
+  margin: 0 0 10px !important;
+  object-fit: contain;
+  object-position: left center;
+}
+
+body .myspace-page .sun-quiz-subheading {
+  width: auto !important;
+  max-width: 100% !important;
+  height: clamp(44px, 4.5vw, 58px) !important;
+  margin: 0 0 10px !important;
+  object-fit: contain;
+  object-position: left center;
+}
+
+@media (max-width: 760px) {
+  body .profile-strip {
+    font-size: 1.3rem !important;
+  }
+
+  body .profile-strip-track {
+    padding: 9px 0;
+  }
+
+  body .brand {
+    font-size: 1.75rem !important;
+  }
+
+  body .mobile-menu,
+  body .nav-links.open a {
+    font-size: 1.35rem !important;
+  }
+
+  body .myspace-page .banner-status {
+    font-size: 1.25rem !important;
+  }
+
+  body .myspace-page h1:not(.sr-only),
+  body .myspace-page .section-hub-title,
+  body .myspace-page .tattoo-help-title {
+    font-size: clamp(3.6rem, 13vw, 5rem) !important;
+  }
+
+  body .myspace-page .profile-tagline {
+    font-size: 1.7rem !important;
+  }
+
+  body .myspace-page .profile-subline,
+  body .myspace-page .section-hub-sub,
+  body .myspace-page .tattoo-help-sub {
+    font-size: 1.25rem !important;
+  }
+
+  body .myspace-page .module-title {
+    padding: 13px 14px !important;
+    font-size: 1.75rem !important;
+  }
+
+  body .myspace-page h2,
+  body .myspace-page .module-body h2,
+  body .myspace-page .party-type-top h2,
+  body .myspace-page .coming-soon-body h2,
+  body .myspace-page .sun-quiz-card h2,
+  body .myspace-page [data-sun-result] h2 {
+    font-size: 1.7rem !important;
+  }
+
+  body .myspace-page h3,
+  body .myspace-page h4,
+  body .myspace-page h5,
+  body .myspace-page h6 {
+    font-size: 1.4rem !important;
+  }
+
+  body .myspace-page legend {
+    font-size: 1.3rem !important;
+  }
+
+  body .myspace-page summary,
+  body .myspace-page .market-faq-list summary,
+  body .myspace-page .party-policy-list summary,
+  body .myspace-page .gallery-faq summary {
+    font-size: 1.3rem !important;
+  }
+
+  body .myspace-page .section-route-grid::before,
+  body .myspace-page .party-vs-title span,
+  body .myspace-page .party-type-top span,
+  body .myspace-page .party-shared-title,
+  body .myspace-page .party-panel-title span,
+  body .myspace-page .quiz-kicker {
+    font-size: 1.1rem !important;
+  }
+
+  body .myspace-page .section-route-copy strong {
+    font-size: 1.6rem !important;
+  }
+
+  body .myspace-page .section-route-copy strong::before {
+    font-size: 1rem !important;
+  }
+
+  body .myspace-page .section-backbar a,
+  body .myspace-page .market-jump-grid a {
+    font-size: 1.15rem !important;
+  }
+
+  body .myspace-page .section-backbar span {
+    font-size: .95rem !important;
+  }
+
+  body .myspace-page .session-button,
+  body .myspace-page .download-button,
+  body .myspace-page .market-primary-link,
+  body .myspace-page .gallery-submit-button,
+  body .myspace-page .square-button {
+    font-size: 1.2rem !important;
+  }
+
+  body .myspace-page .application-meta span,
+  body .myspace-page .currently-line span {
+    font-size: 1.05rem !important;
+  }
+
+  body .myspace-page .profile-mini-copy strong,
+  body .myspace-page .pics-intro strong,
+  body .myspace-page .what-card strong,
+  body .myspace-page .timeline-item strong,
+  body .myspace-page .final-path-grid strong,
+  body .myspace-page .merch-mini-stack strong,
+  body .myspace-page .instruction-step strong,
+  body .myspace-page .email-callout strong,
+  body .myspace-page .waitlist-times strong,
+  body .myspace-page .merch-tech-note strong,
+  body .myspace-page .tattoo-route-card strong,
+  body .myspace-page .tattoo-flow strong,
+  body .myspace-page .tattoo-time-note strong,
+  body .myspace-page .tattoo-attachment-note strong,
+  body .myspace-page .tattoo-policy-grid strong,
+  body .myspace-page .party-compare-row > strong,
+  body .myspace-page .party-detail strong,
+  body .myspace-page .party-basics strong,
+  body .myspace-page .party-callout strong,
+  body .myspace-page .events-party-mini-grid strong,
+  body .myspace-page .party-events-cta strong,
+  body .myspace-page .consent-cta strong,
+  body .myspace-page .consent-file-card strong,
+  body .myspace-page .event-form-route strong,
+  body .myspace-page .friend-request-copy strong,
+  body .myspace-page .gallery-toolbar strong,
+  body .myspace-page .gallery-empty strong {
+    font-size: 1.2rem !important;
+  }
+
+  body .myspace-page .about-page-title,
+  body .myspace-page .gallery-main-title,
+  body .myspace-page .market-main-title,
+  body .myspace-page .merch-main-title,
+  body .myspace-page .tattoo-main-title,
+  body .myspace-page .consent-main-title,
+  body .myspace-page .events-main-title,
+  body .myspace-page .starcade-v3-main-title,
+  body .myspace-page .arcade-game-title {
+    height: 92px !important;
+  }
+
+  body .myspace-page .lore-heading,
+  body .myspace-page .lore-heading.small,
+  body .myspace-page .market-section-heading,
+  body .myspace-page .tattoo-section-heading,
+  body .myspace-page .events-section-heading,
+  body .myspace-page .event-form-heading,
+  body .myspace-page .events-game-heading,
+  body .myspace-page .consent-steps-heading,
+  body .myspace-page .profile-coming-heading,
+  body .myspace-page .profile-future-heading,
+  body .myspace-page .gallery-submit-title,
+  body .myspace-page .starcade-portals-heading,
+  body .myspace-page .starfall-heading,
+  body .myspace-page .sun-quiz-heading,
+  body .myspace-page .profile-quiz-heading,
+  body .myspace-page .profile-worm-heading,
+  body .myspace-page .quiz-title-image,
+  body .myspace-page .arcade-carousel-game-title {
+    height: 60px !important;
+  }
+
+  body .myspace-page .sun-quiz-subheading {
+    height: 46px !important;
   }
 }
