@@ -1,3 +1,75 @@
+@font-face {
+  font-family: "Unique";
+  src: url("unique-thin.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unique";
+  src: url("unique-extralight.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unique";
+  src: url("unique-light.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unique";
+  src: url("unique-regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unique";
+  src: url("unique-medium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unique";
+  src: url("unique-semibold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unique";
+  src: url("unique-bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unique";
+  src: url("unique-bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unique";
+  src: url("unique-bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+}
+
 :root {
   --pink: #ff2d8d;
   --cream: #fff8ec;
@@ -6,6 +78,7 @@
   --ink: #111111;
   --line: #f0dccd;
   --max-width: 1040px;
+  --heading-font: "Unique", Verdana, Arial, Helvetica, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -3459,4 +3532,117 @@ a {
   .gallery-submit-title {
     max-width: 290px;
   }
+}
+
+
+/* ==========================
+   GLOBAL UNIQUE HEADING SYSTEM
+   One display family across every page without changing the LoveJoy colors.
+   ========================== */
+.brand,
+.mobile-menu,
+.nav-links a,
+.profile-strip,
+.banner-status,
+.profile-tagline,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.module-title,
+.section-hub-title,
+.tattoo-help-title,
+.section-route-copy strong,
+summary,
+.post-meta,
+.friend-name,
+.music-meta strong,
+.sparkle-note strong,
+.focused-page-note strong,
+.policy-grid strong,
+.tattoo-info-grid strong,
+.tattoo-policy-grid strong,
+.consent-step-list strong,
+.tracking-grid strong,
+.coming-grid strong,
+.calendar-empty-card strong,
+.calendar-list-item strong,
+.event-form-note strong,
+.portal-copy strong,
+.future-grid strong {
+  font-family: var(--heading-font) !important;
+}
+
+.brand,
+.mobile-menu,
+.profile-strip,
+.profile-tagline,
+h1,
+.section-hub-title,
+.tattoo-help-title,
+.module-title,
+.section-route-copy strong {
+  font-weight: 700 !important;
+}
+
+.nav-links a,
+.banner-status,
+h2,
+h3,
+h4,
+h5,
+h6,
+summary,
+.post-meta,
+.friend-name,
+.music-meta strong,
+.sparkle-note strong,
+.focused-page-note strong,
+.policy-grid strong,
+.tattoo-info-grid strong,
+.tattoo-policy-grid strong,
+.consent-step-list strong,
+.tracking-grid strong,
+.coming-grid strong,
+.calendar-empty-card strong,
+.calendar-list-item strong,
+.event-form-note strong,
+.portal-copy strong,
+.future-grid strong {
+  font-weight: 600 !important;
+}
+
+.section-route-grid::before,
+.profile-mini-copy strong,
+.pics-intro strong,
+.what-card strong,
+.timeline-item strong,
+.final-path-grid strong,
+.merch-mini-stack strong,
+.instruction-step strong,
+.email-callout strong,
+.waitlist-big strong,
+.waitlist-times strong,
+.merch-tech-note strong,
+.tattoo-route-card strong,
+.tattoo-flow strong,
+.tattoo-time-note strong,
+.tattoo-attachment-note strong,
+.tattoo-policy-grid strong,
+.party-compare-row > strong,
+.party-detail strong,
+.party-basics strong,
+.party-callout strong,
+.events-party-mini-grid strong,
+.party-events-cta strong,
+.consent-cta strong,
+.consent-file-card strong,
+.event-form-route strong,
+.friend-request-copy strong,
+.gallery-toolbar strong,
+.gallery-empty strong {
+  font-family: var(--heading-font) !important;
+  font-weight: 600 !important;
 }
