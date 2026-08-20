@@ -1,64 +1,39 @@
-LOVEJOY SITE — SECTION PAGES V2
-================================
+LOVEJOY INBOX LINK LAYOUT V4
 
-THIS IS THE READABILITY / MYSPACE-INBOX MENU REVISION.
+Upload ONE file to the GitHub repo root:
+- section-pages.css
 
-UPLOAD ALL FILES IN THIS ZIP TO THE ROOT OF:
-lovejoymarket/lovejoymarket-site
+Replace the existing section-pages.css.
 
-MAIN CHANGES
-------------
-1. NO SHIMMER ON THE SECONDARY DROP-DOWN MENUS.
-   The main site navigation is untouched.
-   Only the section drop-down menus lost the shimmer.
+WHAT CHANGES
+1. The TOP dropdown is now intentionally simple:
+   - one small hot-pink bar
+   - Tattoo Menu / Events Menu / Market Menu / My LoveJoy Menu
+   - simple open / close indicator
+   - the opened dropdown is only a plain, readable list of page links
+   - NO shimmer
+   - NO fake inbox toolbar
+   - NO random “messages” text
 
-2. SECTION MENUS NOW LOOK LIKE AN OLD MYSPACE MESSAGE INBOX.
+2. THE BIG LINKS ON THE MAIN HUB PAGES are now the MySpace inbox:
+   - the square card grid is gone
+   - each page choice is one stacked message row
    - navy inbox header
-   - pink envelope icon
-   - Inbox / Navigation toolbar
-   - From / Subject columns on desktop
-   - alternating message rows
-   - pink unread dots
-   - current page gets a pink left marker
-   - simple pink hover highlight
-   - mobile turns each message into a compact From + Subject row
-   - no animated text, so it is much easier to read
+   - alternating cream / pale-pink rows
+   - little LoveJoy sender line
+   - pink subject/title
+   - short preview text
+   - small “open page” button
+   - existing heart/star icons become the cute message/avatar column
+   - mobile becomes one clean stacked inbox instead of two tiny square columns
 
-3. ABOUT.HTML IS BACK TO THE ORIGINAL FULL LORE PAGE.
-   The photo, Quick Facts, chapters, timeline, “What Is It?” section,
-   and the full long-form layout are restored.
+3. This applies consistently to the current section hub cards on:
+   - Tattoos
+   - Events
+   - Market
+   - anywhere else using the same section-route-card system
 
-4. THE OLD SPLIT ABOUT URLS NOW REDIRECT BACK TO ABOUT.HTML.
-   This prevents stale links from opening the temporary split About pages:
-   - about-jessica.html
-   - about-what-is-lovejoy.html
-   - about-market.html
-   - about-timeline.html
-   - about-purpose.html
+4. About is NOT touched.
+5. Games, surveys, forms, Starcade, HTML, styles.css, site.js, PDFs and images are NOT touched.
 
-5. GAMES + SURVEYS ARE STILL UNTOUCHED.
-   - Events arcade game remains on Events home.
-   - Profile personality assessment remains on Profile home.
-   - Glitterworm remains on Profile home.
-   - Homepage quiz is untouched.
-   - Starcade is untouched.
-
-6. TATTOO HOME STILL USES:
-   “how can I help you? ♡”
-   “Choose what you need below.”
-
-7. ALL THE OTHER DEDICATED PAGES REMAIN.
-   Tattoos, Events, Market, and Profile keep the lighter hub + dedicated-page structure.
-
-IMPORTANT
----------
-Do NOT replace or delete:
-- styles.css
-- site.js
-- mail-fix.js
-- profile.css
-- any image
-- any PDF
-- any Starcade file
-
-The ZIP includes replacement HTML/CSS/JS and sitemap files only.
+If Safari shows the previous version immediately after upload, close the tab and reopen lovejoymarket.co once so the replaced stylesheet is reloaded.

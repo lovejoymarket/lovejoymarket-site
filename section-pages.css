@@ -428,3 +428,367 @@
   .inbox-open { grid-area: open; }
 }
 
+/* =========================================================
+   V4 — SIMPLE SECTION DROPDOWN + MYSPACE-STYLE HUB INBOX
+   ---------------------------------------------------------
+   The top dropdown is just navigation.
+   The LARGE page choices are the MySpace inbox.
+   ========================================================= */
+
+/* ---------- SIMPLE TOP DROPDOWN ---------- */
+
+.section-menu-wrap {
+  margin: 0 0 12px;
+}
+
+.section-dropdown {
+  border: 1px solid rgba(255,248,236,.7);
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+/* simple pink bar — no fake inbox UI here */
+.section-dropdown summary {
+  min-height: 38px;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 7px 10px;
+  border: 1px solid var(--navy);
+  background: var(--pink);
+  color: var(--navy);
+  cursor: pointer;
+  list-style: none;
+  box-shadow: 3px 3px 0 rgba(255,248,236,.14);
+}
+
+.section-dropdown summary::-webkit-details-marker {
+  display: none;
+}
+
+.section-dropdown summary:hover,
+.section-dropdown summary:focus-visible {
+  background: #ff55a5;
+  outline: 1px solid var(--cream);
+  outline-offset: -3px;
+}
+
+/* strip all the inbox decoration out of the dropdown trigger */
+.section-dropdown .inbox-envelope,
+.section-dropdown .inbox-summary-copy small {
+  display: none !important;
+}
+
+.section-dropdown .inbox-summary-copy {
+  display: block;
+  min-width: 0;
+}
+
+.section-dropdown .inbox-summary-copy strong {
+  display: block;
+  color: var(--navy) !important;
+  font-size: 0 !important;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+/* clean section labels */
+.tattoo-page .section-dropdown .inbox-summary-copy strong::after {
+  content: "Tattoo Menu";
+}
+.events-page .section-dropdown .inbox-summary-copy strong::after {
+  content: "Events Menu";
+}
+.market-page .section-dropdown .inbox-summary-copy strong::after {
+  content: "Market Menu";
+}
+.client-profile-page .section-dropdown .inbox-summary-copy strong::after {
+  content: "My LoveJoy Menu";
+}
+
+.tattoo-page .section-dropdown .inbox-summary-copy strong::after,
+.events-page .section-dropdown .inbox-summary-copy strong::after,
+.market-page .section-dropdown .inbox-summary-copy strong::after,
+.client-profile-page .section-dropdown .inbox-summary-copy strong::after {
+  font-size: .68rem;
+  font-weight: 900;
+}
+
+.section-dropdown .inbox-summary-action {
+  color: var(--navy) !important;
+  font-size: 0 !important;
+  white-space: nowrap;
+}
+
+.section-dropdown .inbox-summary-action::after {
+  content: "open ↓";
+  font-size: .57rem;
+  font-weight: 900;
+}
+
+.section-dropdown[open] .inbox-summary-action::after {
+  content: "close ↑";
+}
+
+/* no inbox toolbar / columns / footer inside the dropdown */
+.section-dropdown .inbox-toolbar,
+.section-dropdown .inbox-column-head,
+.section-dropdown .inbox-footer {
+  display: none !important;
+}
+
+/* dropdown links are intentionally plain */
+.section-dropdown .section-dropdown-links {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0,1fr)) !important;
+  gap: 1px !important;
+  padding: 1px !important;
+  border: 1px solid var(--navy);
+  border-top: 0;
+  background: var(--navy) !important;
+}
+
+.section-dropdown .section-dropdown-links a {
+  min-height: 35px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 7px !important;
+  padding: 7px 9px !important;
+  border: 0 !important;
+  background: var(--cream) !important;
+  color: var(--navy) !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  font-size: .59rem !important;
+  font-weight: 900 !important;
+  line-height: 1.2 !important;
+}
+
+.section-dropdown .section-dropdown-links a:nth-child(even) {
+  background: #fff1f7 !important;
+}
+
+.section-dropdown .section-dropdown-links a:hover,
+.section-dropdown .section-dropdown-links a:focus-visible {
+  background: #ffd8e9 !important;
+  outline: none !important;
+  color: var(--pink) !important;
+}
+
+/* The old inbox-only spans are hidden. Subject becomes the label. */
+.section-dropdown .inbox-status,
+.section-dropdown .inbox-from,
+.section-dropdown .inbox-open {
+  display: none !important;
+}
+
+.section-dropdown .inbox-subject {
+  color: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+}
+
+.section-dropdown .section-dropdown-links a.is-current {
+  background: var(--navy) !important;
+  color: var(--cream) !important;
+  box-shadow: inset 4px 0 0 var(--pink) !important;
+}
+
+
+/* ---------- THE ACTUAL PAGE LINKS = CUTE MYSPACE INBOX ---------- */
+
+/* no more square-card grid */
+.section-hub-card .section-route-grid {
+  display: block !important;
+  border: 1px solid var(--navy);
+  background: #fff;
+  box-shadow: 4px 4px 0 rgba(7,24,44,.12);
+  overflow: hidden;
+}
+
+/* MySpace-ish inbox header */
+.section-hub-card .section-route-grid::before {
+  content: "♡  INBOX  •  FROM: LOVEJOY  •  CHOOSE A MESSAGE";
+  display: block;
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--navy);
+  background: var(--navy);
+  color: var(--cream);
+  font: 900 .56rem/1.2 Verdana, Arial, Helvetica, sans-serif;
+  letter-spacing: .045em;
+}
+
+/* every navigation option is now one message row */
+.section-hub-card .section-route-card {
+  position: relative;
+  min-height: 0 !important;
+  display: grid !important;
+  grid-template-columns: 38px minmax(0,1fr) auto !important;
+  grid-template-areas:
+    "icon subject open"
+    "icon preview open" !important;
+  column-gap: 10px !important;
+  row-gap: 2px !important;
+  align-items: center !important;
+
+  padding: 9px 10px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid #d7c9bf !important;
+  background: var(--cream) !important;
+  color: var(--ink) !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  transform: none !important;
+}
+
+/* alternating inbox rows */
+.section-hub-card .section-route-card:nth-child(even) {
+  background: #fff1f7 !important;
+}
+
+.section-hub-card .section-route-card:last-child {
+  border-bottom: 0 !important;
+}
+
+.section-hub-card .section-route-card:hover,
+.section-hub-card .section-route-card:focus-visible {
+  background: #ffdcea !important;
+  outline: none !important;
+  box-shadow: inset 4px 0 0 var(--pink) !important;
+}
+
+/* use the existing cute icon as the unread/avatar column */
+.section-hub-card .section-route-icon {
+  grid-area: icon !important;
+  width: 31px !important;
+  height: 31px !important;
+  margin: 0 !important;
+  display: grid !important;
+  place-items: center !important;
+  border: 1px solid var(--navy) !important;
+  background: var(--pink) !important;
+  color: var(--navy) !important;
+  box-shadow: 2px 2px 0 rgba(7,24,44,.14) !important;
+  font-size: .72rem !important;
+}
+
+/* old floating sparkle is gone — the row itself is the visual */
+.section-hub-card .section-route-card::after {
+  display: none !important;
+}
+
+/* Subject line */
+.section-hub-card .section-route-card strong {
+  grid-area: subject !important;
+  display: block !important;
+  margin: 0 !important;
+  color: var(--pink) !important;
+  font-size: .74rem !important;
+  line-height: 1.2 !important;
+  font-weight: 900 !important;
+}
+
+/* tiny "from" label gives each row the inbox read */
+.section-hub-card .section-route-card strong::before {
+  content: "LoveJoy  ✦  ";
+  color: var(--navy);
+  font-size: .48rem;
+  font-weight: 900;
+  letter-spacing: .02em;
+}
+
+/* Message preview */
+.section-hub-card .section-route-card p {
+  grid-area: preview !important;
+  margin: 0 !important;
+  color: rgba(17,17,17,.72) !important;
+  font-size: .61rem !important;
+  line-height: 1.42 !important;
+}
+
+/* Open-message button */
+.section-hub-card .section-route-card b {
+  grid-area: open !important;
+  align-self: center !important;
+  display: inline-block !important;
+  min-width: 74px !important;
+  padding: 6px 7px !important;
+  border: 1px solid var(--navy) !important;
+  background: #fff !important;
+  color: var(--navy) !important;
+  font-size: .52rem !important;
+  line-height: 1 !important;
+  font-weight: 900 !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  box-shadow: 2px 2px 0 rgba(255,45,141,.2) !important;
+}
+
+.section-hub-card .section-route-card:hover b,
+.section-hub-card .section-route-card:focus-visible b {
+  background: var(--pink) !important;
+  color: var(--navy) !important;
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 620px) {
+  .section-dropdown summary {
+    min-height: 38px !important;
+    display: flex !important;
+    padding: 7px 9px !important;
+  }
+
+  .section-dropdown .inbox-summary-action {
+    display: inline !important;
+  }
+
+  .section-dropdown .section-dropdown-links {
+    grid-template-columns: 1fr !important;
+  }
+
+  .section-dropdown .section-dropdown-links a {
+    min-height: 36px !important;
+  }
+
+  .section-hub-card .section-route-card {
+    grid-template-columns: 32px minmax(0,1fr) !important;
+    grid-template-areas:
+      "icon subject"
+      "icon preview"
+      "icon open" !important;
+    column-gap: 9px !important;
+    padding: 9px !important;
+  }
+
+  .section-hub-card .section-route-icon {
+    width: 29px !important;
+    height: 29px !important;
+  }
+
+  .section-hub-card .section-route-card strong {
+    font-size: .7rem !important;
+  }
+
+  .section-hub-card .section-route-card p {
+    font-size: .6rem !important;
+  }
+
+  .section-hub-card .section-route-card b {
+    justify-self: start !important;
+    min-width: 0 !important;
+    margin-top: 4px !important;
+    padding: 5px 7px !important;
+  }
+
+  .section-hub-card .section-route-grid::before {
+    font-size: .49rem;
+    padding: 6px 8px;
+  }
+}
+
