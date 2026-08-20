@@ -1,39 +1,77 @@
-LOVEJOY INBOX LINK LAYOUT V4
+LOVEJOY STATIC INBOX NAVIGATION V5
+==================================
 
-Upload ONE file to the GitHub repo root:
+This is the structure shown in your latest screenshot, corrected the way you described it.
+
+UPLOAD ALL FILES IN THIS ZIP TO THE ROOT OF:
+lovejoymarket/lovejoymarket-site
+
+REPLACE:
 - section-pages.css
+- every HTML file included in this ZIP
 
-Replace the existing section-pages.css.
+WHAT CHANGED
 
-WHAT CHANGES
-1. The TOP dropdown is now intentionally simple:
-   - one small hot-pink bar
-   - Tattoo Menu / Events Menu / Market Menu / My LoveJoy Menu
-   - simple open / close indicator
-   - the opened dropdown is only a plain, readable list of page links
-   - NO shimmer
-   - NO fake inbox toolbar
-   - NO random “messages” text
+1. THE SQUARE NAVIGATION MENUS ARE GONE.
+The big 2-column / 3-column card grids such as:
+- Scheduled Sessions
+- Walk-In Saturdays
+- Tattoo Parties
+- Start an Inquiry
+- Consent + Intake
+- Client Policies
+have been REMOVED from the hub pages.
 
-2. THE BIG LINKS ON THE MAIN HUB PAGES are now the MySpace inbox:
-   - the square card grid is gone
-   - each page choice is one stacked message row
-   - navy inbox header
-   - alternating cream / pale-pink rows
-   - little LoveJoy sender line
-   - pink subject/title
-   - short preview text
-   - small “open page” button
-   - existing heart/star icons become the cute message/avatar column
-   - mobile becomes one clean stacked inbox instead of two tiny square columns
+They are not restyled squares. They are deleted.
 
-3. This applies consistently to the current section hub cards on:
-   - Tattoos
-   - Events
-   - Market
-   - anywhere else using the same section-route-card system
+2. THERE IS NO SECONDARY DROPDOWN ANYMORE.
+The old section dropdown is also gone.
 
-4. About is NOT touched.
-5. Games, surveys, forms, Starcade, HTML, styles.css, site.js, PDFs and images are NOT touched.
+The MySpace-style inbox that used to be INSIDE the dropdown is now permanently visible on the page and IS the section navigation.
 
-If Safari shows the previous version immediately after upload, close the tab and reopen lovejoymarket.co once so the replaced stylesheet is reloaded.
+3. THE NEW PAGE ORDER IS SIMPLE.
+Example on Tattoos:
+- “how can I help you? ♡” banner
+- permanent Tattoo Menu inbox
+- Not Sure? helper box
+
+Example on Events:
+- Events banner
+- permanent Events Menu inbox
+- existing arcade game
+
+Example on Market:
+- Market banner
+- permanent Market Menu inbox
+
+Example on Profile:
+- Profile banner
+- permanent My LoveJoy Menu inbox
+- existing profile content / survey / Glitterworm
+
+4. EVERY DETAILED PAGE GETS THE SAME VISIBLE INBOX.
+No hunting for a dropdown.
+The same navigation is visible at the top of Sessions, Walk-Ins, Tattoo Parties,
+Inquiry, Consent, Policies, Calendar, Event pages, Market pages, Merch, etc.
+
+5. THE INBOX IS CUTE BUT SIMPLE.
+- standard LoveJoy hot-pink module title
+- existing sparkle divider
+- tiny “Inbox / LoveJoy Mail” toolbar
+- MySpace-style From / Subject rows
+- cream + pale-pink alternating messages
+- pink unread dots
+- current page highlighted in pink
+- entire row is clickable
+- mobile is a clean single-column message list
+
+6. ABOUT IS UNTOUCHED.
+It remains the restored original long-form About page.
+
+7. NOTHING ELSE WAS CHANGED.
+Games, surveys, Tattoo Party form, regular inquiry form, email behavior,
+Starcade, styles.css, site.js, mail-fix.js, PDFs, images, and profile.css
+are untouched.
+
+The section-pages.css reference has a new cache-bust value in these HTML files,
+so Safari should load the new layout instead of showing the previous square-card CSS.
