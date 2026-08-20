@@ -1,5 +1,18 @@
 /* LoveJoy tattoo section multi-page navigation + page-specific styling */
 
+/* Keep focused tattoo pages readable instead of stacking every section into one wall. */
+.tattoo-page .module-card + .module-card {
+  margin-top: 12px;
+}
+
+.tattoo-page .section-backbar {
+  flex-wrap: wrap;
+}
+
+.party-inquiry-panel .focused-page-note {
+  margin: 0 0 12px;
+}
+
 .tattoo-jump-card { margin-bottom: 12px; }
 .tattoo-jump-card .module-body { padding: 8px; }
 .tattoo-subnav {
