@@ -1,58 +1,46 @@
-LOVEJOY CONSISTENT INBOX MENUS V6
-==================================
+LOVEJOY ORGANIZATION RESET V7
+================================
 
-This standardizes every organized section page to the exact Tattoo inbox style
-you approved in the screenshot.
+This fixes the structure, not just the CSS.
 
-UPLOAD ALL FILES IN THIS ZIP TO THE ROOT OF:
-lovejoymarket/lovejoymarket-site
+RULE:
+- A page with several different destinations is the MySpace-style inbox/index.
+- Clicking a row opens the focused page for that information.
+- Focused pages do NOT repeat the giant parent inbox. They get one small back link and the actual content.
+- Games and surveys stay embedded where they belong.
 
-REPLACE:
-- section-pages.css
-- every HTML file included in this ZIP
+INBOX / INDEX PAGES:
+- Tattoos
+- Tattoo Sessions (1h / 3h / full day now each have a focused page)
+- Tattoo Parties (types / booking / inquiry / policies now each have a focused page)
+- Events
+- Market
+- Market Applications (each application type now has a focused page with its existing PDF)
+- My LoveJoy / Profile
 
-THE SAME VISUAL SYSTEM NOW APPEARS ON EVERY:
-- Tattoo page
-- Events page
-- Market page
-- My LoveJoy / Profile page
+FUNCTIONALITY PRESERVED AND VERIFIED:
+- Regular tattoo inquiry + mail-fix.js
+- Consent box beneath regular inquiry
+- Tattoo Party inquiry + tattoo-parties.js conditional promo fields / email flow
+- Event private/collaboration email forms + mail-fix.js
+- Dynamic Events calendar + site.js data hooks
+- Events arcade game stays on Events
+- Profile personality survey stays on Profile
+- Glitterworm stays on Profile
+- Consent PDF link stays intact
+- All six Market application PDF downloads stay intact
+- Merch/Square content untouched
 
-Each menu has:
-- pink LoveJoy module header
-- sparkle divider
-- cream inbox panel
-- navy “♡ INBOX • FROM: LOVEJOY • CHOOSE A MESSAGE” bar
-- alternating cream / pale-pink message rows
-- hot-pink square icon
-- LoveJoy sender line
-- pink subject/title
-- helpful description
-- “open page →” button
-- current-page pink indicator
-
-The actual message subjects/descriptions change to match the section.
-
-IMPORTANT CONSISTENCY FIX:
-tattoo-consent.html previously did not load section-pages.css at all, which is
-one reason some inbox pages looked different. This package explicitly loads the
-same section stylesheet on every inbox page and uses a fresh cache-bust value.
-
-The primary navigation on these organized pages is also normalized to:
-Home · Tattoos · Events · Market · Profile · About · Starcade
-
-NOT CHANGED:
-- About page
-- Starcade
+NOT TOUCHED:
 - Homepage
-- Events arcade game
-- Profile personality assessment
-- Glitterworm
-- Tattoo Party form
-- Tattoo inquiry form
-- email behavior
+- About
+- Starcade
 - styles.css
 - site.js
 - mail-fix.js
+- tattoo-parties.js
 - profile.css
-- PDFs
-- images
+- images / PDFs / events.json / gallery.json
+
+UPLOAD:
+Upload every file in this ZIP to the GitHub repo root. Replace matching files and add the new HTML pages.
