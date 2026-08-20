@@ -1,133 +1,135 @@
 /* =========================================================
-   LOVEJOY SECTION PAGES V5
-   Permanent MySpace-style inbox navigation.
-   No dropdown. No square navigation-card menus.
+   LOVEJOY SECTION PAGES V6
+   Standardized to the approved Tattoo-page inbox style.
    ========================================================= */
 
-.section-static-inbox {
+.section-page-inbox {
   margin: 0 0 12px;
   overflow: hidden;
 }
 
-/* little glitter divider keeps the LoveJoy page language */
-.section-inbox-sparkles {
-  min-height: 25px;
+.section-page-inbox-glitter {
+  min-height: 28px;
 }
 
-.section-inbox-toolbar {
-  min-height: 31px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 6px 10px;
-  background: #ffd7e8;
-  color: var(--navy);
-  border-top: 1px solid #e6b8ca;
-  border-bottom: 1px solid #b9a9a1;
-  font-size: .56rem;
-}
-
-.section-inbox-toolbar strong {
-  color: var(--pink);
-  font-size: .62rem;
-}
-
-.section-inbox-toolbar span {
-  color: rgba(7,24,44,.68);
-  font-weight: 800;
-}
-
-.section-inbox-head {
-  display: grid;
-  grid-template-columns: 27px minmax(86px,.26fr) minmax(0,1fr) 27px;
-  align-items: center;
-  min-height: 27px;
-  padding: 0 8px;
-  background: #dbe3ef;
-  color: var(--navy);
-  border-bottom: 1px solid #a8b3c1;
-  font-size: .49rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: .05em;
-}
-
-.section-inbox-rows {
-  display: block;
-  background: #fff;
-}
-
-.section-inbox-row {
-  display: grid;
-  grid-template-columns: 27px minmax(86px,.26fr) minmax(0,1fr) 27px;
-  align-items: center;
-  min-height: 49px;
-  padding: 7px 8px;
-  border-bottom: 1px solid #d8dfe8;
+.section-page-inbox-shell {
+  margin: 10px 12px 12px;
+  border: 1px solid var(--navy);
   background: #fffaf4;
+  box-shadow: 4px 4px 0 rgba(7,24,44,.10);
+  overflow: hidden;
+}
+
+.section-page-inbox-bar {
+  padding: 8px 11px;
+  background: var(--navy);
+  color: var(--cream);
+  font-size: .58rem;
+  font-weight: 900;
+  letter-spacing: .055em;
+}
+
+.section-page-inbox-messages {
+  display: block;
+}
+
+.section-inbox-message {
+  min-height: 118px;
+  display: grid;
+  grid-template-columns: 58px minmax(0,1fr) auto;
+  grid-template-areas: "avatar copy button";
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid #d7c8bd;
+  background: #fff9ed;
   color: var(--ink);
   text-decoration: none;
+  position: relative;
 }
 
-.section-inbox-row:nth-child(even) {
-  background: #fff0f7;
+.section-inbox-message:nth-child(even) {
+  background: #fde3ee;
 }
 
-.section-inbox-row:last-child {
+.section-inbox-message:last-child {
   border-bottom: 0;
 }
 
-.section-inbox-row:hover,
-.section-inbox-row:focus-visible {
-  background: #ffdbe9;
-  color: var(--ink);
+.section-inbox-message:hover,
+.section-inbox-message:focus-visible {
+  background: #ffd7e8;
   outline: none;
-  box-shadow: inset 4px 0 0 var(--pink);
-}
-
-.section-inbox-row.is-current {
-  background: #ffe3ef;
   box-shadow: inset 5px 0 0 var(--pink);
 }
 
-.section-inbox-dot {
-  color: var(--pink);
-  text-align: center;
-  font-size: .55rem;
-  text-shadow: 0 0 5px rgba(255,45,141,.35);
+.section-inbox-message-current {
+  box-shadow: inset 5px 0 0 var(--pink);
 }
 
-.section-inbox-row.is-current .section-inbox-dot {
+.section-inbox-avatar {
+  grid-area: avatar;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--navy);
+  background: var(--pink);
   color: var(--navy);
-}
-
-.section-inbox-from {
-  color: rgba(7,24,44,.62);
-  font-size: .53rem;
+  font-size: 1rem;
   font-weight: 900;
+  box-shadow: 3px 3px 0 rgba(7,24,44,.13);
 }
 
-.section-inbox-subject {
+.section-inbox-copy {
+  grid-area: copy;
+  min-width: 0;
+  display: grid;
+  gap: 5px;
+}
+
+.section-inbox-copy strong {
+  color: var(--pink);
+  font-size: 1rem;
+  line-height: 1.15;
+}
+
+.section-inbox-copy strong small {
+  display: inline;
+  margin-right: 4px;
   color: var(--navy);
   font-size: .67rem;
   font-weight: 900;
-  line-height: 1.2;
 }
 
-.section-inbox-row.is-current .section-inbox-subject {
-  color: var(--pink);
+.section-inbox-copy > span {
+  color: rgba(17,17,17,.72);
+  font-size: .78rem;
+  line-height: 1.45;
 }
 
-.section-inbox-arrow {
-  color: var(--pink);
-  text-align: center;
-  font-size: 1rem;
+.section-inbox-message b {
+  grid-area: button;
+  min-width: 102px;
+  padding: 8px 10px;
+  border: 2px solid var(--navy);
+  background: #fff;
+  color: var(--navy);
+  font-size: .64rem;
+  line-height: 1;
   font-weight: 900;
+  text-align: center;
+  box-shadow: 3px 3px 0 rgba(255,45,141,.24);
 }
 
-/* ---------- HUB BANNERS ---------- */
+.section-inbox-message:hover b,
+.section-inbox-message:focus-visible b,
+.section-inbox-message-current b {
+  background: var(--pink);
+  color: var(--navy);
+}
 
+/* hub/banner language stays the same on every section */
 .section-hub-banner {
   overflow: hidden;
   text-align: left;
@@ -180,8 +182,6 @@
   color: var(--pink);
 }
 
-/* ---------- SMALL SUPPORTING MODULES ---------- */
-
 .section-mini-note {
   margin-top: 12px;
 }
@@ -214,15 +214,18 @@
   top: -100px;
 }
 
-/* Existing games / quizzes keep breathing room after the navigation inbox. */
-.section-static-inbox + .starcade-card,
-.section-static-inbox + .section-mini-note,
+.section-page-inbox + .starcade-card,
+.section-page-inbox + .section-mini-note,
+.section-page-inbox + .event-form-card,
+.section-page-inbox + .current-calendar-card,
+.section-page-inbox + .events-coming-card,
+.section-page-inbox + .event-faq-card,
+.section-page-inbox + .profile-chaos-quiz,
 .section-mini-note + .profile-chaos-quiz,
 .profile-chaos-quiz + .glitterworm-card {
   margin-top: 12px;
 }
 
-/* Existing detailed destination cards keep the same page rhythm. */
 .events-page .event-form-card,
 .events-page .current-calendar-card,
 .events-page .events-coming-card,
@@ -235,47 +238,48 @@
   margin-top: 12px;
 }
 
-/* ---------- MOBILE ---------- */
-
-@media (max-width: 620px) {
-  .section-inbox-head {
-    grid-template-columns: 23px minmax(0,1fr) 25px;
+@media (max-width: 700px) {
+  .section-page-inbox-bar {
+    padding: 8px 10px;
+    font-size: .53rem;
   }
 
-  .section-inbox-head span:nth-child(2) {
-    display: none;
-  }
-
-  .section-inbox-head span:nth-child(3) {
-    grid-column: 2;
-  }
-
-  .section-inbox-row {
-    grid-template-columns: 23px minmax(0,1fr) 25px;
+  .section-inbox-message {
+    min-height: 0;
+    grid-template-columns: 56px minmax(0,1fr);
     grid-template-areas:
-      "dot from arrow"
-      "dot subject arrow";
-    row-gap: 1px;
-    min-height: 50px;
-    padding: 7px 8px;
+      "avatar copy"
+      "avatar button";
+    align-items: center;
+    gap: 8px 11px;
+    padding: 13px 14px;
   }
 
-  .section-inbox-dot {
-    grid-area: dot;
+  .section-inbox-avatar {
+    width: 43px;
+    height: 43px;
   }
 
-  .section-inbox-from {
-    grid-area: from;
-    font-size: .48rem;
+  .section-inbox-copy strong {
+    font-size: .91rem;
   }
 
-  .section-inbox-subject {
-    grid-area: subject;
-    font-size: .66rem;
+  .section-inbox-copy strong small {
+    display: block;
+    margin: 0 0 2px;
+    font-size: .58rem;
   }
 
-  .section-inbox-arrow {
-    grid-area: arrow;
+  .section-inbox-copy > span {
+    font-size: .72rem;
+    line-height: 1.42;
+  }
+
+  .section-inbox-message b {
+    justify-self: start;
+    min-width: 0;
+    padding: 7px 9px;
+    font-size: .61rem;
   }
 
   .sparkle-note {
@@ -284,5 +288,32 @@
 
   .sparkle-note .session-button {
     text-align: center;
+  }
+}
+
+@media (max-width: 390px) {
+  .section-page-inbox-shell {
+    margin-left: 9px;
+    margin-right: 9px;
+  }
+
+  .section-inbox-message {
+    grid-template-columns: 45px minmax(0,1fr);
+    gap: 7px 9px;
+    padding: 11px;
+  }
+
+  .section-inbox-avatar {
+    width: 37px;
+    height: 37px;
+    font-size: .82rem;
+  }
+
+  .section-inbox-copy strong {
+    font-size: .82rem;
+  }
+
+  .section-inbox-copy > span {
+    font-size: .66rem;
   }
 }
