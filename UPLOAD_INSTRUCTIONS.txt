@@ -1,46 +1,43 @@
-LOVEJOY ORGANIZATION RESET V7
+LOVEJOY DIRECT PAGE HEADERS V7
 ================================
 
-This fixes the structure, not just the CSS.
+This package changes ONLY the short copy at the top of the organized pages.
 
-RULE:
-- A page with several different destinations is the MySpace-style inbox/index.
-- Clicking a row opens the focused page for that information.
-- Focused pages do NOT repeat the giant parent inbox. They get one small back link and the actual content.
-- Games and surveys stay embedded where they belong.
+UPLOAD THE INCLUDED HTML FILES TO THE ROOT OF:
+lovejoymarket/lovejoymarket-site
 
-INBOX / INDEX PAGES:
-- Tattoos
-- Tattoo Sessions (1h / 3h / full day now each have a focused page)
-- Tattoo Parties (types / booking / inquiry / policies now each have a focused page)
-- Events
-- Market
-- Market Applications (each application type now has a focused page with its existing PDF)
-- My LoveJoy / Profile
+Replace the matching files.
 
-FUNCTIONALITY PRESERVED AND VERIFIED:
-- Regular tattoo inquiry + mail-fix.js
-- Consent box beneath regular inquiry
-- Tattoo Party inquiry + tattoo-parties.js conditional promo fields / email flow
-- Event private/collaboration email forms + mail-fix.js
-- Dynamic Events calendar + site.js data hooks
-- Events arcade game stays on Events
-- Profile personality survey stays on Profile
-- Glitterworm stays on Profile
-- Consent PDF link stays intact
-- All six Market application PDF downloads stay intact
-- Merch/Square content untouched
+WHAT CHANGED
+------------
+- Removed the snarky / over-written top-of-page descriptions.
+- Replaced them with short, direct, useful copy.
+- Kept the pages cute and in the LoveJoy voice without commentary.
+- Tattoo home is NOT included because “how can I help you? ♡ / Choose what you need below.”
+  is already the direct version you approved.
 
-NOT TOUCHED:
-- Homepage
-- About
-- Starcade
+WHAT DID NOT CHANGE
+-------------------
+- inbox menus
+- page organization
+- links
+- forms
+- games
+- surveys
+- Glitterworm
+- event arcade
+- Tattoo Party content
+- policies
+- prices
 - styles.css
+- section-pages.css
+- tattoo-pages.css
 - site.js
 - mail-fix.js
-- tattoo-parties.js
-- profile.css
-- images / PDFs / events.json / gallery.json
+- PDFs
+- images
+- About
+- Home
+- Starcade
 
-UPLOAD:
-Upload every file in this ZIP to the GitHub repo root. Replace matching files and add the new HTML pages.
+This is a copy-only cleanup. No layout or styling files are included.
