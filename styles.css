@@ -815,6 +815,258 @@ img { max-width: 100%; display: block; }
   }
 }
 
+
+/* ==========================
+   SITEWIDE READABLE TYPE SCALE
+   The original compact type was visually fun but too small to read comfortably.
+   Desktop gets a modest lift. Phones get a true mobile reading size.
+   ========================== */
+html {
+  font-size: 112.5%;
+}
+
+@media (max-width: 760px) {
+  html {
+    font-size: 125%;
+  }
+
+  body {
+    line-height: 1.55;
+  }
+
+  body .myspace-page p {
+    font-size: .9rem !important;
+    line-height: 1.55;
+  }
+
+  body .myspace-page li,
+  body .myspace-page dt,
+  body .myspace-page dd,
+  body .myspace-page figcaption {
+    font-size: .88rem !important;
+    line-height: 1.5;
+  }
+
+  body .myspace-page small,
+  body .myspace-page .module-note,
+  body .myspace-page .footer-small,
+  body .myspace-page .post-meta,
+  body .myspace-page .quiz-fine-print,
+  body .myspace-page .quiz-share-status,
+  body .myspace-page .chaos-footnote,
+  body .myspace-page .sun-result-footnote,
+  body .myspace-page .gallery-form-fineprint,
+  body .myspace-page .gallery-submit-status,
+  body .myspace-page .event-form-status,
+  body .myspace-page .tattoo-form-status {
+    font-size: .74rem !important;
+    line-height: 1.45;
+  }
+
+  body .myspace-page a {
+    font-size: .8rem !important;
+  }
+
+  body .myspace-page label,
+  body .myspace-page legend,
+  body .myspace-page label > span,
+  body .myspace-page fieldset label,
+  body .myspace-page .gallery-radio span,
+  body .myspace-page .gallery-checkbox span {
+    font-size: .82rem !important;
+    line-height: 1.45;
+  }
+
+  body .myspace-page input:not([type="checkbox"]):not([type="radio"]),
+  body .myspace-page select,
+  body .myspace-page textarea {
+    font-size: 16px !important;
+    line-height: 1.4;
+  }
+
+  body .myspace-page h1,
+  body .myspace-page .section-hub-title,
+  body .myspace-page .tattoo-help-title {
+    font-size: clamp(2.65rem, 10vw, 4rem) !important;
+    line-height: .94 !important;
+  }
+
+  body .myspace-page h2,
+  body .myspace-page .module-body h2,
+  body .myspace-page .party-type-top h2,
+  body .myspace-page .sun-quiz-card h2,
+  body .myspace-page [data-sun-result] h2 {
+    font-size: 1.3rem !important;
+    line-height: 1.15 !important;
+  }
+
+  body .myspace-page h3,
+  body .myspace-page h4,
+  body .myspace-page h5,
+  body .myspace-page h6 {
+    font-size: 1.12rem !important;
+    line-height: 1.2 !important;
+  }
+
+  body .myspace-page .profile-tagline {
+    font-size: 1.2rem !important;
+    line-height: 1.15 !important;
+  }
+
+  body .myspace-page .profile-subline,
+  body .myspace-page .currently-line,
+  body .myspace-page .section-hub-sub,
+  body .myspace-page .tattoo-help-sub {
+    font-size: .9rem !important;
+    line-height: 1.5;
+  }
+
+  body .myspace-page .quote-line {
+    font-size: 1.5rem !important;
+    line-height: 1.05 !important;
+  }
+
+  body .myspace-page .not-found-number {
+    font-size: clamp(4rem, 18vw, 9rem) !important;
+    line-height: .85 !important;
+  }
+
+  body .myspace-page .quiz-question-copy,
+  body .myspace-page .chaos-question {
+    font-size: 1.05rem !important;
+    line-height: 1.4 !important;
+  }
+
+  body .myspace-page .text-link,
+  body .myspace-page .session-button,
+  body .myspace-page .square-button,
+  body .myspace-page .quiz-option,
+  body .myspace-page .quiz-primary-button,
+  body .myspace-page .quiz-secondary-button,
+  body .myspace-page .quiz-link-button,
+  body .myspace-page .quiz-retake,
+  body .myspace-page .sun-option,
+  body .myspace-page .chaos-option,
+  body .myspace-page .gallery-submit-button,
+  body .myspace-page .gallery-submit-jump,
+  body .myspace-page .tattoo-email-button,
+  body .myspace-page .tattoo-copy-button,
+  body .myspace-page .event-copy-button,
+  body .myspace-page .tattoo-subnav a,
+  body .myspace-page .tattoo-fun-links a,
+  body .myspace-page .not-found-links a,
+  body .myspace-page .section-backbar a,
+  body .myspace-page .section-route-card b,
+  body .myspace-page .tattoo-route-card b,
+  body .myspace-page .party-mail-choice-actions a,
+  body .myspace-page .party-mail-choice-actions button {
+    font-size: .8rem !important;
+    line-height: 1.3 !important;
+  }
+
+  body .myspace-page .profile-mini-copy,
+  body .myspace-page .contact-grid a,
+  body .myspace-page .details-list > div,
+  body .myspace-page .music-meta span,
+  body .myspace-page .event-post p,
+  body .myspace-page .pics-intro,
+  body .myspace-page .comment-links a,
+  body .myspace-page .view-all-line a,
+  body .myspace-page .friend-request-copy small,
+  body .myspace-page .friend-request-action,
+  body .myspace-page .friend-request-top,
+  body .myspace-page .friend-request-online,
+  body .myspace-page .what-card span,
+  body .myspace-page .application-meta,
+  body .myspace-page .waitlist-times span,
+  body .myspace-page .square-steps span,
+  body .myspace-page .tattoo-flow span,
+  body .myspace-page .session-deposit,
+  body .myspace-page .session-rule,
+  body .myspace-page .tattoo-attachment-note span,
+  body .myspace-page .consent-step-list span,
+  body .myspace-page .consent-step-list code,
+  body .myspace-page .calendar-list-date,
+  body .myspace-page .calendar-event-link,
+  body .myspace-page .calendar-note,
+  body .myspace-page .event-form-route,
+  body .myspace-page .event-form-note span,
+  body .myspace-page .sun-quiz-progress,
+  body .myspace-page .arcade-carousel-count,
+  body .myspace-page .gallery-toolbar span,
+  body .myspace-page .gallery-submit-rules span,
+  body .myspace-page .client-gallery-item figcaption span,
+  body .myspace-page .client-gallery-item figcaption small {
+    font-size: .78rem !important;
+    line-height: 1.45;
+  }
+
+  .site-footer .footer-small {
+    font-size: .76rem !important;
+    line-height: 1.45;
+  }
+
+  body .myspace-page .calendar-weekdays span,
+  body .myspace-page .calendar-day-number {
+    font-size: .62rem !important;
+  }
+
+  body .myspace-page .calendar-chip,
+  body .myspace-page .calendar-more {
+    font-size: .55rem !important;
+    line-height: 1.2;
+  }
+
+  body .myspace-page .starcade-hud,
+  body .myspace-page .arcade-hud-four,
+  body .myspace-page .glitterworm-hud {
+    font-size: .62rem !important;
+    line-height: 1.25;
+  }
+
+  body .myspace-page .starcade-overlay span,
+  body .myspace-page .arcade-game-overlay span,
+  body .myspace-page .glitterworm-overlay span,
+  body .myspace-page .starcade-screen::after,
+  body .myspace-page .starcade-screen-large::after,
+  body .myspace-page .arcade-canvas-wrap::after,
+  body .myspace-page .glitterworm-screen::after {
+    font-size: .7rem !important;
+    line-height: 1.4 !important;
+  }
+
+  body .myspace-page .starcade-overlay button,
+  body .myspace-page .starcade-reset,
+  body .myspace-page .arcade-game-overlay button,
+  body .myspace-page .glitterworm-overlay button,
+  body .myspace-page .arcade-carousel-mobile-controls button {
+    font-size: .8rem !important;
+    line-height: 1.25 !important;
+  }
+}
+
+@media (max-width: 520px) {
+  body .myspace-page .party-two-columns,
+  body .myspace-page .future-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  body .home-page .profile-left {
+    grid-template-columns: 1fr !important;
+    grid-template-areas:
+      "photo"
+      "contact"
+      "request"
+      "details"
+      "music" !important;
+  }
+
+  body .myspace-page .top-eight-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 10px;
+  }
+}
+
 @media (max-width: 560px) {
   .about-page-title { width: min(100%, 340px); }
   .about-side { grid-template-columns: 1fr; }
