@@ -1682,6 +1682,28 @@ img { max-width: 100%; display: block; }
   line-height:1.42;
 }
 
+.calendar-month-block + .calendar-month-block {
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 3px double var(--pink);
+}
+
+.events-section-heading {
+  margin: 0 0 18px;
+  color: var(--pink);
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+}
+
+.event-mini-prompt {
+  margin: 14px 0 0;
+  padding: 14px 16px;
+  border: 2px dashed var(--pink);
+  background: #fff0f7;
+  color: var(--navy);
+  text-align: center;
+  font-weight: 700;
+}
+
 .coming-grid {
   display:grid;
   grid-template-columns:repeat(4,1fr);

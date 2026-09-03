@@ -4,9 +4,9 @@
       "date": "2026-10-01",
       "time": "Evening hours coming soon",
       "title": "First Thursday at LoveJoy",
-      "description": "A first look at LoveJoy Market in its own home, with $1 concessions and a small print bar planned.",
+      "description": "A first look at LoveJoy Market in its own home, with $1 concessions and a small print bar.",
       "url": "first-thursday-october.html",
-      "linkLabel": "open the plan →"
+      "linkLabel": "event details →"
     },
     {
       "date": "2026-10-10",
@@ -22,21 +22,21 @@
       "title": "Kids Makers Market",
       "description": "$7 per child, $24 for four, then $5 each additional child. One $5 Maker Token and open art are included.",
       "url": "kids-makers-market-october.html",
-      "linkLabel": "make a tiny plan →"
+      "linkLabel": "kids market details →"
     },
     {
       "date": "2026-10-23",
       "time": "Doors 7 PM · Movie 7:30 PM",
       "title": "LoveJoy Weird Movie Night",
-      "description": "$5 per person with strict limited seating. Upstairs is movie-only; downstairs adds $1 concessions and themed quick flash.",
+      "description": "$5 per person with limited seating. BYOB, with $1 concessions and themed quick flash downstairs.",
       "url": "weird-movie-night-october.html",
-      "linkLabel": "get weird →"
+      "linkLabel": "movie night details →"
     },
     {
       "date": "2026-10-30",
       "time": "Doors 7 PM · Movie 7:30 PM",
       "title": "Family Halloween Movie Night",
-      "description": "$5 for every child and adult. Best for about age 9+. Guardians stay onsite and seating is limited.",
+      "description": "$5 for every child and adult. Best for about age 9+. BYOB, with $1 concessions available downstairs.",
       "url": "family-movie-night-october.html",
       "linkLabel": "plan the family night →"
     },
@@ -44,7 +44,7 @@
       "date": "2026-10-31",
       "time": "Noon–9 PM",
       "title": "Halloween Flash Day",
-      "description": "$40 total quick flash, a numbered waitlist, $1 concessions, and no mystery math.",
+      "description": "$40 total quick flash, a numbered waitlist, and $1 concessions.",
       "url": "halloween-flash-october.html",
       "linkLabel": "see flash-day details →"
     }

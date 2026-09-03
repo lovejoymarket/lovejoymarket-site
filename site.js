@@ -434,14 +434,10 @@ runStarCascade();
 })();
 
 
-/* LoveJoy events calendar: current month when active, otherwise next confirmed month */
+/* LoveJoy events calendars */
 (() => {
-  const root = document.querySelector('[data-event-calendar]');
-  if (!root) return;
-
-  const grid = root.querySelector('[data-calendar-grid]');
-  const monthLabel = document.querySelector('[data-calendar-month]');
-  const list = document.querySelector('[data-calendar-events]');
+  const blocks = [...document.querySelectorAll('[data-calendar-month-block]')];
+  if (!blocks.length) return;
   const now = new Date();
 
   function displayMonthFor(events) {
@@ -470,10 +466,19 @@ runStarCascade();
       : { year: currentYear, month: currentMonth };
   }
 
-  function render(events) {
+  function render(block, events) {
+    const root = block.querySelector('[data-event-calendar]');
+    const grid = block.querySelector('[data-calendar-grid]');
+    const monthLabel = block.querySelector('[data-calendar-month]');
+    const list = block.querySelector('[data-calendar-events]');
+    if (!root || !grid || !list) return;
     grid.replaceChildren();
 
-    const { year, month } = displayMonthFor(events);
+    const requestedYear = Number(block.dataset.calendarYear);
+    const requestedMonth = Number(block.dataset.calendarMonthIndex);
+    const fallback = displayMonthFor(events);
+    const year = Number.isInteger(requestedYear) ? requestedYear : fallback.year;
+    const month = Number.isInteger(requestedMonth) ? requestedMonth : fallback.month;
     const monthName = new Date(year, month, 1).toLocaleDateString(undefined, { month: 'long', year: 'numeric' });
     if (monthLabel) monthLabel.textContent = monthName;
 
@@ -541,7 +546,7 @@ runStarCascade();
     if (!currentEvents.length) {
       const empty = document.createElement('div');
       empty.className = 'calendar-empty-card';
-      empty.innerHTML = '<strong>nothing confirmed here yet ♡</strong><span>The group chat can speculate. When I confirm a date, it will show up here by itself.</span>';
+      empty.innerHTML = `<strong>nothing scheduled for ${monthName} yet ♡</strong><span>New dates will appear here as they are confirmed.</span>`;
       list.appendChild(empty);
       return;
     }
@@ -589,8 +594,11 @@ runStarCascade();
 
   fetch('events.json', { cache: 'no-store' })
     .then((response) => response.ok ? response.json() : Promise.reject())
-    .then((data) => render(Array.isArray(data.events) ? data.events : []))
-    .catch(() => render([]));
+    .then((data) => {
+      const events = Array.isArray(data.events) ? data.events : [];
+      blocks.forEach((block) => render(block, events));
+    })
+    .catch(() => blocks.forEach((block) => render(block, [])));
 })();
 
 /* Event inquiry -> structured email */
