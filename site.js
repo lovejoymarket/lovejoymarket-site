@@ -611,6 +611,13 @@ runStarCascade();
     return field ? String(field.value || '').trim() : '';
   }
 
+  function formChoice(form, name) {
+    const field = form.elements.namedItem(name);
+    if (!field || field.tagName !== 'SELECT') return formValue(form, name);
+    const option = field.options[field.selectedIndex];
+    return option ? String(option.textContent || option.value || '').trim() : '';
+  }
+
   function buildPrivate(form) {
     return [
       'LOVEJOY PRIVATE EVENT INQUIRY',
@@ -639,9 +646,9 @@ runStarCascade();
       `Name / organization: ${formValue(form,'name')}`,
       `Email: ${formValue(form,'email')}`,
       `Phone: ${formValue(form,'phone') || 'not provided'}`,
-      `Role: ${formValue(form,'role')}`,
-      `Program fit: ${formValue(form,'program')}`,
-      `Timing: ${formValue(form,'timing') || 'flexible / not provided'}`,
+      `Role: ${formChoice(form,'role')}`,
+      `Event: ${formChoice(form,'program')}`,
+      `Website / social: ${formValue(form,'timing') || 'not provided'}`,
       '',
       'THE PITCH:',
       formValue(form,'concept'),
@@ -666,6 +673,14 @@ runStarCascade();
     const status = form.querySelector('[data-event-status]');
     const copyButton = form.querySelector('[data-event-copy]');
 
+    if (type === 'lovejoy') {
+      const requestedEvent = new URLSearchParams(window.location.search).get('event');
+      const program = form.elements.namedItem('program');
+      if (requestedEvent && program && [...program.options].some((option) => option.value === requestedEvent)) {
+        program.value = requestedEvent;
+      }
+    }
+
     function build() {
       return type === 'private' ? buildPrivate(form) : buildLoveJoy(form);
     }
@@ -675,7 +690,7 @@ runStarCascade();
       if (type === 'private') {
         return `PRIVATE EVENT INQUIRY | ${name} | ${formValue(form,'event_type') || 'Event'}`;
       }
-      return `LOVEJOY EVENT IDEA | ${name} | ${formValue(form,'role') || 'Collaboration'}`;
+      return `LOVEJOY EVENT OUTREACH | ${formChoice(form,'program') || 'Event'} | ${name}`;
     }
 
     form.addEventListener('submit', (event) => {
