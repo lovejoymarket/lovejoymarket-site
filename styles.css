@@ -4200,6 +4200,431 @@ body .myspace-page .sun-quiz-subheading {
   object-position: left center;
 }
 
+/* ==========================
+   OCTOBER 2026 MARKET + EVENT PAGES
+   ========================== */
+.october-marquee {
+  display: block;
+  color: var(--navy);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.october-marquee:hover,
+.october-marquee:focus-visible {
+  background: var(--cream);
+  color: var(--pink);
+}
+
+.october-marquee:focus-visible {
+  outline: 3px solid var(--cream);
+  outline-offset: -3px;
+}
+
+.october-market-intro,
+.october-market-card,
+.event-overview-card,
+.event-detail-card,
+.event-rules-card {
+  margin-top: 12px;
+}
+
+.market-official-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.market-official-grid article,
+.event-detail-grid article {
+  min-height: 150px;
+  padding: 12px;
+  border: 1px solid var(--navy);
+  background: linear-gradient(145deg, #fff 0%, #fff7ec 100%);
+}
+
+.market-official-grid article > span,
+.event-detail-grid article > span {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--pink);
+  font-size: 1.35rem;
+}
+
+.market-official-grid strong,
+.event-detail-grid strong {
+  color: var(--pink);
+  font-family: var(--heading-font);
+  font-size: 1.22rem;
+  line-height: 1.05;
+}
+
+.market-official-grid p,
+.event-detail-grid p {
+  margin: 6px 0 0 !important;
+  color: var(--navy);
+  font-size: .62rem !important;
+  line-height: 1.48;
+}
+
+.market-official-grid a,
+.market-maker-note a,
+.event-rules-list a {
+  color: var(--pink);
+  font-weight: 900;
+}
+
+.event-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.event-cta-row a {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 12px;
+  border: 1px solid var(--navy);
+  background: var(--cream);
+  color: var(--navy);
+  font-family: var(--heading-font);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.event-cta-row a:hover,
+.event-cta-row a:focus-visible {
+  background: var(--navy);
+  color: var(--cream);
+}
+
+.event-cta-row .market-primary-link {
+  background: var(--pink);
+  color: var(--navy);
+}
+
+.october-event-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.october-event-tile {
+  display: grid;
+  min-height: 210px;
+  align-content: start;
+  gap: 7px;
+  padding: 14px;
+  border: 1px solid var(--navy);
+  background: #fffdf8;
+  color: var(--navy);
+  text-decoration: none;
+  transition: transform .16s ease, box-shadow .16s ease;
+}
+
+.october-event-tile:hover,
+.october-event-tile:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 5px 5px 0 var(--pink);
+}
+
+.event-tile-date {
+  color: rgba(7, 24, 44, .66);
+  font-size: .58rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+
+.october-event-tile strong {
+  color: var(--pink);
+  font-family: var(--heading-font);
+  font-size: 1.65rem;
+  line-height: 1;
+}
+
+.october-event-tile p {
+  margin: 0 !important;
+  font-size: .64rem !important;
+  line-height: 1.48;
+}
+
+.october-event-tile b {
+  align-self: end;
+  color: var(--pink);
+  font-size: .62rem;
+}
+
+.market-maker-note {
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px dashed var(--navy);
+  background: #ffe4f0;
+}
+
+.market-maker-note strong {
+  color: var(--pink);
+  font-family: var(--heading-font);
+  font-size: 1.25rem;
+}
+
+.market-maker-note p {
+  margin: 4px 0 7px !important;
+  color: var(--navy);
+  font-size: .64rem !important;
+  line-height: 1.48;
+}
+
+.event-detail-hero .section-hub-sub {
+  max-width: 800px;
+}
+
+.event-hero-meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.event-hero-meta > div {
+  min-height: 88px;
+  padding: 10px;
+  border: 1px solid var(--navy);
+  background: #fff;
+}
+
+.event-hero-meta span {
+  display: block;
+  margin-bottom: 5px;
+  color: rgba(7, 24, 44, .6);
+  font-size: .5rem;
+  font-weight: 900;
+  letter-spacing: .09em;
+}
+
+.event-hero-meta strong {
+  display: block;
+  color: var(--pink);
+  font-family: var(--heading-font);
+  font-size: 1.18rem;
+  line-height: 1.08;
+}
+
+.event-price-card {
+  margin-top: 9px;
+  padding: 14px;
+  border: 2px solid var(--pink);
+  background: var(--navy);
+  color: var(--cream);
+}
+
+.event-price-card > span {
+  display: block;
+  color: var(--pink);
+  font-size: .54rem;
+  font-weight: 900;
+  letter-spacing: .1em;
+}
+
+.event-price-card > strong {
+  display: block;
+  margin-top: 3px;
+  color: var(--cream);
+  font-family: var(--heading-font);
+  font-size: 1.65rem;
+  line-height: 1.04;
+}
+
+.event-price-card p {
+  max-width: 820px;
+  margin: 7px 0 0 !important;
+  color: var(--cream) !important;
+  font-size: .64rem !important;
+  line-height: 1.5;
+}
+
+.event-section-intro {
+  max-width: 790px;
+  margin: 0 0 10px !important;
+  color: var(--navy);
+  font-size: .66rem !important;
+  line-height: 1.5;
+}
+
+.event-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.event-room-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.event-room-grid article {
+  min-height: 190px;
+  padding: 16px;
+  border: 2px solid var(--navy);
+  background: var(--cream);
+}
+
+.event-room-grid span {
+  display: inline-block;
+  margin-bottom: 7px;
+  padding: 3px 7px;
+  background: var(--pink);
+  color: var(--navy);
+  font-size: .55rem;
+  font-weight: 900;
+  letter-spacing: .1em;
+}
+
+.event-room-grid strong {
+  display: block;
+  color: var(--pink);
+  font-family: var(--heading-font);
+  font-size: 1.65rem;
+  line-height: 1;
+}
+
+.event-room-grid p {
+  margin: 8px 0 0 !important;
+  color: var(--navy);
+  font-size: .68rem !important;
+  line-height: 1.5;
+}
+
+.event-token-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.event-token-flow > div {
+  min-height: 180px;
+  padding: 12px;
+  border: 1px solid var(--navy);
+  background: #fff;
+}
+
+.event-token-flow span {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  margin-bottom: 8px;
+  border-radius: 50%;
+  background: var(--pink);
+  color: var(--navy);
+  font-weight: 900;
+}
+
+.event-token-flow strong {
+  color: var(--pink);
+  font-family: var(--heading-font);
+  font-size: 1.2rem;
+  line-height: 1.04;
+}
+
+.event-token-flow p {
+  margin: 7px 0 0 !important;
+  color: var(--navy);
+  font-size: .62rem !important;
+  line-height: 1.48;
+}
+
+.event-rules-list {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.event-rules-list li {
+  position: relative;
+  padding: 10px 12px 10px 34px;
+  border: 1px solid #d7c5b9;
+  background: #fff;
+  color: var(--navy);
+  font-size: .64rem;
+  line-height: 1.5;
+}
+
+.event-rules-list li::before {
+  position: absolute;
+  top: 9px;
+  left: 12px;
+  color: var(--pink);
+  content: "✦";
+  font-weight: 900;
+}
+
+@media (max-width: 760px) {
+  .market-official-grid,
+  .october-event-grid,
+  .event-detail-grid,
+  .event-room-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .event-hero-meta,
+  .event-token-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .market-official-grid strong,
+  .event-detail-grid strong,
+  .event-token-flow strong {
+    font-size: 1.45rem;
+  }
+
+  .market-official-grid p,
+  .event-detail-grid p,
+  .event-room-grid p,
+  .event-token-flow p,
+  .event-price-card p,
+  .event-section-intro,
+  .event-rules-list li,
+  .market-maker-note p,
+  .october-event-tile p {
+    font-size: 1rem !important;
+  }
+
+  .event-hero-meta strong {
+    font-size: 1.35rem;
+  }
+
+  .event-hero-meta span,
+  .event-price-card > span,
+  .event-tile-date {
+    font-size: .82rem;
+  }
+
+  .event-cta-row {
+    display: grid;
+  }
+
+  .event-cta-row a {
+    width: 100%;
+    min-height: 48px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 460px) {
+  .event-hero-meta,
+  .event-token-flow {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 760px) {
   body .profile-strip {
     font-size: 1.3rem !important;

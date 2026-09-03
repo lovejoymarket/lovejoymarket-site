@@ -434,7 +434,7 @@ runStarCascade();
 })();
 
 
-/* LoveJoy events calendar: current month only, data from events.json */
+/* LoveJoy events calendar: current month when active, otherwise next confirmed month */
 (() => {
   const root = document.querySelector('[data-event-calendar]');
   if (!root) return;
@@ -443,14 +443,39 @@ runStarCascade();
   const monthLabel = document.querySelector('[data-calendar-month]');
   const list = document.querySelector('[data-calendar-events]');
   const now = new Date();
-  const year = now.getFullYear();
-  const month = now.getMonth();
-  const monthName = now.toLocaleDateString(undefined, { month: 'long', year: 'numeric' });
 
-  if (monthLabel) monthLabel.textContent = monthName;
+  function displayMonthFor(events) {
+    const currentYear = now.getFullYear();
+    const currentMonth = now.getMonth();
+    const hasCurrentMonthEvent = events.some((event) => {
+      if (!event || !event.date) return false;
+      const date = new Date(`${event.date}T12:00:00`);
+      return !Number.isNaN(date.getTime()) &&
+        date.getFullYear() === currentYear &&
+        date.getMonth() === currentMonth;
+    });
+
+    if (hasCurrentMonthEvent) return { year: currentYear, month: currentMonth };
+
+    const startOfToday = new Date(now);
+    startOfToday.setHours(0, 0, 0, 0);
+    const nextEvent = events
+      .filter((event) => event && event.date)
+      .map((event) => new Date(`${event.date}T12:00:00`))
+      .filter((date) => !Number.isNaN(date.getTime()) && date >= startOfToday)
+      .sort((a, b) => a - b)[0];
+
+    return nextEvent
+      ? { year: nextEvent.getFullYear(), month: nextEvent.getMonth() }
+      : { year: currentYear, month: currentMonth };
+  }
 
   function render(events) {
     grid.replaceChildren();
+
+    const { year, month } = displayMonthFor(events);
+    const monthName = new Date(year, month, 1).toLocaleDateString(undefined, { month: 'long', year: 'numeric' });
+    if (monthLabel) monthLabel.textContent = monthName;
 
     const first = new Date(year, month, 1);
     const days = new Date(year, month + 1, 0).getDate();
@@ -2399,7 +2424,7 @@ runStarCascade();
       if (parts[1]) parts[1].textContent = '--';
       if (parts[2]) parts[2].textContent = '---';
     }
-    if (meta) meta.textContent = 'LOVEJOY MARKET · FISHERS, IN';
+    if (meta) meta.textContent = 'LOVEJOY MARKET · INDIANAPOLIS, IN';
     if (title) title.textContent = 'Nothing official yet. Suspicious, I know.';
     if (description) description.textContent = 'The group chat can speculate. When I confirm a date, it will show up here by itself.';
     if (link) {
@@ -2426,7 +2451,7 @@ runStarCascade();
     }
 
     if (meta) {
-      meta.textContent = ['LOVEJOY MARKET', event.time, 'FISHERS, IN'].filter(Boolean).join(' · ');
+      meta.textContent = ['LOVEJOY MARKET', event.time, 'INDIANAPOLIS, IN'].filter(Boolean).join(' · ');
     }
     if (title) title.textContent = event.title || 'LoveJoy event';
     if (description) {
