@@ -2447,7 +2447,7 @@ runStarCascade();
       if (parts[1]) parts[1].textContent = '--';
       if (parts[2]) parts[2].textContent = '---';
     }
-    if (meta) meta.textContent = 'LOVEJOY MARKET · INDIANAPOLIS, IN';
+    if (meta) meta.textContent = 'LOVEJOY MARKET · FISHERS, IN';
     if (title) title.textContent = 'Nothing official yet. Suspicious, I know.';
     if (description) description.textContent = 'The group chat can speculate. When I confirm a date, it will show up here by itself.';
     if (link) {
@@ -2474,7 +2474,7 @@ runStarCascade();
     }
 
     if (meta) {
-      meta.textContent = ['LOVEJOY MARKET', event.time, 'INDIANAPOLIS, IN'].filter(Boolean).join(' · ');
+      meta.textContent = ['LOVEJOY MARKET', event.time, 'FISHERS, IN'].filter(Boolean).join(' · ');
     }
     if (title) title.textContent = event.title || 'LoveJoy event';
     if (description) {
