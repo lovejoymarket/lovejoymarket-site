@@ -2595,3 +2595,111 @@ runStarCascade();
 
   activate(activeIndex);
 })();
+
+
+/* Super Secret Soft Opening inquiry -> structured email */
+(() => {
+  const form = document.querySelector('[data-soft-opening-inquiry]');
+  if (!form) return;
+  const status = form.querySelector('[data-soft-opening-status]');
+  const copyButton = form.querySelector('[data-soft-opening-copy]');
+  const destination = form.dataset.email || 'hello@lovejoymarket.co';
+
+  // Add booked slot labels here. The visible time chips and dropdown will update together.
+  const TAKEN_SLOTS = [
+    // 'Sat Sep 19 · 1:30 PM',
+  ];
+
+  document.querySelectorAll('[data-soft-slot]').forEach((chip) => {
+    const slot = chip.getAttribute('data-soft-slot');
+    if (TAKEN_SLOTS.includes(slot)) {
+      chip.classList.add('is-taken');
+      chip.setAttribute('aria-label', `${slot} taken`);
+      chip.textContent = `${chip.textContent} · taken`;
+    }
+  });
+  const slotSelect = form.elements.namedItem('slot');
+  if (slotSelect && slotSelect.options) {
+    [...slotSelect.options].forEach((option) => {
+      if (TAKEN_SLOTS.includes(option.value)) {
+        option.disabled = true;
+        option.textContent = `${option.textContent} · TAKEN`;
+      }
+    });
+  }
+
+  const value = (name) => {
+    const field = form.elements.namedItem(name);
+    return field ? String(field.value || '').trim() : '';
+  };
+
+  function body() {
+    return [
+      'SUPER SECRET SOFT OPENING RSVP REQUEST',
+      '',
+      `Name: ${value('name')}`,
+      `Email: ${value('email')}`,
+      `Phone: ${value('phone') || 'not provided'}`,
+      `Requested slot: ${value('slot')}`,
+      `Placement: ${value('placement')}`,
+      `Approx. size: ${value('size')}`,
+      `Ink: ${value('color')}`,
+      `Deposit paid: ${value('deposit_paid') || 'not answered'}`,
+      `Deposit link: https://square.link/u/DewqtTlf`,
+      '',
+      'TATTOO IDEA:',
+      value('idea'),
+      '',
+      'OTHER NOTES:',
+      value('notes') || 'none',
+      '',
+      'REFERENCE IMAGE:',
+      'I will attach my tattoo reference/image to this email before sending.',
+      '',
+      'BOOKING NOTE:',
+      'I understand this is a requested time only. Jessica still confirms the time manually, and the appointment is held once the $25 deposit is paid.'
+    ].join('\n');
+  }
+
+  function subject() {
+    return `SUPER SECRET SOFT OPENING | ${value('name') || 'Client'} | ${value('slot') || 'Time Request'}`;
+  }
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    const mailto = `mailto:${encodeURIComponent(destination)}?subject=${encodeURIComponent(subject())}&body=${encodeURIComponent(body())}`;
+    if (status) status.textContent = 'Email built. Attach your reference image before you send it, then I will manually confirm the slot. ♡';
+    window.location.href = mailto;
+  });
+
+  if (copyButton) {
+    copyButton.addEventListener('click', async () => {
+      if (!form.reportValidity()) return;
+      const text = `${subject()}\n\n${body()}`;
+      try {
+        await navigator.clipboard.writeText(text);
+        if (status) status.textContent = `Copied. Paste it into an email to ${destination}, attach your reference, and send. ✦`;
+      } catch (error) {
+        if (status) status.textContent = 'Your browser is being dramatic. Use “build my secret email” instead.';
+      }
+    });
+  }
+})();
+
+/* Tiny useless tattoo survey */
+(() => {
+  const select = document.querySelector('[data-weird-survey]');
+  const result = document.querySelector('[data-weird-survey-result]');
+  if (!select || !result) return;
+  const answers = {
+    confident: 'Diagnosis: dangerous. I respect it.',
+    committee: 'Diagnosis: democracy has failed you. Book the tattoo anyway.',
+    omens: 'Diagnosis: if you see three crows on the way here, apparently that counts as confirmation.',
+    late: 'Diagnosis: your screen-time report is evidence and I will not be taking questions.',
+    ex: 'Diagnosis: medically hilarious. Spiritually petty. Proceed with discernment.'
+  };
+  select.addEventListener('change', () => {
+    result.textContent = answers[select.value] || 'Results will not affect your appointment. I am simply nosy. ♡';
+  });
+})();

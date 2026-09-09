@@ -1,6 +1,30 @@
 {
   "events": [
     {
+      "date": "2026-09-18",
+      "time": "5–9 PM",
+      "title": "Super Secret Soft Opening",
+      "description": "$75 you-call-it tattoos up to 4×4 inches. Add color for $25. Approved slots are held with a $25 Square deposit.",
+      "url": "super-secret-soft-opening.html",
+      "linkLabel": "psst... see the secret →"
+    },
+    {
+      "date": "2026-09-19",
+      "time": "11 AM–5 PM",
+      "title": "Super Secret Soft Opening · Day 2",
+      "description": "$75 you-call-it tattoos up to 4×4 inches. Add color for $25. Request a time, send the reference, then wait for approval.",
+      "url": "super-secret-soft-opening.html",
+      "linkLabel": "request a Saturday slot →"
+    },
+    {
+      "date": "2026-09-20",
+      "time": "12–5 PM",
+      "title": "Super Secret Soft Opening · Day 3",
+      "description": "Last day of the soft-opening tattoo special: $75 black + gray, or $100 with color, up to 4×4 inches.",
+      "url": "super-secret-soft-opening.html",
+      "linkLabel": "request a Sunday slot →"
+    },
+    {
       "date": "2026-10-01",
       "time": "Evening hours coming soon",
       "title": "First Thursday at LoveJoy",

@@ -4830,3 +4830,316 @@ body .myspace-page .sun-quiz-subheading {
     height: 46px !important;
   }
 }
+
+/* ==========================================================
+   SUPER SECRET SOFT OPENING · SEPT 18–20, 2026
+   Uses the existing LoveJoy MySpace/inbox visual system.
+   ========================================================== */
+.secret-opening-marquee {
+  background: var(--pink) !important;
+  color: var(--navy) !important;
+}
+.secret-opening-marquee .profile-strip-track {
+  font-family: var(--heading-font) !important;
+  font-weight: 700 !important;
+  letter-spacing: .045em;
+}
+
+/* Keep this hero in the same navy profile-banner family as every other section page. */
+.secret-opening-hero {
+  background:
+    radial-gradient(circle at 88% 18%, rgba(255,45,141,.15) 0 2px, transparent 3px),
+    radial-gradient(circle at 84% 28%, rgba(255,248,236,.10) 0 1px, transparent 2px),
+    rgba(7,24,44,.72);
+}
+.secret-eyebrow {
+  margin: 8px 0 5px;
+  color: var(--pink);
+  font-family: var(--heading-font) !important;
+  font-size: .95rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: .05em;
+}
+.secret-opening-title span { color: var(--cream); }
+
+/* Inbox header follows the same navy/pink/cream vocabulary as section-route-grid. */
+.secret-message-head {
+  display: grid;
+  grid-template-columns: auto 1fr auto 1.4fr;
+  gap: 6px 10px;
+  align-items: center;
+  margin: 0 0 12px;
+  padding: 8px 10px;
+  border: 1px solid var(--navy);
+  background: #fff;
+  box-shadow: 3px 3px 0 rgba(255,45,141,.24);
+  font-size: .62rem;
+}
+.secret-message-head span,
+.secret-message-head strong {
+  font-family: var(--heading-font) !important;
+  font-weight: 600;
+}
+.secret-message-head span {
+  color: var(--pink);
+  letter-spacing: .05em;
+}
+.secret-message-head strong { color: var(--navy); }
+
+.secret-special-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1px;
+  border: 1px solid var(--navy);
+  background: var(--navy);
+}
+.secret-special-grid > div {
+  min-height: 126px;
+  padding: 12px;
+  background: var(--cream);
+}
+.secret-special-grid span,
+.secret-special-grid strong,
+.secret-hours-grid span,
+.secret-hours-grid strong,
+.availability-inbox::before,
+.availability-row span,
+.availability-row strong,
+.slot-chip {
+  font-family: var(--heading-font) !important;
+}
+.secret-special-grid span {
+  display: block;
+  color: var(--pink);
+  font-size: .95rem;
+  font-weight: 600;
+  line-height: 1.12;
+}
+.secret-special-grid strong {
+  display: block;
+  margin: 4px 0;
+  color: var(--navy);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.secret-special-grid p { margin: 0; font-size: .72rem; line-height: 1.4; }
+.secret-note {
+  margin: 12px 0 !important;
+  padding: 9px 10px;
+  border-left: 4px solid var(--pink);
+  background: #ffe4f0;
+  color: var(--navy);
+  font-size: .72rem !important;
+  line-height: 1.5;
+}
+
+.secret-hours-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1px;
+  border: 1px solid var(--navy);
+  background: var(--navy);
+}
+.secret-hours-grid article {
+  padding: 12px;
+  background: var(--navy-2);
+  color: var(--cream);
+}
+.secret-hours-grid span {
+  display: block;
+  color: var(--pink);
+  font-size: .92rem;
+  font-weight: 600;
+  line-height: 1.15;
+}
+.secret-hours-grid strong {
+  display: block;
+  margin: 4px 0 8px;
+  color: var(--cream);
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.1;
+}
+.secret-hours-grid p { margin: 0; color: var(--cream); font-size: .68rem !important; line-height: 1.55; }
+
+.secret-confirm-check {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 8px;
+  align-items: flex-start;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px dashed var(--navy);
+  background: #ffe4f0;
+}
+.secret-confirm-check input { width: auto !important; margin-top: 2px; accent-color: var(--pink); }
+.secret-confirm-check span { color: var(--navy) !important; font-size: .68rem !important; line-height: 1.45; }
+.secret-attachment-note { background: #ffe4f0; }
+
+.tattoo-secret-card .module-title { background: var(--pink); color: var(--navy); }
+.secret-message-body { position: relative; }
+.tattoo-availability-card .module-title::after {
+  content: '  ✦ usually, not legally binding';
+  opacity: .72;
+  font-family: var(--heading-font) !important;
+  font-size: .78rem;
+  font-weight: 500;
+}
+.availability-inbox {
+  position: relative;
+  display: grid;
+  gap: 0;
+  border: 1px solid var(--navy);
+  background: var(--cream);
+  box-shadow: 4px 4px 0 rgba(255,45,141,.22);
+}
+.availability-inbox::before {
+  content: attr(data-inbox-label);
+  display: block;
+  padding: 7px 9px;
+  background: var(--navy);
+  color: var(--cream);
+  font-size: .82rem;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: .035em;
+}
+.availability-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.6fr;
+  gap: 8px;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #d8c8bc;
+}
+.availability-row span {
+  color: var(--pink);
+  font-size: 1rem;
+  font-weight: 600;
+}
+.availability-row strong {
+  color: var(--navy);
+  font-size: 1rem;
+  font-weight: 600;
+}
+.availability-row small { color: #74695f; font-size: .62rem; }
+.availability-note { margin: 10px 0 0 !important; color: #74695f; font-size: .64rem !important; line-height: 1.45; }
+
+/* The weird survey intentionally uses the same plain form treatment as other LoveJoy forms. */
+.weird-survey-body label {
+  display: block;
+  margin: 9px 0 4px;
+  color: var(--pink);
+  font-size: .65rem;
+  font-weight: 900;
+}
+.weird-survey-body select {
+  width: 100%;
+  min-height: 42px;
+  padding: 8px 10px;
+  border: 1px solid var(--navy);
+  border-radius: 0;
+  background: #fff;
+  color: var(--navy);
+  font: 400 .67rem Verdana,Arial,Helvetica,sans-serif;
+}
+.weird-survey-result {
+  min-height: 32px;
+  margin: 8px 0 0 !important;
+  padding: 8px 10px;
+  border-left: 4px solid var(--pink);
+  background: #ffe4f0;
+  color: var(--navy);
+  font-size: .67rem !important;
+}
+
+.slot-chip-row { display: flex; flex-wrap: wrap; gap: 5px; }
+.slot-chip {
+  display: inline-block !important;
+  padding: 4px 6px;
+  border: 1px solid rgba(255,248,236,.55);
+  color: var(--cream) !important;
+  font-size: .82rem !important;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0 !important;
+}
+.slot-chip.is-taken {
+  text-decoration: line-through;
+  opacity: .48;
+  background: rgba(255,45,141,.15);
+}
+
+@media (max-width:720px) {
+  .secret-special-grid,
+  .secret-hours-grid { grid-template-columns: 1fr; }
+  .secret-special-grid > div { min-height: auto; }
+  .secret-message-head { grid-template-columns: auto 1fr; }
+  .availability-row { grid-template-columns: 1fr auto; }
+  .availability-row small { grid-column: 1/-1; }
+  .tattoo-availability-card .module-title::after { display: block; margin-top: 3px; }
+}
+/* Super Secret Soft Opening deposit controls — same LoveJoy form system. */
+.secret-inline-deposit {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: .62rem;
+}
+.secret-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.secret-deposit-callout { margin: 10px 0 12px; }
+.secret-deposit-callout .session-button { margin-top: 2px; }
+.secret-deposit-status {
+  margin: 0;
+  padding: 10px;
+  border: 1px solid #d8c8bc;
+  background: var(--cream);
+}
+.secret-deposit-status legend {
+  padding: 0 7px;
+  color: var(--pink);
+  font-family: var(--heading-font);
+  font-size: .82rem;
+  font-weight: 600;
+}
+.secret-deposit-options {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 7px;
+}
+.tattoo-inquiry-form .secret-deposit-option {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 7px;
+  padding: 8px;
+  border: 1px solid var(--navy);
+  background: #fff;
+}
+.tattoo-inquiry-form .secret-deposit-option input {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  margin: 1px 0 0;
+  accent-color: var(--pink);
+}
+.tattoo-inquiry-form .secret-deposit-option span {
+  color: var(--ink) !important;
+  font-size: .62rem !important;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.secret-deposit-status p {
+  margin: 8px 0 0 !important;
+  font-size: .6rem !important;
+}
+.secret-deposit-status a { color: var(--pink); font-weight: 900; }
+@media (max-width:560px) {
+  .secret-deposit-options { grid-template-columns: 1fr; }
+}
