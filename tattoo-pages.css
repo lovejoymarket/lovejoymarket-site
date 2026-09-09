@@ -26,7 +26,7 @@
   color: var(--navy);
   padding: 7px 9px;
   text-decoration: none;
-  font-size: .65rem;
+  font-size: 0.76rem;
   font-weight: 900;
   box-shadow: 2px 2px 0 rgba(255,45,141,.25);
 }
@@ -37,7 +37,7 @@
 }
 
 .tattoo-hub-intro {
-  font-size: .84rem !important;
+  font-size: 0.96rem !important;
   margin-bottom: 12px !important;
 }
 .tattoo-route-grid {
@@ -73,16 +73,16 @@
 }
 .tattoo-route-card strong {
   color: var(--pink);
-  font-size: .86rem;
+  font-size: 0.96rem;
 }
 .tattoo-route-card p {
   margin: 6px 0 10px !important;
-  font-size: .7rem !important;
+  font-size: 0.86rem !important;
   flex: 1;
 }
 .tattoo-route-card b {
   color: var(--navy);
-  font-size: .66rem;
+  font-size: 0.76rem;
   text-decoration: underline;
 }
 .party-route {
@@ -101,7 +101,7 @@
   border: 1px solid var(--navy);
   padding: 7px 9px;
   color: var(--navy);
-  font-size: .68rem;
+  font-size: 0.76rem;
   font-weight: 900;
   text-decoration: none;
   background: #fff;
@@ -119,9 +119,9 @@
   background: var(--cream);
   padding: 12px;
 }
-.tattoo-info-grid strong { color: var(--pink); font-size: .78rem; }
-.tattoo-info-grid p { margin: 4px 0 0 !important; font-size: .7rem !important; }
-.tattoo-info-grid a { display: inline-block; margin-top: 6px; color: var(--navy); font-size: .66rem; font-weight: 900; }
+.tattoo-info-grid strong { color: var(--pink); font-size: 0.86rem; }
+.tattoo-info-grid p { margin: 4px 0 0 !important; font-size: 0.86rem !important; }
+.tattoo-info-grid a { display: inline-block; margin-top: 6px; color: var(--navy); font-size: 0.76rem; font-weight: 900; }
 
 .route-bottom {
   display: flex;
@@ -139,7 +139,7 @@
 /* Tattoo Party page */
 .party-page-intro {
   margin-bottom: 12px !important;
-  font-size: .78rem !important;
+  font-size: 0.86rem !important;
 }
 .party-vs-title {
   display: grid;
@@ -154,14 +154,14 @@
   color: var(--cream);
   padding: 8px 10px;
   text-align: center;
-  font-size: .72rem;
+  font-size: 0.86rem;
   font-weight: 900;
   letter-spacing: .08em;
 }
 .party-vs-title b {
   color: var(--pink);
   font-family: "Courier New", monospace;
-  font-size: 1.15rem;
+  font-size: 1.18rem;
   text-shadow: 2px 2px 0 rgba(7,24,44,.15);
 }
 
@@ -185,7 +185,7 @@
 }
 .party-type-top span {
   color: var(--pink);
-  font-size: .58rem;
+  font-size: 0.68rem;
   font-weight: 900;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -193,7 +193,7 @@
 .party-type-top h2 {
   color: var(--cream) !important;
   margin: 3px 0 0 !important;
-  font-size: 1.05rem !important;
+  font-size: 1.1rem !important;
   line-height: 1.1;
 }
 .copromo-party .party-type-top {
@@ -209,12 +209,12 @@
 .party-detail strong {
   display: block;
   color: var(--pink);
-  font-size: .69rem;
+  font-size: 0.76rem;
   margin-bottom: 4px;
 }
 .party-detail p {
   margin: 0 !important;
-  font-size: .68rem !important;
+  font-size: 0.76rem !important;
   line-height: 1.5;
 }
 
@@ -239,20 +239,20 @@
   background: var(--pink);
   color: var(--navy);
   border: 1px solid var(--navy);
-  font-size: .62rem;
+  font-size: 0.76rem;
   font-weight: 900;
 }
 .party-basics strong {
   display: block;
   color: var(--pink);
-  font-size: .73rem;
+  font-size: 0.86rem;
   line-height: 1.18;
   margin-bottom: 5px;
 }
 .party-basics small {
   display: block;
   color: rgba(17,17,17,.72);
-  font-size: .63rem;
+  font-size: 0.76rem;
   line-height: 1.42;
 }
 
@@ -269,7 +269,7 @@
 .tattoo-party-form legend {
   padding: 0 7px;
   color: var(--pink);
-  font-size: .72rem;
+  font-size: 0.86rem;
   font-weight: 900;
 }
 .party-form-grid {
@@ -280,7 +280,7 @@
 .tattoo-party-form label {
   display: grid;
   gap: 4px;
-  font-size: .68rem;
+  font-size: 0.76rem;
   font-weight: 900;
   color: var(--pink);
 }
@@ -294,7 +294,7 @@
   color: var(--ink);
   padding: 9px 10px;
   font: inherit;
-  font-size: .76rem;
+  font-size: 0.86rem;
   font-weight: 400;
 }
 .tattoo-party-form textarea { resize: vertical; min-height: 74px; }
@@ -346,7 +346,7 @@
   cursor: pointer;
   padding: 9px 34px 9px 11px;
   color: var(--navy);
-  font-size: .72rem;
+  font-size: 0.86rem;
   font-weight: 900;
   position: relative;
 }
@@ -365,7 +365,7 @@
 .party-policy-list p {
   margin: 0 !important;
   padding: 10px 11px 12px;
-  font-size: .7rem !important;
+  font-size: 0.86rem !important;
   line-height: 1.55;
 }
 
@@ -386,7 +386,7 @@
   display: block;
   color: var(--pink);
   margin: 2px 0 5px;
-  font-size: .8rem;
+  font-size: 0.96rem;
 }
 .events-party-vs {
   display: grid;
@@ -430,11 +430,11 @@
   background: var(--pink);
   color: var(--navy);
   padding: 9px 11px;
-  font-size: .8rem;
+  font-size: 0.96rem;
   font-weight: 900;
 }
 .party-mail-choice-body { padding: 12px; }
-.party-mail-choice-body p { font-size: .75rem; margin: 0 0 10px; }
+.party-mail-choice-body p { font-size: 0.86rem; margin: 0 0 10px; }
 .party-mail-choice-actions { display: grid; gap: 7px; }
 .party-mail-choice-actions a,
 .party-mail-choice-actions button {
@@ -446,7 +446,7 @@
   color: var(--navy);
   padding: 10px 11px;
   font: inherit;
-  font-size: .72rem;
+  font-size: 0.86rem;
   font-weight: 900;
   cursor: pointer;
   text-decoration: none;
@@ -468,19 +468,19 @@
   .route-bottom { align-items: stretch; flex-direction: column; }
   .party-two-columns { grid-template-columns: 1fr 1fr; gap: 7px; }
   .party-type-top { min-height: 102px; padding: 9px; }
-  .party-type-top h2 { font-size: .84rem !important; }
+  .party-type-top h2 { font-size: 0.96rem !important; }
   .party-detail { padding: 8px; min-height: 0; }
-  .party-detail strong { font-size: .62rem; }
-  .party-detail p { font-size: .61rem !important; line-height: 1.42; }
+  .party-detail strong { font-size: 0.76rem; }
+  .party-detail p { font-size: 0.76rem !important; line-height: 1.42; }
   .party-vs-title { gap: 6px; }
-  .party-vs-title span { font-size: .6rem; padding: 7px 5px; }
-  .party-vs-title b { font-size: .9rem; }
+  .party-vs-title span { font-size: 0.76rem; padding: 7px 5px; }
+  .party-vs-title b { font-size: 1.02rem; }
   .party-basics { grid-template-columns: 1fr 1fr; }
   .party-form-grid { grid-template-columns: 1fr; }
   .events-party-mini-grid { grid-template-columns: 1fr 45px 1fr; gap: 5px; }
   .events-party-mini-grid article { padding: 8px; }
-  .events-party-mini-grid strong { font-size: .68rem; }
-  .events-party-mini-grid p { font-size: .61rem !important; }
+  .events-party-mini-grid strong { font-size: 0.76rem; }
+  .events-party-mini-grid p { font-size: 0.76rem !important; }
   .party-events-cta { flex-direction: column; align-items: stretch; }
   .party-events-cta .session-button { text-align: center; }
 }
@@ -494,9 +494,9 @@
   .tattoo-route-grid { grid-template-columns: 1fr; }
   .tattoo-route-card { min-height: 0; }
   .party-two-columns { grid-template-columns: 1fr 1fr; }
-  .party-type-top h2 { font-size: .73rem !important; }
-  .party-detail strong { font-size: .58rem; }
-  .party-detail p { font-size: .57rem !important; }
+  .party-type-top h2 { font-size: 0.86rem !important; }
+  .party-detail strong { font-size: 0.68rem; }
+  .party-detail p { font-size: 0.68rem !important; }
   .party-basics { grid-template-columns: 1fr; }
   .events-party-mini-grid { grid-template-columns: 1fr; }
   .events-party-vs { min-height: 34px; }

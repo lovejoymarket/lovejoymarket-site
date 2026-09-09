@@ -2607,7 +2607,7 @@ runStarCascade();
 
   // Add booked slot labels here. The visible time chips and dropdown will update together.
   const TAKEN_SLOTS = [
-    // 'Sat Sep 19 · 1:30 PM',
+    // 'Sat Sep 19 · 1:45 PM',
   ];
 
   document.querySelectorAll('[data-soft-slot]').forEach((chip) => {
@@ -2657,7 +2657,7 @@ runStarCascade();
       'I will attach my tattoo reference/image to this email before sending.',
       '',
       'BOOKING NOTE:',
-      'I understand this is a requested time only. Jessica still confirms the time manually, and the appointment is held once the $25 deposit is paid.'
+      'I understand this is a requested time. Jessica confirms it manually, and the $25 deposit holds the approved spot.'
     ].join('\n');
   }
 
@@ -2669,7 +2669,7 @@ runStarCascade();
     event.preventDefault();
     if (!form.reportValidity()) return;
     const mailto = `mailto:${encodeURIComponent(destination)}?subject=${encodeURIComponent(subject())}&body=${encodeURIComponent(body())}`;
-    if (status) status.textContent = 'Email built. Attach your reference image before you send it, then I will manually confirm the slot. ♡';
+    if (status) status.textContent = 'Email ready. Attach your reference image, then send it. ♡';
     window.location.href = mailto;
   });
 
@@ -2685,6 +2685,35 @@ runStarCascade();
       }
     });
   }
+})();
+
+/* Super Secret Soft Opening chair personality assessment */
+(() => {
+  const form = document.querySelector('[data-secret-personality]');
+  const result = document.querySelector('[data-secret-personality-result]');
+  if (!form || !result) return;
+
+  const scoreMap = {
+    planner: 0, responsible: 0, stare: 0,
+    chaos: 1, coffee: 1, next: 1,
+    omen: 2, candy: 2, secret: 2,
+    friend: 3, nothing: 3, post: 3
+  };
+  const diagnoses = [
+    '<strong>The Archivist.</strong> You have screenshots in folders and probably know the exact placement already. Disturbingly prepared.',
+    '<strong>The Chaos Sprite.</strong> Impulsive, committed, and somehow this is usually how the good ones happen.',
+    '<strong>The Tattoo Cryptid.</strong> Your process makes no sense to outsiders. That is between you and the moon.',
+    '<strong>The Main Character.</strong> You already know what song is going on the reveal post. I respect the production value.'
+  ];
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    const data = new FormData(form);
+    const values = ['planning', 'snack', 'after'].map((key) => scoreMap[data.get(key)] ?? 0);
+    const diagnosis = diagnoses[values.reduce((a, b) => a + b, 0) % diagnoses.length];
+    result.innerHTML = `Diagnosis: ${diagnosis}`;
+  });
 })();
 
 /* Tiny useless tattoo survey */
