@@ -2605,29 +2605,27 @@ runStarCascade();
   const copyButton = form.querySelector('[data-soft-opening-copy]');
   const destination = form.dataset.email || 'hello@lovejoymarket.co';
 
-  // Add booked slot labels here. The visible time chips and dropdown will update together.
+  // Paid deposits only. These stay visible in the hours graphic with a strikethrough,
+  // but are removed from both booking dropdowns. Unpaid requests remain available.
   const TAKEN_SLOTS = [
-    // 'Sat Sep 19 · 1:45 PM',
+    'Sat Sep 19 · 2:40 PM',
+    'Sat Sep 19 · 3:35 PM',
   ];
 
   document.querySelectorAll('[data-soft-slot]').forEach((chip) => {
     const slot = chip.getAttribute('data-soft-slot');
     if (TAKEN_SLOTS.includes(slot)) {
       chip.classList.add('is-taken');
-      chip.setAttribute('aria-label', `${slot} taken`);
-      chip.textContent = `${chip.textContent} · taken`;
+      chip.setAttribute('aria-label', `${slot} booked`);
     }
   });
+
   ['slot', 'slot_backup'].forEach((fieldName) => {
     const slotSelect = form.elements.namedItem(fieldName);
-    if (slotSelect && slotSelect.options) {
-      [...slotSelect.options].forEach((option) => {
-        if (TAKEN_SLOTS.includes(option.value)) {
-          option.disabled = true;
-          option.textContent = `${option.textContent} · TAKEN`;
-        }
-      });
-    }
+    if (!slotSelect || !slotSelect.options) return;
+    [...slotSelect.options].forEach((option) => {
+      if (TAKEN_SLOTS.includes(option.value)) option.remove();
+    });
   });
 
   const firstChoice = form.elements.namedItem('slot');
