@@ -2618,15 +2618,31 @@ runStarCascade();
       chip.textContent = `${chip.textContent} · taken`;
     }
   });
-  const slotSelect = form.elements.namedItem('slot');
-  if (slotSelect && slotSelect.options) {
-    [...slotSelect.options].forEach((option) => {
-      if (TAKEN_SLOTS.includes(option.value)) {
-        option.disabled = true;
-        option.textContent = `${option.textContent} · TAKEN`;
-      }
+  ['slot', 'slot_backup'].forEach((fieldName) => {
+    const slotSelect = form.elements.namedItem(fieldName);
+    if (slotSelect && slotSelect.options) {
+      [...slotSelect.options].forEach((option) => {
+        if (TAKEN_SLOTS.includes(option.value)) {
+          option.disabled = true;
+          option.textContent = `${option.textContent} · TAKEN`;
+        }
+      });
+    }
+  });
+
+  const firstChoice = form.elements.namedItem('slot');
+  const backupChoice = form.elements.namedItem('slot_backup');
+  const syncBackupChoices = () => {
+    if (!firstChoice || !backupChoice || !backupChoice.options) return;
+    [...backupChoice.options].forEach((option) => {
+      if (!option.value) return;
+      const isTaken = TAKEN_SLOTS.includes(option.value);
+      option.disabled = isTaken || option.value === firstChoice.value;
     });
-  }
+    if (backupChoice.value && backupChoice.value === firstChoice.value) backupChoice.value = '';
+  };
+  if (firstChoice) firstChoice.addEventListener('change', syncBackupChoices);
+  syncBackupChoices();
 
   const value = (name) => {
     const field = form.elements.namedItem(name);
@@ -2640,7 +2656,8 @@ runStarCascade();
       `Name: ${value('name')}`,
       `Email: ${value('email')}`,
       `Phone: ${value('phone') || 'not provided'}`,
-      `Requested slot: ${value('slot')}`,
+      `First-choice slot: ${value('slot')}`,
+      `Second-choice slot: ${value('slot_backup') || 'none provided'}`,
       `Placement: ${value('placement')}`,
       `Approx. size: ${value('size')}`,
       `Ink: ${value('color')}`,
