@@ -2747,3 +2747,100 @@ runStarCascade();
     result.textContent = answers[select.value] || 'Results will not affect your appointment. I am simply nosy. ♡';
   });
 })();
+
+/* LoveJoy Text Club popup · Square Text to Sign-Up */
+(() => {
+  const STORAGE_KEY = 'lovejoyTextPopupUntil';
+  const DISMISS_DAYS = 7;
+  const CTA_DAYS = 30;
+  const SHOW_DELAY = 8000;
+  const phoneDisplay = '(833) 275-0377';
+  const phoneDial = '+18332750377';
+  const keyword = 'JOIN';
+
+  // Keep the popup out of the way on pages where someone is actively trying
+  // to finish tattoo paperwork or the soft-opening booking flow.
+  const path = window.location.pathname.toLowerCase();
+  const isConversionPage =
+    document.body.classList.contains('secret-opening-page') ||
+    /(inquir|consent|waiver|paperwork|deposit|request)/.test(path);
+  if (isConversionPage) return;
+
+  try {
+    const until = Number(localStorage.getItem(STORAGE_KEY) || 0);
+    if (until > Date.now()) return;
+  } catch (error) {
+    // Continue without persistence if storage is unavailable.
+  }
+
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const smsHref = isIOS
+    ? `sms:${phoneDial}&body=${encodeURIComponent(keyword)}`
+    : `sms:${phoneDial}?body=${encodeURIComponent(keyword)}`;
+
+  const overlay = document.createElement('div');
+  overlay.className = 'lovejoy-text-overlay';
+  overlay.setAttribute('aria-hidden', 'true');
+  overlay.innerHTML = `
+    <section class="lovejoy-text-popup" role="dialog" aria-modal="true" aria-labelledby="lovejoy-text-title" aria-describedby="lovejoy-text-copy">
+      <button class="lovejoy-text-close" type="button" aria-label="Close text updates popup">×</button>
+      <div class="lovejoy-text-inner">
+        <p class="lovejoy-text-kicker">don’t be the last to know 👀</p>
+        <h2 class="lovejoy-text-title" id="lovejoy-text-title">Get the <span>LoveJoy</span> texts 💌</h2>
+        <p class="lovejoy-text-copy" id="lovejoy-text-copy">Tattoo openings, market dates, events, drops + occasional LoveJoy nonsense, straight to your phone.</p>
+        <div class="lovejoy-text-sparkles" aria-hidden="true">✦ ♡ ✦ ♡ ✦</div>
+        <a class="lovejoy-text-cta" href="${smsHref}">Text me the good stuff</a>
+        <p class="lovejoy-text-fallback">Or text <strong>${keyword}</strong> to <strong>${phoneDisplay}</strong>.</p>
+        <p class="lovejoy-text-fineprint">Tap to open a pre-filled ${keyword} text. Square will ask you to confirm your subscription. Message &amp; data rates may apply. Reply STOP to opt out.</p>
+        <button class="lovejoy-text-later" type="button">maybe later, keep me mysterious</button>
+      </div>
+    </section>`;
+
+  document.body.appendChild(overlay);
+
+  const closeButton = overlay.querySelector('.lovejoy-text-close');
+  const laterButton = overlay.querySelector('.lovejoy-text-later');
+  const cta = overlay.querySelector('.lovejoy-text-cta');
+  let lastFocused = null;
+
+  function remember(days) {
+    try {
+      localStorage.setItem(STORAGE_KEY, String(Date.now() + days * 24 * 60 * 60 * 1000));
+    } catch (error) {}
+  }
+
+  function openPopup() {
+    lastFocused = document.activeElement;
+    overlay.classList.add('is-open');
+    overlay.setAttribute('aria-hidden', 'false');
+    window.setTimeout(() => closeButton.focus(), 80);
+  }
+
+  function closePopup(days = DISMISS_DAYS) {
+    remember(days);
+    overlay.classList.remove('is-open');
+    overlay.setAttribute('aria-hidden', 'true');
+    window.setTimeout(() => {
+      overlay.remove();
+      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+    }, 240);
+  }
+
+  closeButton.addEventListener('click', () => closePopup());
+  laterButton.addEventListener('click', () => closePopup());
+  cta.addEventListener('click', () => {
+    remember(CTA_DAYS);
+    window.setTimeout(() => closePopup(CTA_DAYS), 250);
+  });
+
+  overlay.addEventListener('click', (event) => {
+    if (event.target === overlay) closePopup();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && overlay.classList.contains('is-open')) closePopup();
+  });
+
+  window.setTimeout(openPopup, SHOW_DELAY);
+})();
