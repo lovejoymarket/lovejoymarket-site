@@ -104,7 +104,7 @@ img { max-width: 100%; display: block; }
   background: var(--pink);
   color: var(--navy);
   border-bottom: 1px solid var(--cream);
-  font-size: 0.76rem;
+  font-size: 0.95rem;
   font-weight: 900;
   letter-spacing: .11em;
   white-space: nowrap;
@@ -199,7 +199,7 @@ img { max-width: 100%; display: block; }
   align-items: center;
   gap: 7px;
   margin-bottom: 8px;
-  font-size: 0.76rem;
+  font-size: 0.95rem;
   font-weight: 800;
   text-transform: lowercase;
 }
@@ -244,7 +244,7 @@ img { max-width: 100%; display: block; }
 .module-body h2 { margin: 0 0 8px; color: var(--pink); font-size: 1.1rem; }
 .module-body p { margin: 0 0 10px; font-size: 0.96rem; }
 .module-body p:last-child { margin-bottom: 0; }
-.module-note { margin: 7px 9px 10px; font-size: 0.76rem; color: rgba(17,17,17,.62); }
+.module-note { margin: 7px 9px 10px; font-size: 0.95rem; color: rgba(17,17,17,.62); }
 .text-link { color: var(--navy); font-weight: 900; font-size: 0.86rem; text-underline-offset: 3px; }
 .pink-copy { color: var(--pink); font-weight: 900; }
 
@@ -275,7 +275,7 @@ img { max-width: 100%; display: block; }
   border-right: 1px solid #d8c8bc;
   border-bottom: 1px solid #d8c8bc;
   text-decoration: none;
-  font-size: 0.76rem;
+  font-size: 0.95rem;
   font-weight: 800;
 }
 .contact-grid a:nth-child(even) { border-right: 0; }
@@ -283,13 +283,13 @@ img { max-width: 100%; display: block; }
 .contact-grid a span { color: var(--pink); font-size: 1.1rem; }
 .contact-grid a:hover { background: #ffe3ef; }
 .details-list { margin: 0; }
-.details-list > div { display: grid; grid-template-columns: 84px 1fr; gap: 7px; padding: 7px 9px; border-bottom: 1px solid #e2d2c7; font-size: 0.76rem; }
+.details-list > div { display: grid; grid-template-columns: 84px 1fr; gap: 7px; padding: 7px 9px; border-bottom: 1px solid #e2d2c7; font-size: 0.95rem; }
 .details-list > div:last-child { border-bottom: 0; }
 .details-list dt { font-weight: 900; color: var(--pink); }
 .details-list dd { margin: 0; }
 .music-meta { display: grid; gap: 2px; padding: 9px; }
 .music-meta strong { color: var(--pink); font-size: 0.96rem; }
-.music-meta span { font-size: 0.76rem; color: rgba(17,17,17,.62); }
+.music-meta span { font-size: 0.95rem; color: rgba(17,17,17,.62); }
 .spotify-frame { display: block; border: 0; border-radius: 0; }
 
 /* right profile column */
@@ -304,7 +304,7 @@ img { max-width: 100%; display: block; }
 .friend-count { margin: 0 0 10px !important; color: rgba(17,17,17,.72); }
 .top-eight-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px 8px; }
 .friend-card { text-decoration: none; text-align: center; display: grid; gap: 4px; color: var(--navy); }
-.friend-name { color: var(--pink); font-weight: 900; font-size: 0.76rem; min-height: 30px; display:flex; align-items:end; justify-content:center; }
+.friend-name { color: var(--pink); font-weight: 900; font-size: 0.95rem; min-height: 30px; display:flex; align-items:end; justify-content:center; }
 .friend-pic {
   aspect-ratio: 1 / 1;
   display: grid;
@@ -319,7 +319,7 @@ img { max-width: 100%; display: block; }
 .friend-card small { font-size: 0.68rem; color: rgba(17,17,17,.58); }
 .friend-card:hover .friend-pic { outline: 2px solid var(--pink); outline-offset: 2px; }
 .view-all-line { margin-top: 10px; text-align: right; }
-.view-all-line a { color: var(--pink); font-size: 0.76rem; font-weight: 900; }
+.view-all-line a { color: var(--pink); font-size: 0.95rem; font-weight: 900; }
 .pics-intro {
   margin: 0 0 8px;
   color: var(--navy);
@@ -344,11 +344,11 @@ img { max-width: 100%; display: block; }
 .comment-icon { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--navy); background: var(--navy); color: var(--cream); font-size: 1.4rem; }
 .quote-line { color: var(--pink); font-size: 1.5rem !important; line-height: 1.02; font-weight: 900; margin: 2px 0 10px !important; }
 .comment-links { display: flex; flex-wrap: wrap; gap: 10px; }
-.comment-links a { color: var(--navy); font-size: 0.76rem; font-weight: 900; }
+.comment-links a { color: var(--navy); font-size: 0.95rem; font-weight: 900; }
 
 .site-footer { position: relative; z-index: 1; padding: 22px 0 34px; border-top: 1px solid rgba(255,248,236,.18); background: var(--navy); color: var(--cream); }
 .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 18px; }
-.footer-small { font-size: 0.76rem; opacity: .65; }
+.footer-small { font-size: 0.95rem; opacity: .65; }
 .location-link {
   color: inherit;
   text-decoration-color: var(--pink);
@@ -381,7 +381,7 @@ img { max-width: 100%; display: block; }
   .profile-wordmark { width: min(100%, 360px); }
   .profile-tagline { font-size: 0.96rem; }
   .profile-subline { font-size: 0.86rem; }
-  .currently-line { font-size: 0.76rem; }
+  .currently-line { font-size: 0.95rem; }
   .myspace-grid { grid-template-columns: 1fr; }
   .profile-left { grid-template-columns: 1fr 1fr; align-items: start; }
   .profile-photo-card, .music-card { grid-column: span 2; }
@@ -394,7 +394,7 @@ img { max-width: 100%; display: block; }
 @media (max-width: 430px) {
   .profile-left { grid-template-columns: 1fr; }
   .profile-photo-card, .music-card { grid-column: auto; }
-  .contact-grid a { font-size: 0.76rem; }
+  .contact-grid a { font-size: 0.95rem; }
   .details-list > div { grid-template-columns: 74px 1fr; }
   .event-post { grid-template-columns: 66px 1fr; gap: 9px; }
   .event-date strong { font-size: 1.7rem; }
@@ -673,7 +673,7 @@ img { max-width: 100%; display: block; }
 }
 .lore-links a {
   color: var(--pink);
-  font-size: 0.76rem;
+  font-size: 0.95rem;
   font-weight: 900;
   text-underline-offset: 3px;
 }
@@ -712,7 +712,7 @@ img { max-width: 100%; display: block; }
 }
 .what-card span {
   display: block;
-  font-size: 0.76rem;
+  font-size: 0.95rem;
   line-height: 1.45;
 }
 .what-card:hover {
@@ -740,7 +740,7 @@ img { max-width: 100%; display: block; }
   display: grid;
   grid-template-columns: 32px 1fr;
   gap: 9px;
-  padding: 8px 0;
+  padding: 11px 0;
 }
 .timeline-dot {
   position: relative;
@@ -761,7 +761,7 @@ img { max-width: 100%; display: block; }
 }
 .timeline-item p {
   margin: 3px 0 0;
-  font-size: 0.76rem;
+  font-size: 0.95rem;
   line-height: 1.48;
 }
 
@@ -792,7 +792,7 @@ img { max-width: 100%; display: block; }
 }
 .final-path-grid strong {
   color: var(--cream);
-  font-size: 0.76rem;
+  font-size: 0.95rem;
 }
 .final-path-grid small {
   color: rgba(255,248,236,.72);
@@ -2539,7 +2539,7 @@ a {
   color: var(--navy);
   text-decoration: none;
   font-weight: 900;
-  font-size: 0.76rem;
+  font-size: 0.95rem;
 }
 
 
@@ -2740,7 +2740,7 @@ a {
 
 .friend-request-copy strong {
   color: #ff2d8d;
-  font-size: 0.76rem;
+  font-size: 0.95rem;
   line-height: 1.25;
 }
 
@@ -2926,7 +2926,7 @@ a {
 
 .arcade-carousel-count {
   font-family: "Courier New", monospace;
-  font-size: 0.76rem;
+  font-size: 0.95rem;
 }
 
 .arcade-carousel-shell {
@@ -3158,7 +3158,7 @@ a {
   .home-page .friend-request-slot .friend-request-avatar span:nth-child(1) {
     left: 5px;
     top: 4px;
-    font-size: 0.76rem;
+    font-size: 0.95rem;
   }
 
   .home-page .friend-request-slot .friend-request-avatar span:nth-child(2) {
@@ -3246,7 +3246,7 @@ a {
   background: var(--navy);
   color: var(--cream);
   padding: 7px 9px;
-  font-size: 0.76rem;
+  font-size: 0.95rem;
   font-weight: 900;
   text-decoration: none;
 }
@@ -3279,7 +3279,7 @@ a {
 
 .client-gallery-item figcaption span {
   color: var(--pink);
-  font-size: 0.76rem;
+  font-size: 0.95rem;
   font-weight: 900;
 }
 
@@ -3327,7 +3327,7 @@ a {
 .gallery-empty a {
   margin-top: 4px;
   color: var(--navy);
-  font-size: 0.76rem;
+  font-size: 0.95rem;
   font-weight: 900;
 }
 
@@ -3340,8 +3340,8 @@ a {
 
 
 .gallery-submit-copy > p {
-  font-size: 0.86rem !important;
-  line-height: 1.5;
+  font-size: 0.98rem !important;
+  line-height: 1.55;
 }
 
 .gallery-submit-rules {
@@ -3367,7 +3367,7 @@ a {
   height: 27px;
   background: var(--navy);
   color: var(--cream);
-  font-size: 0.76rem;
+  font-size: 0.95rem;
 }
 
 .gallery-submit-rules span {
@@ -3496,7 +3496,7 @@ a {
 .gallery-faq summary {
   padding: 8px 9px;
   color: var(--pink);
-  font-size: 0.76rem;
+  font-size: 0.95rem;
   font-weight: 900;
   cursor: pointer;
 }
@@ -3971,14 +3971,14 @@ summary,
    ========================== */
 body .profile-strip {
   font-family: var(--heading-font) !important;
-  font-size: 1.02rem !important;
+  font-size: 1.22rem !important;
   font-weight: 700 !important;
   line-height: 1.2 !important;
   letter-spacing: .08em;
 }
 
 body .profile-strip-track {
-  padding: 8px 0;
+  padding: 11px 0;
 }
 
 body .brand {
@@ -3996,8 +3996,8 @@ body .mobile-menu {
 
 body .myspace-page .banner-status {
   color: var(--cream);
-  font-size: 1.02rem !important;
-  line-height: 1.2 !important;
+  font-size: 1.14rem !important;
+  line-height: 1.25 !important;
 }
 
 body .myspace-page h1:not(.sr-only),
@@ -4006,7 +4006,7 @@ body .myspace-page .tattoo-help-title {
   margin: 3px 0 8px;
   color: var(--pink) !important;
   font-family: var(--heading-font) !important;
-  font-size: clamp(3.4rem, 6.8vw, 5.6rem) !important;
+  font-size: clamp(3.8rem, 7.2vw, 6rem) !important;
   font-weight: 700 !important;
   line-height: .94 !important;
   letter-spacing: -.025em !important;
@@ -4022,9 +4022,9 @@ body .myspace-page .profile-subline,
 body .myspace-page .section-hub-sub,
 body .myspace-page .tattoo-help-sub {
   font-family: var(--heading-font) !important;
-  font-size: 1.1rem !important;
+  font-size: 1.26rem !important;
   font-weight: 600 !important;
-  line-height: 1.35 !important;
+  line-height: 1.4 !important;
 }
 
 body .myspace-page .module-title {
@@ -4032,7 +4032,7 @@ body .myspace-page .module-title {
   background: var(--pink) !important;
   color: var(--navy) !important;
   font-family: var(--heading-font) !important;
-  font-size: 1.25rem !important;
+  font-size: 1.42rem !important;
   font-weight: 700 !important;
   line-height: 1.15 !important;
   text-wrap: balance;
@@ -4386,7 +4386,7 @@ body .myspace-page .sun-quiz-subheading {
 .october-event-tile b {
   align-self: end;
   color: var(--pink);
-  font-size: 0.76rem;
+  font-size: 0.95rem;
 }
 
 .market-maker-note {
@@ -4582,7 +4582,7 @@ body .myspace-page .sun-quiz-subheading {
   border: 1px solid #d7c5b9;
   background: #fff;
   color: var(--navy);
-  font-size: 0.76rem;
+  font-size: 0.95rem;
   line-height: 1.5;
 }
 
@@ -4856,9 +4856,9 @@ body .myspace-page .sun-quiz-subheading {
   margin: 8px 0 5px;
   color: var(--pink);
   font-family: var(--heading-font) !important;
-  font-size: 1.02rem;
-  font-weight: 600;
-  line-height: 1.2;
+  font-size: 1.18rem;
+  font-weight: 700;
+  line-height: 1.25;
   letter-spacing: .05em;
 }
 .secret-opening-title span { color: var(--cream); }
@@ -4874,7 +4874,7 @@ body .myspace-page .sun-quiz-subheading {
   border: 1px solid var(--navy);
   background: #fff;
   box-shadow: 3px 3px 0 rgba(255,45,141,.24);
-  font-size: 0.76rem;
+  font-size: 0.95rem;
 }
 .secret-message-head span,
 .secret-message-head strong {
@@ -4912,27 +4912,27 @@ body .myspace-page .sun-quiz-subheading {
 .secret-special-grid span {
   display: block;
   color: var(--pink);
-  font-size: 1.02rem;
-  font-weight: 600;
+  font-size: 1.15rem;
+  font-weight: 700;
   line-height: 1.12;
 }
 .secret-special-grid strong {
   display: block;
   margin: 4px 0;
   color: var(--navy);
-  font-size: 1.75rem;
+  font-size: 1.95rem;
   font-weight: 700;
   line-height: 1;
 }
-.secret-special-grid p { margin: 0; font-size: 0.86rem; line-height: 1.4; }
+.secret-special-grid p { margin: 0; font-size: 0.98rem; line-height: 1.45; }
 .secret-note {
   margin: 12px 0 !important;
   padding: 9px 10px;
   border-left: 4px solid var(--pink);
   background: #ffe4f0;
   color: var(--navy);
-  font-size: 0.86rem !important;
-  line-height: 1.5;
+  font-size: 0.98rem !important;
+  line-height: 1.55;
 }
 
 .secret-hours-grid {
@@ -4950,16 +4950,16 @@ body .myspace-page .sun-quiz-subheading {
 .secret-hours-grid span {
   display: block;
   color: var(--pink);
-  font-size: 1.02rem;
-  font-weight: 600;
+  font-size: 1.15rem;
+  font-weight: 700;
   line-height: 1.15;
 }
 .secret-hours-grid strong {
   display: block;
   margin: 4px 0 8px;
   color: var(--cream);
-  font-size: 1.35rem;
-  font-weight: 600;
+  font-size: 1.6rem;
+  font-weight: 700;
   line-height: 1.1;
 }
 .secret-hours-grid p { margin: 0; color: var(--cream); font-size: 0.76rem !important; line-height: 1.55; }
@@ -5024,7 +5024,7 @@ body .myspace-page .sun-quiz-subheading {
   font-size: 1.1rem;
   font-weight: 600;
 }
-.availability-row small { color: #74695f; font-size: 0.76rem; }
+.availability-row small { color: #74695f; font-size: 0.95rem; }
 .availability-note { margin: 10px 0 0 !important; color: #74695f; font-size: 0.76rem !important; line-height: 1.45; }
 
 /* The weird survey intentionally uses the same plain form treatment as other LoveJoy forms. */
@@ -5032,7 +5032,7 @@ body .myspace-page .sun-quiz-subheading {
   display: block;
   margin: 9px 0 4px;
   color: var(--pink);
-  font-size: 0.76rem;
+  font-size: 0.95rem;
   font-weight: 900;
 }
 .weird-survey-body select {
@@ -5058,11 +5058,11 @@ body .myspace-page .sun-quiz-subheading {
 .slot-chip-row { display: flex; flex-wrap: wrap; gap: 5px; }
 .slot-chip {
   display: inline-block !important;
-  padding: 4px 6px;
+  padding: 8px 12px;
   border: 1px solid rgba(255,248,236,.55);
   color: var(--cream) !important;
-  font-size: 0.96rem !important;
-  font-weight: 600;
+  font-size: 1.15rem !important;
+  font-weight: 700;
   line-height: 1;
   letter-spacing: 0 !important;
 }
@@ -5071,6 +5071,18 @@ body .myspace-page .sun-quiz-subheading {
 }
 
 @media (max-width:720px) {
+  body .profile-strip { font-size: 1.02rem !important; }
+  body .profile-strip-track { padding: 10px 0; }
+  body .myspace-page .banner-status { font-size: 1rem !important; }
+  .secret-eyebrow { font-size: 1rem; }
+  body .myspace-page .section-hub-sub { font-size: 1.08rem !important; }
+  body .myspace-page .module-title { font-size: 1.12rem !important; }
+  .secret-message-head { font-size: 0.88rem; }
+  .secret-special-grid span { font-size: 1.02rem; }
+  .secret-special-grid strong { font-size: 1.7rem; }
+  .secret-hours-grid span { font-size: 1.05rem; }
+  .secret-hours-grid strong { font-size: 1.35rem; }
+  .slot-chip { padding: 7px 10px; font-size: 1.02rem !important; }
   .secret-special-grid,
   .secret-hours-grid { grid-template-columns: 1fr; }
   .secret-special-grid > div { min-height: auto; }
@@ -5083,7 +5095,7 @@ body .myspace-page .sun-quiz-subheading {
 .secret-inline-deposit {
   display: inline-block;
   margin-top: 8px;
-  font-size: 0.76rem;
+  font-size: 0.95rem;
 }
 .secret-card-actions {
   display: flex;
@@ -5161,7 +5173,7 @@ body .myspace-page .sun-quiz-subheading {
   display: block;
   margin-bottom: 4px;
   color: var(--pink);
-  font-size: 0.76rem;
+  font-size: 0.95rem;
   font-weight: 900;
 }
 .secret-personality-form select {
