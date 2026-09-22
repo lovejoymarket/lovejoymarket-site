@@ -1,3 +1,24 @@
+/* Shared navigation compatibility for pages outside this upload package. */
+(() => {
+  document.querySelectorAll('a[href="events.html"], a[href="events-calendar.html"]').forEach((link) => {
+    link.href = 'popups.html';
+    if (link.closest('nav#primary-nav')) {
+      link.textContent = 'Pop-Ups';
+    } else {
+      const updateText = (node) => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          node.textContent = node.textContent.replace(/Events/g, 'Pop-Ups')
+            .replace(/events/g, 'pop-ups')
+            .replace(/calendar/gi, 'pop-ups');
+        } else {
+          Array.from(node.childNodes).forEach(updateText);
+        }
+      };
+      updateText(link);
+    }
+  });
+})();
+
 const menuButton = document.querySelector('[data-menu-button]');
 const menu = document.querySelector('[data-menu]');
 
@@ -434,173 +455,6 @@ runStarCascade();
 })();
 
 
-/* LoveJoy events calendars */
-(() => {
-  const blocks = [...document.querySelectorAll('[data-calendar-month-block]')];
-  if (!blocks.length) return;
-  const now = new Date();
-
-  function displayMonthFor(events) {
-    const currentYear = now.getFullYear();
-    const currentMonth = now.getMonth();
-    const hasCurrentMonthEvent = events.some((event) => {
-      if (!event || !event.date) return false;
-      const date = new Date(`${event.date}T12:00:00`);
-      return !Number.isNaN(date.getTime()) &&
-        date.getFullYear() === currentYear &&
-        date.getMonth() === currentMonth;
-    });
-
-    if (hasCurrentMonthEvent) return { year: currentYear, month: currentMonth };
-
-    const startOfToday = new Date(now);
-    startOfToday.setHours(0, 0, 0, 0);
-    const nextEvent = events
-      .filter((event) => event && event.date)
-      .map((event) => new Date(`${event.date}T12:00:00`))
-      .filter((date) => !Number.isNaN(date.getTime()) && date >= startOfToday)
-      .sort((a, b) => a - b)[0];
-
-    return nextEvent
-      ? { year: nextEvent.getFullYear(), month: nextEvent.getMonth() }
-      : { year: currentYear, month: currentMonth };
-  }
-
-  function render(block, events) {
-    const root = block.querySelector('[data-event-calendar]');
-    const grid = block.querySelector('[data-calendar-grid]');
-    const monthLabel = block.querySelector('[data-calendar-month]');
-    const list = block.querySelector('[data-calendar-events]');
-    if (!root || !grid || !list) return;
-    grid.replaceChildren();
-
-    const requestedYear = Number(block.dataset.calendarYear);
-    const requestedMonth = Number(block.dataset.calendarMonthIndex);
-    const fallback = displayMonthFor(events);
-    const year = Number.isInteger(requestedYear) ? requestedYear : fallback.year;
-    const month = Number.isInteger(requestedMonth) ? requestedMonth : fallback.month;
-    const monthName = new Date(year, month, 1).toLocaleDateString(undefined, { month: 'long', year: 'numeric' });
-    if (monthLabel) monthLabel.textContent = monthName;
-
-    const first = new Date(year, month, 1);
-    const days = new Date(year, month + 1, 0).getDate();
-    const offset = first.getDay();
-
-    for (let i = 0; i < offset; i += 1) {
-      const blank = document.createElement('div');
-      blank.className = 'calendar-day is-empty';
-      blank.setAttribute('aria-hidden', 'true');
-      grid.appendChild(blank);
-    }
-
-    const currentEvents = events.filter((event) => {
-      if (!event.date) return false;
-      const date = new Date(`${event.date}T12:00:00`);
-      return date.getFullYear() === year && date.getMonth() === month;
-    });
-
-    const byDay = new Map();
-    currentEvents.forEach((event) => {
-      const day = Number(event.date.split('-')[2]);
-      if (!byDay.has(day)) byDay.set(day, []);
-      byDay.get(day).push(event);
-    });
-
-    for (let day = 1; day <= days; day += 1) {
-      const cell = document.createElement('div');
-      cell.className = 'calendar-day';
-      const isToday = day === now.getDate() &&
-        month === now.getMonth() &&
-        year === now.getFullYear();
-      if (isToday) cell.classList.add('is-today');
-
-      const number = document.createElement('span');
-      number.className = 'calendar-day-number';
-      number.textContent = day;
-      cell.appendChild(number);
-
-      const dayEvents = byDay.get(day) || [];
-      dayEvents.slice(0, 3).forEach((event) => {
-        const chip = document.createElement(event.url ? 'a' : 'div');
-        chip.className = 'calendar-chip';
-        chip.textContent = event.title || 'LoveJoy event';
-        if (event.url) chip.href = event.url;
-        if (event.url && /^https?:/.test(event.url)) {
-          chip.target = '_blank';
-          chip.rel = 'noopener';
-        }
-        cell.appendChild(chip);
-      });
-
-      if (dayEvents.length > 3) {
-        const more = document.createElement('small');
-        more.className = 'calendar-more';
-        more.textContent = `+${dayEvents.length - 3} more`;
-        cell.appendChild(more);
-      }
-
-      grid.appendChild(cell);
-    }
-
-    list.replaceChildren();
-    if (!currentEvents.length) {
-      const empty = document.createElement('div');
-      empty.className = 'calendar-empty-card';
-      empty.innerHTML = `<strong>nothing scheduled for ${monthName} yet ♡</strong><span>New dates will appear here as they are confirmed.</span>`;
-      list.appendChild(empty);
-      return;
-    }
-
-    currentEvents
-      .sort((a,b) => a.date.localeCompare(b.date))
-      .forEach((event) => {
-        const item = document.createElement('article');
-        item.className = 'calendar-list-item';
-
-        const date = new Date(`${event.date}T12:00:00`);
-        const dateText = date.toLocaleDateString(undefined, { weekday:'short', month:'short', day:'numeric' });
-
-        const meta = document.createElement('span');
-        meta.className = 'calendar-list-date';
-        meta.textContent = [dateText, event.time].filter(Boolean).join(' · ');
-
-        const title = document.createElement('strong');
-        title.textContent = event.title || 'LoveJoy event';
-
-        const desc = document.createElement('p');
-        desc.textContent = event.description || '';
-
-        const copy = document.createElement('div');
-        copy.append(meta, title);
-        if (event.description) copy.appendChild(desc);
-
-        item.appendChild(copy);
-
-        if (event.url) {
-          const link = document.createElement('a');
-          link.href = event.url;
-          link.className = 'calendar-event-link';
-          link.textContent = event.linkLabel || 'details →';
-          if (/^https?:/.test(event.url)) {
-            link.target = '_blank';
-            link.rel = 'noopener';
-          }
-          item.appendChild(link);
-        }
-
-        list.appendChild(item);
-      });
-  }
-
-  fetch('events.json', { cache: 'no-store' })
-    .then((response) => response.ok ? response.json() : Promise.reject())
-    .then((data) => {
-      const events = Array.isArray(data.events) ? data.events : [];
-      blocks.forEach((block) => render(block, events));
-    })
-    .catch(() => blocks.forEach((block) => render(block, [])));
-})();
-
 /* Event inquiry -> structured email */
 (() => {
   const forms = document.querySelectorAll('[data-event-inquiry]');
@@ -641,13 +495,13 @@ runStarCascade();
 
   function buildLoveJoy(form) {
     return [
-      'LOVEJOY EVENT / COLLABORATION INQUIRY',
+      'LOVEJOY POP-UP / COLLABORATION INQUIRY',
       '',
       `Name / organization: ${formValue(form,'name')}`,
       `Email: ${formValue(form,'email')}`,
       `Phone: ${formValue(form,'phone') || 'not provided'}`,
       `Role: ${formChoice(form,'role')}`,
-      `Event: ${formChoice(form,'program')}`,
+      `Collaboration type: ${formChoice(form,'program')}`,
       `Website / social: ${formValue(form,'timing') || 'not provided'}`,
       '',
       'THE PITCH:',
@@ -690,7 +544,7 @@ runStarCascade();
       if (type === 'private') {
         return `PRIVATE EVENT INQUIRY | ${name} | ${formValue(form,'event_type') || 'Event'}`;
       }
-      return `LOVEJOY EVENT OUTREACH | ${formChoice(form,'program') || 'Event'} | ${name}`;
+      return `LOVEJOY POP-UP OUTREACH | ${formChoice(form,'program') || 'Event'} | ${name}`;
     }
 
     form.addEventListener('submit', (event) => {
@@ -2426,94 +2280,6 @@ runStarCascade();
 })();
 
 /* ==========================================================
-   HOMEPAGE NEXT CONFIRMED EVENT
-   Uses events.json so Home and Events cannot drift apart.
-   ========================================================== */
-(() => {
-  const root = document.querySelector('[data-home-event]');
-  if (!root) return;
-
-  const dateBox = root.querySelector('[data-home-event-date]');
-  const title = root.querySelector('[data-home-event-title]');
-  const description = root.querySelector('[data-home-event-description]');
-  const meta = root.querySelector('[data-home-event-meta]');
-  const link = root.querySelector('[data-home-event-link]');
-
-  function showEmpty() {
-    if (dateBox) {
-      dateBox.setAttribute('aria-label', 'No confirmed event yet');
-      const parts = dateBox.querySelectorAll('span,strong,small');
-      if (parts[0]) parts[0].textContent = '--';
-      if (parts[1]) parts[1].textContent = '--';
-      if (parts[2]) parts[2].textContent = '---';
-    }
-    if (meta) meta.textContent = 'LOVEJOY MARKET · FISHERS, IN';
-    if (title) title.textContent = 'Nothing official yet. Suspicious, I know.';
-    if (description) description.textContent = 'The group chat can speculate. When I confirm a date, it will show up here by itself.';
-    if (link) {
-      link.href = 'events.html';
-      link.textContent = "see what's coming up →";
-      link.removeAttribute('target');
-      link.removeAttribute('rel');
-    }
-  }
-
-  function showEvent(event) {
-    const date = new Date(`${event.date}T12:00:00`);
-    if (Number.isNaN(date.getTime())) return showEmpty();
-
-    if (dateBox) {
-      const parts = dateBox.querySelectorAll('span,strong,small');
-      if (parts[0]) parts[0].textContent = date.toLocaleDateString(undefined, { month: 'short' }).toUpperCase();
-      if (parts[1]) parts[1].textContent = String(date.getDate());
-      if (parts[2]) parts[2].textContent = date.toLocaleDateString(undefined, { weekday: 'short' }).toUpperCase();
-      dateBox.setAttribute(
-        'aria-label',
-        date.toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })
-      );
-    }
-
-    if (meta) {
-      meta.textContent = ['LOVEJOY MARKET', event.time, 'FISHERS, IN'].filter(Boolean).join(' · ');
-    }
-    if (title) title.textContent = event.title || 'LoveJoy event';
-    if (description) {
-      description.textContent = event.description || 'Confirmed. Details are on the Events page.';
-    }
-    if (link) {
-      link.href = event.url || 'events.html';
-      link.textContent = event.linkLabel || 'event details →';
-      if (event.url && /^https?:/i.test(event.url)) {
-        link.target = '_blank';
-        link.rel = 'noopener';
-      } else {
-        link.removeAttribute('target');
-        link.removeAttribute('rel');
-      }
-    }
-  }
-
-  fetch('events.json', { cache: 'no-store' })
-    .then((response) => response.ok ? response.json() : Promise.reject(new Error('events.json')))
-    .then((data) => {
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-
-      const upcoming = (Array.isArray(data.events) ? data.events : [])
-        .filter((event) => {
-          if (!event || !event.date) return false;
-          const date = new Date(`${event.date}T12:00:00`);
-          return !Number.isNaN(date.getTime()) && date >= today;
-        })
-        .sort((a, b) => a.date.localeCompare(b.date));
-
-      if (upcoming.length) showEvent(upcoming[0]);
-      else showEmpty();
-    })
-    .catch(showEmpty);
-})();
-
-/* ==========================================================
    STARCADE IN-PAGE CAROUSEL
    Portals, arrows and dots all swap the one game stage.
    ========================================================== */
@@ -2596,140 +2362,6 @@ runStarCascade();
   activate(activeIndex);
 })();
 
-
-/* Super Secret Soft Opening inquiry -> structured email */
-(() => {
-  const form = document.querySelector('[data-soft-opening-inquiry]');
-  if (!form) return;
-  const status = form.querySelector('[data-soft-opening-status]');
-  const copyButton = form.querySelector('[data-soft-opening-copy]');
-  const destination = form.dataset.email || 'hello@lovejoymarket.co';
-
-  // Paid deposits only. These stay visible in the hours graphic with a strikethrough,
-  // but are removed from both booking dropdowns. Unpaid requests remain available.
-  const TAKEN_SLOTS = [
-    'Sat Sep 19 · 2:40 PM',
-    'Sat Sep 19 · 3:35 PM',
-  ];
-
-  document.querySelectorAll('[data-soft-slot]').forEach((chip) => {
-    const slot = chip.getAttribute('data-soft-slot');
-    if (TAKEN_SLOTS.includes(slot)) {
-      chip.classList.add('is-taken');
-      chip.setAttribute('aria-label', `${slot} booked`);
-    }
-  });
-
-  ['slot', 'slot_backup'].forEach((fieldName) => {
-    const slotSelect = form.elements.namedItem(fieldName);
-    if (!slotSelect || !slotSelect.options) return;
-    [...slotSelect.options].forEach((option) => {
-      if (TAKEN_SLOTS.includes(option.value)) option.remove();
-    });
-  });
-
-  const firstChoice = form.elements.namedItem('slot');
-  const backupChoice = form.elements.namedItem('slot_backup');
-  const syncBackupChoices = () => {
-    if (!firstChoice || !backupChoice || !backupChoice.options) return;
-    [...backupChoice.options].forEach((option) => {
-      if (!option.value) return;
-      const isTaken = TAKEN_SLOTS.includes(option.value);
-      option.disabled = isTaken || option.value === firstChoice.value;
-    });
-    if (backupChoice.value && backupChoice.value === firstChoice.value) backupChoice.value = '';
-  };
-  if (firstChoice) firstChoice.addEventListener('change', syncBackupChoices);
-  syncBackupChoices();
-
-  const value = (name) => {
-    const field = form.elements.namedItem(name);
-    return field ? String(field.value || '').trim() : '';
-  };
-
-  function body() {
-    return [
-      'SUPER SECRET SOFT OPENING RSVP REQUEST',
-      '',
-      `Name: ${value('name')}`,
-      `Email: ${value('email')}`,
-      `Phone: ${value('phone') || 'not provided'}`,
-      `First-choice slot: ${value('slot')}`,
-      `Second-choice slot: ${value('slot_backup') || 'none provided'}`,
-      `Placement: ${value('placement')}`,
-      `Approx. size: ${value('size')}`,
-      `Ink: ${value('color')}`,
-      `Deposit paid: ${value('deposit_paid') || 'not answered'}`,
-      `Deposit link: https://square.link/u/DewqtTlf`,
-      '',
-      'TATTOO IDEA:',
-      value('idea'),
-      '',
-      'OTHER NOTES:',
-      value('notes') || 'none',
-      '',
-      'REFERENCE IMAGE:',
-      'I will attach my tattoo reference/image to this email before sending.',
-      '',
-      'BOOKING NOTE:',
-      'I understand this is a requested time. Jessica confirms it manually, and the $25 deposit holds the approved spot.'
-    ].join('\n');
-  }
-
-  function subject() {
-    return `SUPER SECRET SOFT OPENING | ${value('name') || 'Client'} | ${value('slot') || 'Time Request'}`;
-  }
-
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    if (!form.reportValidity()) return;
-    const mailto = `mailto:${encodeURIComponent(destination)}?subject=${encodeURIComponent(subject())}&body=${encodeURIComponent(body())}`;
-    if (status) status.textContent = 'Email ready. Attach your reference image, then send it. ♡';
-    window.location.href = mailto;
-  });
-
-  if (copyButton) {
-    copyButton.addEventListener('click', async () => {
-      if (!form.reportValidity()) return;
-      const text = `${subject()}\n\n${body()}`;
-      try {
-        await navigator.clipboard.writeText(text);
-        if (status) status.textContent = `Copied. Paste it into an email to ${destination}, attach your reference, and send. ✦`;
-      } catch (error) {
-        if (status) status.textContent = 'Your browser is being dramatic. Use “build my secret email” instead.';
-      }
-    });
-  }
-})();
-
-/* Super Secret Soft Opening chair personality assessment */
-(() => {
-  const form = document.querySelector('[data-secret-personality]');
-  const result = document.querySelector('[data-secret-personality-result]');
-  if (!form || !result) return;
-
-  const scoreMap = {
-    planner: 0, responsible: 0, stare: 0,
-    chaos: 1, coffee: 1, next: 1,
-    omen: 2, candy: 2, secret: 2,
-    friend: 3, nothing: 3, post: 3
-  };
-  const diagnoses = [
-    '<strong>The Archivist.</strong> You have screenshots in folders and probably know the exact placement already. Disturbingly prepared.',
-    '<strong>The Chaos Sprite.</strong> Impulsive, committed, and somehow this is usually how the good ones happen.',
-    '<strong>The Tattoo Cryptid.</strong> Your process makes no sense to outsiders. That is between you and the moon.',
-    '<strong>The Main Character.</strong> You already know what song is going on the reveal post. I respect the production value.'
-  ];
-
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    if (!form.reportValidity()) return;
-    const data = new FormData(form);
-    const values = ['planning', 'snack', 'after'].map((key) => scoreMap[data.get(key)] ?? 0);
-    const diagnosis = diagnoses[values.reduce((a, b) => a + b, 0) % diagnoses.length];
-    result.innerHTML = `Diagnosis: ${diagnosis}`;
-  });
-})();
 
 /* Tiny useless tattoo survey */
 (() => {

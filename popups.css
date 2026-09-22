@@ -1,0 +1,18 @@
+/* LoveJoy Pop-Ups: additions to the existing MySpace-inspired design. */
+.popups-hero{position:relative;overflow:hidden}
+.popups-eyebrow{letter-spacing:.18em;font-size:.78rem;font-weight:800;text-transform:uppercase;margin:1rem 0 .4rem;opacity:.88}
+.popups-lead{max-width:65ch;margin:1.1rem auto 0;line-height:1.65;text-align:center}
+.popups-actions{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:.8rem;margin-top:1.35rem}
+.popups-secondary{background:transparent!important;color:inherit!important;border:2px solid currentColor!important}
+.popups-format-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.popups-format-grid article{padding:1.25rem;border:1px solid rgba(255,255,255,.25);border-radius:14px;background:rgba(255,255,255,.06)}
+.popups-format-grid article>span{font-size:1.65rem;display:block;margin-bottom:.35rem}
+.popups-format-grid h2{font-size:1.28rem;margin:0 0 .55rem}
+.popups-format-grid p{margin:0;line-height:1.6}
+.popups-status{display:flex;align-items:flex-start;gap:1rem;padding:1.1rem;border:1px dashed currentColor;border-radius:12px}
+.popups-status strong{display:block;font-size:1.13rem;margin-bottom:.35rem}
+.popups-status p{margin:0;line-height:1.6}
+.popups-status .status-dot{flex:0 0 auto;margin-top:.45rem}
+.popups-contact-card h2{margin-top:0}
+.popups-contact-card p{line-height:1.65}
+@media(max-width:720px){.popups-format-grid{grid-template-columns:1fr}.popups-actions{justify-content:stretch}.popups-actions .session-button{width:100%;text-align:center}.popups-lead{padding:0 .35rem}}
