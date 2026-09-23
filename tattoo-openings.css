@@ -1,428 +1,230 @@
-/* LoveJoy screenshot-ready weekend openings board · 2026-09-23 */
+
+/* LoveJoy weekend openings + Get In ASAP
+   Clean/simple revision · 2026-09-23
+*/
+
+:root {
+  --lj-navy: #07182c;
+  --lj-pink: #ff2d8d;
+  --lj-cream: #fff8ec;
+  --lj-soft-pink: #ffe3ef;
+}
+
+/* ---------- BIG HEADERS: NO SHADOWS, NO TRICKS ---------- */
+
+.weekend-openings-flyer h2,
+.weekend-openings-flyer .openings-title-clean,
+.asap-page .asap-page-title,
+.asap-page h1.asap-page-title,
+.session-asap-cta strong,
+.asap-jump-card strong {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-style: normal !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  color: var(--lj-navy) !important;
+  text-shadow: none !important;
+  -webkit-text-stroke: 0 !important;
+  filter: none !important;
+  transform: none !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.weekend-openings-flyer h2,
+.weekend-openings-flyer .openings-title-clean {
+  display: block !important;
+  width: 100% !important;
+  margin: 8px 0 16px !important;
+  padding: 0 !important;
+  font-size: clamp(2.5rem, 10vw, 5.6rem) !important;
+  line-height: .88 !important;
+  letter-spacing: -.085em !important;
+  white-space: nowrap !important;
+  text-align: center !important;
+}
+
+.asap-page .asap-page-title {
+  display: block !important;
+  margin: 8px 0 10px !important;
+  padding: 0 !important;
+  font-size: clamp(3.4rem, 14vw, 7rem) !important;
+  line-height: .86 !important;
+  letter-spacing: -.075em !important;
+  white-space: nowrap !important;
+  text-align: center !important;
+}
+
+/* ---------- WEEKEND AVAILABILITY BOARD ---------- */
 
 .weekend-openings-flyer {
-  width: min(100%, 720px);
-  margin: 14px auto 16px;
+  width: min(100%, 760px);
+  margin: 18px auto 22px;
   padding: 22px;
-  border: 2px solid var(--navy);
-  background:
-    radial-gradient(circle at 10% 8%, rgba(255,45,141,.16) 0 2px, transparent 3px),
-    radial-gradient(circle at 86% 14%, rgba(255,45,141,.14) 0 2px, transparent 3px),
-    var(--cream);
-  color: var(--navy);
-  box-shadow: 8px 8px 0 var(--pink);
+  border: 3px solid var(--lj-navy);
+  border-radius: 0;
+  background: var(--lj-cream);
+  color: var(--lj-navy);
+  box-shadow: none !important;
   text-align: center;
   overflow: hidden;
 }
 
 .openings-flyer-kicker {
-  font-family: "Courier New", monospace;
-  font-size: .72rem;
+  margin: 0 0 2px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .82rem;
   font-weight: 900;
-  letter-spacing: .16em;
-}
-
-.weekend-openings-flyer h2 {
-  margin: 8px 0 2px !important;
-  color: var(--pink) !important;
-  font-size: clamp(2rem, 7vw, 4.4rem) !important;
-  line-height: .86 !important;
-  letter-spacing: -.045em;
+  letter-spacing: .12em;
+  color: var(--lj-pink);
   text-transform: uppercase;
-  text-shadow: 3px 3px 0 var(--navy);
 }
 
 .openings-flyer-sub {
-  margin: 10px 0 14px !important;
-  font-size: .82rem !important;
+  margin: 0 0 16px !important;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .8rem !important;
   font-weight: 900;
-  letter-spacing: .12em;
-}
-
-.openings-price-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border: 2px solid var(--navy);
-  background: var(--navy);
-  gap: 2px;
-  margin-bottom: 12px;
-}
-
-.openings-price-row > div {
-  background: #fff8ec;
-  padding: 10px 8px;
-  display: grid;
-  gap: 1px;
-}
-
-.openings-price-row strong {
-  color: var(--pink);
-  font-size: .78rem;
   letter-spacing: .08em;
+  color: var(--lj-navy);
+  text-transform: uppercase;
 }
 
-.openings-price-row span {
-  font-size: 1.55rem;
-  font-weight: 900;
-}
-
-.openings-price-row small {
-  font-size: .68rem;
-  font-weight: 800;
-}
-
-.openings-date-list {
+/* Clear 1-hour / 3-hour rows */
+.simple-opening-list {
   display: grid;
-  gap: 6px;
+  gap: 12px;
   text-align: left;
 }
 
-.openings-date {
-  display: grid;
-  grid-template-columns: 90px 1fr 1fr;
-  gap: 8px;
-  align-items: center;
-  border: 1px solid var(--navy);
+.simple-opening-block {
+  border: 2px solid var(--lj-navy);
   background: #fff;
-  padding: 9px 10px;
-  box-shadow: 3px 3px 0 rgba(7,24,44,.08);
 }
 
-.openings-date.featured {
-  background: #ffe3ef;
-  border-width: 2px;
-}
-
-.openings-date b {
-  color: var(--pink);
-  font-size: .84rem;
-}
-
-.openings-date span {
+.simple-opening-head {
   display: grid;
-  gap: 1px;
-  font-size: .76rem;
-  line-height: 1.15;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 11px 12px;
+  background: var(--lj-navy);
+  color: #fff;
 }
 
-.openings-date span strong {
-  color: var(--navy);
-  font-size: .9rem;
+.simple-opening-head strong {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: .02em;
 }
 
-.openings-date span small {
-  font-size: .62rem;
-  font-weight: 700;
+.simple-opening-head span {
+  font-size: .78rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.simple-opening-times {
+  display: grid;
+  gap: 0;
+}
+
+.simple-opening-times p {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 10px;
+  margin: 0 !important;
+  padding: 11px 12px;
+  border-top: 1px solid rgba(7,24,44,.18);
+  font-size: .86rem !important;
+  line-height: 1.35 !important;
+}
+
+.simple-opening-times p:first-child {
+  border-top: 0;
+}
+
+.simple-opening-times b {
+  color: var(--lj-pink);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+}
+
+.simple-opening-times span {
+  color: var(--lj-navy);
+  font-weight: 800;
 }
 
 .openings-flyer-footer {
   margin-top: 14px;
-  padding-top: 12px;
-  border-top: 2px dashed var(--navy);
-  display: grid;
-  gap: 4px;
+  padding-top: 14px;
+  border-top: 2px solid var(--lj-navy);
 }
 
-.openings-flyer-footer > strong {
-  color: var(--pink);
-  font-size: .88rem;
-  letter-spacing: .1em;
-}
-
-.openings-flyer-footer > span {
-  font-size: .72rem;
-  font-weight: 800;
-}
-
-.openings-flyer-footer > a {
-  margin-top: 5px;
+.openings-flyer-footer a,
+.openings-flyer-footer .session-button {
   display: block;
-  padding: 9px 10px;
-  border: 2px solid var(--navy);
-  background: var(--pink);
-  color: var(--navy);
-  font-size: .72rem;
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid var(--lj-navy);
+  background: var(--lj-pink);
+  color: var(--lj-navy);
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: 900;
-  letter-spacing: .04em;
+  text-align: center;
   text-decoration: none;
 }
 
-.openings-flyer-footer > a:hover,
-.openings-flyer-footer > a:focus-visible {
-  background: #fff;
-}
+/* ---------- SIMPLE ASAP PAGE ---------- */
 
-@media (max-width: 560px) {
-  .weekend-openings-flyer {
-    padding: 16px 12px;
-    box-shadow: 5px 5px 0 var(--pink);
-  }
-
-  .weekend-openings-flyer h2 {
-    font-size: clamp(2.2rem, 14vw, 3.5rem) !important;
-  }
-
-  .openings-date {
-    grid-template-columns: 74px 1fr 1fr;
-    gap: 5px;
-    padding: 8px 7px;
-  }
-
-  .openings-date b {
-    font-size: .76rem;
-  }
-
-  .openings-date span {
-    font-size: .66rem;
-  }
-
-  .openings-date span strong {
-    font-size: .78rem;
-  }
-
-  .openings-date span small {
-    font-size: .57rem;
-  }
-}
-
-
-/* Get In ASAP + payment CTA helpers */
-.asap-button-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
-  margin-top: 10px;
-}
-.asap-button-row .session-button.secondary {
-  background: #fff8ec;
-  color: var(--navy);
-}
-.deposit-ready-card .focused-page-note {
-  margin: 0;
-}
-.deposit-ready-card .module-body > p:first-child {
-  margin-top: 0;
-}
-.asap-banner .currently-line a {
-  color: inherit;
-  font-weight: 900;
-}
-.asap-mini-board {
-  max-width: 640px;
-}
-.asap-deposit-card .asap-pay-button {
-  display: block;
-  text-align: center;
-  margin-top: 12px;
-}
-.asap-page .tattoo-inquiry-form select option:disabled {
-  color: #999;
-}
-@media (max-width: 560px) {
-  .asap-button-row {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-  .asap-button-row .session-button,
-  .asap-button-row .text-link {
-    width: 100%;
-    text-align: center;
-  }
-}
-
-
-.asap-slot-groups {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-top: 10px;
-  text-align: left;
-}
-.asap-slot-group {
-  border: 2px solid var(--navy);
-  background: #fff;
-  padding: 10px;
-  box-shadow: 3px 3px 0 rgba(7,24,44,.08);
-}
-.asap-slot-group strong {
-  display: block;
-  color: var(--pink);
-  font-size: .78rem;
-  letter-spacing: .08em;
-  margin-bottom: 7px;
-}
-.asap-slot-group p {
-  margin: 4px 0 !important;
-  font-size: .72rem !important;
-  line-height: 1.35;
-}
-.asap-slot-group b {
-  color: var(--navy);
-}
-.openings-future-note {
-  margin-top: 8px;
-  padding: 8px 10px;
-  border: 1px dashed var(--navy);
-  background: #fff8ec;
-  font-size: .7rem;
-  line-height: 1.4;
-}
-@media (max-width: 560px) {
-  .asap-slot-groups {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-/* ===== ASAP FLOW + READABILITY FIX ===== */
-
-.weekend-openings-flyer {
-  overflow: hidden;
-}
-
-.weekend-openings-flyer h2,
-.weekend-openings-flyer .openings-title-clean,
-.asap-page .weekend-openings-flyer h2 {
-  font-family: Arial, Helvetica, sans-serif !important;
-  font-weight: 950 !important;
-  font-style: normal !important;
-  text-transform: uppercase !important;
-  color: var(--navy) !important;
-  text-shadow: none !important;
-  transform: none !important;
-  letter-spacing: -0.07em !important;
-  line-height: .9 !important;
-  white-space: nowrap !important;
-  margin: 12px auto 10px !important;
-  font-size: clamp(2.3rem, 8vw, 6.5rem) !important;
-}
-
-.asap-page .asap-page-title {
-  font-family: Arial, Helvetica, sans-serif !important;
-  font-weight: 950 !important;
-  font-style: normal !important;
-  text-transform: uppercase !important;
-  color: var(--navy) !important;
-  text-shadow: none !important;
-  transform: none !important;
-  letter-spacing: -0.065em !important;
-  line-height: .9 !important;
-  font-size: clamp(3rem, 12vw, 7rem) !important;
-  margin: 8px 0 12px !important;
-}
-
-.asap-jump-card {
-  width: min(100%, 720px);
-  margin: 14px auto 18px;
-  padding: 16px;
-  border: 3px solid var(--navy);
-  background: var(--pink);
-  color: var(--navy);
-  box-shadow: 7px 7px 0 var(--navy);
+.asap-banner {
   text-align: center;
 }
 
-.asap-jump-card .asap-jump-eyebrow {
-  display: block;
-  font-size: .72rem;
-  font-weight: 950;
-  letter-spacing: .11em;
-  margin-bottom: 4px;
+.asap-banner .banner-status {
+  margin-bottom: 8px;
 }
 
-.asap-jump-card strong {
-  display: block;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: clamp(1.9rem, 7vw, 3.8rem);
-  line-height: .92;
-  letter-spacing: -.05em;
-  text-transform: uppercase;
-}
-
-.asap-jump-card p {
-  margin: 8px auto 12px !important;
-  max-width: 580px;
-  font-size: .82rem !important;
-  font-weight: 800;
-}
-
-.asap-jump-card .session-button {
-  background: var(--navy);
-  color: #fff8ec;
-  border-color: var(--navy);
-  display: inline-block;
-  padding: 12px 16px;
-}
-
-.asap-route-card {
-  border: 3px solid var(--pink) !important;
-  background: #ffe3ef !important;
-  box-shadow: 5px 5px 0 var(--pink) !important;
-}
-
-.asap-flow-steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 7px;
-  margin: 12px 0 14px;
-}
-
-.asap-flow-steps > div {
-  border: 2px solid var(--navy);
-  background: #fff8ec;
-  padding: 10px 8px;
-}
-
-.asap-flow-steps b {
-  display: block;
-  color: var(--pink);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.35rem;
-  line-height: 1;
-}
-
-.asap-flow-steps strong {
-  display: block;
-  font-size: .76rem;
-  margin-top: 3px;
-}
-
-.asap-flow-steps span {
-  display: block;
-  font-size: .66rem;
-  line-height: 1.25;
-  margin-top: 3px;
+.asap-banner .tattoo-help-sub {
+  max-width: 620px;
+  margin: 0 auto !important;
+  font-size: .9rem !important;
+  line-height: 1.45 !important;
 }
 
 .asap-form-intro {
-  margin: 0 0 12px !important;
-  padding: 10px 12px;
-  border-left: 5px solid var(--pink);
-  background: #fff8ec;
-  font-size: .82rem !important;
-  font-weight: 750;
+  margin: 0 0 14px !important;
+  padding: 11px 12px;
+  border: 2px solid var(--lj-navy);
+  background: var(--lj-cream);
+  color: var(--lj-navy);
+  font-size: .84rem !important;
+  font-weight: 800;
+  line-height: 1.4;
 }
 
 .asap-inline-deposit {
-  margin-top: 14px;
+  margin-top: 16px;
   padding: 14px;
-  border: 3px solid var(--pink);
-  background: #ffe3ef;
+  border: 3px solid var(--lj-pink);
+  background: var(--lj-soft-pink);
   text-align: center;
 }
 
 .asap-inline-deposit strong {
   display: block;
+  color: var(--lj-navy);
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.22rem;
-  color: var(--navy);
+  font-size: 1.25rem;
+  font-weight: 900;
 }
 
 .asap-inline-deposit p {
-  margin: 6px auto 10px !important;
   max-width: 560px;
-  font-size: .76rem !important;
+  margin: 6px auto 10px !important;
+  font-size: .78rem !important;
+  line-height: 1.4 !important;
 }
 
 .asap-inline-deposit .session-button {
@@ -431,53 +233,103 @@
   text-align: center;
 }
 
+/* ---------- FINDABLE ASAP CTAs ---------- */
+
+.asap-jump-card,
 .session-asap-cta {
-  margin: 12px 0 16px;
-  padding: 14px;
-  border: 3px solid var(--pink);
-  background: #ffe3ef;
+  width: min(100%, 760px);
+  margin: 16px auto 20px;
+  padding: 16px;
+  border: 3px solid var(--lj-navy);
+  background: var(--lj-soft-pink);
+  color: var(--lj-navy);
+  box-shadow: none !important;
   text-align: center;
-  box-shadow: 5px 5px 0 var(--pink);
 }
 
+.asap-jump-card .asap-jump-eyebrow,
+.session-asap-cta .asap-jump-eyebrow {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--lj-pink);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: .1em;
+}
+
+.asap-jump-card strong,
 .session-asap-cta strong {
   display: block;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: clamp(1.45rem, 6vw, 2.4rem);
-  line-height: .95;
-  text-transform: uppercase;
-  letter-spacing: -.04em;
-  color: var(--navy);
+  margin: 0 auto 8px;
+  font-size: clamp(2rem, 8vw, 4rem) !important;
+  line-height: .9 !important;
+  letter-spacing: -.06em !important;
+  white-space: nowrap;
 }
 
+.asap-jump-card p,
 .session-asap-cta p {
-  margin: 6px auto 10px !important;
-  max-width: 560px;
-  font-size: .76rem !important;
+  max-width: 580px;
+  margin: 6px auto 12px !important;
+  font-size: .82rem !important;
+  line-height: 1.4 !important;
+  font-weight: 700;
 }
 
+.asap-jump-card .session-button,
 .session-asap-cta .session-button {
   display: inline-block;
+  padding: 11px 14px;
+  background: var(--lj-navy);
+  color: #fff;
+  border-color: var(--lj-navy);
 }
 
+/* ---------- MOBILE ---------- */
+
 @media (max-width: 560px) {
+  .weekend-openings-flyer {
+    width: calc(100% - 18px);
+    padding: 18px 12px;
+    margin: 14px auto 18px;
+  }
+
   .weekend-openings-flyer h2,
-  .weekend-openings-flyer .openings-title-clean,
-  .asap-page .weekend-openings-flyer h2 {
-    font-size: clamp(1.95rem, 8vw, 2.35rem) !important;
-    letter-spacing: -.075em !important;
+  .weekend-openings-flyer .openings-title-clean {
+    font-size: clamp(2.25rem, 10.5vw, 2.85rem) !important;
+    letter-spacing: -.09em !important;
   }
 
   .asap-page .asap-page-title {
-    font-size: clamp(2.7rem, 13vw, 4rem) !important;
+    font-size: clamp(3rem, 14vw, 4.2rem) !important;
+    letter-spacing: -.08em !important;
   }
 
-  .asap-flow-steps {
+  .simple-opening-head {
     grid-template-columns: 1fr;
+    gap: 2px;
   }
 
-  .asap-jump-card {
-    padding: 14px 10px;
-    box-shadow: 5px 5px 0 var(--navy);
+  .simple-opening-head span {
+    white-space: normal;
+  }
+
+  .simple-opening-times p {
+    grid-template-columns: 78px 1fr;
+    gap: 8px;
+    padding: 10px;
+    font-size: .8rem !important;
+  }
+
+  .asap-jump-card,
+  .session-asap-cta {
+    width: calc(100% - 18px);
+    padding: 14px 11px;
+  }
+
+  .asap-jump-card strong,
+  .session-asap-cta strong {
+    font-size: clamp(1.8rem, 8.5vw, 2.5rem) !important;
   }
 }

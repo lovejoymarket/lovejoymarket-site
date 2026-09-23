@@ -1,40 +1,34 @@
-LOVEJOY ASAP FLOW FINAL FIX
+LOVEJOY ASAP CLEAN + SIMPLE REVISION
 September 23, 2026
 
-UPLOAD / REPLACE:
-- tattoos.html
+UPLOAD/REPLACE:
+- tattoo-openings.css
 - tattoo-sessions.html
-- tattoo-inquiry.html
 - tattoo-get-in-asap.html
 - tattoo-session-1hour.html
 - tattoo-session-3hour.html
-- tattoo-openings.css
+- tattoos.html
+- tattoo-inquiry.html
 - mail-fix.js
 
-OPTIONAL/UNCHANGED FROM PRIOR PACKAGE:
-- tattoo-session-fullday.html
-- tattoo-policies.html
-
-FIXES:
-- GET IN ASAP is now very easy to find.
-- Large CTA on Tattoos.
-- Large CTA on Tattoo Sessions.
-- Large CTA before the regular Tattoo Inquiry.
-- Large dedicated CTA on BOTH the 1-hour and 3-hour session pages.
-- Full day is intentionally NOT in the ASAP lane.
-- Weekend headline is now plain, bold, one-line text.
-- ASAP page has a clean flow: openings → 3 steps → form → deposit.
-- Deposit button is inside the ASAP form section.
-- Saturday 11 AM was removed because it would eliminate the prep buffer before the noon appointment.
+This revision:
+- Removes ALL decorative shadow/outline styling from the weekend + ASAP headers.
+- Uses huge plain navy one-line headlines.
+- Removes "times change with it."
+- Removes the separate "how it works" section.
+- Removes the long ASAP fine-print section.
+- Makes the weekend page flow:
+  header → openings → form → deposit.
+- Keeps Get In ASAP visible on BOTH 1-hour + 3-hour pages.
 
 THIS WEEKEND:
-1-hour
-Saturday 9/26: 10 AM, 2 PM, 3 PM, 4 PM
-Sunday 9/27: 10 AM, 11 AM, 12 PM, 1 PM
+1 hour
+Saturday: 10 AM, 2 PM, 3 PM, 4 PM
+Sunday: 10 AM, 11 AM, 12 PM, 1 PM
 
-3-hour
-Saturday 9/26: 2 PM
-Sunday 9/27: 10 AM, 11 AM
+3 hours
+Saturday: 2 PM
+Sunday: 10 AM, 11 AM
 
-Square:
+Square deposit link:
 https://square.link/u/exMcKsyN
