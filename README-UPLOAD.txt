@@ -1,24 +1,34 @@
-LOVEJOY ASAP UNIQUE FONT FIX
+LOVEJOY SUSAN + ASAP FIREWORKS
 September 23, 2026
 
 UPLOAD/REPLACE:
-- tattoo-openings.css
+- starcade.html
 - tattoo-get-in-asap.html
+- tattoo-openings.css
 - tattoo-sessions.html
-- tattoo-session-1hour.html
-- tattoo-session-3hour.html
-- tattoo-inquiry.html
-- tattoos.html
 
-WHAT CHANGED:
-- Removed the tagline under GET IN ASAP completely.
-- Top banner is now ONLY: GET IN ASAP ♡
-- GET IN ASAP is much larger.
-- Returned all ASAP/weekend headings to the site's actual Unique font:
-  var(--heading-font) = "Unique".
-- Major headings are pink again.
-- No shadow, outline, stroke, 3D effect, or transform.
-- THIS WEEKEND uses the same Unique/pink treatment.
-- 1-HOUR SESSION and 3-HOUR SESSION use the same Unique font.
-- Form section titles, labels, CTAs, and deposit heading use the same heading font.
-- Appointment times and form inputs stay in a normal readable font.
+NEW FILES:
+- susan-game.css
+- susan-game.js
+- asap-effects.js
+
+If you have NOT uploaded the previous ASAP package yet, upload the whole ZIP so
+the current inquiry/deposit/session-aware availability changes all stay together.
+
+SUSAN
+- Added as the fifth Starcade game.
+- Also playable directly on the Get In ASAP page.
+- Heart-shaped board divided into four playable sections.
+- Smaller heart-shaped START/RESTART button in the center.
+- Susan plays a sequence; the player repeats it.
+- Each successful round adds another step.
+- Round, best, and streak are shown.
+- Sound tones are generated locally in the browser.
+
+ASAP FIREWORKS
+- Static fake firework icons were removed from the flyer.
+- Opening the Get In ASAP page now triggers real animated firework bursts.
+- The existing falling stars/glitter still run through site.js.
+- Reduced-motion preferences disable the firework animation.
+
+The screenshot-ready availability flyer stays intact and clean.
