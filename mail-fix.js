@@ -67,7 +67,6 @@
   const ASAP_SLOTS = {
     '1-Hour Session · $100 / $50 deposit': [
       'Saturday 9/26 · 10:00 AM',
-      'Saturday 9/26 · 11:00 AM',
       'Saturday 9/26 · 2:00 PM',
       'Saturday 9/26 · 3:00 PM',
       'Saturday 9/26 · 4:00 PM',

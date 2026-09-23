@@ -1,73 +1,40 @@
-LOVEJOY GET IN ASAP + SQUARE DEPOSIT UPDATE
+LOVEJOY ASAP FLOW FINAL FIX
 September 23, 2026
 
-Upload ALL files in this package to the ROOT of your GitHub repository.
-
-NEW:
-- tattoo-get-in-asap.html
-- tattoo-openings.css (if you had not uploaded the previous package yet)
-
-REPLACE:
+UPLOAD / REPLACE:
 - tattoos.html
 - tattoo-sessions.html
+- tattoo-inquiry.html
+- tattoo-get-in-asap.html
 - tattoo-session-1hour.html
 - tattoo-session-3hour.html
-- tattoo-session-fullday.html
-- tattoo-inquiry.html
-- tattoo-policies.html
+- tattoo-openings.css
 - mail-fix.js
 
-SQUARE DEPOSIT LINK:
+OPTIONAL/UNCHANGED FROM PRIOR PACKAGE:
+- tattoo-session-fullday.html
+- tattoo-policies.html
+
+FIXES:
+- GET IN ASAP is now very easy to find.
+- Large CTA on Tattoos.
+- Large CTA on Tattoo Sessions.
+- Large CTA before the regular Tattoo Inquiry.
+- Large dedicated CTA on BOTH the 1-hour and 3-hour session pages.
+- Full day is intentionally NOT in the ASAP lane.
+- Weekend headline is now plain, bold, one-line text.
+- ASAP page has a clean flow: openings → 3 steps → form → deposit.
+- Deposit button is inside the ASAP form section.
+- Saturday 11 AM was removed because it would eliminate the prep buffer before the noon appointment.
+
+THIS WEEKEND:
+1-hour
+Saturday 9/26: 10 AM, 2 PM, 3 PM, 4 PM
+Sunday 9/27: 10 AM, 11 AM, 12 PM, 1 PM
+
+3-hour
+Saturday 9/26: 2 PM
+Sunday 9/27: 10 AM, 11 AM
+
+Square:
 https://square.link/u/exMcKsyN
-
-GET IN ASAP THIS WEEKEND:
-Saturday 9/26
-- 10:00 AM: 1-hour session only
-- 2:00 PM: 1-hour or 3-hour session
-
-Sunday 9/27
-- 10:00 AM: 1-hour or 3-hour session
-- 2:00 PM: 1-hour or 3-hour session
-
-The Get In ASAP form requires:
-- first choice
-- backup choice
-- session length
-- name/email/phone
-- placement/size/color
-- tattoo idea
-- notes
-- reference + placement photo reminder
-
-The 3-hour option automatically disables Saturday 10 AM.
-
-IMPORTANT:
-The Square deposit link is intentionally visible on the Get In ASAP page.
-Clients may pay before Jessie replies, just like the prior special flow.
-The generated ASAP email also includes the Square deposit URL.
-
-DEPOSITS:
-1 hour: $100 total / $50 deposit
-3 hours: $250 total / $125 deposit
-6 hours: $500 total / $250 deposit
-All deposits are exactly 50%.
-
-No special pricing is advertised.
-
-
-SESSION-AWARE ASAP TIMES — UPDATED
-Existing appointments:
-- Saturday 9/26: Malerie, 12:00–1:30 PM
-- Sunday 9/27: existing 3-hour tattoo appointment, 3:00–6:00 PM
-
-1-HOUR ASAP START TIMES
-Saturday: 10 AM, 11 AM, 2 PM, 3 PM, 4 PM
-Sunday: 10 AM, 11 AM, 12 PM, 1 PM
-
-3-HOUR ASAP START TIMES
-Saturday: 2 PM
-Sunday: 10 AM, 11 AM
-
-The Get In ASAP form now changes both the First Choice and Backup Choice
-dropdowns automatically based on the selected session length. The same slot
-cannot be selected as both first and backup.
