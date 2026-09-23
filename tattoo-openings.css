@@ -184,3 +184,92 @@
     font-size: .57rem;
   }
 }
+
+
+/* Get In ASAP + payment CTA helpers */
+.asap-button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-top: 10px;
+}
+.asap-button-row .session-button.secondary {
+  background: #fff8ec;
+  color: var(--navy);
+}
+.deposit-ready-card .focused-page-note {
+  margin: 0;
+}
+.deposit-ready-card .module-body > p:first-child {
+  margin-top: 0;
+}
+.asap-banner .currently-line a {
+  color: inherit;
+  font-weight: 900;
+}
+.asap-mini-board {
+  max-width: 640px;
+}
+.asap-deposit-card .asap-pay-button {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+}
+.asap-page .tattoo-inquiry-form select option:disabled {
+  color: #999;
+}
+@media (max-width: 560px) {
+  .asap-button-row {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .asap-button-row .session-button,
+  .asap-button-row .text-link {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+.asap-slot-groups {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 10px;
+  text-align: left;
+}
+.asap-slot-group {
+  border: 2px solid var(--navy);
+  background: #fff;
+  padding: 10px;
+  box-shadow: 3px 3px 0 rgba(7,24,44,.08);
+}
+.asap-slot-group strong {
+  display: block;
+  color: var(--pink);
+  font-size: .78rem;
+  letter-spacing: .08em;
+  margin-bottom: 7px;
+}
+.asap-slot-group p {
+  margin: 4px 0 !important;
+  font-size: .72rem !important;
+  line-height: 1.35;
+}
+.asap-slot-group b {
+  color: var(--navy);
+}
+.openings-future-note {
+  margin-top: 8px;
+  padding: 8px 10px;
+  border: 1px dashed var(--navy);
+  background: #fff8ec;
+  font-size: .7rem;
+  line-height: 1.4;
+}
+@media (max-width: 560px) {
+  .asap-slot-groups {
+    grid-template-columns: 1fr;
+  }
+}
