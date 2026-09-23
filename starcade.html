@@ -7,7 +7,7 @@
 <meta content="Play LoveJoy Starcade: browser games, glitter, fake astrology, and highly unnecessary internet nonsense." name="description"/>
 <title>Starcade | LoveJoy Market</title>
 <link href="styles.css?v=20260820-unique6" rel="stylesheet"/>
-<link href="susan-game.css?v=20260923-susan1" rel="stylesheet"/>
+<link href="susan-game.css?v=20260923-refined2" rel="stylesheet"/>
 <link href="https://lovejoymarket.co/starcade.html" rel="canonical"/>
 <meta content="#07182c" name="theme-color"/>
 <meta content="website" property="og:type"/>
@@ -112,9 +112,7 @@
 </a>
 
 <a class="portal-card portal-susan" data-arcade-select="susan" href="#arcade-stage">
-<div class="portal-symbol">
-<div class="susan-mini-heart" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-</div>
+<div class="portal-symbol susan-portal-symbol" aria-hidden="true"><span>♥</span><i>✦</i></div>
 <div class="portal-copy">
 <span class="post-meta">MEMORY</span>
 <strong>SUSAN</strong>
@@ -249,29 +247,84 @@
 </div>
 </article>
 
-<article class="arcade-game-panel" data-arcade-active="false" data-arcade-label="Susan" data-arcade-panel="susan" hidden="">
-<h2 class="susan-heading">SUSAN ♡</h2>
+<article class="arcade-game-panel" data-arcade-active="false" data-arcade-label="Susan" data-arcade-panel="susan" hidden=""><h2 class="susan-heading">SUSAN ♡</h2>
 <p class="arcade-carousel-intro">Susan shows you a pattern. Repeat it exactly. Every round adds one more thing Susan expects you to remember.</p>
 
 <div class="susan-shell" data-susan-game>
-<div class="susan-machine">
-<div class="susan-hud">
-<span>ROUND <b data-susan-round>00</b></span>
-<span>BEST <b data-susan-best>00</b></span>
-<span>STREAK <b data-susan-streak>00</b></span>
-</div>
+  <div class="susan-machine">
+    <div class="susan-title-row">
+      <div>
+        <h2 class="susan-heading">SUSAN ♡</h2>
+        <p class="susan-tagline">watch · remember · repeat</p>
+      </div>
+      <div class="susan-hud" aria-label="Susan game score">
+        <span>ROUND <b data-susan-round>00</b></span>
+        <span>BEST <b data-susan-best>00</b></span>
+        <span>STREAK <b data-susan-streak>00</b></span>
+      </div>
+    </div>
 
-<div class="susan-heart-wrap" aria-label="Susan memory game">
-<div class="susan-heart">
-<button class="susan-pad" data-susan-pad="0" type="button" aria-label="Susan upper left"></button>
-<button class="susan-pad" data-susan-pad="1" type="button" aria-label="Susan upper right"></button>
-<button class="susan-pad" data-susan-pad="2" type="button" aria-label="Susan lower left"></button>
-<button class="susan-pad" data-susan-pad="3" type="button" aria-label="Susan lower right"></button>
-</div>
-<button class="susan-start" data-susan-start type="button">START</button>
-</div>
+    <div class="susan-heart-stage">
+      <svg class="susan-heart-svg" viewBox="0 0 400 360" role="group" aria-label="Susan memory game">
+        <defs>
+          <clipPath id="susan-heart-shape">
+            <path d="M200 347
+                     C185 330 151 302 121 276
+                     C74 235 34 199 17 156
+                     C-4 103 17 48 65 22
+                     C111 -3 164 11 200 55
+                     C236 11 289 -3 335 22
+                     C383 48 404 103 383 156
+                     C366 199 326 235 279 276
+                     C249 302 215 330 200 347 Z"/>
+          </clipPath>
 
-<p class="susan-status" data-susan-status aria-live="polite"></p>
+          <filter id="susan-soft-glow" x="-70%" y="-70%" width="240%" height="240%">
+            <feGaussianBlur stdDeviation="12" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+
+        <g clip-path="url(#susan-heart-shape)" class="susan-heart-sections">
+          <rect class="susan-pad susan-pad-a" data-susan-pad="0"
+                x="0" y="0" width="200" height="178"
+                role="button" tabindex="-1" aria-label="Susan upper left" aria-disabled="true"/>
+          <rect class="susan-pad susan-pad-b" data-susan-pad="1"
+                x="200" y="0" width="200" height="178"
+                role="button" tabindex="-1" aria-label="Susan upper right" aria-disabled="true"/>
+          <rect class="susan-pad susan-pad-c" data-susan-pad="2"
+                x="0" y="178" width="200" height="182"
+                role="button" tabindex="-1" aria-label="Susan lower left" aria-disabled="true"/>
+          <rect class="susan-pad susan-pad-d" data-susan-pad="3"
+                x="200" y="178" width="200" height="182"
+                role="button" tabindex="-1" aria-label="Susan lower right" aria-disabled="true"/>
+        </g>
+
+        <path class="susan-heart-outline"
+              d="M200 347
+                 C185 330 151 302 121 276
+                 C74 235 34 199 17 156
+                 C-4 103 17 48 65 22
+                 C111 -3 164 11 200 55
+                 C236 11 289 -3 335 22
+                 C383 48 404 103 383 156
+                 C366 199 326 235 279 276
+                 C249 302 215 330 200 347 Z"/>
+
+        <line class="susan-seam" x1="200" y1="48" x2="200" y2="330"/>
+        <line class="susan-seam" x1="37" y1="178" x2="363" y2="178"/>
+      </svg>
+
+      <button class="susan-start" data-susan-start type="button" aria-label="Start Susan">
+        <span>START</span>
+      </button>
+    </div>
+
+    <p class="susan-status" data-susan-status aria-live="polite"></p>
+  </div>
 </div>
 
 <aside class="susan-side">
@@ -354,6 +407,6 @@
 </footer>
 
 <script src="site.js?v=20260922-popups1"></script>
-<script src="susan-game.js?v=20260923-susan1"></script>
+<script src="susan-game.js?v=20260923-refined2"></script>
 </body>
 </html>

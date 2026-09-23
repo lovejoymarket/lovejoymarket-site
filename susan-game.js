@@ -5,7 +5,7 @@
 
   const sleep = (ms) => new Promise((resolve) => window.setTimeout(resolve, ms));
 
-  roots.forEach((root, rootIndex) => {
+  roots.forEach((root) => {
     if (root.dataset.susanReady === 'true') return;
     root.dataset.susanReady = 'true';
 
@@ -16,9 +16,11 @@
     const streakEl = root.querySelector('[data-susan-streak]');
     const status = root.querySelector('[data-susan-status]');
 
-    if (pads.length !== 4 || !start) return;
+    if (pads.length !== 4 || !start || !roundEl || !bestEl || !streakEl || !status) return;
 
-    const highKey = `lovejoySusanBest${rootIndex ? '-' + rootIndex : ''}`;
+    /* Shared between Starcade and ASAP because they live on separate pages. */
+    const highKey = 'lovejoySusanBest';
+
     let sequence = [];
     let inputIndex = 0;
     let accepting = false;
@@ -41,9 +43,9 @@
     }
 
     function updateHud() {
-      const round = sequence.length;
-      roundEl.textContent = String(round).padStart(2, '0');
-      bestEl.textContent = String(Math.max(round, getBest())).padStart(2, '0');
+      const completed = Math.max(0, sequence.length - (running ? 1 : 0));
+      roundEl.textContent = String(sequence.length).padStart(2, '0');
+      bestEl.textContent = String(Math.max(completed, getBest())).padStart(2, '0');
       streakEl.textContent = String(streak).padStart(2, '0');
     }
 
@@ -51,6 +53,7 @@
       if (audio) return audio;
       const AudioContext = window.AudioContext || window.webkitAudioContext;
       if (!AudioContext) return null;
+
       try {
         audio = new AudioContext();
       } catch (error) {
@@ -63,43 +66,47 @@
       const ctx = ensureAudio();
       if (!ctx) return;
       if (ctx.state === 'suspended') ctx.resume().catch(() => {});
-      const freqs = [330, 440, 554, 659];
-      const osc = ctx.createOscillator();
+
+      const frequencies = [329.63, 440, 523.25, 659.25];
+      const oscillator = ctx.createOscillator();
       const gain = ctx.createGain();
-      osc.type = 'sine';
-      osc.frequency.value = freqs[index];
+
+      oscillator.type = 'sine';
+      oscillator.frequency.value = frequencies[index];
       gain.gain.setValueAtTime(.0001, ctx.currentTime);
       gain.gain.exponentialRampToValueAtTime(.12, ctx.currentTime + .012);
       gain.gain.exponentialRampToValueAtTime(.0001, ctx.currentTime + duration / 1000);
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.start();
-      osc.stop(ctx.currentTime + duration / 1000 + .02);
-    }
 
-    async function light(index, duration = 330) {
-      const pad = pads[index];
-      pad.classList.add('is-lit');
-      tone(index, Math.min(duration, 220));
-      await sleep(duration);
-      pad.classList.remove('is-lit');
-      await sleep(90);
+      oscillator.connect(gain);
+      gain.connect(ctx.destination);
+      oscillator.start();
+      oscillator.stop(ctx.currentTime + duration / 1000 + .03);
     }
 
     function setPadsDisabled(disabled) {
       pads.forEach((pad) => {
-        pad.disabled = disabled;
+        pad.setAttribute('aria-disabled', disabled ? 'true' : 'false');
+        pad.setAttribute('tabindex', disabled ? '-1' : '0');
       });
+    }
+
+    async function light(index, duration = 325) {
+      const pad = pads[index];
+      pad.classList.add('is-lit');
+      tone(index, Math.min(duration, 225));
+      await sleep(duration);
+      pad.classList.remove('is-lit');
+      await sleep(95);
     }
 
     async function playSequence() {
       accepting = false;
       setPadsDisabled(true);
       status.textContent = 'Susan says…';
-      await sleep(280);
+      await sleep(300);
 
       for (const index of sequence) {
-        await light(index, 310);
+        await light(index, 325);
       }
 
       inputIndex = 0;
@@ -109,6 +116,7 @@
     }
 
     function nextRound() {
+      if (!running) return;
       sequence.push(Math.floor(Math.random() * 4));
       updateHud();
       playSequence();
@@ -118,37 +126,40 @@
       ensureAudio();
       sequence = [];
       inputIndex = 0;
+      streak = 0;
       accepting = false;
       running = true;
-      streak = 0;
-      start.textContent = 'RESTART';
+      start.querySelector('span').textContent = 'RESTART';
       status.textContent = 'Susan is thinking…';
       updateHud();
-      window.setTimeout(nextRound, 350);
+      setPadsDisabled(true);
+      window.setTimeout(nextRound, 360);
     }
 
     function fail(index) {
       accepting = false;
       running = false;
       setPadsDisabled(true);
+
       pads[index].classList.add('is-lit');
-      window.setTimeout(() => pads[index].classList.remove('is-lit'), 280);
+      window.setTimeout(() => pads[index].classList.remove('is-lit'), 310);
 
       const completed = Math.max(0, sequence.length - 1);
       if (completed > getBest()) setBest(completed);
-      updateHud();
 
+      updateHud();
       status.textContent = completed
         ? `Susan said no. You made it through ${completed}. ♡`
         : 'Susan said no immediately. Incredible. ♡';
-      start.textContent = 'AGAIN';
+
+      start.querySelector('span').textContent = 'AGAIN';
     }
 
     async function handlePad(index) {
       if (!running || !accepting) return;
 
       accepting = false;
-      await light(index, 165);
+      await light(index, 175);
 
       if (index !== sequence[inputIndex]) {
         fail(index);
@@ -162,8 +173,8 @@
         const completed = sequence.length;
         if (completed > getBest()) setBest(completed);
         updateHud();
-        status.textContent = 'correct. unfortunately Susan noticed. ✦';
-        window.setTimeout(nextRound, 620);
+        status.textContent = 'correct. Susan noticed. ✦';
+        window.setTimeout(nextRound, 650);
       } else {
         accepting = true;
       }
@@ -171,6 +182,11 @@
 
     pads.forEach((pad, index) => {
       pad.addEventListener('click', () => handlePad(index));
+      pad.addEventListener('keydown', (event) => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        handlePad(index);
+      });
     });
 
     start.addEventListener('click', begin);
