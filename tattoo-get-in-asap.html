@@ -8,8 +8,8 @@
 <link href="styles.css?v=20260820-unique6" rel="stylesheet"/>
 <link href="section-pages.css?v=20260819-organized7" rel="stylesheet"/>
 <link href="tattoo-pages.css?v=20260820-cleanroutes2" rel="stylesheet"/>
-<link href="tattoo-openings.css?v=20260923-susan10" rel="stylesheet"/>
-<link href="susan-game.css?v=20260923-refined2" rel="stylesheet"/>
+<link href="tattoo-openings.css?v=20260923-repair11" rel="stylesheet"/>
+<link href="susan-game.css?v=20260923-lamps3" rel="stylesheet"/>
 </head>
 <body class="tattoo-page asap-page">
 
@@ -47,19 +47,14 @@
 </section>
 
 <section class="asap-flyer" aria-labelledby="asap-flyer-title">
-
   <div class="asap-glitter-row" aria-hidden="true">✦ ✧ ♡ ✦ ★ ✧ ✦ ♡ ✧ ★ ✦</div>
-
   <div class="asap-flyer-date">SEPT 26–27 · FISHERS</div>
   <h2 class="asap-flyer-title" id="asap-flyer-title">THIS WEEKEND</h2>
   <p class="asap-flyer-subtitle">1-HOUR + 3-HOUR TATTOO OPENINGS</p>
 
   <div class="asap-flyer-sessions">
     <article class="asap-flyer-session">
-      <div class="asap-flyer-session-top">
-        <strong>1 HOUR</strong>
-        <span>$100</span>
-      </div>
+      <div class="asap-flyer-session-top"><strong>1 HOUR</strong><span>$100</span></div>
       <div class="asap-flyer-deposit">$50 DEPOSIT · 50%</div>
       <div class="asap-flyer-times">
         <p><b>SAT 9/26</b><span>10 AM · 2 PM · 3 PM · 4 PM</span></p>
@@ -68,10 +63,7 @@
     </article>
 
     <article class="asap-flyer-session">
-      <div class="asap-flyer-session-top">
-        <strong>3 HOURS</strong>
-        <span>$250</span>
-      </div>
+      <div class="asap-flyer-session-top"><strong>3 HOURS</strong><span>$250</span></div>
       <div class="asap-flyer-deposit">$125 DEPOSIT · 50%</div>
       <div class="asap-flyer-times">
         <p><b>SAT 9/26</b><span>2 PM</span></p>
@@ -82,13 +74,13 @@
 
   <div class="asap-glitter-row bottom" aria-hidden="true">★ ✦ ✧ ♡ ✦ ✧ ★ ✦ ♡ ✧ ✦</div>
 
-  <div class="asap-flyer-cta">
+  <a class="asap-flyer-cta" href="#asap-form">
     <strong>GET IN ASAP ♡</strong>
-    <span>lovejoymarket.co</span>
-  </div>
+    <span>choose your time below →</span>
+  </a>
 </section>
 
-<section class="module-card susan-section asap-susan-card">
+<section class="module-card susan-section asap-susan-card" id="susan">
   <div class="module-title">Susan ♡</div>
   <div class="module-body">
     <div class="susan-shell" data-susan-game>
@@ -98,17 +90,17 @@
         <h2 class="susan-heading">SUSAN ♡</h2>
         <p class="susan-tagline">watch · remember · repeat</p>
       </div>
-      <div class="susan-hud" aria-label="Susan game score">
+      <div class="susan-hud" aria-label="Susan score">
         <span>ROUND <b data-susan-round>00</b></span>
         <span>BEST <b data-susan-best>00</b></span>
         <span>STREAK <b data-susan-streak>00</b></span>
       </div>
     </div>
 
-    <div class="susan-heart-stage">
-      <svg class="susan-heart-svg" viewBox="0 0 400 360" role="group" aria-label="Susan memory game">
+    <div class="susan-board">
+      <svg class="susan-heart-svg" viewBox="0 0 400 360" aria-hidden="true">
         <defs>
-          <clipPath id="susan-heart-shape">
+          <clipPath id="susan-heart-clip">
             <path d="M200 347
                      C185 330 151 302 121 276
                      C74 235 34 199 17 156
@@ -120,28 +112,57 @@
                      C249 302 215 330 200 347 Z"/>
           </clipPath>
 
-          <filter id="susan-soft-glow" x="-70%" y="-70%" width="240%" height="240%">
-            <feGaussianBlur stdDeviation="12" result="blur"/>
+          <radialGradient id="susan-lamp-white" cx="50%" cy="45%" r="55%">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="25%" stop-color="#fffdf4"/>
+            <stop offset="58%" stop-color="#fff8ec" stop-opacity=".68"/>
+            <stop offset="100%" stop-color="#fff8ec" stop-opacity="0"/>
+          </radialGradient>
+
+          <filter id="susan-lamp-glow" x="-180%" y="-180%" width="460%" height="460%">
+            <feGaussianBlur stdDeviation="12" result="blur1"/>
+            <feGaussianBlur stdDeviation="24" result="blur2"/>
             <feMerge>
-              <feMergeNode in="blur"/>
+              <feMergeNode in="blur2"/>
+              <feMergeNode in="blur1"/>
               <feMergeNode in="SourceGraphic"/>
             </feMerge>
           </filter>
         </defs>
 
-        <g clip-path="url(#susan-heart-shape)" class="susan-heart-sections">
-          <rect class="susan-pad susan-pad-a" data-susan-pad="0"
-                x="0" y="0" width="200" height="178"
-                role="button" tabindex="-1" aria-label="Susan upper left" aria-disabled="true"/>
-          <rect class="susan-pad susan-pad-b" data-susan-pad="1"
-                x="200" y="0" width="200" height="178"
-                role="button" tabindex="-1" aria-label="Susan upper right" aria-disabled="true"/>
-          <rect class="susan-pad susan-pad-c" data-susan-pad="2"
-                x="0" y="178" width="200" height="182"
-                role="button" tabindex="-1" aria-label="Susan lower left" aria-disabled="true"/>
-          <rect class="susan-pad susan-pad-d" data-susan-pad="3"
-                x="200" y="178" width="200" height="182"
-                role="button" tabindex="-1" aria-label="Susan lower right" aria-disabled="true"/>
+        <g clip-path="url(#susan-heart-clip)">
+          <rect class="susan-segment susan-segment-a" data-susan-segment="0" x="0" y="0" width="200" height="178"/>
+          <rect class="susan-segment susan-segment-b" data-susan-segment="1" x="200" y="0" width="200" height="178"/>
+          <rect class="susan-segment susan-segment-c" data-susan-segment="2" x="0" y="178" width="200" height="182"/>
+          <rect class="susan-segment susan-segment-d" data-susan-segment="3" x="200" y="178" width="200" height="182"/>
+
+          <g class="susan-lamp susan-lamp-a" data-susan-bulb="0" transform="translate(112 102)">
+            <circle class="susan-lamp-halo" r="49"/>
+            <circle class="susan-lamp-glass" r="24"/>
+            <circle class="susan-lamp-core" r="10"/>
+            <circle class="susan-lamp-shine" cx="-7" cy="-8" r="4"/>
+          </g>
+
+          <g class="susan-lamp susan-lamp-b" data-susan-bulb="1" transform="translate(288 102)">
+            <circle class="susan-lamp-halo" r="49"/>
+            <circle class="susan-lamp-glass" r="24"/>
+            <circle class="susan-lamp-core" r="10"/>
+            <circle class="susan-lamp-shine" cx="-7" cy="-8" r="4"/>
+          </g>
+
+          <g class="susan-lamp susan-lamp-c" data-susan-bulb="2" transform="translate(128 235)">
+            <circle class="susan-lamp-halo" r="49"/>
+            <circle class="susan-lamp-glass" r="24"/>
+            <circle class="susan-lamp-core" r="10"/>
+            <circle class="susan-lamp-shine" cx="-7" cy="-8" r="4"/>
+          </g>
+
+          <g class="susan-lamp susan-lamp-d" data-susan-bulb="3" transform="translate(272 235)">
+            <circle class="susan-lamp-halo" r="49"/>
+            <circle class="susan-lamp-glass" r="24"/>
+            <circle class="susan-lamp-core" r="10"/>
+            <circle class="susan-lamp-shine" cx="-7" cy="-8" r="4"/>
+          </g>
         </g>
 
         <path class="susan-heart-outline"
@@ -154,28 +175,31 @@
                  C383 48 404 103 383 156
                  C366 199 326 235 279 276
                  C249 302 215 330 200 347 Z"/>
-
-        <line class="susan-seam" x1="200" y1="48" x2="200" y2="330"/>
-        <line class="susan-seam" x1="37" y1="178" x2="363" y2="178"/>
+        <line class="susan-seam" x1="200" y1="48" x2="200" y2="327"/>
+        <line class="susan-seam" x1="39" y1="178" x2="361" y2="178"/>
       </svg>
+
+      <div class="susan-hit-grid" aria-label="Susan memory buttons">
+        <button data-susan-pad="0" type="button" aria-label="Upper-left Susan light" disabled></button>
+        <button data-susan-pad="1" type="button" aria-label="Upper-right Susan light" disabled></button>
+        <button data-susan-pad="2" type="button" aria-label="Lower-left Susan light" disabled></button>
+        <button data-susan-pad="3" type="button" aria-label="Lower-right Susan light" disabled></button>
+      </div>
 
       <button class="susan-start" data-susan-start type="button" aria-label="Start Susan">
         <span>START</span>
       </button>
     </div>
 
-    <p class="susan-status" data-susan-status aria-live="polite"></p>
+    <p class="susan-status" data-susan-status aria-live="polite">tap the heart to start.</p>
   </div>
 </div>
   </div>
 </section>
 
-
-
-<section class="module-card tattoo-inquiry-card asap-form-card">
+<section class="module-card tattoo-inquiry-card asap-form-card" id="asap-form">
   <div class="module-title">Get In ASAP</div>
   <div class="module-body">
-
     <form class="tattoo-inquiry-form" data-email="hello@lovejoymarket.co" data-get-asap>
 
       <div class="asap-first-fields">
@@ -191,14 +215,14 @@
         <label>
           <span>First-choice time *</span>
           <select name="first_choice" required data-asap-first disabled>
-            <option value="">choose your session first...</option>
+            <option value="">choose your session length first...</option>
           </select>
         </label>
 
         <label>
           <span>Backup choice *</span>
           <select name="backup_choice" required data-asap-backup disabled>
-            <option value="">choose your session first...</option>
+            <option value="">choose your session length first...</option>
           </select>
         </label>
       </div>
@@ -248,10 +272,16 @@
         <a class="session-button" href="https://square.link/u/exMcKsyN" rel="noopener" target="_blank">pay my deposit →</a>
         <small>Appointment location + arrival details are provided after payment.</small>
       </div>
-
     </form>
   </div>
 </section>
+
+<nav class="asap-bottom-links" aria-label="Tattoo links">
+  <a href="tattoo-sessions.html">all tattoo sessions</a>
+  <a href="tattoo-inquiry.html">regular tattoo inquiry</a>
+  <a href="tattoo-policies.html">tattoo policies</a>
+</nav>
+
 </div>
 </main>
 
@@ -264,7 +294,7 @@
 
 <script src="site.js?v=20260922-popups1"></script>
 <script src="mail-fix.js?v=20260923-flow4"></script>
-<script src="susan-game.js?v=20260923-refined2"></script>
+<script src="susan-game.js?v=20260923-lamps3"></script>
 <script src="asap-effects.js?v=20260923-fireworks1"></script>
 </body>
 </html>

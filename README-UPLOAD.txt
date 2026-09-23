@@ -1,46 +1,45 @@
-LOVEJOY SUSAN + ASAP FIREWORKS
+LOVEJOY ASAP + SUSAN REPAIR
 September 23, 2026
 
-UPLOAD/REPLACE:
-- starcade.html
-- tattoo-get-in-asap.html
-- tattoo-openings.css
-- tattoo-sessions.html
+USE THIS PACKAGE INSTEAD OF THE PREVIOUS SUSAN PACKAGES.
 
-NEW FILES:
-- susan-game.css
-- susan-game.js
-- asap-effects.js
-
-If you have NOT uploaded the previous ASAP package yet, upload the whole ZIP so
-the current inquiry/deposit/session-aware availability changes all stay together.
+PRIMARY REPAIRS
+- Rebuilt tattoo-get-in-asap.html cleanly so Susan cannot overlap the form.
+- Susan is directly below the screenshot flyer and fully contained in her own card.
+- GET IN ASAP flyer CTA is now an actual link that scrolls to the form.
+- Square deposit button is a real external link.
+- Added working bottom links to Tattoo Sessions, regular Inquiry, and Policies.
+- Added explicit z-index/containment so game controls cannot block form inputs or links.
 
 SUSAN
-- Added as the fifth Starcade game.
-- Also playable directly on the Get In ASAP page.
-- Heart-shaped board divided into four playable sections.
-- Smaller heart-shaped START/RESTART button in the center.
-- Susan plays a sequence; the player repeats it.
-- Each successful round adds another step.
-- Round, best, and streak are shown.
-- Sound tones are generated locally in the browser.
+- Rebuilt input layer using real HTML buttons for reliable iPhone taps.
+- The visual heart remains divided into four sections.
+- Each section now contains an ACTUAL lamp:
+  dim glass lens when idle
+  white-hot center when active
+  large colored halo when active
+- The section itself brightens slightly, but the lamp is the main on/off signal.
+- Center START/RESTART heart no longer uses absolute positioning, so it cannot escape into the form.
+- Added four local WAV tone files for reliable sound.
+- START primes the audio during the user's tap, specifically for iPhone/Safari.
+- WebAudio remains as a fallback if a WAV tone cannot play.
 
-ASAP FIREWORKS
-- Static fake firework icons were removed from the flyer.
-- Opening the Get In ASAP page now triggers real animated firework bursts.
-- The existing falling stars/glitter still run through site.js.
-- Reduced-motion preferences disable the firework animation.
+ASAP PAGE EFFECTS
+- Existing falling stars/glitter remain.
+- Firework bursts still run when the ASAP page opens.
 
-The screenshot-ready availability flyer stays intact and clean.
+FILES MOST IMPORTANT TO UPLOAD
+- tattoo-get-in-asap.html
+- tattoo-openings.css
+- susan-game.css
+- susan-game.js
+- susan-tone-1.wav
+- susan-tone-2.wav
+- susan-tone-3.wav
+- susan-tone-4.wav
+- asap-effects.js
+- starcade.html
+- mail-fix.js
 
-
-SUSAN REFINED UPDATE
-- Susan now appears directly below the Get In ASAP screenshot flyer, BEFORE the form.
-- Rebuilt the game board as a clean heart silhouette with four translucent SVG sections.
-- Idle lights are significantly more transparent.
-- Active lights now glow much brighter with layered white + colored glow.
-- Thin navy heart outline and internal seams make the four sections intentional.
-- Center START/RESTART control is still heart-shaped but cleaner and smaller.
-- Starcade portal symbol is now a simple heart + sparkle instead of a tiny broken board.
-- Keyboard activation works on all four Susan sections.
-- Best score is shared between the ASAP page and Starcade via the same browser-local score key.
+If you want the rest of the recent tattoo-site routing changes to stay in sync,
+upload the whole ZIP.

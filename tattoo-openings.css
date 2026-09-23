@@ -358,3 +358,76 @@
 @media (prefers-reduced-motion: reduce) {
   .asap-fireworks-layer { display: none; }
 }
+
+
+/* ASAP interaction repair */
+.asap-page .asap-flyer,
+.asap-page .asap-susan-card,
+.asap-page .asap-form-card,
+.asap-page .asap-bottom-links {
+  position: relative;
+  z-index: 1;
+}
+
+.asap-flyer-cta {
+  cursor: pointer;
+  text-decoration: none !important;
+  touch-action: manipulation;
+}
+
+.asap-flyer-cta:hover,
+.asap-flyer-cta:focus-visible {
+  background: var(--navy);
+  color: var(--cream);
+  outline: 3px solid var(--pink);
+  outline-offset: 2px;
+}
+
+.asap-flyer-cta:hover strong,
+.asap-flyer-cta:hover span,
+.asap-flyer-cta:focus-visible strong,
+.asap-flyer-cta:focus-visible span {
+  color: var(--cream);
+}
+
+.asap-form-card {
+  scroll-margin-top: 72px;
+  overflow: hidden;
+}
+
+.asap-page .tattoo-inquiry-form {
+  position: relative;
+  z-index: 1;
+}
+
+.asap-page .tattoo-inquiry-form input,
+.asap-page .tattoo-inquiry-form select,
+.asap-page .tattoo-inquiry-form textarea,
+.asap-page .tattoo-inquiry-form button,
+.asap-page .tattoo-inquiry-form a {
+  position: relative;
+  z-index: 2;
+}
+
+.asap-bottom-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 0;
+}
+
+.asap-bottom-links a {
+  padding: 8px 10px;
+  border: 1px solid rgba(255,248,236,.42);
+  color: var(--cream);
+  font-size: .72rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.asap-bottom-links a:hover,
+.asap-bottom-links a:focus-visible {
+  border-color: var(--pink);
+  color: var(--pink);
+  outline: none;
+}
