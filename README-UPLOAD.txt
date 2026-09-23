@@ -43,3 +43,16 @@ FILES MOST IMPORTANT TO UPLOAD
 
 If you want the rest of the recent tattoo-site routing changes to stay in sync,
 upload the whole ZIP.
+
+
+STARCADE REPAIR
+- Restored all 5 portal cards:
+  Starfall
+  Block Party
+  Heart Attack
+  Glitterworm
+  Susan
+- Restored correct portal labels/icons for each game.
+- Starfall is the initial selected game and now matches "Now Playing: Starfall".
+- Portal IDs, carousel panel IDs, and mobile dot IDs were validated as an exact 5-game match.
+- Susan remains game #5 with the refined heart/lamp version.
