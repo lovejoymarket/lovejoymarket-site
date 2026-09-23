@@ -1,6 +1,6 @@
 
-/* LoveJoy weekend openings + Get In ASAP
-   Clean/simple revision · 2026-09-23
+/* LoveJoy Weekend + Get In ASAP
+   Unique-font cleanup · 2026-09-23
 */
 
 :root {
@@ -10,19 +10,34 @@
   --lj-soft-pink: #ffe3ef;
 }
 
-/* ---------- BIG HEADERS: NO SHADOWS, NO TRICKS ---------- */
+/* =========================================================
+   GET IN ASAP HEADER
+   One thing only: GET IN ASAP ♡
+   ========================================================= */
 
-.weekend-openings-flyer h2,
-.weekend-openings-flyer .openings-title-clean,
-.asap-page .asap-page-title,
-.asap-page h1.asap-page-title,
-.session-asap-cta strong,
-.asap-jump-card strong {
-  font-family: Arial, Helvetica, sans-serif !important;
+.asap-page .asap-banner {
+  min-height: 0 !important;
+  padding: 30px 18px 28px !important;
+  margin-bottom: 12px;
+  display: block !important;
+  text-align: center;
+}
+
+.asap-page .asap-page-title {
+  display: block !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: var(--pink) !important;
+  font-family: var(--heading-font) !important;
+  font-size: clamp(4.5rem, 14vw, 8.2rem) !important;
   font-style: normal !important;
-  font-weight: 900 !important;
+  font-weight: 800 !important;
+  line-height: .86 !important;
+  letter-spacing: -.035em !important;
+  text-align: center !important;
   text-transform: uppercase !important;
-  color: var(--lj-navy) !important;
+  white-space: nowrap !important;
   text-shadow: none !important;
   -webkit-text-stroke: 0 !important;
   filter: none !important;
@@ -31,66 +46,58 @@
   box-shadow: none !important;
 }
 
-.weekend-openings-flyer h2,
-.weekend-openings-flyer .openings-title-clean {
-  display: block !important;
-  width: 100% !important;
-  margin: 8px 0 16px !important;
-  padding: 0 !important;
-  font-size: clamp(2.5rem, 10vw, 5.6rem) !important;
-  line-height: .88 !important;
-  letter-spacing: -.085em !important;
-  white-space: nowrap !important;
-  text-align: center !important;
-}
-
-.asap-page .asap-page-title {
-  display: block !important;
-  margin: 8px 0 10px !important;
-  padding: 0 !important;
-  font-size: clamp(3.4rem, 14vw, 7rem) !important;
-  line-height: .86 !important;
-  letter-spacing: -.075em !important;
-  white-space: nowrap !important;
-  text-align: center !important;
-}
-
-/* ---------- WEEKEND AVAILABILITY BOARD ---------- */
+/* =========================================================
+   WEEKEND OPENINGS CARD
+   ========================================================= */
 
 .weekend-openings-flyer {
   width: min(100%, 760px);
   margin: 18px auto 22px;
   padding: 22px;
-  border: 3px solid var(--lj-navy);
+  border: 3px solid var(--navy);
   border-radius: 0;
-  background: var(--lj-cream);
-  color: var(--lj-navy);
+  background: var(--cream);
+  color: var(--navy);
   box-shadow: none !important;
-  text-align: center;
   overflow: hidden;
+  text-align: center;
 }
 
 .openings-flyer-kicker {
   margin: 0 0 2px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: .82rem;
-  font-weight: 900;
-  letter-spacing: .12em;
-  color: var(--lj-pink);
+  color: var(--pink);
+  font-family: var(--heading-font);
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: .045em;
   text-transform: uppercase;
 }
 
-.openings-flyer-sub {
-  margin: 0 0 16px !important;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: .8rem !important;
-  font-weight: 900;
-  letter-spacing: .08em;
-  color: var(--lj-navy);
-  text-transform: uppercase;
+.weekend-openings-flyer h2,
+.weekend-openings-flyer .openings-title-clean {
+  display: block !important;
+  width: 100% !important;
+  margin: 5px 0 16px !important;
+  padding: 0 !important;
+  color: var(--pink) !important;
+  font-family: var(--heading-font) !important;
+  font-size: clamp(3.8rem, 12vw, 6.8rem) !important;
+  font-style: normal !important;
+  font-weight: 800 !important;
+  line-height: .86 !important;
+  letter-spacing: -.035em !important;
+  text-align: center !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+  text-shadow: none !important;
+  -webkit-text-stroke: 0 !important;
+  filter: none !important;
+  transform: none !important;
+  background: none !important;
+  box-shadow: none !important;
 }
 
-/* Clear 1-hour / 3-hour rows */
 .simple-opening-list {
   display: grid;
   gap: 12px;
@@ -98,7 +105,7 @@
 }
 
 .simple-opening-block {
-  border: 2px solid var(--lj-navy);
+  border: 2px solid var(--navy);
   background: #fff;
 }
 
@@ -108,36 +115,41 @@
   gap: 10px;
   align-items: center;
   padding: 11px 12px;
-  background: var(--lj-navy);
-  color: #fff;
+  background: var(--navy);
 }
 
 .simple-opening-head strong {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.05rem;
-  font-weight: 900;
-  letter-spacing: .02em;
+  color: var(--pink);
+  font-family: var(--heading-font);
+  font-size: 1.65rem;
+  font-weight: 800;
+  line-height: .95;
+  letter-spacing: .01em;
+  text-transform: uppercase;
 }
 
 .simple-opening-head span {
-  font-size: .78rem;
-  font-weight: 800;
+  color: var(--cream);
+  font-family: var(--heading-font);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
   white-space: nowrap;
 }
 
 .simple-opening-times {
   display: grid;
-  gap: 0;
 }
 
 .simple-opening-times p {
   display: grid;
-  grid-template-columns: 92px 1fr;
+  grid-template-columns: 100px 1fr;
   gap: 10px;
   margin: 0 !important;
-  padding: 11px 12px;
+  padding: 12px;
   border-top: 1px solid rgba(7,24,44,.18);
-  font-size: .86rem !important;
+  color: var(--navy);
+  font-size: .88rem !important;
   line-height: 1.35 !important;
 }
 
@@ -146,103 +158,129 @@
 }
 
 .simple-opening-times b {
-  color: var(--lj-pink);
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 900;
+  color: var(--pink);
+  font-family: var(--heading-font);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.1;
 }
 
 .simple-opening-times span {
-  color: var(--lj-navy);
+  color: var(--navy);
+  font-family: Verdana, Arial, Helvetica, sans-serif;
   font-weight: 800;
 }
 
 .openings-flyer-footer {
   margin-top: 14px;
   padding-top: 14px;
-  border-top: 2px solid var(--lj-navy);
+  border-top: 2px solid var(--navy);
 }
 
 .openings-flyer-footer a,
 .openings-flyer-footer .session-button {
   display: block;
   width: 100%;
-  padding: 12px 14px;
-  border: 2px solid var(--lj-navy);
-  background: var(--lj-pink);
-  color: var(--lj-navy);
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 900;
+  padding: 13px 14px;
+  border: 2px solid var(--navy);
+  background: var(--pink);
+  color: var(--navy);
+  font-family: var(--heading-font);
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1;
   text-align: center;
   text-decoration: none;
+  text-transform: uppercase;
 }
 
-/* ---------- SIMPLE ASAP PAGE ---------- */
+/* =========================================================
+   ASAP FORM
+   Same headline font throughout, readable body text stays clean.
+   ========================================================= */
 
-.asap-banner {
-  text-align: center;
-}
-
-.asap-banner .banner-status {
-  margin-bottom: 8px;
-}
-
-.asap-banner .tattoo-help-sub {
-  max-width: 620px;
-  margin: 0 auto !important;
-  font-size: .9rem !important;
-  line-height: 1.45 !important;
+.asap-page .module-title {
+  font-family: var(--heading-font);
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1;
 }
 
 .asap-form-intro {
   margin: 0 0 14px !important;
   padding: 11px 12px;
-  border: 2px solid var(--lj-navy);
-  background: var(--lj-cream);
-  color: var(--lj-navy);
+  border: 2px solid var(--navy);
+  background: var(--cream);
+  color: var(--navy);
   font-size: .84rem !important;
   font-weight: 800;
   line-height: 1.4;
 }
 
+.asap-page .tattoo-inquiry-form label > span {
+  color: var(--pink);
+  font-family: var(--heading-font);
+  font-size: 1.02rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.asap-page .tattoo-inquiry-form input,
+.asap-page .tattoo-inquiry-form select,
+.asap-page .tattoo-inquiry-form textarea {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.asap-page .session-button,
+.asap-page .text-link {
+  font-family: var(--heading-font);
+  font-weight: 800;
+}
+
 .asap-inline-deposit {
   margin-top: 16px;
   padding: 14px;
-  border: 3px solid var(--lj-pink);
-  background: var(--lj-soft-pink);
+  border: 3px solid var(--pink);
+  background: var(--soft-pink, #ffe3ef);
   text-align: center;
 }
 
 .asap-inline-deposit strong {
   display: block;
-  color: var(--lj-navy);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.25rem;
-  font-weight: 900;
+  color: var(--pink);
+  font-family: var(--heading-font);
+  font-size: 1.65rem;
+  font-weight: 800;
+  line-height: 1;
 }
 
 .asap-inline-deposit p {
   max-width: 560px;
-  margin: 6px auto 10px !important;
-  font-size: .78rem !important;
-  line-height: 1.4 !important;
+  margin: 7px auto 11px !important;
+  color: var(--navy);
+  font-size: .8rem !important;
+  line-height: 1.45 !important;
 }
 
 .asap-inline-deposit .session-button {
   display: block;
   width: 100%;
   text-align: center;
+  font-size: 1.15rem;
 }
 
-/* ---------- FINDABLE ASAP CTAs ---------- */
+/* =========================================================
+   GET IN ASAP ENTRY POINTS
+   ========================================================= */
 
 .asap-jump-card,
 .session-asap-cta {
   width: min(100%, 760px);
   margin: 16px auto 20px;
-  padding: 16px;
-  border: 3px solid var(--lj-navy);
-  background: var(--lj-soft-pink);
-  color: var(--lj-navy);
+  padding: 17px;
+  border: 3px solid var(--navy);
+  background: var(--soft-pink, #ffe3ef);
+  color: var(--navy);
   box-shadow: none !important;
   text-align: center;
 }
@@ -250,28 +288,37 @@
 .asap-jump-card .asap-jump-eyebrow,
 .session-asap-cta .asap-jump-eyebrow {
   display: block;
-  margin-bottom: 5px;
-  color: var(--lj-pink);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: .72rem;
-  font-weight: 900;
-  letter-spacing: .1em;
+  margin-bottom: 4px;
+  color: var(--pink);
+  font-family: var(--heading-font);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1;
 }
 
 .asap-jump-card strong,
 .session-asap-cta strong {
   display: block;
   margin: 0 auto 8px;
-  font-size: clamp(2rem, 8vw, 4rem) !important;
-  line-height: .9 !important;
-  letter-spacing: -.06em !important;
+  color: var(--pink) !important;
+  font-family: var(--heading-font) !important;
+  font-size: clamp(2.7rem, 9vw, 5rem) !important;
+  font-style: normal !important;
+  font-weight: 800 !important;
+  line-height: .86 !important;
+  letter-spacing: -.025em !important;
   white-space: nowrap;
+  text-shadow: none !important;
+  -webkit-text-stroke: 0 !important;
+  filter: none !important;
+  transform: none !important;
 }
 
 .asap-jump-card p,
 .session-asap-cta p {
   max-width: 580px;
   margin: 6px auto 12px !important;
+  color: var(--navy);
   font-size: .82rem !important;
   line-height: 1.4 !important;
   font-weight: 700;
@@ -280,56 +327,78 @@
 .asap-jump-card .session-button,
 .session-asap-cta .session-button {
   display: inline-block;
-  padding: 11px 14px;
-  background: var(--lj-navy);
-  color: #fff;
-  border-color: var(--lj-navy);
+  padding: 12px 15px;
+  background: var(--navy);
+  color: var(--cream);
+  border-color: var(--navy);
+  font-family: var(--heading-font);
+  font-size: 1.08rem;
+  font-weight: 800;
 }
 
-/* ---------- MOBILE ---------- */
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media (max-width: 560px) {
+  .asap-page .asap-banner {
+    padding: 25px 8px 23px !important;
+  }
+
+  .asap-page .asap-page-title {
+    font-size: clamp(4.4rem, 18vw, 5.7rem) !important;
+    letter-spacing: -.04em !important;
+  }
+
   .weekend-openings-flyer {
-    width: calc(100% - 18px);
-    padding: 18px 12px;
+    width: calc(100% - 10px);
     margin: 14px auto 18px;
+    padding: 18px 11px;
+  }
+
+  .openings-flyer-kicker {
+    font-size: 1rem;
   }
 
   .weekend-openings-flyer h2,
   .weekend-openings-flyer .openings-title-clean {
-    font-size: clamp(2.25rem, 10.5vw, 2.85rem) !important;
-    letter-spacing: -.09em !important;
-  }
-
-  .asap-page .asap-page-title {
-    font-size: clamp(3rem, 14vw, 4.2rem) !important;
-    letter-spacing: -.08em !important;
+    font-size: clamp(3.3rem, 15vw, 4.6rem) !important;
+    letter-spacing: -.04em !important;
   }
 
   .simple-opening-head {
     grid-template-columns: 1fr;
-    gap: 2px;
+    gap: 4px;
+  }
+
+  .simple-opening-head strong {
+    font-size: 1.5rem;
   }
 
   .simple-opening-head span {
+    font-size: .95rem;
     white-space: normal;
   }
 
   .simple-opening-times p {
-    grid-template-columns: 78px 1fr;
+    grid-template-columns: 82px 1fr;
     gap: 8px;
     padding: 10px;
     font-size: .8rem !important;
   }
 
+  .simple-opening-times b {
+    font-size: .95rem;
+  }
+
   .asap-jump-card,
   .session-asap-cta {
-    width: calc(100% - 18px);
-    padding: 14px 11px;
+    width: calc(100% - 10px);
+    padding: 14px 10px;
   }
 
   .asap-jump-card strong,
   .session-asap-cta strong {
-    font-size: clamp(1.8rem, 8.5vw, 2.5rem) !important;
+    font-size: clamp(2.5rem, 11vw, 3.7rem) !important;
   }
 }
