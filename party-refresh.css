@@ -1,0 +1,66 @@
+/* LoveJoy tattoo party refresh, scoped to these five pages. */
+.party-refresh .party-hero {padding: clamp(20px, 4vw, 38px); text-align:left;}
+.party-refresh .party-eyebrow {font-size:.76rem; letter-spacing:.12em; font-weight:800; color:var(--blush); margin:18px 0 8px !important;}
+.party-refresh .party-headline {font-family:var(--heading-font);font-weight:700; font-size:clamp(2.2rem,6vw,5rem);line-height:1.06;margin:0 0 12px;color:var(--cream);max-width:900px;}
+.party-refresh .party-lede {font-size:clamp(1rem,2.1vw,1.26rem)!important;line-height:1.6;max-width:790px;margin:0 0 14px!important;color:var(--cream);}
+.party-refresh .party-hero-note {border-left:3px solid var(--blush);padding:4px 0 4px 12px;color:var(--cream);opacity:.94;max-width:800px;font-size:.9rem!important;}
+.party-refresh .module-card .module-body {padding:clamp(16px,3vw,27px);}
+.party-refresh .module-card p, .party-refresh .module-card small, .party-refresh .party-policy-list p {font-size:clamp(.89rem,1.35vw,1rem)!important;line-height:1.65;}
+.party-refresh .module-card .module-title {font-size:clamp(1.35rem,2.5vw,1.75rem);line-height:1.2;}
+.party-refresh .party-prose {max-width:850px;margin-top:0!important;}
+.party-refresh .party-choice-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;}
+.party-refresh .party-choice {display:flex;flex-direction:column;align-items:flex-start;gap:10px;background:var(--cream);color:var(--ink);padding:clamp(16px,2.5vw,24px);border:1px solid var(--navy);box-shadow:4px 4px 0 rgba(49,39,48,.15);}
+.party-refresh .party-choice h2 {font-size:clamp(1.45rem,3vw,2rem);line-height:1.15;color:var(--navy);margin:0;}
+.party-refresh .party-choice p {margin:0!important;}
+.party-refresh .party-choice .session-button {margin-top:auto;}
+.party-refresh .party-kicker {letter-spacing:.08em;font-size:.73rem;font-weight:900;color:#9b235e;}
+.party-refresh .party-facts {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+.party-refresh .party-facts > div {background:var(--cream);border:1px solid var(--navy);padding:20px;}
+.party-refresh .party-facts span {display:block;font-size:.75rem;letter-spacing:.08em;font-weight:900;color:#9b235e;margin-bottom:8px;}
+.party-refresh .party-facts strong {display:block;color:var(--navy);font-family:var(--heading-font);font-size:clamp(1.2rem,2.4vw,1.6rem);margin-bottom:7px;}
+.party-refresh .party-facts p {margin:0!important;}
+.party-refresh .party-soft-note {margin-top:17px;padding:16px;background:#ffe3ef;color:var(--ink);border-left:4px solid #ab2b69;line-height:1.65;font-size:1rem;}
+.party-refresh .party-signup-layout {display:grid;grid-template-columns:minmax(0,1.4fr) minmax(240px,1fr);gap:20px;}
+.party-refresh .party-signup-layout p:first-child {margin-top:0;}
+.party-refresh .party-small-print {font-size:.89rem!important;opacity:.85;}
+.party-refresh .party-small-print a, .party-refresh .party-template-row a {color:#8e1a59;font-weight:800;}
+.party-refresh .party-template-card {background:var(--navy);color:var(--cream);padding:20px;border:1px solid var(--navy);display:flex;flex-direction:column;gap:10px;align-items:flex-start;}
+.party-refresh .party-template-card strong {font-size:1.4rem;font-family:var(--heading-font);}
+.party-refresh .party-template-card p {margin:0!important;}
+.party-refresh .party-template-card small {color:var(--blush);}
+.party-refresh .party-mini-faq {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
+.party-refresh .party-mini-faq > div {border:1px solid var(--line);padding:16px;background:var(--cream);}
+.party-refresh .party-mini-faq strong {display:block;color:var(--navy);font-size:1.03rem;line-height:1.4;}
+.party-refresh .party-mini-faq p {margin:7px 0 0!important;}
+.party-refresh .party-next .module-body {display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.party-refresh .party-next p {flex:1 1 100%;margin:0!important;}
+.party-refresh .party-inline-link {color:#8e1a59;font-size:.94rem;font-weight:800;}
+.party-refresh .party-steps {display:grid;gap:14px;}
+.party-refresh .party-steps article {display:flex;align-items:flex-start;gap:14px;background:var(--cream);padding:16px;border:1px solid var(--line);}
+.party-refresh .party-steps article b {flex:0 0 38px;height:38px;display:grid;place-items:center;background:#d95793;color:#241b21;font-size:1.15rem;}
+.party-refresh .party-steps h2 {font-size:1.22rem;color:var(--navy);margin:0 0 3px;}
+.party-refresh .party-steps p {margin:0!important;}
+.party-refresh .party-template-row {margin-top:17px;background:#ffe3ef;padding:15px;}
+.party-refresh .party-template-row p {margin:0!important;}
+.party-refresh .party-policy-list {gap:10px;}
+.party-refresh .party-policy-list details {background:var(--cream);border-color:#e7c6d6;}
+.party-refresh .party-policy-list summary {font-size:1.05rem;padding:14px 40px 14px 14px;line-height:1.4;color:var(--navy);}
+.party-refresh .party-policy-list p {padding:10px 14px 14px;}
+.party-refresh .party-policy-list p+p {padding-top:0;}
+.party-refresh .party-inquiry-panel .party-soft-note {margin-bottom:18px;}
+.party-refresh .tattoo-party-form fieldset {padding:clamp(15px,2vw,23px);border-color:#e7c6d6;margin-bottom:20px;}
+.party-refresh .tattoo-party-form legend {font-size:1.12rem;padding:0 8px;color:#8e1a59;}
+.party-refresh .tattoo-party-form label {font-size:.92rem;line-height:1.45;color:var(--navy);font-weight:700;gap:7px;}
+.party-refresh .tattoo-party-form input, .party-refresh .tattoo-party-form select, .party-refresh .tattoo-party-form textarea {font-size:1rem;padding:12px;min-height:46px;border:1px solid #9e8396;max-width:100%;}
+.party-refresh .tattoo-party-form input[type=checkbox] {min-height:0;width:20px;height:20px;margin:1px 0;}
+.party-refresh .party-check {display:grid;grid-template-columns:20px minmax(0,1fr)!important;align-items:start;}
+.party-refresh .party-check span {font-size:.91rem;color:var(--navy);font-weight:500;}
+.party-refresh .party-check a {color:#8e1a59;text-decoration:underline;}
+.party-refresh .party-field-hint {font-size:.9rem!important;margin:0 0 14px!important;opacity:.82;}
+.party-refresh .party-policy-ack {padding:16px;margin:18px 0;}
+.party-refresh .party-form-actions .session-button {cursor:pointer;}
+.party-refresh .tattoo-form-status {min-height:1.5em;}
+.party-refresh .session-button {display:inline-block;line-height:1.4;font-size:.92rem;padding:12px 17px;text-align:center;text-decoration:none;}
+.party-refresh a:focus-visible,.party-refresh button:focus-visible,.party-refresh input:focus-visible,.party-refresh select:focus-visible,.party-refresh textarea:focus-visible,.party-refresh summary:focus-visible {outline:3px solid #bb271b;outline-offset:3px;}
+@media(max-width:730px){.party-refresh .party-choice-grid,.party-refresh .party-facts,.party-refresh .party-signup-layout,.party-refresh .party-mini-faq {grid-template-columns:1fr;}.party-refresh .party-choice .session-button {width:100%;}}
+@media(max-width:500px){.party-refresh .party-hero {padding:20px 17px;}.party-refresh .party-headline {font-size:2.45rem;}.party-refresh .party-form-grid {grid-template-columns:1fr;}.party-refresh .party-next .session-button {width:100%;}}

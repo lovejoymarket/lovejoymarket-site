@@ -1,37 +1,22 @@
-LOVEJOY MARKET | POP-UPS WEBSITE UPDATE | SEPTEMBER 22, 2026
-===========================================================
+LOVEJOY TATTOO PARTY PAGE REFRESH | 2026-09-24
 
-These files are meant to be uploaded into the ROOT of your existing
-GitHub repository: lovejoymarket/lovejoymarket-site, main branch.
-Use Add file > Upload files, drag in the contents of this ZIP, and commit.
-GitHub's web uploader does not accept a ZIP as an automatic website update:
-unzip this file first, then upload the FILES inside.
+Upload the files in this ZIP to the ROOT of your existing GitHub Pages website. Overwrite matching filenames. DO NOT delete other website files or overwrite your entire repository with only these files.
 
-Upload the changed HTML, JSON, XML, CSS, and site.js files.
-Do NOT delete your existing other site files, logos, gallery, photos, or fonts.
+UPDATED:
+- tattoo-parties.html (information + smooth direct path to inquiry)
+- tattoo-party-types.html (friendly private/public comparison)
+- tattoo-party-booking.html (signup list instead of required headcount)
+- tattoo-party-policies.html (clearer complete policies)
+- tattoo-party-inquiry.html (simplified form, optional backup date, no headcount fields)
 
-WHAT CHANGED
-- Added popups.html and popups.css.
-- Replaced Events links with Pop-Ups links throughout the existing HTML pages.
-- Removed the old October event tiles, dated collaborator options, and calendar UI.
-- Removed the Super Secret Soft Opening banner, deal card, and JS inquiry logic.
-- Updated Market and homepage copy toward tattooing, art, and occasional pop-ups.
-- Replaced events.json with an empty list and removed calendar rendering JS.
-- Updated sitemap.xml to feature popups.html and omit outdated event listings.
-- Old events, calendar, October detail, and special URLs redirect to current pages
-  with noindex metadata, so old shared links do not advertise inactive offers.
+NEW:
+- party-refresh.css (styling for these five pages)
+- tattoo-parties.js (party inquiry email generator; includes preselected private/public options)
+- tattoo-party-signup-template.csv (host-managed signup sheet template)
 
-Because the current GitHub repository contains extra pages (gallery, Starcade,
-404, etc.) not in the last full-site ZIP, those existing pages are intentionally
-left untouched to prevent wiping out newer features. For their persistent nav,
-site.js also normalizes the old Events nav links to Pop-Ups when loaded.
-
-AFTER UPLOAD
-1. Open https://lovejoymarket.co/popups.html
-2. Check the Home, Tattoos, Market and About navigation on desktop and phone.
-3. Check https://lovejoymarket.co/events-calendar.html (should redirect).
-4. Check https://lovejoymarket.co/super-secret-soft-opening.html (should redirect).
-5. Hard-refresh once if a cached page shows the old marquee.
-
-This package does not create or cancel real calendar entries, delete Square
-appointments, or change the existing tattoo inquiry flow.
+AFTER UPLOADING:
+- The party landing page is https://lovejoymarket.co/tattoo-parties.html
+- The party inquiry form is https://lovejoymarket.co/tattoo-party-inquiry.html
+- Confirm that the inquiry opens an email, and SEND it from the email app. This site is static and does not store form submissions or operate a live shared guest signup system.
+- The signup CSV is an optional organizer template. The host keeps the list and shares it with Jessie privately; the list does not confirm appointment slots.
+- Existing website CSS, images and other pages remain in your repo; this upload does not include them.

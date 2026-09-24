@@ -1,162 +1,124 @@
+/* LoveJoy tattoo party inquiry: create an email, and show public-event questions only when useful. */
 (() => {
   const form = document.querySelector('[data-tattoo-party-form]');
   if (!form) return;
-
   const destination = form.dataset.email || 'hello@lovejoymarket.co';
   const status = form.querySelector('[data-party-status]');
   const copyButton = form.querySelector('[data-party-copy]');
   const partyType = form.querySelector('[data-party-type]');
   const promoFields = form.querySelector('[data-party-promo-fields]');
 
-  function value(name) {
+  // Keep the date picker aligned with the 30-day party booking window.
+  const earliest = new Date();
+  earliest.setHours(12, 0, 0, 0);
+  earliest.setDate(earliest.getDate() + 30);
+  const earliestDate = `${earliest.getFullYear()}-${String(earliest.getMonth() + 1).padStart(2, '0')}-${String(earliest.getDate()).padStart(2, '0')}`;
+  ['preferred_date', 'backup_date'].forEach((name) => {
+    const field = form.elements.namedItem(name);
+    if (field) field.min = earliestDate;
+  });
+
+  const params = new URLSearchParams(window.location.search);
+  const party = params.get('party');
+  if (party === 'private') partyType.value = 'Private Tattoo Party';
+  if (party === 'public') partyType.value = 'Co-Promoted Tattoo Party';
+
+  const value = (name) => {
     const field = form.elements.namedItem(name);
     return field ? String(field.value || '').trim() : '';
-  }
+  };
+  const checked = (name) => form.elements.namedItem(name)?.checked ? 'yes' : 'no';
+  const optional = (name) => value(name) || 'not decided yet';
+  const isPublic = () => value('party_type') === 'Co-Promoted Tattoo Party';
+  const syncPromoFields = () => { if (promoFields) promoFields.hidden = !isPublic(); };
+  partyType.addEventListener('change', syncPromoFields);
+  syncPromoFields();
 
-  function yesNo(name) {
-    const field = form.elements.namedItem(name);
-    return field && field.checked ? 'yes' : 'no';
-  }
-
-  function syncPromoFields() {
-    if (!promoFields || !partyType) return;
-    promoFields.hidden = partyType.value !== 'Co-Promoted Tattoo Party';
-  }
-
-  function buildInquiry() {
-    return [
-      'LOVEJOY TATTOO PARTY INQUIRY',
-      '',
+  function body() {
+    const lines = [
+      'LOVEJOY TATTOO PARTY INQUIRY', '',
       'HOST',
       `Name: ${value('host_name')}`,
       `Email: ${value('email')}`,
       `Phone: ${value('phone')}`,
       `Party type: ${value('party_type')}`,
-      `Occasion / event: ${value('occasion') || 'not provided'}`,
-      '',
-      'DATE + GROUP',
+      `Occasion: ${optional('occasion')}`, '',
+      'DATE AND GATHERING',
       `Preferred date: ${value('preferred_date')}`,
-      `Backup date: ${value('backup_date')}`,
-      `Preferred start time: ${value('start_time') || 'not provided'}`,
-      `Expected duration: ${value('duration') || 'not provided'}`,
-      `Total guests: ${value('total_guests')}`,
-      `Estimated tattoo participants: ${value('tattoo_participants')}`,
-      `18+ / valid ID acknowledged: ${yesNo('age_ack')}`,
-      '',
-      'TATTOO PLAN',
-      `Payment plan: ${value('payment_plan')}`,
+      `Backup date: ${optional('backup_date')}`,
+      `Preferred start time: ${optional('start_time')}`,
+      `Estimated duration: ${optional('duration')}`,
+      `Kind of gathering: ${optional('event_size')}`,
+      'Guest signup list: to be collected after booking, with available tattoo spots confirmed by Jessie.',
+      `18+ and valid ID acknowledged: ${checked('age_ack')}`, '',
+      'TATTOO IDEAS',
+      `Who pays: ${value('payment_plan')}`,
       `Tattoo setup: ${value('tattoo_setup')}`,
-      `Color direction: ${value('color')}`,
-      `Approx. budget per person: ${value('budget') || 'not provided'}`,
-      `Expected placements: ${value('placements') || 'not provided'}`,
-      '',
-      'IDEAS / VIBE:',
-      value('tattoo_ideas'),
-      '',
-      'PARTY LOGISTICS',
+      `Color: ${value('color')}`,
+      `Rough budget per tattoo: ${optional('budget')}`,
+      `Placements: ${optional('placements')}`,
+      `Ideas / vibe: ${optional('tattoo_ideas')}`, '',
+      'PARTY DETAILS',
       `Food / drinks: ${value('food_drinks')}`,
-      `Alcohol present: ${value('alcohol')}`,
-      `Decor / setup requests: ${value('setup_requests') || 'none listed'}`,
-      `Accessibility needs: ${value('accessibility') || 'none listed'}`,
-      '',
-      'PUBLIC PROMO (IF APPLICABLE)',
-      `Business / organization: ${value('organization') || 'not provided'}`,
-      `Social handles: ${value('social_handles') || 'not provided'}`,
-      `Target promo launch: ${value('promo_launch') || 'not provided'}`,
-      `Main graphic: ${value('graphics') || 'not provided'}`,
-      `Promo plan: ${value('promo_plan') || 'not provided'}`,
-      '',
-      'OTHER NOTES',
-      value('notes') || 'none',
-      '',
-      `Tattoo Party policies acknowledged: ${yesNo('policy_ack')}`
-    ].join('\n');
+      `Alcohol: ${value('alcohol')}`,
+      `Decor / setup: ${optional('setup_requests')}`,
+      `Accessibility requests: ${optional('accessibility')}`
+    ];
+    if (isPublic()) lines.push('', 'PUBLIC EVENT / PROMOTION',
+      `Organization: ${optional('organization')}`,
+      `Social / website: ${optional('social_handles')}`,
+      `Promo launch: ${optional('promo_launch')}`,
+      `Flyer: ${value('graphics')}`,
+      `Promo plan: ${optional('promo_plan')}`);
+    lines.push('', 'OTHER NOTES', optional('notes'), '',
+      `Party policies and $250 reservation deposit acknowledged: ${checked('policy_ack')}`,
+      'I understand this is a request. My date is held only after approval and payment of the reservation deposit.');
+    return lines.join('\n');
   }
-
-  function subject() {
-    const host = value('host_name') || 'Host';
-    const type = value('party_type') || 'Tattoo Party';
-    const date = value('preferred_date') || 'Date TBD';
-    return `TATTOO PARTY INQUIRY | ${host} | ${type} | ${date}`;
-  }
-
-  function composeUrls() {
-    const body = buildInquiry();
-    const sub = subject();
+  function subject() { return `TATTOO PARTY INQUIRY | ${value('host_name') || 'Host'} | ${value('preferred_date') || 'Date TBD'}`; }
+  function messages() {
+    const sub=subject(), text=body();
     return {
-      mailto: `mailto:${encodeURIComponent(destination)}?subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}`,
-      gmail: `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(destination)}&su=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}`,
-      copy: `${sub}\n\n${body}`
+      mailto:`mailto:${encodeURIComponent(destination)}?subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(text)}`,
+      gmail:`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(destination)}&su=${encodeURIComponent(sub)}&body=${encodeURIComponent(text)}`,
+      plain:`To: ${destination}\nSubject: ${sub}\n\n${text}`
     };
   }
-
-  async function copyText(text) {
+  async function copyInquiry() {
     try {
-      await navigator.clipboard.writeText(text);
-      if (status) status.textContent = `Copied. Paste it into an email to ${destination}. ♡`;
+      await navigator.clipboard.writeText(messages().plain);
+      status.textContent=`Copied. Paste it into an email to ${destination}, attach any references, and send it. ♡`;
       return true;
-    } catch (error) {
-      if (status) status.textContent = 'The browser is being possessive. Try the email-app option instead.';
+    } catch (e) {
+      status.textContent='Copy was blocked. Please use the create-email button instead.';
       return false;
     }
   }
-
-  function isMobileLike() {
-    return window.matchMedia('(pointer: coarse)').matches || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-  }
-
-  function openDesktopChooser(urls) {
+  function desktopChoice(urls) {
     document.querySelector('[data-party-mail-choice]')?.remove();
-
-    const backdrop = document.createElement('div');
-    backdrop.className = 'party-mail-choice-backdrop';
-    backdrop.dataset.partyMailChoice = '';
-    backdrop.innerHTML = `
-      <div class="party-mail-choice" role="dialog" aria-modal="true" aria-label="Choose how to create your tattoo party email">
-        <div class="party-mail-choice-head">your tattoo party email is ready ♡</div>
-        <div class="party-mail-choice-body">
-          <p>Pick where you want to create it. Your form answers are already built into the message.</p>
-          <div class="party-mail-choice-actions">
-            <a href="${urls.gmail}" target="_blank" rel="noopener">open Gmail in browser →</a>
-            <a href="${urls.mailto}">use my computer’s email app →</a>
-            <button type="button" data-copy-choice>copy the inquiry instead →</button>
-            <button type="button" class="party-mail-choice-close" data-close-choice>close</button>
-          </div>
-        </div>
-      </div>
-    `;
-
+    const backdrop=document.createElement('div');
+    backdrop.className='party-mail-choice-backdrop';
+    backdrop.dataset.partyMailChoice='';
+    backdrop.innerHTML=`<div class="party-mail-choice" role="dialog" aria-modal="true" aria-label="Choose how to send your tattoo party inquiry">
+      <div class="party-mail-choice-head">Your party email is ready ♡</div>
+      <div class="party-mail-choice-body"><p>Choose where to open it. Please send the email there so I receive your inquiry.</p>
+        <div class="party-mail-choice-actions"><a href="${urls.gmail}" target="_blank" rel="noopener">open in Gmail →</a>
+        <a href="${urls.mailto}">open in my email app →</a>
+        <button type="button" data-copy-choice>copy the inquiry →</button>
+        <button type="button" class="party-mail-choice-close" data-close-choice>close</button></div></div></div>`;
     document.body.appendChild(backdrop);
-    backdrop.querySelector('[data-close-choice]').addEventListener('click', () => backdrop.remove());
-    backdrop.addEventListener('click', (event) => {
-      if (event.target === backdrop) backdrop.remove();
-    });
-    backdrop.querySelector('[data-copy-choice]').addEventListener('click', async () => {
-      if (await copyText(urls.copy)) backdrop.remove();
-    });
+    backdrop.querySelector('[data-close-choice]').addEventListener('click',()=>backdrop.remove());
+    backdrop.addEventListener('click',(e)=>{if(e.target===backdrop)backdrop.remove();});
+    backdrop.querySelector('[data-copy-choice]').addEventListener('click',async()=>{if(await copyInquiry())backdrop.remove();});
   }
-
-  form.addEventListener('submit', (event) => {
+  form.addEventListener('submit',(event)=>{
     event.preventDefault();
-    if (!form.reportValidity()) return;
-
-    const urls = composeUrls();
-    if (status) status.textContent = 'Email ready. Add the useful reference images before you send it, cutie. ♡';
-
-    if (isMobileLike()) {
-      window.location.href = urls.mailto;
-    } else {
-      openDesktopChooser(urls);
-    }
+    if(!form.reportValidity())return;
+    const urls=messages();
+    status.textContent='Your email is ready. Add any reference photos, then hit send in your email app. ♡';
+    if(window.matchMedia('(pointer: coarse)').matches || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+      window.location.href=urls.mailto;
+    } else desktopChoice(urls);
   });
-
-  if (copyButton) {
-    copyButton.addEventListener('click', async () => {
-      if (!form.reportValidity()) return;
-      await copyText(composeUrls().copy);
-    });
-  }
-
-  if (partyType) partyType.addEventListener('change', syncPromoFields);
-  syncPromoFields();
+  copyButton?.addEventListener('click',async()=>{if(form.reportValidity())await copyInquiry();});
 })();
