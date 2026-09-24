@@ -12,11 +12,11 @@ UPDATED:
 NEW:
 - party-refresh.css (styling for these five pages)
 - tattoo-parties.js (party inquiry email generator; includes preselected private/public options)
-- tattoo-party-signup-template.csv (host-managed signup sheet template)
+- tattoo-party-signup-template.csv (names-only, one-column host-managed signup sheet)
 
 AFTER UPLOADING:
 - The party landing page is https://lovejoymarket.co/tattoo-parties.html
 - The party inquiry form is https://lovejoymarket.co/tattoo-party-inquiry.html
 - Confirm that the inquiry opens an email, and SEND it from the email app. This site is static and does not store form submissions or operate a live shared guest signup system.
-- The signup CSV is an optional organizer template. The host keeps the list and shares it with Jessie privately; the list does not confirm appointment slots.
+- The signup CSV asks for names only. The host shares the list with Jessie privately; individual tattoo details are discussed separately, and names on the list do not confirm appointment slots.
 - Existing website CSS, images and other pages remain in your repo; this upload does not include them.
