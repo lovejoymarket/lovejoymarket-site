@@ -8,6 +8,38 @@
 <link href="section-pages.css?v=20260819-organized7" rel="stylesheet"/>
 <link href="tattoo-pages.css?v=20260820-cleanroutes2" rel="stylesheet"/>
 <link href="tattoo-openings.css?v=20260923-repair11" rel="stylesheet"/>
+
+<style>
+.tattoo-policy-check {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0 4px;
+  padding: 14px;
+  border: 1px solid var(--navy);
+  background: #ffe3ef;
+  color: var(--navy);
+}
+.tattoo-policy-check-copy { display: grid; gap: 3px; }
+.tattoo-policy-check-copy strong { color: var(--pink); font-weight: 900; }
+.tattoo-policy-check a { color: var(--pink); font-weight: 900; text-decoration-thickness: 2px; text-underline-offset: 2px; }
+.tattoo-policy-checkbox {
+  display: flex !important;
+  grid-template-columns: none !important;
+  align-items: flex-start;
+  gap: 9px !important;
+  margin: 0;
+  font-weight: 800;
+}
+.tattoo-policy-checkbox input {
+  width: 18px;
+  height: 18px;
+  margin: 2px 0 0;
+  flex: 0 0 auto;
+  accent-color: var(--pink);
+}
+.tattoo-policy-checkbox input:disabled { cursor: not-allowed; opacity: .45; }
+.tattoo-policy-check small { font-size: .76rem; font-weight: 800; opacity: .78; }
+</style>
 </head>
 <body class="tattoo-page">
 <div aria-hidden="true" class="star-rain"></div><div aria-hidden="true" class="ambient-stars"></div>
@@ -27,7 +59,7 @@
 <section class="asap-jump-card" aria-label="Fast-track this weekend">
 <span class="asap-jump-eyebrow">FAST-TRACK THIS WEEKEND</span>
 <strong>GET IN ASAP ♡</strong>
-<p>If you are trying for Sept 26–27, use the weekend form instead. It only shows the times that fit your session length.</p>
+<p>If you are trying for Oct 2–4, use the weekend form instead. It only shows the times that fit your session length.</p>
 <a class="session-button" href="tattoo-get-in-asap.html">use this weekend’s form →</a>
 </section>
 
@@ -44,9 +76,20 @@
 <label><span>About how big? *</span><input name="size" placeholder="ex: 5–6 inches" required type="text"/></label>
 </div>
 <label class="tattoo-form-wide"><span>Tell me the idea. *</span><textarea name="idea" required rows="5"></textarea></label>
-<div class="tattoo-form-grid"><label><span>Color direction</span><select name="color"><option>Black &amp; gray</option><option>Color</option><option>Mostly black &amp; gray with color</option><option>Not sure</option></select></label><label><span>General availability</span><input name="availability" placeholder="Saturday / Sunday / flexible" type="text"/></label></div>
+<div class="tattoo-form-grid"><label><span>Color direction</span><select name="color"><option>Black &amp; gray</option><option>Color</option><option>Mostly black &amp; gray with color</option><option>Not sure</option></select></label><label><span>General availability</span><input name="availability" placeholder="Friday evening / Saturday / Sunday / flexible" type="text"/></label></div>
 <label class="tattoo-form-wide"><span>Anything else I should know?</span><textarea name="notes" rows="3"></textarea></label>
 <div class="tattoo-attachment-note"><strong>Before sending:</strong><span>Attach references + a clear photo of the exact placement area.</span></div>
+<div class="tattoo-policy-check">
+  <div class="tattoo-policy-check-copy">
+    <strong>One last thing ♡</strong>
+    <span>Please open and read the <a data-policy-link href="tattoo-policies.html" rel="noopener" target="_blank">Tattoo Policies</a> before submitting your inquiry.</span>
+  </div>
+  <label class="tattoo-policy-checkbox">
+    <input data-policy-checkbox disabled name="policies_acknowledged" required type="checkbox" value="yes"/>
+    <span>I read and agree to the Tattoo Policies.</span>
+  </label>
+  <small data-policy-note>Open the policy link first to unlock this checkbox.</small>
+</div>
 <div class="tattoo-form-actions"><button class="session-button tattoo-email-button" type="submit">build my email ♡</button><button class="text-link tattoo-copy-button" data-tattoo-copy type="button">copy inquiry instead</button></div>
 <p aria-live="polite" class="tattoo-form-status" data-tattoo-status></p>
 </form>
@@ -67,6 +110,6 @@
 </div></main>
 <footer class="site-footer"><div class="site-shell footer-grid"><strong>LoveJoy Market</strong><div class="footer-small">lovejoymarket.co · hello@lovejoymarket.co · Fishers, Indiana</div></div></footer>
 <script src="site.js?v=20260922-popups1"></script>
-<script src="mail-fix.js?v=20260923-flow4"></script>
+<script src="mail-fix.js?v=20260927-policyack1"></script>
 </body>
 </html>

@@ -24,6 +24,7 @@
         `Approx. size: ${v(form,'size')}`,
         `Color direction: ${v(form,'color')}`,
         `Availability: ${v(form,'availability') || 'not provided'}`,
+        `Tattoo policies acknowledged: ${v(form,'policies_acknowledged') === 'yes' ? 'yes' : 'no'}`,
         '','IDEA:',v(form,'idea'),'','OTHER NOTES:',v(form,'notes') || 'none',
         '','ATTACH BEFORE SENDING: reference images + clear placement photo'
       ].join('\n')
@@ -66,21 +67,38 @@
 
   const ASAP_SLOTS = {
     '1-Hour Session · $100 / $50 deposit': [
-      'Saturday 9/26 · 10:00 AM',
-      'Saturday 9/26 · 2:00 PM',
-      'Saturday 9/26 · 3:00 PM',
-      'Saturday 9/26 · 4:00 PM',
-      'Sunday 9/27 · 10:00 AM',
-      'Sunday 9/27 · 11:00 AM',
-      'Sunday 9/27 · 12:00 PM',
-      'Sunday 9/27 · 1:00 PM'
+      'Friday 10/2 · 5:00 PM',
+      'Friday 10/2 · 6:00 PM',
+      'Friday 10/2 · 7:00 PM',
+      'Saturday 10/3 · 12:00 PM',
+      'Saturday 10/3 · 3:00 PM',
+      'Saturday 10/3 · 4:00 PM',
+      'Saturday 10/3 · 7:00 PM',
+      'Sunday 10/4 · 1:00 PM',
+      'Sunday 10/4 · 2:00 PM'
     ],
     '3-Hour Session · $250 / $125 deposit': [
-      'Saturday 9/26 · 2:00 PM',
-      'Sunday 9/27 · 10:00 AM',
-      'Sunday 9/27 · 11:00 AM'
+      'Friday 10/2 · 5:00 PM',
+      'Saturday 10/3 · 12:00 PM',
+      'Saturday 10/3 · 4:00 PM'
     ]
   };
+
+  function policyAcknowledged(form) {
+    const checkbox = form?.querySelector('[data-policy-checkbox]');
+    if (!checkbox) return true;
+    const status = form.querySelector('[data-tattoo-status]');
+    if (checkbox.disabled) {
+      if (status) status.textContent = 'Open the Tattoo Policies first, then check the acknowledgment box. ♡';
+      return false;
+    }
+    if (!checkbox.checked) {
+      if (status) status.textContent = 'Check the policy acknowledgment box before submitting. ♡';
+      checkbox.focus();
+      return false;
+    }
+    return true;
+  }
 
   function populateAsapSlots(form) {
     const session = v(form, 'session');
@@ -130,6 +148,7 @@
     const form = event.target.closest?.('[data-tattoo-inquiry], [data-get-asap]');
     if (!form) return;
     event.preventDefault();
+    if (form.matches('[data-tattoo-inquiry]') && !policyAcknowledged(form)) return;
     if (!form.reportValidity()) return;
 
     if (form.matches('[data-get-asap]')) {
@@ -153,6 +172,15 @@
   }, true);
 
   document.addEventListener('click', (event) => {
+    const policyLink = event.target.closest?.('[data-policy-link]');
+    if (policyLink) {
+      const form = policyLink.closest('form');
+      const checkbox = form?.querySelector('[data-policy-checkbox]');
+      const note = form?.querySelector('[data-policy-note]');
+      if (checkbox) checkbox.disabled = false;
+      if (note) note.textContent = 'Policies opened. Check the box when you’re done reading. ♡';
+    }
+
     const asapCopy = event.target.closest?.('[data-asap-copy]');
     if (asapCopy) {
       const form = asapCopy.closest('form');
@@ -171,6 +199,7 @@
     const tattooCopy = event.target.closest?.('[data-tattoo-copy]');
     if (tattooCopy) {
       const form = tattooCopy.closest('form');
+      if (!policyAcknowledged(form)) return;
       if (!form.reportValidity()) return;
       copyPayload(tattooPayload(form), form.querySelector('[data-tattoo-status]'));
     }
