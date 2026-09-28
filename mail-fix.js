@@ -144,6 +144,22 @@
 
   document.querySelectorAll('form[data-get-asap]').forEach(populateAsapSlots);
 
+
+  const SESSION_QUERY_VALUES = {
+    '1hour': '1-Hour Session · $100 / $50 deposit',
+    '3hour': '3-Hour Session · $250 / $125 deposit',
+    'fullday': '6-Hour Full Day · $500 / $250 deposit'
+  };
+
+  const regularInquiryForm = document.querySelector('form[data-tattoo-inquiry]');
+  if (regularInquiryForm) {
+    const requestedSession = new URLSearchParams(window.location.search).get('session');
+    const sessionValue = SESSION_QUERY_VALUES[requestedSession];
+    const sessionSelect = regularInquiryForm.elements.namedItem('session');
+    if (sessionValue && sessionSelect) sessionSelect.value = sessionValue;
+  }
+
+
   document.addEventListener('submit', (event) => {
     const form = event.target.closest?.('[data-tattoo-inquiry], [data-get-asap]');
     if (!form) return;

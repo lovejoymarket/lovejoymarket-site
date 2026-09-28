@@ -1,0 +1,23 @@
+/* LoveJoy tattoo page header correction
+   Keep the existing styling, but let the page scroll normally instead of under a sticky header. */
+.tattoo-page .profile-strip,
+.tattoo-page .site-header {
+  position: relative !important;
+  top: auto !important;
+  inset: auto !important;
+}
+
+.tattoo-page .site-header {
+  z-index: 20;
+}
+
+/* Session pages should never place promo cards inside the navigation header. */
+.tattoo-page .site-header .session-asap-cta {
+  display: none !important;
+}
+
+@media (max-width: 720px) {
+  .tattoo-page .site-header .nav {
+    min-height: 0 !important;
+  }
+}

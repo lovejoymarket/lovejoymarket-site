@@ -1,24 +1,13 @@
-LOVEJOY WEBSITE UPDATE — SEPT 27, 2026
+LOVEJOY OCT 2-4 BOOKING FLOW FIX
+Upload/replace ALL files in this folder at the site root.
 
-Replace these files in the site root:
-- tattoo-get-in-asap.html
-- tattoo-sessions.html
-- tattoo-session-1hour.html
-- tattoo-session-3hour.html
-- tattoo-inquiry.html
-- tattoos.html
-- tattoo-policies.html
-- mail-fix.js
-
-WHAT CHANGED
-- Get In ASAP now shows Oct 2–4 availability.
-- Friday Oct 2: 1-hour options at 5 PM, 6 PM, 7 PM; 3-hour option at 5 PM so the appointment wraps before 9 PM.
-- Saturday Oct 3: 1-hour options at 12 PM, 3 PM, 4 PM, 7 PM; 3-hour options at 12 PM and 4 PM.
-- Sunday Oct 4: 1-hour options at 1 PM and 2 PM; no 3-hour openings because the calendar is blocked from 3 PM on.
-- Updated all visible Sept 26–27 weekend references in this package.
-- Added policies for additional guests, early arrival, and late arrival/no-show timing.
-- Added a Tattoo Policies acknowledgment at the bottom of the standard inquiry form.
-- The acknowledgment checkbox stays locked until the client clicks the Tattoo Policies link.
-- Submission and the copy-inquiry option are both blocked until the client checks the acknowledgment box.
-- The generated inquiry email records that the tattoo policies were acknowledged.
-- Preserved the existing LoveJoy visual styling and layout.
+Fixes in this package:
+- Removes the bulky Get In ASAP promo from inside the $100 and $250 session-page headers.
+- Tattoo-page headers now scroll normally instead of sitting over page content.
+- $100 and $250 session pages route to the REGULAR tattoo inquiry first.
+- Get In ASAP remains a separate optional weekend fast-track link.
+- Regular inquiry preselects $100 or $250 when opened from those session pages.
+- Policy link + required acknowledgment are restored at the bottom of the regular inquiry form.
+- Policy checkbox stays locked until the Tattoo Policies link is opened.
+- Both regular inquiry submission paths are blocked until the acknowledgment is checked.
+- Oct 2-4 Get In ASAP availability remains intact, including Friday 5 PM or later with an exit before 9 PM.
