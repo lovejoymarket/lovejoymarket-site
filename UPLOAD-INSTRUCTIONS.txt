@@ -1,22 +1,22 @@
-LOVEJOY TATTOO PARTY PAGE REFRESH | 2026-09-24
+LoveJoy Market · Baby Worry Dolls Weekend Update
 
-Upload the files in this ZIP to the ROOT of your existing GitHub Pages website. Overwrite matching filenames. DO NOT delete other website files or overwrite your entire repository with only these files.
+Upload all 11 website files in this ZIP to the main branch at the root of:
+https://github.com/lovejoymarket/lovejoymarket-site
 
-UPDATED:
-- tattoo-parties.html (information + smooth direct path to inquiry)
-- tattoo-party-types.html (friendly private/public comparison)
-- tattoo-party-booking.html (signup list instead of required headcount)
-- tattoo-party-policies.html (clearer complete policies)
-- tattoo-party-inquiry.html (simplified form, optional backup date, no headcount fields)
+Unzip first. In GitHub, choose Add file > Upload files, then upload the files inside the ZIP. Replace matching filenames and commit the changes. Keep the existing Unique font files and all other website files.
 
-NEW:
-- party-refresh.css (styling for these five pages)
-- tattoo-parties.js (party inquiry email generator; includes preselected private/public options)
-- tattoo-party-signup-template.csv (names-only, one-column host-managed signup sheet)
+Included updates:
+- $60 prepaid Kewpie-style baby worry doll flash, up to 3 inches, accent colors included.
+- Friday October 9: 5, 6, 7, 8 PM.
+- Saturday October 10: 11 AM, 12:30, 2, 3:30, 5, 6:30 PM.
+- Friday + Saturday only, with exact first-choice and backup dropdowns in both inquiry forms.
+- Full $60 checkout: https://square.link/u/pAsHO0H3
+- Matching Unique-font image placeholder: flash updated by 10/7.
+- Consistent, larger form labels, fields, buttons and booking details.
+- Regular session deposits still use the existing checkout.
 
-AFTER UPLOADING:
-- The party landing page is https://lovejoymarket.co/tattoo-parties.html
-- The party inquiry form is https://lovejoymarket.co/tattoo-party-inquiry.html
-- Confirm that the inquiry opens an email, and SEND it from the email app. This site is static and does not store form submissions or operate a live shared guest signup system.
-- The signup CSV asks for names only. The host shares the list with Jessie privately; individual tattoo details are discussed separately, and names on the list do not confirm appointment slots.
-- Existing website CSS, images and other pages remain in your repo; this upload does not include them.
+The form builds an email draft. Clients add their photos and press send. Times are requests until confirmed, and the full $60 is required to book.
+
+The flash image placeholder is baby-worry-dolls-flash-placeholder.png. When the drawings are ready, replace the placeholder and update its image description and caption.
+
+Checked: Friday/Saturday slot options, different backup selection, 3-inch size limit, required acknowledgments, email contents, general inquiry switching, regular session deep links, local asset references, JavaScript syntax and whitespace.

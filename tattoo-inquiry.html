@@ -41,8 +41,9 @@
 .tattoo-policy-check small { font-size: .76rem; font-weight: 800; opacity: .78; }
 </style>
 <link href="tattoo-header-fix.css?v=20260927-headerfix1" rel="stylesheet"/>
+<link href="weekend-flash.css?v=20261007-flash1" rel="stylesheet"/>
 </head>
-<body class="tattoo-page">
+<body class="tattoo-page flash-update-page">
 <div aria-hidden="true" class="star-rain"></div><div aria-hidden="true" class="ambient-stars"></div>
 <div class="profile-strip"><div class="profile-strip-track"><span>TATTOO INQUIRY ✦ IDEA ✦ PLACEMENT ✦ SIZE ✦ REFERENCES ✦ THEN WE BOOK ✦</span><span aria-hidden="true">TATTOO INQUIRY ✦ IDEA ✦ PLACEMENT ✦ SIZE ✦ REFERENCES ✦ THEN WE BOOK ✦</span></div></div>
 <header class="site-header"><div class="site-shell nav"><a class="brand" href="index.html">LoveJoy Market</a><button aria-controls="primary-nav" aria-expanded="false" class="mobile-menu" data-menu-button="" type="button">Menu</button><nav aria-label="Primary navigation" class="nav-links" data-menu="" id="primary-nav"><a href="index.html">Home</a><a aria-current="page" href="tattoos.html">Tattoos</a><a href="popups.html">Pop-Ups</a><a href="market.html">Market</a><a href="profile.html">Profile</a><a href="about.html">About</a><a href="starcade.html">Starcade</a></nav></div></header>
@@ -53,7 +54,7 @@
 <img alt="tell me what we're doing" class="unique-heading tattoo-main-title" src="tattoo-inquiry.png"/>
 <p class="profile-tagline">tell me the idea the way it lives in your head.</p>
 <p class="profile-subline">Add your references + placement photo before sending.</p>
-<div class="currently-line"><span>weekend emergency?</span> <a href="tattoo-get-in-asap.html">use Get In ASAP instead ♡</a></div>
+<div class="currently-line"><span>$60 flash this weekend?</span> <a href="tattoo-get-in-asap.html">use Get In ASAP instead ♡</a></div>
 </section>
 <nav aria-label="Back to section menu" class="section-backbar"><a href="tattoos.html">← back to Tattoo menu</a><span aria-hidden="true">✦ ♡ ✦</span></nav>
 
@@ -67,12 +68,21 @@
 <label><span>Your name *</span><input autocomplete="name" name="name" required type="text"/></label>
 <label><span>Your email *</span><input autocomplete="email" name="email" required type="email"/></label>
 <label><span>Phone</span><input autocomplete="tel" name="phone" type="tel"/></label>
-<label><span>Which session feels right?</span><select name="session"><option>Not sure, recommend one</option><option>1-Hour Session · $100 / $50 deposit</option><option>3-Hour Session · $250 / $125 deposit</option><option>6-Hour Full Day · $500 / $250 deposit</option></select></label>
+<label><span>Which session feels right?</span><select name="session"><option>Not sure, recommend one</option><option value="Baby Worry Dolls Flash · $60 prepaid">Baby Worry Dolls Flash · $60 paid in full</option><option>1-Hour Session · $100 / $50 deposit</option><option>3-Hour Session · $250 / $125 deposit</option><option>6-Hour Full Day · $500 / $250 deposit</option></select></label>
 <label><span>Where is it going? *</span><input name="placement" placeholder="ex: outer forearm" required type="text"/></label>
 <label><span>About how big? *</span><input name="size" placeholder="ex: 5–6 inches" required type="text"/></label>
 </div>
-<label class="tattoo-form-wide"><span>Tell me the idea. *</span><textarea name="idea" required rows="5"></textarea></label>
-<div class="tattoo-form-grid"><label><span>Color direction</span><select name="color"><option>Black &amp; gray</option><option>Color</option><option>Mostly black &amp; gray with color</option><option>Not sure</option></select></label><label><span>General availability</span><input name="availability" placeholder="Friday evening / Saturday / Sunday / flexible" type="text"/></label></div>
+<div data-flash-fields hidden>
+<div class="flash-form-summary"><strong>$60 prepaid baby worry doll flash</strong><span>October 9 + 10 only. Up to 3 inches. Accent colors included. Flash posted by 10/7.</span></div>
+<div class="asap-first-fields">
+<label><span>First-choice time *</span><select name="first_choice" data-asap-first disabled><option value="">choose a time...</option><option value="Friday 10/9 · 5:00 PM">Friday 10/9 · 5:00 PM</option><option value="Friday 10/9 · 6:00 PM">Friday 10/9 · 6:00 PM</option><option value="Friday 10/9 · 7:00 PM">Friday 10/9 · 7:00 PM</option><option value="Friday 10/9 · 8:00 PM">Friday 10/9 · 8:00 PM</option><option value="Saturday 10/10 · 11:00 AM">Saturday 10/10 · 11:00 AM</option><option value="Saturday 10/10 · 12:30 PM">Saturday 10/10 · 12:30 PM</option><option value="Saturday 10/10 · 2:00 PM">Saturday 10/10 · 2:00 PM</option><option value="Saturday 10/10 · 3:30 PM">Saturday 10/10 · 3:30 PM</option><option value="Saturday 10/10 · 5:00 PM">Saturday 10/10 · 5:00 PM</option><option value="Saturday 10/10 · 6:30 PM">Saturday 10/10 · 6:30 PM</option></select></label>
+<label><span>Backup time *</span><select name="backup_choice" data-asap-backup disabled><option value="">choose a time...</option><option value="Friday 10/9 · 5:00 PM">Friday 10/9 · 5:00 PM</option><option value="Friday 10/9 · 6:00 PM">Friday 10/9 · 6:00 PM</option><option value="Friday 10/9 · 7:00 PM">Friday 10/9 · 7:00 PM</option><option value="Friday 10/9 · 8:00 PM">Friday 10/9 · 8:00 PM</option><option value="Saturday 10/10 · 11:00 AM">Saturday 10/10 · 11:00 AM</option><option value="Saturday 10/10 · 12:30 PM">Saturday 10/10 · 12:30 PM</option><option value="Saturday 10/10 · 2:00 PM">Saturday 10/10 · 2:00 PM</option><option value="Saturday 10/10 · 3:30 PM">Saturday 10/10 · 3:30 PM</option><option value="Saturday 10/10 · 5:00 PM">Saturday 10/10 · 5:00 PM</option><option value="Saturday 10/10 · 6:30 PM">Saturday 10/10 · 6:30 PM</option></select></label>
+</div>
+<p class="flash-note">All times are Eastern. Friday 10/9 + Saturday 10/10 only. Choose two different times.</p>
+<label class="flash-prepaid-checkbox"><input type="checkbox" name="prepaid_acknowledged" value="yes" disabled/><span>I understand the full $60 is due to book. My time is reserved once it's confirmed and my payment is received. *</span></label>
+</div>
+<label class="tattoo-form-wide"><span data-idea-label>Tell me the idea. *</span><textarea name="idea" required rows="5"></textarea></label>
+<div class="tattoo-form-grid"><label><span data-color-label>Color direction</span><select name="color"><option>Black &amp; gray</option><option>Color</option><option>Mostly black &amp; gray with color</option><option>Not sure</option></select></label><label><span>General availability</span><input name="availability" placeholder="Friday evening / Saturday / Sunday / flexible" type="text"/></label></div>
 <label class="tattoo-form-wide"><span>Anything else I should know?</span><textarea name="notes" rows="3"></textarea></label>
 <div class="tattoo-attachment-note"><strong>Before sending:</strong><span>Attach references + a clear photo of the exact placement area.</span></div>
 <div class="tattoo-policy-check">
@@ -88,11 +98,18 @@
 </div>
 <div class="tattoo-form-actions"><button class="session-button tattoo-email-button" type="submit">build my email ♡</button><button class="text-link tattoo-copy-button" data-tattoo-copy type="button">copy inquiry instead</button></div>
 <p aria-live="polite" class="tattoo-form-status" data-tattoo-status></p>
+<p class="flash-note">This opens your email app. Add your photos and press send to email hello@lovejoymarket.co.</p>
+<div class="flash-payment" data-flash-payment hidden>
+<strong>Make It Official ♡</strong>
+<p>Send your time request, then pay the full $60 for your baby worry doll. Accent colors are included.</p>
+<a class="session-button" href="https://square.link/u/pAsHO0H3" target="_blank" rel="noopener">pay the full $60 ♡</a>
+<small>Use the same name + email on your inquiry and payment. Your appointment is official once your time is confirmed and payment is received. Arrival details are included at checkout.</small>
+</div>
 </form>
 </div></section>
 
-<section class="module-card deposit-ready-card">
-<div class="module-title">Want To Go Ahead And Make It Official?</div>
+<section class="module-card deposit-ready-card regular-session-deposit" data-regular-deposit>
+<div class="module-title">Regular Sessions · Make It Official</div>
 <div class="module-body">
 <p>You do not have to wait for me to send the deposit link back. If you already know which session length you want, you can pay the 50% deposit now. If we need to adjust the exact time, I will use the availability from your inquiry.</p>
 <a class="session-button" href="https://square.link/u/exMcKsyN" rel="noopener" target="_blank">pay your 50% deposit →</a>
@@ -101,11 +118,11 @@
 
 <section class="module-card">
 <div class="module-title">Trying To Get In This Weekend?</div>
-<div class="module-body sparkle-note"><span aria-hidden="true">♡ ✦ ♡</span><div><strong>Use the fast-track form.</strong><p>Pick your first-choice time + a backup, then pay the deposit from the same page if you are ready.</p></div><a class="session-button" href="tattoo-get-in-asap.html">Get In ASAP →</a></div>
+<div class="module-body sparkle-note"><span aria-hidden="true">♡ ✦ ♡</span><div><strong>Use the fast-track form.</strong><p>$60 prepaid baby worry dolls, Friday 10/9 + Saturday 10/10 only. Pick your first choice + a backup, then pay in full.</p></div><a class="session-button" href="tattoo-get-in-asap.html">Get In ASAP →</a></div>
 </section>
 </div></main>
 <footer class="site-footer"><div class="site-shell footer-grid"><strong>LoveJoy Market</strong><div class="footer-small">lovejoymarket.co · hello@lovejoymarket.co · Fishers, Indiana</div></div></footer>
 <script src="site.js?v=20260922-popups1"></script>
-<script src="mail-fix.js?v=20260927-flowfix2"></script>
+<script src="mail-fix.js?v=20261007-flash1"></script>
 </body>
 </html>

@@ -1,0 +1,220 @@
+/* October 9 + 10 prepaid flash. Unique stays the display font;
+   the site's existing body font stays consistent in copy and form controls. */
+.flash-update-page {
+  --flash-body-font: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.flash-update-page .myspace-page .flash-special {
+  width: min(100%, 760px);
+  padding: clamp(1rem, 4vw, 1.75rem);
+  border: 2px solid var(--pink);
+  background: var(--cream);
+  box-shadow: none;
+  color: var(--navy);
+  text-align: center;
+}
+
+.flash-update-page .myspace-page .flash-special h2,
+.flash-update-page .myspace-page .flash-feature h2 {
+  margin: .5rem 0;
+  font-family: var(--heading-font) !important;
+  font-size: clamp(2.5rem, 7vw, 4.25rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.12 !important;
+  letter-spacing: 0;
+  white-space: normal;
+}
+
+.flash-kicker,
+.flash-update-page .myspace-page .flash-price,
+.flash-update-page .myspace-page .flash-day strong,
+.flash-update-page .myspace-page .flash-form-summary strong,
+.flash-update-page .myspace-page .flash-payment strong {
+  font-family: var(--heading-font) !important;
+  font-size: 1.75rem !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+}
+
+.flash-kicker { color: var(--navy); }
+.flash-update-page .myspace-page .flash-price {
+  margin: .75rem 0 !important;
+  color: var(--navy);
+  font-size: 2.5rem !important;
+}
+
+.flash-update-page .myspace-page .flash-special p,
+.flash-update-page .myspace-page .flash-feature p,
+.flash-update-page .myspace-page .flash-note,
+.flash-update-page .myspace-page .flash-form-summary span,
+.flash-update-page .myspace-page .flash-payment p,
+.flash-update-page .myspace-page .flash-payment span,
+.flash-update-page .myspace-page .flash-payment small {
+  font-family: var(--flash-body-font);
+  font-size: 1rem !important;
+  line-height: 1.55 !important;
+}
+
+.flash-placeholder {
+  margin: 1.25rem 0;
+  border: 1px solid var(--navy);
+  background: var(--cream);
+}
+.flash-placeholder img { width: 100%; height: auto; }
+.flash-placeholder figcaption {
+  padding: .75rem;
+  border-top: 1px solid var(--navy);
+  font-family: var(--flash-body-font);
+  font-size: .9375rem;
+  line-height: 1.5;
+}
+
+.flash-days {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .75rem;
+  margin: 1.25rem 0;
+  text-align: left;
+}
+.flash-day {
+  padding: 1rem;
+  border: 1px solid var(--navy);
+  background: #fff;
+  min-width: 0;
+}
+.flash-day strong { display: block; margin-bottom: .5rem; color: var(--navy); }
+.flash-day p { margin: 0 !important; }
+.flash-day small {
+  display: block;
+  margin-top: .5rem;
+  font-family: var(--flash-body-font);
+  font-size: .9375rem;
+  line-height: 1.5;
+}
+
+.flash-update-page .myspace-page .flash-special .session-button,
+.flash-update-page .myspace-page .flash-feature .session-button,
+.flash-update-page .myspace-page .tattoo-inquiry-form .session-button,
+.flash-update-page .myspace-page .flash-payment .session-button {
+  min-height: 3rem;
+  padding: .75rem 1rem;
+  font-family: var(--heading-font) !important;
+  font-size: 1.375rem !important;
+  line-height: 1.25 !important;
+  box-shadow: none;
+  white-space: normal;
+  text-align: center;
+}
+.flash-update-page .myspace-page .flash-feature { padding: 1.25rem; }
+.flash-update-page .myspace-page .flash-feature .flash-kicker { color: var(--navy); }
+
+.flash-update-page .myspace-page .asap-page-title {
+  font-size: clamp(2.75rem, 8vw, 4.5rem) !important;
+  line-height: 1.12 !important;
+  white-space: normal;
+}
+.flash-update-page .myspace-page .asap-first-fields {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.flash-update-page .myspace-page .tattoo-form-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.flash-update-page .myspace-page .tattoo-inquiry-form {
+  gap: 1rem;
+  margin-top: 1rem;
+  font-family: var(--flash-body-font);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.flash-update-page .myspace-page .tattoo-inquiry-form label {
+  gap: .5rem;
+  min-width: 0;
+}
+.flash-update-page .myspace-page .tattoo-inquiry-form label > span {
+  color: var(--navy);
+  font-family: var(--flash-body-font);
+  font-size: 1rem !important;
+  line-height: 1.5;
+  font-weight: 700;
+}
+.flash-update-page .myspace-page .tattoo-inquiry-form input:not([type="checkbox"]):not([type="hidden"]),
+.flash-update-page .myspace-page .tattoo-inquiry-form select,
+.flash-update-page .myspace-page .tattoo-inquiry-form textarea {
+  min-width: 0;
+  max-width: 100%;
+  min-height: 3rem;
+  padding: .75rem;
+  font-family: var(--flash-body-font);
+  font-size: 1rem !important;
+  font-weight: 400;
+  line-height: 1.5;
+  border: 1px solid var(--navy);
+}
+.flash-update-page .myspace-page .tattoo-inquiry-form :is(input, select, textarea):focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 3px;
+}
+.flash-update-page .myspace-page .tattoo-inquiry-form .tattoo-attachment-note,
+.flash-update-page .myspace-page .tattoo-policy-check,
+.flash-form-summary,
+.flash-payment {
+  padding: 1rem;
+  border: 1px solid var(--navy);
+  background: #ffe3ef;
+  color: var(--navy);
+}
+.flash-form-summary { display: grid; gap: .5rem; }
+.flash-update-page .myspace-page .tattoo-inquiry-form .tattoo-attachment-note :is(strong, span),
+.flash-update-page .myspace-page .tattoo-policy-check :is(strong, span, small),
+.flash-update-page .myspace-page .tattoo-form-status,
+.flash-update-page .myspace-page .tattoo-copy-button,
+.flash-update-page .myspace-page .flash-note a {
+  font-family: var(--flash-body-font) !important;
+  font-size: 1rem !important;
+  line-height: 1.5 !important;
+  color: var(--navy);
+}
+.flash-update-page .myspace-page .tattoo-policy-checkbox,
+.flash-update-page .myspace-page .flash-prepaid-checkbox {
+  display: flex !important;
+  gap: .75rem !important;
+  align-items: flex-start;
+  padding: .5rem 0;
+}
+.flash-update-page .myspace-page .tattoo-inquiry-form input[type="checkbox"] {
+  width: 1.25rem;
+  height: 1.25rem;
+  min-height: 0;
+  flex: 0 0 auto;
+  margin: .2rem 0 0;
+  accent-color: var(--navy);
+}
+.flash-update-page .myspace-page .flash-payment {
+  display: grid;
+  gap: .75rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+.flash-update-page .myspace-page .flash-payment strong { color: var(--navy); }
+.flash-update-page .myspace-page .flash-payment p { margin: 0 !important; }
+.flash-update-page .myspace-page .flash-payment .session-button { width: 100%; }
+.flash-update-page .myspace-page .asap-bottom-links a {
+  font-family: var(--flash-body-font);
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: .75rem;
+}
+.flash-update-page .myspace-page [hidden] { display: none !important; }
+.flash-update-page .myspace-page .regular-session-deposit p { font-size: 1rem !important; line-height: 1.55 !important; }
+.flash-update-page .myspace-page .tattoo-policy-grid p { font-size: 1rem !important; line-height: 1.55 !important; }
+.flash-update-page .myspace-page .tattoo-policy-grid strong { font-size: 1.5rem !important; line-height: 1.25 !important; }
+
+@media (max-width: 620px) {
+  .flash-days,
+  .flash-update-page .myspace-page .asap-first-fields,
+  .flash-update-page .myspace-page .tattoo-form-grid { grid-template-columns: 1fr; }
+  .flash-update-page .myspace-page .flash-special { width: 100%; margin: 1rem 0; }
+  .flash-update-page .myspace-page .tattoo-form-actions { align-items: stretch; flex-direction: column; }
+}
