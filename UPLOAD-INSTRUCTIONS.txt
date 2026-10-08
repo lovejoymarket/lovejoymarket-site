@@ -40,4 +40,4 @@ Unchanged:
 The old placeholder image can remain in the repository. The updated pages do not use it.
 
 AVAILABILITY UPDATE
-Friday at 5 PM is booked and removed from both first-choice and backup dropdowns. Friday openings are 6 PM, 7 PM, and 8 PM. Saturday is unchanged. The flash designs remain repeatable, including the angel.
+Friday at 5 PM is displayed with a strikethrough and remains removed from both first-choice and backup dropdowns. Friday openings are 6 PM, 7 PM, and 8 PM. Saturday is unchanged. The flash designs remain repeatable, including the angel.
