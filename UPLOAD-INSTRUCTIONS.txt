@@ -1,22 +1,38 @@
-LoveJoy Market · Baby Worry Dolls Weekend Update
+LoveJoy Market: baby doll flash sneak-peek update
 
-Upload all 11 website files in this ZIP to the main branch at the root of:
-https://github.com/lovejoymarket/lovejoymarket-site
+This update is ready to upload but has not been published. GitHub denied direct publishing access.
 
-Unzip first. In GitHub, choose Add file > Upload files, then upload the files inside the ZIP. Replace matching filenames and commit the changes. Keep the existing Unique font files and all other website files.
+1. Unzip this package.
+2. Upload the nine website files listed below to the ROOT of lovejoymarket/lovejoymarket-site on the main branch. Replace matching filenames and commit the changes. Do not upload the ZIP itself or this instruction file.
+3. Wait for the GitHub Pages deployment to finish, then refresh lovejoymarket.co and tattoo-get-in-asap.html.
 
-Included updates:
-- $60 prepaid Kewpie-style baby worry doll flash, up to 3 inches, accent colors included.
-- Friday October 9: 5, 6, 7, 8 PM.
-- Saturday October 10: 11 AM, 12:30, 2, 3:30, 5, 6:30 PM.
-- Friday + Saturday only, with exact first-choice and backup dropdowns in both inquiry forms.
-- Full $60 checkout: https://square.link/u/pAsHO0H3
-- Matching Unique-font image placeholder: flash updated by 10/7.
-- Consistent, larger form labels, fields, buttons and booking details.
-- Regular session deposits still use the existing checkout.
+Website files:
+index.html
+tattoos.html
+tattoo-sessions.html
+tattoo-inquiry.html
+tattoo-get-in-asap.html
+mail-fix.js
+weekend-flash.css
+baby-worry-dolls-flash-color.jpg
+baby-worry-dolls-flash-black-gray.jpg
 
-The form builds an email draft. Clients add their photos and press send. Times are requests until confirmed, and the full $60 is required to book.
+What changed:
+- Your finished four-doll sheets replace the old "flash updated by 10/7" placeholder.
+- Both sheets are shown with "$60 each" and "More Halloween baby dolls to follow."
+- The note also says four more Halloween baby dolls are on the way.
+- Your uploaded drawings are unchanged. The brown skin-tone background and all drawing details are preserved.
+- The price and sheet labels use the site's actual Unique font; explanatory text stays in the existing readable body font.
+- Clicking a sheet opens the full-size artwork.
+- The general inquiry links to the designs. Both forms now allow choosing one of the posted dolls or waiting for the next sheet.
+- Homepage link-preview images now use the color flash sheet.
 
-The flash image placeholder is baby-worry-dolls-flash-placeholder.png. When the drawings are ready, replace the placeholder and update its image description and caption.
+Unchanged:
+- $60 total per doll, up to 3 inches, accent colors included, full payment due to book.
+- Friday October 9: 5 PM, 6 PM, 7 PM, 8 PM.
+- Saturday October 10: 11 AM, 12:30 PM, 2 PM, 3:30 PM, 5 PM, 6:30 PM.
+- All times are Eastern, and inquiries still require two different choices.
+- The full-payment checkout is https://square.link/u/pAsHO0H3.
+- Normal-session prices, deposits, policies, and the Susan game are unchanged.
 
-Checked: Friday/Saturday slot options, different backup selection, 3-inch size limit, required acknowledgments, email contents, general inquiry switching, regular session deep links, local asset references, JavaScript syntax and whitespace.
+The old placeholder image can remain in the repository. The updated pages do not use it.

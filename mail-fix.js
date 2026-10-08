@@ -38,7 +38,7 @@
         `Placement: ${v(form, 'placement')}`,
         `Size: ${v(form, 'size')} inches (up to 3 inches)`,
         `Accent colors: ${v(form, 'color') || 'choose together'}`,
-        `Doll choice: ${v(form, 'idea') || 'choose once flash is posted by 10/7'}`,
+        `Doll choice: ${v(form, 'idea') || 'choose from the sneak peek or after the next Halloween sheet is posted'}`,
         `Full $60 prepayment acknowledged: ${v(form, 'prepaid_acknowledged') === 'yes' ? 'yes' : 'no'}`,
         `Tattoo policies acknowledged: ${v(form, 'policies_acknowledged') === 'yes' ? 'yes' : 'no'}`,
         '', 'OTHER NOTES:', v(form, 'notes') || 'none',
@@ -152,7 +152,7 @@
       }
       regularForm.querySelector('[data-idea-label]').textContent = flash ? 'Which baby worry doll?' : 'Tell me the idea. *';
       idea.required = !flash;
-      idea.placeholder = flash ? 'Design number or description, or choose once flash is posted by 10/7.' : '';
+      idea.placeholder = flash ? 'Angel, cat, cry baby, devil, or choose after the next Halloween sheet is posted.' : '';
       regularForm.querySelector('[data-color-label]').textContent = flash ? 'Accent color preference (included)' : 'Color direction';
       const colors = flash ? [['Choose together', 'Choose together'], ['Black & gray only', 'Black & gray only'], ['Accent color (describe in notes)', 'Accent color (describe in notes)']] : originalColors;
       const previousColor = color.value;

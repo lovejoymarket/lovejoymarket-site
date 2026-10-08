@@ -55,19 +55,68 @@
   line-height: 1.55 !important;
 }
 
-.flash-placeholder {
+.flash-preview-gallery {
   margin: 1.25rem 0;
+  color: var(--navy);
+  text-align: left;
+}
+.flash-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.flash-preview-sheet {
+  min-width: 0;
+  margin: 0;
   border: 1px solid var(--navy);
   background: var(--cream);
+  box-shadow: none;
 }
-.flash-placeholder img { width: 100%; height: auto; }
-.flash-placeholder figcaption {
-  padding: .75rem;
+.flash-preview-sheet > a { display: block; }
+.flash-preview-sheet > a:focus-visible {
+  outline: 3px solid var(--pink);
+  outline-offset: 3px;
+}
+.flash-preview-sheet img { display: block; width: 100%; height: auto; }
+.flash-update-page .myspace-page .flash-preview-sheet figcaption {
+  display: grid;
+  gap: .5rem;
+  padding: .875rem;
   border-top: 1px solid var(--navy);
   font-family: var(--flash-body-font);
-  font-size: .9375rem;
-  line-height: 1.5;
+  font-size: 1rem !important;
+  line-height: 1.5 !important;
+  color: var(--navy);
 }
+.flash-preview-labels {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .375rem .75rem;
+}
+.flash-update-page .myspace-page .flash-preview-labels strong {
+  font-family: var(--heading-font) !important;
+  font-size: 1.75rem !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  color: var(--navy);
+}
+.flash-update-page .myspace-page .flash-preview-labels strong:last-child {
+  color: var(--navy);
+  white-space: nowrap;
+}
+.flash-update-page .myspace-page .flash-preview-sheet figcaption > span,
+.flash-update-page .myspace-page .flash-preview-note,
+.flash-update-page .myspace-page .flash-preview-link {
+  font-family: var(--flash-body-font) !important;
+  font-size: 1rem !important;
+  font-weight: 400;
+  line-height: 1.55 !important;
+  color: var(--navy);
+}
+.flash-update-page .myspace-page .flash-preview-note { margin: .75rem 0 0; }
+.flash-preview-link { text-underline-offset: .2em; }
 
 .flash-days {
   display: grid;
@@ -212,6 +261,7 @@
 .flash-update-page .myspace-page .tattoo-policy-grid strong { font-size: 1.5rem !important; line-height: 1.25 !important; }
 
 @media (max-width: 620px) {
+  .flash-preview-grid { grid-template-columns: 1fr; }
   .flash-days,
   .flash-update-page .myspace-page .asap-first-fields,
   .flash-update-page .myspace-page .tattoo-form-grid { grid-template-columns: 1fr; }
