@@ -2,7 +2,6 @@
   const FLASH_SESSION = 'Baby Worry Dolls Flash · $60 prepaid';
   const FLASH_PAYMENT = 'https://square.link/u/pAsHO0H3';
   const FLASH_SLOTS = [
-    'Friday 10/9 · 5:00 PM',
     'Friday 10/9 · 6:00 PM',
     'Friday 10/9 · 7:00 PM',
     'Friday 10/9 · 8:00 PM',

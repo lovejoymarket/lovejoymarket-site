@@ -268,3 +268,43 @@
   .flash-update-page .myspace-page .flash-special { width: 100%; margin: 1rem 0; }
   .flash-update-page .myspace-page .tattoo-form-actions { align-items: stretch; flex-direction: column; }
 }
+
+/* Match the deadline graphic and home calendar to the existing flash cards. */
+.flash-coming-soon { margin: 1rem 0 0; }
+.flash-coming-soon img { display: block; width: 100%; height: auto; }
+.flash-home-calendar { margin: 1.25rem 0; }
+.flash-update-page .myspace-page .flash-home-calendar h3 {
+  margin: 0 0 .75rem;
+  font-family: var(--heading-font) !important;
+  font-size: 2.5rem !important;
+  line-height: 1.2;
+  color: var(--navy);
+}
+.flash-calendar-weekdays, .flash-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: .25rem;
+  text-align: center;
+}
+.flash-calendar-weekdays { margin-bottom: .25rem; }
+.flash-calendar-weekdays span {
+  font-family: var(--flash-body-font);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.flash-calendar-date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 2.5rem;
+  border: 1px solid var(--navy);
+  background: var(--cream);
+  color: var(--navy);
+  font-family: var(--flash-body-font);
+  font-size: 1rem;
+  line-height: 1.5;
+  text-decoration: none;
+}
+.flash-calendar-date.is-flash { background: var(--pink); color: var(--navy); font-weight: 700; border-width: 2px; }
+.flash-calendar-date.is-flash:hover { outline: 2px solid var(--navy); outline-offset: -4px; }
+.flash-calendar-date.is-flash:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }

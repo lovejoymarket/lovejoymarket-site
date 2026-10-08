@@ -3,7 +3,7 @@ LoveJoy Market: baby doll flash sneak-peek update
 This update is ready to upload but has not been published. GitHub denied direct publishing access.
 
 1. Unzip this package.
-2. Upload the nine website files listed below to the ROOT of lovejoymarket/lovejoymarket-site on the main branch. Replace matching filenames and commit the changes. Do not upload the ZIP itself or this instruction file.
+2. Upload the ten website files listed below to the ROOT of lovejoymarket/lovejoymarket-site on the main branch. Replace matching filenames and commit the changes. Do not upload the ZIP itself or this instruction file.
 3. Wait for the GitHub Pages deployment to finish, then refresh lovejoymarket.co and tattoo-get-in-asap.html.
 
 Website files:
@@ -16,11 +16,13 @@ mail-fix.js
 weekend-flash.css
 baby-worry-dolls-flash-color.jpg
 baby-worry-dolls-flash-black-gray.jpg
+baby-worry-dolls-more-tonight.svg
 
 What changed:
 - Your finished four-doll sheets replace the old "flash updated by 10/7" placeholder.
 - Both sheets are shown with "$60 each" and "More Halloween baby dolls to follow."
-- The note also says four more Halloween baby dolls are on the way.
+- A matching Unique-font image announces more designs tonight, Thursday October 8, by 9 PM Eastern.
+- The home calendar highlights the flash event on October 9 and 10 and shows the remaining times.
 - Your uploaded drawings are unchanged. The brown skin-tone background and all drawing details are preserved.
 - The price and sheet labels use the site's actual Unique font; explanatory text stays in the existing readable body font.
 - Clicking a sheet opens the full-size artwork.
@@ -29,10 +31,13 @@ What changed:
 
 Unchanged:
 - $60 total per doll, up to 3 inches, accent colors included, full payment due to book.
-- Friday October 9: 5 PM, 6 PM, 7 PM, 8 PM.
+- Friday October 9: 6 PM, 7 PM, 8 PM available. 5 PM is booked.
 - Saturday October 10: 11 AM, 12:30 PM, 2 PM, 3:30 PM, 5 PM, 6:30 PM.
 - All times are Eastern, and inquiries still require two different choices.
 - The full-payment checkout is https://square.link/u/pAsHO0H3.
 - Normal-session prices, deposits, policies, and the Susan game are unchanged.
 
 The old placeholder image can remain in the repository. The updated pages do not use it.
+
+AVAILABILITY UPDATE
+Friday at 5 PM is booked and removed from both first-choice and backup dropdowns. Friday openings are 6 PM, 7 PM, and 8 PM. Saturday is unchanged. The flash designs remain repeatable, including the angel.
