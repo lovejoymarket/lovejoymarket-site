@@ -1,1 +1,43 @@
-Upload all 14 files to the root of lovejoymarket/lovejoymarket-site on GitHub, replacing existing files. Keep filenames and folder placement as provided. This update adds the six uploaded designs in a swipeable carousel on Home, Tattoos, Sessions and ASAP, updates flash sizing to 4 inches including form validation and email text, and retains the $60 full-payment terms and booked Friday 5 PM strikethrough. The live site was not updated because GitHub write access returned 403.
+LOVEJOY DIRECT PAGE HEADERS V7
+================================
+
+This package changes ONLY the short copy at the top of the organized pages.
+
+UPLOAD THE INCLUDED HTML FILES TO THE ROOT OF:
+lovejoymarket/lovejoymarket-site
+
+Replace the matching files.
+
+WHAT CHANGED
+------------
+- Removed the snarky / over-written top-of-page descriptions.
+- Replaced them with short, direct, useful copy.
+- Kept the pages cute and in the LoveJoy voice without commentary.
+- Tattoo home is NOT included because “how can I help you? ♡ / Choose what you need below.”
+  is already the direct version you approved.
+
+WHAT DID NOT CHANGE
+-------------------
+- inbox menus
+- page organization
+- links
+- forms
+- games
+- surveys
+- Glitterworm
+- event arcade
+- Tattoo Party content
+- policies
+- prices
+- styles.css
+- section-pages.css
+- tattoo-pages.css
+- site.js
+- mail-fix.js
+- PDFs
+- images
+- About
+- Home
+- Starcade
+
+This is a copy-only cleanup. No layout or styling files are included.

@@ -320,3 +320,15 @@
 .flash-update-page .myspace-page .flash-carousel-controls button { min-height: 44px; padding: .5rem .75rem; border: 2px solid var(--pink); border-radius: .5rem; background: var(--cream); color: var(--navy); cursor: pointer; font: 1rem/1.4 var(--flash-body-font) !important; }
 .flash-carousel-controls span { font: 1rem/1.4 var(--flash-body-font); color: var(--navy); white-space: nowrap; }
 .flash-carousel-track:focus-visible, .flash-carousel-controls button:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
+
+/* Compact home feature; retain full-size galleries on tattoo pages. */
+.home-page .myspace-page .home-flash-compact { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); align-items: start; gap: 1rem; padding: 1rem; }
+.home-page .myspace-page .home-flash-compact h2 { font-size: 2.25rem !important; margin: 0 0 .4rem; }
+.home-page .myspace-page .home-flash-compact .flash-price { font-size: 1.75rem !important; margin: .4rem 0 !important; }
+.home-page .myspace-page .home-flash-compact p { margin: .5rem 0; }
+.home-page .home-flash-compact .flash-carousel { width: min(100%, 280px); margin: 0 auto; }
+.home-page .myspace-page .home-flash-compact .flash-carousel-slide figcaption { padding: .4rem; }
+.home-flash-details { margin: .75rem 0; }
+.home-flash-details summary { cursor: pointer; min-height: 44px; display: list-item; padding: .5rem 0; font: 1rem/1.5 var(--flash-body-font); color: var(--navy); }
+.home-flash-details summary:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
+.home-page .home-flash-details .flash-home-calendar { margin: .5rem 0; }
