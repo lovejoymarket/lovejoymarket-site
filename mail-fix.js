@@ -35,7 +35,7 @@
         `FIRST CHOICE: ${v(form, 'first_choice')} (Eastern time)`,
         `BACKUP CHOICE: ${v(form, 'backup_choice')} (Eastern time)`,
         `Placement: ${v(form, 'placement')}`,
-        `Size: ${v(form, 'size')} inches (up to 3 inches)`,
+        `Size: ${v(form, 'size')} inches (up to 4 inches)`,
         `Accent colors: ${v(form, 'color') || 'choose together'}`,
         `Doll choice: ${v(form, 'idea') || 'choose from the sneak peek or after the next Halloween sheet is posted'}`,
         `Full $60 prepayment acknowledged: ${v(form, 'prepaid_acknowledged') === 'yes' ? 'yes' : 'no'}`,
@@ -143,15 +143,15 @@
       availability.closest('label').hidden = flash;
       availability.disabled = flash;
       size.type = flash ? 'number' : 'text';
-      size.placeholder = flash ? 'up to 3 inches' : originalSizePlaceholder;
+      size.placeholder = flash ? 'up to 4 inches' : originalSizePlaceholder;
       if (flash) {
-        size.min = '0.1'; size.max = '3'; size.step = 'any';
+        size.min = '0.1'; size.max = '4'; size.step = 'any';
       } else {
         size.removeAttribute('min'); size.removeAttribute('max'); size.removeAttribute('step');
       }
       regularForm.querySelector('[data-idea-label]').textContent = flash ? 'Which baby worry doll?' : 'Tell me the idea. *';
       idea.required = !flash;
-      idea.placeholder = flash ? 'Angel, cat, cry baby, devil, or choose after the next Halloween sheet is posted.' : '';
+      idea.placeholder = flash ? 'Skeleton baby, bat baby, devil baby, angel, black cat, or cry about it.' : '';
       regularForm.querySelector('[data-color-label]').textContent = flash ? 'Accent color preference (included)' : 'Color direction';
       const colors = flash ? [['Choose together', 'Choose together'], ['Black & gray only', 'Black & gray only'], ['Accent color (describe in notes)', 'Accent color (describe in notes)']] : originalColors;
       const previousColor = color.value;

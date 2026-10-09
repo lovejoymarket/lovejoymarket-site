@@ -308,3 +308,15 @@
 .flash-calendar-date.is-flash { background: var(--pink); color: var(--navy); font-weight: 700; border-width: 2px; }
 .flash-calendar-date.is-flash:hover { outline: 2px solid var(--navy); outline-offset: -4px; }
 .flash-calendar-date.is-flash:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
+
+/* One full design at a time, with native touch scrolling. */
+.flash-carousel { width: min(100%, 640px); margin-inline: auto; }
+.flash-carousel-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: thin; }
+.flash-carousel-slide { flex: 0 0 100%; min-width: 0; margin: 0; scroll-snap-align: start; scroll-snap-stop: always; }
+.flash-carousel-slide a { display: block; }
+.flash-carousel-slide img { display: block; width: 100%; height: auto; object-fit: contain; }
+.flash-update-page .myspace-page .flash-carousel-slide figcaption { font: 1rem/1.55 var(--flash-body-font) !important; color: var(--navy); padding: .75rem; background: var(--cream); text-align: center; }
+.flash-carousel-controls { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-top: .75rem; }
+.flash-update-page .myspace-page .flash-carousel-controls button { min-height: 44px; padding: .5rem .75rem; border: 2px solid var(--pink); border-radius: .5rem; background: var(--cream); color: var(--navy); cursor: pointer; font: 1rem/1.4 var(--flash-body-font) !important; }
+.flash-carousel-controls span { font: 1rem/1.4 var(--flash-body-font); color: var(--navy); white-space: nowrap; }
+.flash-carousel-track:focus-visible, .flash-carousel-controls button:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
