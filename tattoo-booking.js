@@ -5,7 +5,6 @@
   const FALL_START = Date.parse('2026-10-19T00:00:00-04:00');
   const FALL_END = Date.parse('2026-10-26T00:00:00-04:00');
   const BLOCKED_SLOTS = [];
-  const opening = { id: 'oct18-noon', start: '2026-10-18T12:00:00-04:00', duration: 1, total: 100, deposit: 50, key: 'opening', label: 'Sunday, October 18 · noon' };
   const fallSlots = [19, 20, 21, 22, 23, 24].map(day => ({ id: `oct${day}-1700`, start: `2026-10-${day}T17:00:00-04:00`, duration: 3, total: 150, deposit: 50, key: 'fall-break' }));
   ['12:00', '15:30', '18:45'].forEach(time => fallSlots.push({ id: `oct25-${time.replace(':', '')}`, start: `2026-10-25T${time}:00-04:00`, duration: 3, total: 150, deposit: 50, key: 'fall-break' }));
   const sessions = {
@@ -13,7 +12,6 @@
     '1hour': { label: '1-hour session · $100 / $50 deposit', total: 100, deposit: 50, duration: 1 },
     '3hour': { label: '3-hour session · $250 / $125 deposit', total: 250, deposit: 125, duration: 3 },
     fullday: { label: '6-hour session · $500 / $250 deposit', total: 500, deposit: 250, duration: 6 },
-    opening: { label: 'Sunday, October 18 · noon · 1 hour · $100 / $50 deposit', total: 100, deposit: 50, duration: 1 },
     'fall-break': { label: 'Fall Break · 3 hours · $150 / $50 deposit', total: 150, deposit: 50, duration: 3 }
   };
   const dateFormatter = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Indiana/Indianapolis', weekday: 'long', month: 'long', day: 'numeric' });
@@ -25,9 +23,7 @@
     const stamp = typeof now === 'number' ? now : new Date(now).getTime();
     let phase = 'regular';
     let available = [];
-    if (Number.isFinite(stamp) && stamp < FALL_START) {
-      if (stamp < Date.parse(opening.start)) { phase = 'opening'; available = [opening]; }
-    } else if (stamp >= FALL_START && stamp < FALL_END) {
+    if (Number.isFinite(stamp) && stamp >= FALL_START && stamp < FALL_END) {
       phase = 'fall-break';
       available = fallSlots.filter(slot => stamp < Date.parse(slot.start));
     }
@@ -46,7 +42,7 @@
     if (!info) return 'That session is no longer available. Please choose another session.';
     if (!['none', 'adult', 'child'].includes(data.guest)) return 'Please choose no guest or one guest.';
     if (data.booking_acknowledged !== 'yes' || data.guests_acknowledged !== 'yes' || data.policies_acknowledged !== 'yes') return 'Please read and acknowledge the booking terms, guest guidance, and tattoo policies.';
-    if (['opening', 'fall-break'].includes(data.session)) {
+    if (data.session === 'fall-break') {
       const slot = state.slots.find(item => item.id === data.first_choice && item.key === data.session);
       if (!slot) return 'That appointment time is no longer available. Please select a current opening.';
       if (data.backup_choice) {
@@ -92,13 +88,7 @@
     return '<dl class="booking-times">' + [...groups].map(([day, times]) => `<div><dt>${escape(day)}</dt><dd>${times.map(escape).join(' · ')}</dd></div>`).join('') + '</dl>';
   }
   function offerMarkup(state) {
-    const fall = state.phase === 'fall-break';
-    const title = fall ? 'Fall Break Tattoo Sessions ♡' : 'One Sunday Opening ♡';
-    const price = fall ? '<strong class="booking-price">3 hours · $150</strong><span class="booking-original">Regularly $250</span>' : '<strong class="booking-price">1 hour · $100</strong>';
-    const detail = fall ? 'October 19–25, 2026. Your design must fit within a three-hour session.' : 'Sunday, October 18 at noon. One opening for a one-hour tattoo appointment only.';
-    const query = fall ? 'fall-break' : 'opening';
-    const balance = fall ? 100 : 50;
-    return `<div class="module-title">${title}</div><div class="module-body"><p class="booking-price-line">${price}</p><p>${detail}</p>${scheduleMarkup(state)}<p><strong>$50 nonrefundable deposit · $${balance} balance at your appointment.</strong></p><p class="booking-note">All times are Eastern. Appointments are subject to confirmation. One guest maximum.</p><a class="session-button" href="tattoo-inquiry.html?session=${query}#tattoo-inquiry-form">Request my appointment ♡</a></div>`;
+    return `<div class="module-title">Fall Break Tattoo Sessions ♡</div><div class="module-body"><p class="booking-price-line"><strong class="booking-price">3 hours · $150</strong><span class="booking-original">Regularly $250</span></p><p>October 19–25, 2026. Your design must fit within a three-hour session.</p>${scheduleMarkup(state)}<p><strong>$50 nonrefundable deposit · $100 balance at your appointment.</strong></p><p class="booking-note">All times are Eastern. Appointments are subject to confirmation. One guest maximum.</p><a class="session-button" href="tattoo-inquiry.html?session=fall-break#tattoo-inquiry-form">Request my appointment ♡</a></div>`;
   }
   let renderedKey = '';
   function renderNotices(state) {
@@ -109,7 +99,7 @@
         node.hidden = !show;
         node.innerHTML = show ? offerMarkup(state) : '';
       });
-      const strip = state.slots.length ? (state.phase === 'fall-break' ? 'FALL BREAK ♡ OCTOBER 19–25 ✦ 3 HOURS · $150 ✦ $50 DEPOSIT ♡' : 'ONE OPENING ♡ SUNDAY, OCTOBER 18 · NOON ✦ 1 HOUR · $100 ♡') : 'TATTOOS ♡ INQUIRIES ✦ CUSTOM WORK ✦';
+      const strip = state.slots.length ? 'FALL BREAK ♡ OCTOBER 19–25 ✦ 3 HOURS · $150 ✦ $50 DEPOSIT ♡' : 'TATTOOS ♡ INQUIRIES ✦ CUSTOM WORK ✦';
       document.querySelectorAll('[data-booking-strip]').forEach(node => { node.textContent = strip; });
       renderedKey = key;
     }
@@ -123,7 +113,7 @@
   }
   function populateTimes(form, state) {
     const key = form.elements.namedItem('session').value;
-    const scheduled = ['opening', 'fall-break'].includes(key);
+    const scheduled = key === 'fall-break';
     const slots = scheduled ? state.slots.filter(slot => slot.key === key) : [];
     const first = form.elements.namedItem('first_choice');
     const backup = form.elements.namedItem('backup_choice');
