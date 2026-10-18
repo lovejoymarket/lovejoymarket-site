@@ -1,0 +1,144 @@
+.home-page .home-special {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 0 24px;
+  position: relative;
+  margin: 18px 0 22px;
+  padding: 0 26px 26px;
+  overflow: hidden;
+  color: var(--cream);
+  background: var(--navy);
+  border: 2px solid var(--pink);
+  box-shadow: 6px 6px 0 rgba(255, 45, 141, .25);
+}
+.home-page .home-special[hidden] { display: none; }
+.home-special__ribbon {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 -26px 24px;
+  padding: 8px 20px;
+  background: var(--pink);
+  color: var(--navy);
+  font: 700 clamp(.8rem, 2.6vw, 1rem) var(--heading-font);
+  letter-spacing: .04em;
+  text-align: center;
+}
+.home-special__copy { align-self: center; min-width: 0; }
+.home-special__eyebrow {
+  margin: 0 0 10px;
+  color: var(--pink);
+  font: 700 .7rem Verdana, Arial, sans-serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.home-page .home-special h2 {
+  margin: 0 0 12px;
+  color: var(--cream);
+  font-family: var(--heading-font);
+  font-size: clamp(2.6rem, 5.8vw, 4.5rem);
+  line-height: .96;
+  letter-spacing: -.025em;
+}
+.home-special__description {
+  max-width: 32ch;
+  margin: 0;
+  font-size: .8rem;
+  line-height: 1.55;
+}
+.home-special__glitter {
+  min-height: 44px;
+  margin: 8px 0 0;
+  padding: 9px 0;
+  border: 0;
+  background: transparent;
+  color: var(--pink);
+  font: 700 .8rem var(--heading-font);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+.home-special__ticket {
+  min-width: 0;
+  align-self: center;
+  padding: 22px 20px 16px;
+  background: var(--cream);
+  color: var(--navy);
+  border: 1px dashed var(--pink);
+  box-shadow: 4px 4px 0 var(--pink);
+}
+.home-special__session {
+  margin: 0 0 5px;
+  font: 700 1rem var(--heading-font);
+}
+.home-special__price {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-bottom: 12px;
+}
+.home-special__price > strong {
+  font: 700 clamp(3.4rem, 7vw, 5.4rem) var(--heading-font);
+  line-height: 1;
+  letter-spacing: -.04em;
+}
+.home-special__price > span { display: grid; gap: 4px; }
+.home-special__price s { font-size: 1.1rem; text-decoration-thickness: 2px; }
+.home-special__price b {
+  padding: 3px 7px;
+  background: var(--pink);
+  font-size: .68rem;
+  white-space: nowrap;
+}
+.home-special__deposit { margin: 0 0 15px; font-size: .7rem; line-height: 1.6; }
+.home-special__deposit > strong { font-size: .76rem; }
+.home-special__cta {
+  display: flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border: 1px solid var(--navy);
+  background: var(--navy);
+  color: var(--cream);
+  font: 700 1rem var(--heading-font);
+  text-align: center;
+  text-decoration: none;
+}
+.home-special__cta:hover { background: var(--pink); color: var(--navy); }
+.home-special__cta:focus-visible,
+.home-special__glitter:focus-visible { outline: 3px solid var(--pink); outline-offset: 4px; }
+.home-special__note { margin: 9px 0 0; font-size: .65rem; text-align: center; }
+.home-glitter {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.home-glitter[hidden] { display: none; }
+@media (max-width: 620px) {
+  .home-page .home-special {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    padding: 0 18px 20px;
+    box-shadow: 4px 4px 0 rgba(255, 45, 141, .25);
+  }
+  .home-special__ribbon { margin: 0 -18px 20px; padding: 9px 12px; gap: 6px; }
+  .home-special__ribbon > span[aria-hidden] { font-size: .7rem; white-space: nowrap; }
+  .home-special__copy { position: relative; padding-right: 66px; }
+  .home-page .home-special h2 { font-size: clamp(2.3rem, 10vw, 3.5rem); }
+  .home-special__eyebrow { font-size: .62rem; letter-spacing: .04em; }
+  .home-special__description { font-size: .75rem; }
+  .home-special__glitter { position: absolute; top: 8px; right: 0; font-size: .7rem; }
+  .home-special__ticket { margin-top: 18px; padding: 18px 16px 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-glitter,
+  .home-special__glitter { display: none; }
+}

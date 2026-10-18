@@ -2,7 +2,7 @@
   'use strict';
   const REGULAR_DEPOSIT = 'https://square.link/u/exMcKsyN';
   const FALL_DEPOSIT = 'https://square.link/u/cyeSgeu3';
-  const FALL_START = Date.parse('2026-10-19T00:00:00-04:00');
+  const FALL_BOOKING_START = Date.parse('2026-10-16T00:00:00-04:00');
   const FALL_END = Date.parse('2026-10-26T00:00:00-04:00');
   const BLOCKED_SLOTS = [];
   const fallSlots = [19, 20, 21, 22, 23, 24].map(day => ({ id: `oct${day}-1700`, start: `2026-10-${day}T17:00:00-04:00`, duration: 3, total: 150, deposit: 50, key: 'fall-break' }));
@@ -23,7 +23,7 @@
     const stamp = typeof now === 'number' ? now : new Date(now).getTime();
     let phase = 'regular';
     let available = [];
-    if (Number.isFinite(stamp) && stamp >= FALL_START && stamp < FALL_END) {
+    if (Number.isFinite(stamp) && stamp >= FALL_BOOKING_START && stamp < FALL_END) {
       phase = 'fall-break';
       available = fallSlots.filter(slot => stamp < Date.parse(slot.start));
     }
@@ -226,3 +226,4 @@
   window.addEventListener('focus', refresh);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
 })();
+
