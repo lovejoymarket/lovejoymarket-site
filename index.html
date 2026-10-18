@@ -25,12 +25,12 @@
 <link href="site.webmanifest" rel="manifest"/>
 <link href="weekend-flash.css?v=20261009-compact1" rel="stylesheet"/>
 <link href="tattoo-booking.css?v=20261016-1" rel="stylesheet"/>
-<link href="home-special.css?v=20261018-2" rel="stylesheet"/>
+<link href="home-special.css?v=20261018-3" rel="stylesheet"/>
 </head>
 <body class="home-page flash-update-page">
 <canvas aria-hidden="true" class="home-glitter" data-home-glitter hidden></canvas>
 <div aria-hidden="true" class="ambient-stars"></div>
-<a class="profile-strip" href="tattoo-get-in-asap.html" aria-label="Current tattoo availability"><div class="profile-strip-track"><span data-booking-strip>TATTOOS ♡ CURRENT AVAILABILITY ✦ INQUIRIES ✦</span><span data-booking-strip aria-hidden="true">TATTOOS ♡ CURRENT AVAILABILITY ✦ INQUIRIES ✦</span></div></a>
+<a class="profile-strip" href="tattoo-get-in-asap.html" data-home-booking-link aria-label="Fall Break tattoo availability"><div class="profile-strip-track"><span data-home-booking-strip>I’M ON FALL BREAK ♡ MORE TIME TO TATTOO ✦ OCTOBER 19–25 ✦ 3 HOURS · $150 ✦ $50 DEPOSIT ♡</span><span data-home-booking-strip aria-hidden="true">I’M ON FALL BREAK ♡ MORE TIME TO TATTOO ✦ OCTOBER 19–25 ✦ 3 HOURS · $150 ✦ $50 DEPOSIT ♡</span></div></a>
 <header class="site-header home-header">
 <div class="site-shell nav">
 <a class="brand" href="index.html">LoveJoy Market</a>
@@ -48,29 +48,14 @@
 </header>
 <main class="myspace-page">
 <div class="myspace-shell">
-<section class="home-special" data-fall-banner aria-labelledby="fall-special-title">
-<div class="home-special__ribbon"><span aria-hidden="true">✦ ♡ ✦</span><span>October 19–25, 2026</span><span aria-hidden="true">✦ ♡ ✦</span></div>
-<div class="home-special__copy">
-<p class="home-special__eyebrow">a little time for yourself</p>
-<h2 id="fall-special-title">fall break<br/>tattoos ♡</h2>
-<p class="home-special__description">Bring your next idea. Designs must fit a three-hour session.</p>
-<button class="home-special__glitter" data-glitter-replay type="button">more glitter ✦</button>
-</div>
-<div class="home-special__ticket">
-<p class="home-special__session">3-hour tattoo session</p>
-<div class="home-special__price"><strong>$150</strong><span><s>$250</s><b>save $100</b></span></div>
-<p class="home-special__deposit"><strong>$50 nonrefundable deposit</strong><br/>Applied to your total. $100 due at your appointment.</p>
-<a class="home-special__cta" href="tattoo-inquiry.html?session=fall-break#tattoo-inquiry-form">let’s book it ♡</a>
-<p class="home-special__note">Send your idea to request a time.</p>
-</div>
-</section>
+
 <section aria-labelledby="profile-title" class="profile-banner">
 <h1 class="sr-only page-h1">LoveJoy Market</h1>
 <div class="banner-status"><span class="status-dot"></span> online + probably plotting</div>
 <img alt="LoveJoy Market" class="profile-wordmark" id="profile-title" src="lovejoy-wordmark.png"/>
 <p class="profile-tagline">custom tattoos, original art, and pop-ups with good people.</p>
 <p class="profile-subline">made with taste, a little nerve, and absolutely no interest in being boring.</p>
-<div class="currently-line"><span>currently thinking about:</span> the more you know, the less you know ✦</div>
+<div class="currently-line"><span>currently thinking about:</span> the more you know, the less you know ✦ <button class="home-glitter-replay" data-glitter-replay type="button">more glitter ✦</button></div>
 </section>
 
 <div class="myspace-grid">
@@ -136,7 +121,13 @@
 <p class="presented-line">Presented by <a href="about.html">Jessica LoveJoy</a>.</p>
 </div>
 </section>
-<section class="module-card booking-offer" id="current-openings" data-booking-offer hidden aria-label="Current tattoo availability"></section>
+<section class="module-card home-booking-calendar" id="current-openings" data-home-booking-calendar aria-label="This week’s tattoo availability">
+<div class="module-title">This Week in the Studio ♡</div>
+<div class="module-body">
+<p class="home-opening-summary"><strong>October 19–25 · 3 hours · $150</strong></p>
+<p class="home-opening-copy">I’m on fall break from school, so I’ve got the week to tattoo!</p>
+<div class="home-opening-footer"><a href="tattoo-inquiry.html?session=fall-break#tattoo-inquiry-form">View openings + request a time ♡</a><small>$50 deposit · $100 due at your appointment</small></div>
+</div></section>
 <section class="module-card friends-card" id="top-8">
 <div class="module-title">LoveJoy Market's Friend Space</div>
 <div class="module-body">
@@ -233,7 +224,7 @@
 </footer>
 <script src="site.js?v=20260922-popups1"></script>
 <script src="tattoo-booking.js?v=20261018-1" defer></script>
-<script src="home-special.js?v=20261018-1" defer></script>
+<script src="home-special.js?v=20261018-3" defer></script>
 </body>
 </html>
 

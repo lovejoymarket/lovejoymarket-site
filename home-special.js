@@ -1,16 +1,48 @@
 (() => {
   'use strict';
-  const banner = document.querySelector('[data-fall-banner]');
-  function syncBanner() {
-    if (!banner) return;
+  const calendar = document.querySelector('[data-home-booking-calendar]');
+  const weekday = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Indiana/Indianapolis', weekday: 'short' });
+  const dayNumber = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Indiana/Indianapolis', day: 'numeric' });
+  const time = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Indiana/Indianapolis', hour: 'numeric', minute: '2-digit' });
+  const escape = value => String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]));
+  let noticeKey = '';
+  function syncHomeNotice() {
     const booking = globalThis.LoveJoyBooking;
-    banner.hidden = booking
-      ? !booking.getState().slots.length
-      : Date.now() >= Date.parse('2026-10-26T00:00:00-04:00');
+    if (!booking) return;
+    const state = booking.getState();
+    const active = state.phase === 'fall-break' && state.slots.length > 0;
+    const key = state.phase + ':' + state.slots.map(slot => slot.id).join(',');
+    if (key === noticeKey) return;
+    noticeKey = key;
+    const notice = active
+      ? 'I’M ON FALL BREAK ♡ MORE TIME TO TATTOO ✦ OCTOBER 19–25 ✦ 3 HOURS · $150 ✦ $50 DEPOSIT ♡'
+      : 'TATTOOS ♡ INQUIRIES ✦ CUSTOM WORK ✦';
+    document.querySelectorAll('[data-home-booking-strip]').forEach(node => { node.textContent = notice; });
+    const link = document.querySelector('[data-home-booking-link]');
+    if (link) {
+      link.href = active ? 'tattoo-inquiry.html?session=fall-break#tattoo-inquiry-form' : 'tattoo-inquiry.html';
+      link.setAttribute('aria-label', active ? 'Fall Break tattoo availability' : 'Tattoo inquiries');
+    }
+    if (!calendar) return;
+    if (!active) {
+      calendar.innerHTML = '<div class="module-title">Tattoo Appointments ♡</div><div class="module-body"><p class="home-opening-copy">Tell me your next tattoo idea and the dates that work for you.</p><div class="home-opening-footer"><a href="tattoo-inquiry.html">Request an appointment ♡</a></div></div>';
+      return;
+    }
+    const groups = new Map();
+    state.slots.forEach(slot => {
+      const date = slot.start.slice(0, 10);
+      if (!groups.has(date)) groups.set(date, []);
+      groups.get(date).push(slot);
+    });
+    const days = [...groups.values()].map(slots => {
+      const date = new Date(slots[0].start);
+      return `<div class="home-opening-day"><span>${weekday.format(date)}</span><b>${dayNumber.format(date)}</b>${slots.map(slot => `<time datetime="${escape(slot.start)}" title="${escape(booking.slotLabel(slot))}">${time.format(new Date(slot.start)).replace(':00', '').replace(' AM', 'a').replace(' PM', 'p')}</time>`).join('')}</div>`;
+    }).join('');
+    calendar.innerHTML = `<div class="module-title">This Week in the Studio ♡</div><div class="module-body"><p class="home-opening-summary"><strong>October 19–25 · 3 hours · $150</strong></p><p class="home-opening-copy">I’m on fall break from school, so I’ve got the week to tattoo!</p><div class="home-opening-days" role="group" aria-label="Available appointment start times, Eastern">${days}</div><div class="home-opening-footer"><a href="tattoo-inquiry.html?session=fall-break#tattoo-inquiry-form">Request a time ♡</a><small>$50 deposit · $100 due at your appointment</small></div></div>`;
   }
-  syncBanner();
-  window.setInterval(syncBanner, 30000);
-  window.addEventListener('focus', syncBanner);
+  syncHomeNotice();
+  window.setInterval(syncHomeNotice, 30000);
+  window.addEventListener('focus', syncHomeNotice);
 
   const canvas = document.querySelector('[data-home-glitter]');
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
