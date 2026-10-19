@@ -4,7 +4,7 @@
   const FALL_DEPOSIT = 'https://square.link/u/cyeSgeu3';
   const FALL_BOOKING_START = Date.parse('2026-10-16T00:00:00-04:00');
   const FALL_END = Date.parse('2026-10-26T00:00:00-04:00');
-  const BLOCKED_SLOTS = [];
+  const BLOCKED_SLOTS = ['oct19-1700'];
   const fallSlots = [19, 20, 21, 22, 23, 24].map(day => ({ id: `oct${day}-1700`, start: `2026-10-${day}T17:00:00-04:00`, duration: 3, total: 150, deposit: 50, key: 'fall-break' }));
   ['12:00', '15:30', '18:45'].forEach(time => fallSlots.push({ id: `oct25-${time.replace(':', '')}`, start: `2026-10-25T${time}:00-04:00`, duration: 3, total: 150, deposit: 50, key: 'fall-break' }));
   const sessions = {
@@ -27,7 +27,7 @@
       phase = 'fall-break';
       available = fallSlots.filter(slot => stamp < Date.parse(slot.start));
     }
-    return { phase, slots: available.filter(slot => !BLOCKED_SLOTS.includes(slot.id)) };
+    return { phase, slots: available.filter(slot => !BLOCKED_SLOTS.includes(slot.id)), bookedSlots: available.filter(slot => BLOCKED_SLOTS.includes(slot.id)) };
   }
   function availableSessionKeys(state) {
     return ['unsure', '1hour', '3hour', 'fullday'].concat(state.slots.length ? [state.phase] : []);
@@ -80,19 +80,21 @@
   const escape = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   function scheduleMarkup(state) {
     const groups = new Map();
-    state.slots.forEach(slot => {
+    const booked = new Set((state.bookedSlots || []).map(slot => slot.id));
+    [...state.slots, ...(state.bookedSlots || [])].sort((a, b) => Date.parse(a.start) - Date.parse(b.start)).forEach(slot => {
       const day = dateFormatter.format(new Date(slot.start));
       if (!groups.has(day)) groups.set(day, []);
-      groups.get(day).push(timeFormatter.format(new Date(slot.start)));
+      const time = escape(timeFormatter.format(new Date(slot.start)));
+      groups.get(day).push(booked.has(slot.id) ? `<s>${time}</s> <small>booked</small>` : time);
     });
-    return '<dl class="booking-times">' + [...groups].map(([day, times]) => `<div><dt>${escape(day)}</dt><dd>${times.map(escape).join(' · ')}</dd></div>`).join('') + '</dl>';
+    return '<dl class="booking-times">' + [...groups].map(([day, times]) => `<div><dt>${escape(day)}</dt><dd>${times.join(' · ')}</dd></div>`).join('') + '</dl>';
   }
   function offerMarkup(state) {
     return `<div class="module-title">Fall Break Tattoo Sessions ♡</div><div class="module-body"><p class="booking-price-line"><strong class="booking-price">3 hours · $150</strong><span class="booking-original">Regularly $250</span></p><p>October 19–25, 2026. Your design must fit within a three-hour session.</p>${scheduleMarkup(state)}<p><strong>$50 nonrefundable deposit · $100 balance at your appointment.</strong></p><p class="booking-note">All times are Eastern. Appointments are subject to confirmation. One guest maximum.</p><a class="session-button" href="tattoo-inquiry.html?session=fall-break#tattoo-inquiry-form">Request my appointment ♡</a></div>`;
   }
   let renderedKey = '';
   function renderNotices(state) {
-    const key = state.phase + ':' + state.slots.map(slot => slot.id).join(',');
+    const key = state.phase + ':' + state.slots.map(slot => slot.id).join(',') + ':booked:' + state.bookedSlots.map(slot => slot.id).join(',');
     if (key !== renderedKey) {
       document.querySelectorAll('[data-booking-offer]').forEach(node => {
         const show = state.slots.length > 0;
@@ -226,4 +228,5 @@
   window.addEventListener('focus', refresh);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
 })();
+
 

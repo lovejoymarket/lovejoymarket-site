@@ -22,6 +22,26 @@
 <link href="tattoo-header-fix.css?v=20260927-headerfix1" rel="stylesheet"/>
 <link href="weekend-flash.css?v=20261009-carousel4" rel="stylesheet"/>
 <link href="tattoo-booking.css?v=20261016-1" rel="stylesheet"/>
+<style>
+.tattoo-availability-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  box-sizing: border-box;
+  min-height: 44px;
+  margin: 16px 0;
+  padding: 10px 14px;
+  border: 1px solid #fff8ec;
+  background: #ff2d8d;
+  color: #07182c;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  text-decoration: none;
+}
+.tattoo-availability-banner:hover { background: #fff8ec; }
+.tattoo-availability-banner:focus-visible { outline: 3px solid #fff8ec; outline-offset: 3px; }
+</style>
 </head>
 <body class="tattoo-page flash-update-page">
 <div aria-hidden="true" class="star-rain"></div>
@@ -56,7 +76,7 @@
 <div aria-hidden="true" class="tattoo-help-sparkles">✦   ♡   ★   ✧   ✦</div>
 </section>
 
-<section class="module-card booking-offer" id="current-openings" data-booking-offer hidden aria-label="Current tattoo availability"></section>
+<a class="tattoo-availability-banner" id="current-openings" href="tattoo-get-in-asap.html#current-openings"><span>See this week’s availability ♡</span><span aria-hidden="true">→</span></a>
 
 <section class="module-card section-hub-card">
 <div class="module-title">Choose Your Tattoo Adventure</div>
@@ -122,6 +142,7 @@
 </div>
 </footer>
 <script src="site.js?v=20260922-popups1"></script>
-<script src="tattoo-booking.js?v=20261018-1" defer></script>
+<script src="tattoo-booking.js?v=20261019-booked1" defer></script>
 </body>
 </html>
+

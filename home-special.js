@@ -11,7 +11,7 @@
     if (!booking) return;
     const state = booking.getState();
     const active = state.phase === 'fall-break' && state.slots.length > 0;
-    const key = state.phase + ':' + state.slots.map(slot => slot.id).join(',');
+    const key = state.phase + ':' + state.slots.map(slot => slot.id).join(',') + ':booked:' + (state.bookedSlots || []).map(slot => slot.id).join(',');
     if (key === noticeKey) return;
     noticeKey = key;
     const notice = active
@@ -29,16 +29,21 @@
       return;
     }
     const groups = new Map();
-    state.slots.forEach(slot => {
+    const booked = new Set((state.bookedSlots || []).map(slot => slot.id));
+    [...state.slots, ...(state.bookedSlots || [])].sort((a, b) => Date.parse(a.start) - Date.parse(b.start)).forEach(slot => {
       const date = slot.start.slice(0, 10);
       if (!groups.has(date)) groups.set(date, []);
       groups.get(date).push(slot);
     });
     const days = [...groups.values()].map(slots => {
       const date = new Date(slots[0].start);
-      return `<div class="home-opening-day"><span>${weekday.format(date)}</span><b>${dayNumber.format(date)}</b>${slots.map(slot => `<time datetime="${escape(slot.start)}" title="${escape(booking.slotLabel(slot))}">${time.format(new Date(slot.start)).replace(':00', '').replace(' AM', 'a').replace(' PM', 'p')}</time>`).join('')}</div>`;
+      return `<div class="home-opening-day"><span>${weekday.format(date)}</span><b>${dayNumber.format(date)}</b>${slots.map(slot => {
+        const label = escape(booking.slotLabel(slot) + (booked.has(slot.id) ? ' · booked' : ''));
+        const shortTime = time.format(new Date(slot.start)).replace(':00', '').replace(' AM', 'a').replace(' PM', 'p');
+        return `<time datetime="${escape(slot.start)}" title="${label}" aria-label="${label}">${booked.has(slot.id) ? `<s>${shortTime}</s><br/><small>booked</small>` : shortTime}</time>`;
+      }).join('')}</div>`;
     }).join('');
-    calendar.innerHTML = `<div class="module-title">This Week in the Studio ♡</div><div class="module-body"><p class="home-opening-summary"><strong>October 19–25 · 3 hours · $150</strong></p><p class="home-opening-copy">I’m on fall break from school, so I’ve got the week to tattoo!</p><div class="home-opening-days" role="group" aria-label="Available appointment start times, Eastern">${days}</div><div class="home-opening-footer"><a href="tattoo-inquiry.html?session=fall-break#tattoo-inquiry-form">Request a time ♡</a><small>$50 deposit · $100 due at your appointment</small></div></div>`;
+    calendar.innerHTML = `<div class="module-title">This Week in the Studio ♡</div><div class="module-body"><p class="home-opening-summary"><strong>October 19–25 · 3 hours · $150</strong></p><p class="home-opening-copy">I’m on fall break from school, so I’ve got the week to tattoo!</p><div class="home-opening-days" role="group" aria-label="Appointment start times, Eastern. Crossed-out times are booked.">${days}</div><div class="home-opening-footer"><a href="tattoo-inquiry.html?session=fall-break#tattoo-inquiry-form">Request a time ♡</a><small>$50 deposit · $100 due at your appointment</small></div></div>`;
   }
   syncHomeNotice();
   window.setInterval(syncHomeNotice, 30000);
@@ -163,4 +168,5 @@
   window.addEventListener('resize', () => { if (frame) resize(); });
   explode();
 })();
+
 
