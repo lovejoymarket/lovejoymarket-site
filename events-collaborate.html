@@ -10,7 +10,7 @@
 <link href="https://lovejoymarket.co/events-collaborate.html" rel="canonical"/>
 <meta content="#312730" name="theme-color"/>
 <meta content="website" property="og:type"/>
-<meta content="Event Vendor + Maker Interest | LoveJoy Market" property="og:title"/>
+<meta content="Event + Project Collaboration | LoveJoy Market" property="og:title"/>
 <meta content="Invite LoveJoy to a pop-up, pitch a creative collaboration, or get in touch about an art or tattoo opportunity." property="og:description"/>
 <meta content="https://lovejoymarket.co/events-collaborate.html" property="og:url"/>
 <meta content="https://lovejoymarket.co/hero-lovejoy.jpeg" property="og:image"/>
@@ -19,6 +19,7 @@
 <link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="apple-touch-icon.png" rel="apple-touch-icon"/>
 <link href="site.webmanifest" rel="manifest"/>
+<link rel="stylesheet" href="collaboration-form.css?v=20261019-1"/>
 </head>
 <body class="events-page">
 <div aria-hidden="true" class="star-rain"></div>
@@ -49,55 +50,21 @@
 <section class="profile-banner section-hub-banner">
 <div class="banner-status"><span class="status-dot"></span> your business might fit right in</div>
 <h1 class="section-hub-title">bring your idea to LoveJoy ✦</h1>
-<p class="section-hub-sub">Interested in joining an event? Tell us what you do and what you would bring.</p>
+<p class="section-hub-sub">Planning an event or dreaming up a creative project? Tell me what you do and what we could make together.</p>
 <div aria-hidden="true" class="hub-sparkle-row"><span>✦</span><span>♡</span><span>★</span><span>✧</span><span>✦</span></div>
 </section><nav aria-label="Back to section menu" class="section-backbar"><a href="popups.html">← back to Pop-Ups</a><span aria-hidden="true">✦ ♡ ✦</span></nav>
-<section class="module-card event-form-card" id="lovejoy-inquiry">
-<div class="module-title">Pop-Up + Creative Collaboration Inquiry</div>
-<div class="module-body">
-<p class="event-form-intro">This quick form is for makers, artists, hosts, venues, and other creative partners who want to build something together.</p>
-<form class="event-inquiry-form" data-email="hello@lovejoymarket.co" data-event-inquiry="" data-inquiry-type="lovejoy">
-<div class="event-form-grid">
-<label><span>Name / business *</span><input name="name" required=""/></label>
-<label><span>Email *</span><input name="email" required="" type="email"/></label>
-<label><span>Phone</span><input name="phone" type="tel"/></label>
-<label>
-<span>What best describes you? *</span>
-<select name="role" required="">
-<option value="">pick one</option>
-<option>Maker / product vendor</option>
-<option>Food / drink vendor</option>
-<option>Artist</option>
-<option>Instructor / activity host</option>
-<option>DJ / performer</option>
-<option>Photographer / content creative</option>
-<option>Community organization</option>
-<option>Brand / sponsor</option>
-<option>Other</option>
-</select>
-</label>
-<label>
-<span>What kind of collaboration? *</span>
-<select name="program" required=""><option value="">pick one</option><option value="offsite-pop-up">Invite LoveJoy to your pop-up</option><option value="artist-table">Art / merch table</option><option value="guest-tattoo">Guest tattoo opportunity</option><option value="joint-pop-up">Plan a pop-up together</option><option value="creative-partner">Creative collaboration</option><option value="future-event">Something else / future idea</option></select>
-</label>
-<label><span>Website or social link</span><input name="timing" placeholder="your best link"/></label>
-</div>
-<label class="event-form-wide"><span>What would you bring? *</span><textarea name="concept" placeholder="Tell us what you sell, serve, teach, perform, or create." required="" rows="4"></textarea></label>
-<label class="event-form-wide"><span>What would guests experience? *</span><textarea name="bring" placeholder="What would people make, buy, eat, watch, or do at your setup?" required="" rows="3"></textarea></label>
-<label class="event-form-wide"><span>Anything else we should know?</span><textarea name="needs" placeholder="Space needs, setup notes, accessibility, or anything important." rows="3"></textarea></label>
-<label class="event-form-wide"><span>More links</span><input name="links" placeholder="Portfolio, menu, shop, or additional social links"/></label>
-<div class="event-form-note">
-<strong>A quick hello, not a contract.</strong>
-<span>Submitting interest does not confirm a spot. If the fit feels right, LoveJoy will follow up by email.</span>
-</div>
-<div class="event-form-actions">
-<button class="session-button" type="submit">prepare my email ✦</button>
-<button class="text-link event-copy-button" data-event-copy="" type="button">copy inquiry</button>
-</div>
-<p aria-live="polite" class="event-form-status" data-event-status=""></p>
-</form>
-</div>
-</section>
+<section class="module-card" id="collaboration-inquiry"><div class="module-title">Event / Project Collaboration ♡</div><div class="module-body"><p>Have an idea with my name on it? Tell me what you’re imagining. Fields marked * are required.</p>
+<form class="collaboration-form" data-collaboration-form>
+<fieldset class="collab-types"><legend>What kind of collaboration? *</legend><p>Choose one or both.</p><label><input type="checkbox" name="collaboration_type" value="event" aria-controls="event-questions"/> Event</label><label><input type="checkbox" name="collaboration_type" value="project" aria-controls="project-questions"/> Project</label><p class="collab-error" data-type-error role="alert" hidden>Choose Event, Project, or both to continue.</p></fieldset>
+<fieldset><legend>A little about you</legend><div class="collab-grid"><label><span>Your name *</span><input name="name" type="text" required/></label><label><span>Business / creative name</span><input name="business" type="text"/></label><label><span>Email *</span><input name="email" type="email" required/></label><label><span>Phone</span><input name="phone" type="tel"/></label><label><span>Website, portfolio or social links</span><input name="links" type="text"/></label><label><span>What do you do? *</span><select name="role" required><option value="">choose one</option><option>Artist / maker</option><option>Photographer / filmmaker</option><option>DJ / performer</option><option>Instructor / activity host</option><option>Host / venue</option><option>Community organization / brand</option><option>Other</option></select></label></div></fieldset>
+<label><span>Tell me the idea *</span><textarea name="pitch" rows="3" required></textarea></label>
+<fieldset id="event-questions" data-collab-branch="event" hidden disabled><legend>Your event</legend><div class="collab-grid"><label><span>Event name *</span><input name="event_name" type="text" required/></label><label><span>Type of event *</span><select name="event_type" required><option value="">choose one</option><option>Pop-up / market</option><option>Workshop / class</option><option>Exhibition</option><option>Performance</option><option>Private event</option><option>Community event</option><option>Other</option></select></label><label><span>Proposed date / timing (flexible is okay) *</span><input name="event_timing" type="text" required/></label><label><span>Venue and city *</span><input name="event_location" type="text" required/></label><label><span>Estimated attendance</span><input name="event_attendance" type="number"/></label><label><span>What would you like LoveJoy to do? *</span><textarea name="event_role" rows="3" required></textarea></label><label><span>What will guests experience? *</span><textarea name="event_experience" rows="3" required></textarea></label><label><span>Setup, space, accessibility, fees or other logistics</span><textarea name="event_logistics" rows="3"></textarea></label></div></fieldset>
+<fieldset id="project-questions" data-collab-branch="project" hidden disabled><legend>Your project</legend><div class="collab-grid"><label><span>Project title / working name</span><input name="project_name" type="text"/></label><label><span>Type of project *</span><select name="project_type" required><option value="">choose one</option><option>Photo shoot</option><option>Video / film</option><option>Art / design</option><option>Editorial / content</option><option>Community project</option><option>Other</option></select></label><label><span>Proposed timeline / deadline *</span><input name="project_timing" type="text" required/></label><label><span>Location / remote *</span><input name="project_location" type="text" required/></label><label><span>What would you like LoveJoy to contribute? *</span><textarea name="project_role" rows="3" required></textarea></label><label><span>What are we making? Include the expected deliverables. *</span><textarea name="project_deliverables" rows="3" required></textarea></label><label><span>Where will the work be used, and how will everyone be credited? *</span><textarea name="project_usage" rows="3" required></textarea></label><label><span>Team, inspiration or reference links</span><textarea name="project_team" rows="3"></textarea></label></div></fieldset>
+<label><span>Budget / proposed compensation (amount, trade or what you’re proposing) *</span><textarea name="budget" rows="3" required></textarea></label><label><span>Anything else I should know?</span><textarea name="notes" rows="3"></textarea></label>
+<label class="collab-agreement"><input type="checkbox" name="acknowledgment" required/> <span>I understand this is an inquiry. A date or project is confirmed only after we agree on the details. *</span></label>
+<p>This prepares an email to <a href="mailto:hello@lovejoymarket.co">hello@lovejoymarket.co</a>. Review it, attach any samples, and press Send in your email app. You can also copy your inquiry and email it yourself.</p>
+<div class="collab-actions"><button type="submit" class="session-button">prepare my email ♡</button><button type="button" data-collab-copy>copy inquiry</button></div><p data-collab-status role="status" aria-live="polite"></p><label data-copy-fallback hidden><span>Copy your inquiry below, then email it to hello@lovejoymarket.co.</span><textarea readonly rows="12"></textarea></label>
+<noscript><p>Enable JavaScript to reveal the Event and Project questions, or email your idea directly to hello@lovejoymarket.co.</p></noscript></form></div></section>
 </div>
 </main>
 <footer class="site-footer">
@@ -107,6 +74,8 @@
 </div>
 </footer>
 <script src="site.js?v=20260922-popups1"></script>
-<script src="mail-fix.js?v=20260820-voice1"></script>
+
+<script src="collaboration-form.js?v=20261019-1" defer></script>
 </body>
 </html>
+

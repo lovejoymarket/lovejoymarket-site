@@ -19,6 +19,7 @@
 <link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="apple-touch-icon.png" rel="apple-touch-icon"/>
 <link href="site.webmanifest" rel="manifest"/>
+<link rel="stylesheet" href="collaboration-form.css?v=20261019-1"/>
 </head>
 <body class="market-page">
 <div aria-hidden="true" class="star-rain"></div>
@@ -49,16 +50,22 @@
 <section class="profile-banner section-hub-banner">
 <div class="banner-status"><span class="status-dot"></span> cute collaboration incoming</div>
 <h1 class="section-hub-title">bring the magic only you have. ♡</h1>
-<p class="section-hub-sub">You bring a real skill, examples of your work, and a reason we should make something together.</p>
+<p class="section-hub-sub">An event, a photo shoot, an art project, or a good idea we haven’t thought of yet. Let’s hear it.</p>
 <div aria-hidden="true" class="hub-sparkle-row"><span>✦</span><span>♡</span><span>★</span><span>✧</span><span>✦</span></div>
 </section><nav aria-label="Back to section menu" class="section-backbar"><a href="market-applications.html">← back to Applications</a><span aria-hidden="true">✦ ♡ ✦</span></nav>
-<section class="module-card"><div class="module-title">Creative / Community Partner Application</div><div class="module-body"><div class="application-grid single-application-grid"><article class="application-card">
-<div class="application-icon">♡</div>
-<h2>Creative / Community Partner</h2>
-<p>Use this if you teach, DJ, photograph, perform, organize, make, or otherwise bring something useful to a LoveJoy event.</p>
-<div class="application-meta"><span>attach:</span> relevant samples, setup examples, branding + any permits, insurance, or safety documents your idea needs</div>
-<a class="download-button" download="" href="lovejoy-creative-partner-application-fillable.pdf">download fillable PDF ↓</a>
-</article></div><div class="focused-page-note"><strong>Okay, make me get it.</strong><p>Download the PDF, tell me exactly what you bring, and send links or samples that make the idea easy to picture.</p><a href="market-submit.html">send it correctly →</a></div></div></section></div>
+<section class="module-card" id="collaboration-inquiry"><div class="module-title">Event / Project Collaboration ♡</div><div class="module-body"><p>Have an idea with my name on it? Tell me what you’re imagining. Fields marked * are required.</p>
+<form class="collaboration-form" data-collaboration-form>
+<fieldset class="collab-types"><legend>What kind of collaboration? *</legend><p>Choose one or both.</p><label><input type="checkbox" name="collaboration_type" value="event" aria-controls="event-questions"/> Event</label><label><input type="checkbox" name="collaboration_type" value="project" aria-controls="project-questions"/> Project</label><p class="collab-error" data-type-error role="alert" hidden>Choose Event, Project, or both to continue.</p></fieldset>
+<fieldset><legend>A little about you</legend><div class="collab-grid"><label><span>Your name *</span><input name="name" type="text" required/></label><label><span>Business / creative name</span><input name="business" type="text"/></label><label><span>Email *</span><input name="email" type="email" required/></label><label><span>Phone</span><input name="phone" type="tel"/></label><label><span>Website, portfolio or social links</span><input name="links" type="text"/></label><label><span>What do you do? *</span><select name="role" required><option value="">choose one</option><option>Artist / maker</option><option>Photographer / filmmaker</option><option>DJ / performer</option><option>Instructor / activity host</option><option>Host / venue</option><option>Community organization / brand</option><option>Other</option></select></label></div></fieldset>
+<label><span>Tell me the idea *</span><textarea name="pitch" rows="3" required></textarea></label>
+<fieldset id="event-questions" data-collab-branch="event" hidden disabled><legend>Your event</legend><div class="collab-grid"><label><span>Event name *</span><input name="event_name" type="text" required/></label><label><span>Type of event *</span><select name="event_type" required><option value="">choose one</option><option>Pop-up / market</option><option>Workshop / class</option><option>Exhibition</option><option>Performance</option><option>Private event</option><option>Community event</option><option>Other</option></select></label><label><span>Proposed date / timing (flexible is okay) *</span><input name="event_timing" type="text" required/></label><label><span>Venue and city *</span><input name="event_location" type="text" required/></label><label><span>Estimated attendance</span><input name="event_attendance" type="number"/></label><label><span>What would you like LoveJoy to do? *</span><textarea name="event_role" rows="3" required></textarea></label><label><span>What will guests experience? *</span><textarea name="event_experience" rows="3" required></textarea></label><label><span>Setup, space, accessibility, fees or other logistics</span><textarea name="event_logistics" rows="3"></textarea></label></div></fieldset>
+<fieldset id="project-questions" data-collab-branch="project" hidden disabled><legend>Your project</legend><div class="collab-grid"><label><span>Project title / working name</span><input name="project_name" type="text"/></label><label><span>Type of project *</span><select name="project_type" required><option value="">choose one</option><option>Photo shoot</option><option>Video / film</option><option>Art / design</option><option>Editorial / content</option><option>Community project</option><option>Other</option></select></label><label><span>Proposed timeline / deadline *</span><input name="project_timing" type="text" required/></label><label><span>Location / remote *</span><input name="project_location" type="text" required/></label><label><span>What would you like LoveJoy to contribute? *</span><textarea name="project_role" rows="3" required></textarea></label><label><span>What are we making? Include the expected deliverables. *</span><textarea name="project_deliverables" rows="3" required></textarea></label><label><span>Where will the work be used, and how will everyone be credited? *</span><textarea name="project_usage" rows="3" required></textarea></label><label><span>Team, inspiration or reference links</span><textarea name="project_team" rows="3"></textarea></label></div></fieldset>
+<label><span>Budget / proposed compensation (amount, trade or what you’re proposing) *</span><textarea name="budget" rows="3" required></textarea></label><label><span>Anything else I should know?</span><textarea name="notes" rows="3"></textarea></label>
+<label class="collab-agreement"><input type="checkbox" name="acknowledgment" required/> <span>I understand this is an inquiry. A date or project is confirmed only after we agree on the details. *</span></label>
+<p>This prepares an email to <a href="mailto:hello@lovejoymarket.co">hello@lovejoymarket.co</a>. Review it, attach any samples, and press Send in your email app. You can also copy your inquiry and email it yourself.</p>
+<div class="collab-actions"><button type="submit" class="session-button">prepare my email ♡</button><button type="button" data-collab-copy>copy inquiry</button></div><p data-collab-status role="status" aria-live="polite"></p><label data-copy-fallback hidden><span>Copy your inquiry below, then email it to hello@lovejoymarket.co.</span><textarea readonly rows="12"></textarea></label>
+<noscript><p>Enable JavaScript to reveal the Event and Project questions, or email your idea directly to hello@lovejoymarket.co.</p></noscript></form></div></section>
+</div>
 </main>
 <footer class="site-footer">
 <div class="site-shell footer-grid">
@@ -67,5 +74,7 @@
 </div>
 </footer>
 <script src="site.js?v=20260922-popups1"></script>
+<script src="collaboration-form.js?v=20261019-1" defer></script>
 </body>
 </html>
+
