@@ -5,7 +5,7 @@
   const FALL_BOOKING_START = Date.parse('2026-10-16T00:00:00-04:00');
   const FALL_END = Date.parse('2026-10-26T00:00:00-04:00');
   const BLOCKED_SLOTS = ['oct19-1700'];
-  const fallSlots = [19, 20, 21, 23, 24].map(day => ({ id: `oct${day}-1700`, start: `2026-10-${day}T17:00:00-04:00`, duration: 3, total: 150, deposit: 50, key: 'fall-break' }));
+  const fallSlots = [19, 20, 21, 23].map(day => ({ id: `oct${day}-1700`, start: `2026-10-${day}T17:00:00-04:00`, duration: 3, total: 150, deposit: 50, key: 'fall-break' }));
   ['12:00', '18:45'].forEach(time => fallSlots.push({ id: `oct25-${time.replace(':', '')}`, start: `2026-10-25T${time}:00-04:00`, duration: 3, total: 150, deposit: 50, key: 'fall-break' }));
   const sessions = {
     unsure: { label: 'Not sure, recommend one', total: null, deposit: null, duration: null },
