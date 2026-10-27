@@ -13,6 +13,7 @@
 <link href="tattoo-header-fix.css?v=20260927-headerfix1" rel="stylesheet"/>
 <link href="weekend-flash.css?v=20261009-carousel4" rel="stylesheet"/>
 <link href="tattoo-booking.css?v=20261016-1" rel="stylesheet"/>
+<link href="recuerdame.css?v=20261027-concise4" rel="stylesheet"/>
 </head>
 <body class="tattoo-page asap-page flash-update-page">
 
@@ -47,57 +48,9 @@
 </section>
 
 <section class="module-card booking-offer" id="current-openings" data-booking-offer hidden aria-label="Current tattoo availability"></section>
+<p><a class="text-link" href="tattoo-inquiry.html">Other dates + custom work ♡</a></p>
 
-<section class="module-card booking-inquiry-card" id="asap-form">
-<div class="module-title">Current Opening Inquiry</div>
-<div class="module-body">
-<form id="opening-inquiry-form" class="tattoo-inquiry-form booking-form" data-booking-inquiry="opening" data-email="hello@lovejoymarket.co">
-<fieldset data-booking-fields disabled>
-<legend class="sr-only">Tattoo appointment details</legend>
-<div class="tattoo-form-grid">
-<label><span>Your name *</span><input name="name" type="text" autocomplete="name" required maxlength="120"/></label>
-<label><span>Your email *</span><input name="email" type="email" autocomplete="email" required maxlength="200"/></label>
-<label><span>Phone</span><input name="phone" type="tel" autocomplete="tel" maxlength="40"/></label>
-<label><span>Session *</span><select name="session" data-booking-session required><option value="unsure">Not sure, recommend one</option><option value="1hour">1-hour session · $100 / $50 deposit</option><option value="3hour">3-hour session · $250 / $125 deposit</option><option value="fullday">6-hour session · $500 / $250 deposit</option></select></label>
-</div>
-<div class="booking-session-summary" data-booking-summary aria-live="polite"></div>
-<div class="tattoo-form-grid" data-booking-slot-fields hidden>
-<label><span>Appointment time *</span><select name="first_choice" data-booking-slot disabled><option value="">Choose a time...</option></select></label>
-<label data-booking-backup-label><span>Backup time, optional</span><select name="backup_choice" data-booking-backup disabled><option value="">No backup time</option></select></label>
-</div>
-<p class="booking-note" data-booking-slot-note hidden>All times are Eastern. Requested times are subject to confirmation.</p>
-<div class="tattoo-form-grid">
-<label><span>Placement *</span><input name="placement" type="text" required maxlength="160" placeholder="For example: outer forearm"/></label>
-<label><span>Approximate size *</span><input name="size" type="text" required maxlength="120" placeholder="For example: 4 inches"/></label>
-<label><span>Color direction</span><select name="color"><option>Black &amp; gray</option><option>Color</option><option>Mostly black &amp; gray with color</option><option>Not sure</option></select></label>
-<label data-booking-availability-label><span>Preferred dates and times *</span><input name="availability" type="text" required maxlength="300" placeholder="Tell me when you are available"/></label>
-<label><span>Will you bring a guest? *</span><select name="guest" required><option value="">Choose one...</option><option value="none">No guest</option><option value="adult">One adult guest</option><option value="child">One child, bringing them is necessary</option></select></label>
-</div>
-<label class="tattoo-form-wide"><span>Tell me your tattoo idea. *</span><textarea name="idea" rows="5" required maxlength="3000"></textarea></label>
-<label class="tattoo-form-wide"><span>Anything else I should know?</span><textarea name="notes" rows="3" maxlength="1200"></textarea></label>
-<div class="booking-rules">
-<p><strong>One guest maximum.</strong> Please let me know beforehand if someone is joining you. Children count toward the one-guest limit.</p>
-<p>Appointments are best attended without children, but I understand that bringing your child may sometimes be necessary. Please bring everything needed to keep them comfortably occupied throughout your session. The studio is not set up to entertain children.</p>
-<p>Your tattoo must fit within the session you book. Additional work may need another appointment. Feet and intimate areas are not tattooed.</p>
-<p>Eat beforehand, hydrate, and wear clothing that gives access to the tattoo area. Please do not shave the area or apply numbing cream. Bring your government-issued photo ID and complete your consent form before arrival.</p>
-</div>
-<div class="booking-checks">
-<label><input type="checkbox" name="booking_acknowledged" value="yes" required/><span data-booking-payment-ack>I understand my appointment is confirmed once my tattoo and time are approved and my nonrefundable deposit is received. The deposit is applied toward my total.</span></label>
-<label><input type="checkbox" name="guests_acknowledged" value="yes" required/><span>I understand the one-guest maximum and the guidance for bringing children.</span></label>
-<p>Read the <a data-booking-policy-link href="tattoo-policies.html" target="_blank" rel="noopener">Tattoo Policies</a> before submitting.</p>
-<label><input type="checkbox" name="policies_acknowledged" value="yes" required disabled data-booking-policy-check/><span>I have read and agree to the tattoo policies.</span></label>
-<small data-booking-policy-note>Open the policies to enable the agreement checkbox.</small>
-</div>
-<div class="tattoo-attachment-note"><strong>Before sending:</strong><span>Attach your reference images and a clear placement photo to the email.</span></div>
-<div class="tattoo-form-actions"><button class="session-button" type="submit">Create my inquiry email ♡</button><button class="text-link" type="button" data-booking-copy>Copy inquiry instead</button></div>
-<p class="tattoo-form-status" data-booking-status role="status" aria-live="polite"></p>
-<p class="booking-note">This opens your email app. Add your photos and press send to email hello@lovejoymarket.co.</p>
-<div class="booking-payment" data-booking-payment hidden><strong data-booking-payment-title></strong><p data-booking-payment-copy></p><a class="session-button" data-booking-deposit target="_blank" rel="noopener">Pay session deposit ♡</a><p class="booking-note">Use the same name and email for your inquiry and payment. Your appointment is reserved once your tattoo and time are confirmed and your deposit is received.</p></div>
-</fieldset>
-<div data-booking-closed hidden><p>There are no current openings listed. Please use the <a href="tattoo-inquiry.html">regular tattoo inquiry</a> to request another date.</p></div>
-</form>
-<noscript><p>Please email <a href="mailto:hello@lovejoymarket.co">hello@lovejoymarket.co</a> with your tattoo idea, placement, size, references, and availability.</p></noscript>
-</div></section>
+
 
 <section class="module-card susan-section asap-susan-card" id="susan">
   <div class="module-title">Susan ♡</div>
@@ -235,7 +188,8 @@
 <script src="site.js?v=20260922-popups1"></script>
 <script src="susan-game.js?v=20260923-lamps3"></script>
 <script src="asap-effects.js?v=20260923-fireworks1"></script>
-<script src="tattoo-booking.js?v=20261021-saturday-booked" defer></script>
+<script src="recuerdame.js?v=20261027-concise4" defer></script>
+<script src="tattoo-booking.js?v=20261027-concise4" defer></script>
 </body>
 </html>
 

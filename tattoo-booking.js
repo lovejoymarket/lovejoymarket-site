@@ -1,18 +1,18 @@
 (() => {
   'use strict';
   const REGULAR_DEPOSIT = 'https://square.link/u/exMcKsyN';
-  const FALL_DEPOSIT = 'https://square.link/u/cyeSgeu3';
-  const FALL_BOOKING_START = Date.parse('2026-10-16T00:00:00-04:00');
-  const FALL_END = Date.parse('2026-10-26T00:00:00-04:00');
-  const BLOCKED_SLOTS = ['oct19-1700'];
-  const fallSlots = [19, 20, 21, 23].map(day => ({ id: `oct${day}-1700`, start: `2026-10-${day}T17:00:00-04:00`, duration: 3, total: 150, deposit: 50, key: 'fall-break' }));
-  ['12:00', '18:45'].forEach(time => fallSlots.push({ id: `oct25-${time.replace(':', '')}`, start: `2026-10-25T${time}:00-04:00`, duration: 3, total: 150, deposit: 50, key: 'fall-break' }));
+  const MEMORIAL_BOOKING_START = Date.parse('2026-10-27T00:00:00-04:00');
+  const MEMORIAL_END = Date.parse('2026-11-01T20:00:00-05:00');
+  const BLOCKED_SLOTS = [];
+  // One-hour appointments, 15-minute cleanup gaps, and a meal break.
+  // Indianapolis changes to standard time on November 1; these are local EST.
+  const memorialSlots = ['12:00', '13:15', '14:30', '15:45', '17:30', '18:45', '20:00'].map(time => ({ id: `nov1-${time.replace(':', '')}`, start: `2026-11-01T${time}:00-05:00`, duration: 1, total: 75, deposit: 25, key: 'recuerdame' }));
   const sessions = {
     unsure: { label: 'Not sure, recommend one', total: null, deposit: null, duration: null },
     '1hour': { label: '1-hour session · $100 / $50 deposit', total: 100, deposit: 50, duration: 1 },
     '3hour': { label: '3-hour session · $250 / $125 deposit', total: 250, deposit: 125, duration: 3 },
     fullday: { label: '6-hour session · $500 / $250 deposit', total: 500, deposit: 250, duration: 6 },
-    'fall-break': { label: 'Fall Break · 3 hours · $150 / $50 deposit', total: 150, deposit: 50, duration: 3 }
+    recuerdame: { label: 'Recuérdame · memorial names + dates · $75 / $25 deposit', total: 75, deposit: 25, duration: 1 }
   };
   const dateFormatter = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Indiana/Indianapolis', weekday: 'long', month: 'long', day: 'numeric' });
   const timeFormatter = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Indiana/Indianapolis', hour: 'numeric', minute: '2-digit' });
@@ -23,9 +23,9 @@
     const stamp = typeof now === 'number' ? now : new Date(now).getTime();
     let phase = 'regular';
     let available = [];
-    if (Number.isFinite(stamp) && stamp >= FALL_BOOKING_START && stamp < FALL_END) {
-      phase = 'fall-break';
-      available = fallSlots.filter(slot => stamp < Date.parse(slot.start));
+    if (Number.isFinite(stamp) && stamp >= MEMORIAL_BOOKING_START && stamp < MEMORIAL_END) {
+      phase = 'recuerdame';
+      available = memorialSlots.filter(slot => stamp < Date.parse(slot.start));
     }
     return { phase, slots: available.filter(slot => !BLOCKED_SLOTS.includes(slot.id)), bookedSlots: available.filter(slot => BLOCKED_SLOTS.includes(slot.id)) };
   }
@@ -41,8 +41,11 @@
     const info = sessionInfo(data.session, state);
     if (!info) return 'That session is no longer available. Please choose another session.';
     if (!['none', 'adult', 'child'].includes(data.guest)) return 'Please choose no guest or one guest.';
-    if (data.booking_acknowledged !== 'yes' || data.guests_acknowledged !== 'yes' || data.policies_acknowledged !== 'yes') return 'Please read and acknowledge the booking terms, guest guidance, and tattoo policies.';
-    if (data.session === 'fall-break') {
+    if (data.booking_acknowledged !== 'yes' || (data.session !== 'recuerdame' && (data.guests_acknowledged !== 'yes' || data.policies_acknowledged !== 'yes'))) return 'Please read and acknowledge the booking terms, guest guidance, and tattoo policies.';
+    if (data.session === 'recuerdame') {
+      if (!globalThis.LoveJoyMemorial) return 'Please reload this page to load the memorial text confirmation.';
+      const memorialError = globalThis.LoveJoyMemorial.validate(data);
+      if (memorialError) return memorialError;
       const slot = state.slots.find(item => item.id === data.first_choice && item.key === data.session);
       if (!slot) return 'That appointment time is no longer available. Please select a current opening.';
       if (data.backup_choice) {
@@ -66,10 +69,11 @@
       `Session: ${info.label}`,
       ...(info.total !== null ? [`Session total: $${info.total}`, `Deposit: $${info.deposit}`, `Balance at appointment: $${info.total - info.deposit}`] : []),
       ...(slot ? [`Requested appointment: ${slotLabel(slot)} (Eastern)`, `Backup appointment: ${backup ? slotLabel(backup) + ' (Eastern)' : 'none'}`] : [`Preferred dates and times: ${data.availability || 'not provided'}`]),
-      `Placement: ${data.placement}`, `Approximate size: ${data.size}`, `Color direction: ${data.color || 'not sure'}`,
+      `Placement: ${data.placement}`, `Approximate size: ${data.session === 'recuerdame' ? data.memorial_size + ' inches overall' : data.size}`, `Color direction: ${data.session === 'recuerdame' ? data.preferred_color + ' (one ink color)' : data.color || 'not sure'}`,
+      ...(data.session === 'recuerdame' ? globalThis.LoveJoyMemorial.payloadLines(data) : []),
       `Guest: ${{ none: 'No guest', adult: 'One adult guest', child: 'One child; bringing them is necessary' }[data.guest]}`,
       'Booking terms acknowledged: yes', 'Guest and child guidance acknowledged: yes', 'Tattoo policies acknowledged: yes',
-      '', 'TATTOO IDEA:', data.idea, '', 'ADDITIONAL NOTES:', data.notes || 'none',
+      '', 'TATTOO IDEA:', data.session === 'recuerdame' ? 'In loving memory. Exact approved text and lettering requested above.' : data.idea, '', 'ADDITIONAL NOTES:', data.notes || 'none',
       '', 'ATTACH BEFORE SENDING: Reference images and a clear photo of the placement area.'
     ];
     return { to: 'hello@lovejoymarket.co', subject, body: lines.join('\n') };
@@ -90,7 +94,7 @@
     return '<dl class="booking-times">' + [...groups].map(([day, times]) => `<div><dt>${escape(day)}</dt><dd>${times.join(' · ')}</dd></div>`).join('') + '</dl>';
   }
   function offerMarkup(state) {
-    return `<div class="module-title">Fall Break Tattoo Sessions ♡</div><div class="module-body"><p class="booking-price-line"><strong class="booking-price">3 hours · $150</strong><span class="booking-original">Regularly $250</span></p><p>October 19–25, 2026. Your design must fit within a three-hour session.</p>${scheduleMarkup(state)}<p><strong>$50 nonrefundable deposit · $100 balance at your appointment.</strong></p><p class="booking-note">All times are Eastern. Appointments are subject to confirmation. One guest maximum.</p><a class="session-button" href="tattoo-inquiry.html?session=fall-break#tattoo-inquiry-form">Request my appointment ♡</a></div>`;
+    return `<div class="module-title"><span lang="es">Recuérdame</span> ♡ In Loving Memory</div><div class="module-body"><p><strong>Sunday, November 1 · Memorial names + dates · $75</strong></p><p>$25 deposit toward your total. Appointments from noon; last start at 8 p.m. Eastern.</p><a class="session-button" href="tattoo-recuerdame.html">View details + request a time ♡</a></div>`;
   }
   let renderedKey = '';
   function renderNotices(state) {
@@ -101,7 +105,7 @@
         node.hidden = !show;
         node.innerHTML = show ? offerMarkup(state) : '';
       });
-      const strip = state.slots.length ? 'FALL BREAK ♡ OCTOBER 19–25 ✦ 3 HOURS · $150 ✦ $50 DEPOSIT ♡' : 'TATTOOS ♡ INQUIRIES ✦ CUSTOM WORK ✦';
+      const strip = state.slots.length ? 'RECUÉRDAME ♡ IN LOVING MEMORY ✦ NOVEMBER 1 ✦ MEMORIAL NAMES + DATES · $75 ✦ $25 DEPOSIT ♡' : 'TATTOOS ♡ INQUIRIES ✦ CUSTOM WORK ✦';
       document.querySelectorAll('[data-booking-strip]').forEach(node => { node.textContent = strip; });
       renderedKey = key;
     }
@@ -115,7 +119,7 @@
   }
   function populateTimes(form, state) {
     const key = form.elements.namedItem('session').value;
-    const scheduled = key === 'fall-break';
+    const scheduled = key === 'recuerdame';
     const slots = scheduled ? state.slots.filter(slot => slot.key === key) : [];
     const first = form.elements.namedItem('first_choice');
     const backup = form.elements.namedItem('backup_choice');
@@ -141,11 +145,11 @@
   function updateForm(form, state, initialize = false) {
     const fieldset = form.querySelector('[data-booking-fields]');
     const closed = form.querySelector('[data-booking-closed]');
-    const quick = form.dataset.bookingInquiry === 'opening';
+    const quick = ['opening', 'memorial'].includes(form.dataset.bookingInquiry);
     const select = form.elements.namedItem('session');
     const previous = select.value;
     const requested = new URLSearchParams(window.location.search).get('session');
-    const options = (quick ? (state.slots.length ? [state.phase] : []) : availableSessionKeys(state)).map(key => [sessions[key].label, key]);
+    const options = (quick ? (state.slots.length ? [state.phase] : []) : availableSessionKeys(state).filter(key => key !== 'recuerdame')).map(key => [sessions[key].label, key]);
     setOptions(select, options, null, previous);
     if (initialize && options.some(([, key]) => key === requested)) select.value = requested;
     if (!select.value && options.length) select.value = options[0][1];
@@ -159,6 +163,7 @@
       lastFormSession.set(form, select.value);
     }
     populateTimes(form, state);
+    globalThis.LoveJoyMemorial?.syncForm(form);
     const info = sessionInfo(select.value, state);
     const summary = form.querySelector('[data-booking-summary]');
     const pay = form.querySelector('[data-booking-payment]');
@@ -168,18 +173,19 @@
       pay.hidden = true;
       return;
     }
-    const fall = select.value === 'fall-break';
-    summary.textContent = `${info.duration}-hour session · $${info.total} total · $${info.deposit} nonrefundable deposit · $${info.total - info.deposit} due at your appointment.${fall ? ' Valid for appointments held October 19–25, 2026 only.' : ''}`;
-    form.querySelector('[data-booking-payment-ack]').textContent = `I understand the $${info.deposit} deposit is nonrefundable, is applied toward my $${info.total} session, and leaves a $${info.total - info.deposit} balance. My appointment is confirmed once my tattoo and time are approved and my deposit is received.${fall ? ' Fall break pricing applies only to appointments held October 19–25, 2026.' : ''}`;
+    const memorial = select.value === 'recuerdame';
+    summary.textContent = `${info.duration}-hour appointment · $${info.total} total · $${info.deposit} nonrefundable deposit toward your total · $${info.total - info.deposit} due at your appointment.${memorial ? ' Recuérdame applies to approved memorial tattoos held November 1, 2026 only. Stencil placement and aftercare are included in your one-hour block.' : ''}`;
+    form.querySelector('[data-booking-payment-ack]').textContent = memorial ? 'I have read the event details and regular tattoo policies, including the memorial-only limits, $25 nonrefundable deposit toward the $75 total, and one-guest rule. I understand my appointment requires approval and payment.' : `I understand the $${info.deposit} deposit is nonrefundable, is applied toward my $${info.total} session, and leaves a $${info.total - info.deposit} balance. My appointment is confirmed once my tattoo and time are approved and my deposit is received.`;
     form.querySelector('[data-booking-payment-title]').textContent = `Session deposit · $${info.deposit}`;
-    form.querySelector('[data-booking-payment-copy]').textContent = `Send your inquiry and use the matching Square deposit option. Total: $${info.total}. Remaining balance: $${info.total - info.deposit}.`;
+    form.querySelector('[data-booking-payment-copy]').textContent = memorial ? 'After your text, lettering, placement, color, and appointment time are approved, Jessica will send the $25 deposit payment link. Requested ink is secured once your deposit is paid, subject to availability. Your remaining balance is $50.' : `Send your inquiry and use the matching Square deposit option. Total: $${info.total}. Remaining balance: $${info.total - info.deposit}.`;
     const link = form.querySelector('[data-booking-deposit]');
-    link.href = fall ? FALL_DEPOSIT : REGULAR_DEPOSIT;
-    link.textContent = `Pay the $${info.deposit} ${fall ? 'fall break ' : ''}deposit ♡`;
-    pay.hidden = false;
+    link.href = REGULAR_DEPOSIT;
+    link.hidden = memorial;
+    link.textContent = `Pay the $${info.deposit} deposit ♡`;
+    pay.hidden = memorial;
   }
   function formData(form) {
-    return Object.fromEntries([...new FormData(form)].map(([key, value]) => [key, String(value).trim()]));
+    return Object.fromEntries([...new FormData(form)].map(([key, value]) => [key, key === 'memorial_text' || key === 'memorial_confirm' ? String(value) : String(value).trim()]));
   }
   function checkedPayload(form) {
     const status = form.querySelector('[data-booking-status]');

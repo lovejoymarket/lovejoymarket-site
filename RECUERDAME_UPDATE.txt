@@ -1,0 +1,25 @@
+LoveJoy Market | Recuérdame website update
+
+Merge these files into your CURRENT website source, preserving all other pages, styles, scripts, and images, then deploy the combined site.
+This is an update bundle, not a full replacement website.
+
+Event page: tattoo-recuerdame.html
+Sunday, November 1, 2026; first start noon, last start 8 p.m. Eastern.
+One-hour appointments with cleanup gaps: noon, 1:15, 2:30, 3:45, 5:30, 6:45, and 8 p.m.
+
+$75 total; $25 nonrefundable deposit toward the total; $50 remaining.
+In loving memory only; no romantic relationship tattoos.
+One new tattoo; two lines of text maximum; 3 inches maximum overall; one ink color.
+Six lettering previews (Allura, Great Vibes, Parisienne, Old English / UnifrakturMaguntia, Questrial, and Courier New); text must match exactly before either inquiry action works.
+Preferred ink color and different backup are required.
+One guest maximum; children require advance approval and count as that guest.
+
+The form prepares an email for the visitor to send. It does not send automatically or reserve a time.
+After text, lettering, placement, color, and time approval, send the client the correct $25 Square deposit link. Older $50 links are not used for this event.
+Mark confirmed appointments in BLOCKED_SLOTS in tattoo-booking.js using their slot IDs.
+The event closes automatically for new requests at the final appointment start.
+
+Font selection is a style reference. Jessica prepares three or four similar lettering options; the client chooses the final one, guided by recommendations on flow, placement, and letter shapes.
+Courier New is a system font with Courier/monospace fallbacks where unavailable.
+
+Concise layout update: same shared header and module styles as the prior Fall Break special; one homepage feature linking to one event form. Get In ASAP links to the event instead of duplicating the form. The regular inquiry keeps regular sessions only. Event rules appear once, with one acknowledgment of the event terms plus the canonical Tattoo Policies link.
