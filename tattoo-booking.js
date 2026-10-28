@@ -163,6 +163,13 @@
       lastFormSession.set(form, select.value);
     }
     populateTimes(form, state);
+    if (initialize && select.value === 'recuerdame') {
+      const requestedSlot = new URLSearchParams(window.location.search).get('slot');
+      if (state.slots.some(slot => slot.id === requestedSlot)) {
+        form.elements.namedItem('first_choice').value = requestedSlot;
+        populateTimes(form, state);
+      }
+    }
     globalThis.LoveJoyMemorial?.syncForm(form);
     const info = sessionInfo(select.value, state);
     const summary = form.querySelector('[data-booking-summary]');

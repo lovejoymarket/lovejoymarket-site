@@ -1,22 +1,49 @@
 (() => {
   'use strict';
   const calendar = document.querySelector('[data-home-booking-calendar]');
+  const weekday = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Indiana/Indianapolis', weekday: 'long' });
+  const dateLabel = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Indiana/Indianapolis', month: 'long', day: 'numeric' });
+  const time = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Indiana/Indianapolis', hour: 'numeric', minute: '2-digit' });
+  const escape = value => String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]));
   let noticeKey = '';
   function syncHomeNotice() {
     const booking = globalThis.LoveJoyBooking;
     if (!booking) return;
     const state = booking.getState();
     const active = state.phase === 'recuerdame' && state.slots.length > 0;
-    const key = state.phase + ':' + state.slots.map(slot => slot.id).join(',');
+    const key = state.phase + ':' + state.slots.map(slot => slot.id).join(',') + ':booked:' + (state.bookedSlots || []).map(slot => slot.id).join(',');
     if (key === noticeKey) return;
     noticeKey = key;
-    const notice = active ? 'RECUÉRDAME ♡ IN LOVING MEMORY ✦ NOVEMBER 1 ✦ MEMORIAL NAMES + DATES · $75 ✦ $25 DEPOSIT ♡' : 'TATTOOS ♡ INQUIRIES ✦ CUSTOM WORK ✦';
+    const notice = active
+      ? 'RECUÉRDAME ♡ IN LOVING MEMORY ✦ SUNDAY, NOVEMBER 1 ✦ 1 HOUR · $75 ✦ $25 DEPOSIT ♡'
+      : 'TATTOOS ♡ INQUIRIES ✦ CUSTOM WORK ✦';
     document.querySelectorAll('[data-home-booking-strip]').forEach(node => { node.textContent = notice; });
     const link = document.querySelector('[data-home-booking-link]');
-    if (link) { link.href = active ? 'tattoo-recuerdame.html' : 'tattoo-inquiry.html'; link.setAttribute('aria-label', active ? 'Recuérdame memorial tattoo appointments' : 'Tattoo inquiries'); }
+    if (link) {
+      link.href = active ? 'tattoo-recuerdame.html#tattoo-inquiry-form' : 'tattoo-inquiry.html';
+      link.setAttribute('aria-label', active ? 'Recuérdame memorial tattoo availability' : 'Tattoo inquiries');
+    }
     if (!calendar) return;
-    if (!active) { calendar.innerHTML = '<div class="module-title">Tattoo Appointments ♡</div><div class="module-body"><p>Tell me your next tattoo idea and the dates that work for you.</p><a href="tattoo-inquiry.html">Request an appointment ♡</a></div>'; return; }
-    calendar.innerHTML = '<div class="module-title">Recuérdame ♡ In Loving Memory</div><div class="module-body"><p><strong>Sunday, November 1 · $75</strong></p><p>Memorial names + dates · $25 deposit toward your $75 total.</p><p>Appointments from noon; last start at 8 p.m. Eastern.</p><div class="home-opening-footer"><a href="tattoo-recuerdame.html">View details + request a time ♡</a></div></div>';
+    if (!active) {
+      calendar.innerHTML = '<div class="module-title">Tattoo Appointments ♡</div><div class="module-body"><p class="home-opening-copy">Tell me your next tattoo idea and the dates that work for you.</p><div class="home-opening-footer"><a href="tattoo-inquiry.html">Request an appointment ♡</a></div></div>';
+      return;
+    }
+    const groups = new Map();
+    const booked = new Set((state.bookedSlots || []).map(slot => slot.id));
+    [...state.slots, ...(state.bookedSlots || [])].sort((a, b) => Date.parse(a.start) - Date.parse(b.start)).forEach(slot => {
+      const date = slot.start.slice(0, 10);
+      if (!groups.has(date)) groups.set(date, []);
+      groups.get(date).push(slot);
+    });
+    const days = [...groups.entries()].filter(([day]) => day === '2026-11-01').map(([, slots]) => {
+      const date = new Date(slots[0].start);
+      return `<div class="home-opening-day"><span>${weekday.format(date)}</span><b>${dateLabel.format(date)}</b>${slots.map(slot => {
+        const label = escape(booking.slotLabel(slot) + (booked.has(slot.id) ? ' · booked' : ''));
+        const shortTime = time.format(new Date(slot.start)).replace(':00', '');
+        return `<time datetime="${escape(slot.start)}" title="${label}" aria-label="${label}">${booked.has(slot.id) ? `<s>${shortTime}</s><br/><small>booked</small>` : shortTime}</time>`;
+      }).join('')}</div>`;
+    }).join('');
+    calendar.innerHTML = `<div class="module-title">Recuérdame ♡ In Loving Memory</div><div class="module-body"><p class="home-opening-summary"><strong>1 hour · $75</strong></p><p class="home-opening-copy">Memorial names + dates. Up to two lines, 5 inches, and one ink color.</p><div class="home-opening-days" role="group" aria-label="Sunday, November 1 appointment start times, Eastern. Crossed-out times are booked.">${days}</div><div class="home-opening-footer"><a href="tattoo-recuerdame.html#tattoo-inquiry-form">Request a time ♡</a><small>$25 deposit · $50 due at your appointment</small></div></div>`;
   }
   syncHomeNotice();
   window.setInterval(syncHomeNotice, 30000);
@@ -141,5 +168,6 @@
   window.addEventListener('resize', () => { if (frame) resize(); });
   explode();
 })();
+
 
 

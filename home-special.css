@@ -5,17 +5,19 @@
   color: var(--navy);
   text-decoration: none;
 }
-.home-page .home-booking-calendar { margin: 0 0 12px; }
+.home-page .home-booking-calendar { margin: 0; }
 .home-page .home-booking-calendar .module-body { padding: 12px; }
 .home-opening-summary { margin: 0 0 5px; font-size: .8rem; }
 .home-opening-copy { margin: 0 0 10px; font-size: .72rem; line-height: 1.45; }
 .home-opening-days {
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 4px;
   margin: 10px 0;
 }
 .home-opening-day {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   min-width: 0;
   padding: 6px 2px;
   border: 1px solid var(--pink);
@@ -23,9 +25,9 @@
   color: var(--navy);
   text-align: center;
 }
-.home-opening-day > span { display: block; font-size: .6rem; font-weight: 700; }
-.home-opening-day > b { display: block; margin: 2px 0 5px; font: 700 1rem var(--heading-font); }
-.home-opening-day > time { display: block; font-size: .6rem; line-height: 1.65; white-space: nowrap; }
+.home-opening-day > span { grid-column: 1 / -1; display: block; font-size: .6rem; font-weight: 700; }
+.home-opening-day > b { grid-column: 1 / -1; display: block; margin: 2px 0 5px; font: 700 1rem var(--heading-font); }
+.home-opening-day > time { display: block; padding: 3px 0; font-size: .72rem; line-height: 1.65; white-space: nowrap; }
 .home-opening-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 12px; }
 .home-opening-footer > a { font-size: .72rem; font-weight: 700; }
 .home-opening-footer > small { font-size: .62rem; }
@@ -51,10 +53,18 @@
   pointer-events: none;
 }
 .home-glitter[hidden] { display: none; }
+@media (max-width: 760px) {
+  .home-page .profile-left { grid-template-areas: "photo photo" "contact details" "request details" "availability availability" "music music"; }
+  .home-page .profile-left .home-booking-calendar { grid-area: availability; }
+}
+@media (max-width: 360px) {
+  .home-page .profile-left { grid-template-areas: "photo" "contact" "request" "details" "availability" "music"; }
+}
 @media (prefers-reduced-motion: reduce) {
   .home-glitter,
   .home-glitter-replay { display: none; }
   .home-page .profile-strip-track { animation: none; white-space: normal; width: 100%; padding: 6px 10px; }
   .home-page .profile-strip-track > [aria-hidden="true"] { display: none; }
 }
+
 

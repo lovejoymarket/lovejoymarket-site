@@ -1,7 +1,7 @@
 (() => {
   'use strict';
   const styles = Object.freeze({ allura: 'Allura', 'great-vibes': 'Great Vibes', parisienne: 'Parisienne', 'old-english': 'Old English (UnifrakturMaguntia)', questrial: 'Questrial', 'courier-new': 'Courier New' });
-  const categories = Object.freeze({ allura: 'Script 1 · flowing', 'great-vibes': 'Script 2 · flourished', parisienne: 'Script 3 · delicate', 'old-english': 'Old English', questrial: 'Sans serif', 'courier-new': 'Typewriter · monospaced' });
+  const categories = Object.freeze({ allura: 'Flowing script', 'great-vibes': 'Flourished script', parisienne: 'Delicate script', 'old-english': 'Blackletter', questrial: 'Sans serif', 'courier-new': 'Typewriter · monospaced' });
   const clean = value => String(value ?? '').replace(/\r\n?/g, '\n').normalize('NFC');
   function textError(text, confirmation) {
     text = clean(text);
@@ -21,7 +21,7 @@
     if (!String(data.preferred_color || '').trim() || !String(data.backup_color || '').trim()) return 'Please provide your preferred ink color and a backup color.';
     if (String(data.preferred_color).trim().toLowerCase() === String(data.backup_color).trim().toLowerCase()) return 'Choose a different backup color.';
     const size = Number(data.memorial_size);
-    if (!Number.isFinite(size) || size < 1 || size > 3) return 'Choose an overall tattoo size from 1 to 3 inches.';
+    if (!Number.isFinite(size) || size < 1 || size > 5) return 'Choose an overall tattoo size from 1 to 5 inches.';
     if (data.booking_acknowledged !== 'yes' || data.spelling_acknowledged !== 'yes') return 'Please acknowledge the event terms and confirm your exact text.';
     if (data.guest === 'child' && (data.child_acknowledged !== 'yes' || !String(data.child_details || '').trim())) return 'If bringing a child is necessary, include their age and acknowledge that advance approval is required.';
     return '';
@@ -32,7 +32,7 @@
       'Exact memorial text (confirmed twice):', clean(data.memorial_text),
       `Preferred lettering style (reference only): ${styles[data.lettering]}`,
       'Jessica will prepare three or four lettering options in a similar style. The client chooses the final option, with recommendations based on flow, placement, and the appearance of their specific letters.',
-      `Overall size requested: ${data.memorial_size} inches; maximum 3 inches in either direction`,
+      `Overall size requested: ${data.memorial_size} inches; maximum 5 inches in either direction`,
       `Preferred ink color: ${data.preferred_color}`,
       `Backup ink color: ${data.backup_color}`,
       'One color only; final shade to be agreed before the appointment.',
@@ -45,30 +45,28 @@
   globalThis.LoveJoyMemorial = { styles, textError, validate, payloadLines };
   if (typeof document === 'undefined') return;
   const markup = `<fieldset class="memorial-fields" data-memorial-fields disabled hidden>
-    <legend>Your memorial text</legend>
+    <legend>1. Your memorial</legend>
     <div class="tattoo-form-grid">
       <label><span>Exact memorial text *</span><textarea name="memorial_text" rows="2" maxlength="60" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="José\n1954–2024" aria-describedby="memorial-text-help" required></textarea></label>
       <label><span>Enter the exact text again *</span><textarea name="memorial_confirm" rows="2" maxlength="60" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Repeat both lines exactly" required></textarea></label>
     </div>
     <p class="booking-note" id="memorial-text-help">Two lines maximum. Repeat spelling, numbers, capitals, accents, and line breaks exactly.</p>
     <p class="memorial-match" data-memorial-match role="status" aria-live="polite">Enter your memorial text twice to continue.</p>
-    <fieldset class="memorial-fonts" aria-describedby="memorial-font-guide"><legend>Choose a lettering style *</legend>
-      ${Object.entries(styles).map(([key, label], i) => `<label class="memorial-font-card"><input type="radio" name="lettering" value="${key}" ${i === 0 ? 'checked' : ''} required/><span>${label}</span><small class="memorial-font-category">${categories[key]}</small><span class="memorial-font-sample memorial-font-${key}" data-memorial-sample="${key}" aria-hidden="true">Recuérdame</span></label>`).join('')}
+    <fieldset class="memorial-fonts" aria-describedby="memorial-font-guide"><legend>Choose a lettering style. Previews update as you type. *</legend>
+      ${Object.entries(styles).map(([key, label], i) => `<label class="memorial-font-card"><input type="radio" name="lettering" value="${key}" ${i === 0 ? 'checked' : ''} required/><span class="memorial-font-meta">${key === 'old-english' ? 'Old English' : label}<small class="memorial-font-category">${categories[key]}</small></span><span class="memorial-font-sample memorial-font-${key}" data-memorial-sample="${key}" aria-hidden="true">Recuérdame</span></label>`).join('')}
     </fieldset>
     <p class="memorial-font-guide" id="memorial-font-guide"><strong>Your font selection is a starting point.</strong> I’ll prepare three or four options in a similar style. You choose the final lettering, with my recommendations based on flow, placement, and how your specific letters look.</p>
     <div class="tattoo-form-grid">
-      <label><span>Overall tattoo size, in inches *</span><input name="memorial_size" type="number" min="1" max="3" step="0.25" value="3" required/><small>The whole tattoo must be no larger than 3 inches in either direction.</small></label>
+      <label><span>Overall size, in inches *</span><input name="memorial_size" type="number" min="1" max="5" step="0.25" value="5" required/></label>
+      <label><span>Placement *</span><input name="placement" type="text" required maxlength="160" placeholder="For example: outer forearm"/></label>
+    </div>
+    <p class="booking-note">The whole tattoo must fit within 5 inches in either direction. No feet or intimate areas.</p>
+    <div class="tattoo-form-grid">
       <label><span>Preferred ink color *</span><input name="preferred_color" type="text" maxlength="80" placeholder="For example: deep red" required/></label>
       <label><span>Backup ink color *</span><input name="backup_color" type="text" maxlength="80" placeholder="A different color you would be happy with" required/></label>
     </div>
-    <p class="booking-note">We’ll agree on the shade in advance for contrast and the expected healed appearance. Requested ink is secured after your deposit is paid, subject to availability.</p>
-    <div class="booking-checks">
-      <label><input name="spelling_acknowledged" type="checkbox" value="yes" required/><span>I confirm the exact spelling, dates, capitals, accents, and line breaks shown above.</span></label>
-    </div>
-    <div class="memorial-child" data-memorial-child hidden>
-      <label><span>If bringing a child is necessary, give their age and explain what you need approved. *</span><textarea name="child_details" rows="2" maxlength="400" disabled></textarea></label>
-      <div class="booking-checks"><label><input name="child_acknowledged" type="checkbox" value="yes" disabled/><span>I need advance approval to bring a child. They count as my one guest. I understand the studio is not set up for children, I am responsible for their supervision, and I will bring what they need to stay comfortably occupied. I cannot bring any additional guests.</span></label></div>
-    </div>
+    <p class="booking-note">One ink color. We’ll agree on the shade in advance for contrast and healed appearance. Requested ink is secured after your deposit is paid, subject to availability.</p>
+    <div class="booking-checks"><label><input name="spelling_acknowledged" type="checkbox" value="yes" required/><span>I confirm the exact spelling, dates, capitals, accents, and line breaks shown above.</span></label></div>
   </fieldset>`;
   function syncForm(form) {
     const active = form.elements.namedItem('session')?.value === 'recuerdame';
@@ -93,6 +91,19 @@
       : 'One guest maximum. Please let me know beforehand if someone is joining you. Children count toward the one-guest limit.';
     refreshText(form);
   }
+  const measureContext = document.createElement('canvas').getContext('2d');
+  function fitSamples(form) {
+    if (!measureContext) return;
+    const bases = { allura: 44, 'great-vibes': 42, parisienne: 42, 'old-english': 36, questrial: 32, 'courier-new': 30 };
+    form.querySelectorAll('[data-memorial-sample]').forEach(sample => {
+      const width = sample.getBoundingClientRect().width - 6;
+      if (width <= 0) return;
+      const base = bases[sample.dataset.memorialSample] || 38;
+      measureContext.font = `${base}px ${getComputedStyle(sample).fontFamily}`;
+      const measured = Math.max(...clean(sample.textContent).split('\n').map(line => measureContext.measureText(line).width), 1);
+      sample.style.setProperty('--memorial-sample-size', Math.max(9, Math.min(base, base * width / measured)) + 'px');
+    });
+  }
   function refreshText(form) {
     const active = form.elements.namedItem('session')?.value === 'recuerdame';
     const text = form.elements.namedItem('memorial_text');
@@ -105,6 +116,7 @@
     match.textContent = error || 'Your entries match. Please check the lettering and confirm the text below.';
     match.dataset.valid = String(!error);
     form.querySelectorAll('[data-memorial-sample]').forEach(sample => { sample.textContent = text.value.trim() ? clean(text.value) : 'Recuérdame'; });
+    fitSamples(form);
     form.querySelectorAll('.memorial-font-card').forEach(card => { card.classList.toggle('is-selected', card.querySelector('input').checked); });
     form.querySelectorAll('button[type="submit"], [data-booking-copy]').forEach(button => { button.disabled = active && Boolean(error); });
   }
@@ -112,7 +124,7 @@
   document.querySelectorAll('[data-booking-inquiry="memorial"]').forEach(form => {
     const idea = form.elements.namedItem('idea').closest('label');
     idea.insertAdjacentHTML('beforebegin', markup);
-    ['idea', 'size', 'color'].forEach(name => form.elements.namedItem(name).closest('label').setAttribute('data-memorial-regular-field', ''));
+    ['idea', 'size', 'color'].forEach(name => form.elements.namedItem(name)?.closest('label')?.setAttribute('data-memorial-regular-field', ''));
     const oldRule = [...form.querySelectorAll('.booking-rules p')].find(p => p.textContent.includes('One guest maximum'));
     if (oldRule) oldRule.setAttribute('data-booking-guest-copy', '');
     ['memorial_text', 'memorial_confirm', 'lettering'].forEach(name => {
@@ -124,4 +136,12 @@
     });
     form.elements.namedItem('guest').addEventListener('change', () => syncForm(form));
   });
+  const previewForms = [...document.querySelectorAll('[data-booking-inquiry="memorial"]')];
+  const fitAll = () => previewForms.forEach(fitSamples);
+  document.fonts?.ready.then(fitAll);
+  document.fonts?.addEventListener('loadingdone', fitAll);
+  if (typeof ResizeObserver !== 'undefined') {
+    const previewResize = new ResizeObserver(fitAll);
+    previewForms.forEach(form => previewResize.observe(form));
+  }
 })();
