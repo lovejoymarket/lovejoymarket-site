@@ -1,6 +1,7 @@
 (() => {
   'use strict';
   const REGULAR_DEPOSIT = 'https://square.link/u/exMcKsyN';
+  const MEMORIAL_DEPOSIT = 'https://square.link/u/FXkaEyNw';
   const MEMORIAL_BOOKING_START = Date.parse('2026-10-27T00:00:00-04:00');
   const MEMORIAL_END = Date.parse('2026-11-01T20:00:00-05:00');
   const BLOCKED_SLOTS = [];
@@ -100,6 +101,9 @@
   function renderNotices(state) {
     const key = state.phase + ':' + state.slots.map(slot => slot.id).join(',') + ':booked:' + state.bookedSlots.map(slot => slot.id).join(',');
     if (key !== renderedKey) {
+      const memorialOpen = state.phase === 'recuerdame' && state.slots.length > 0;
+      document.querySelectorAll('[data-booking-tattoo-feature]').forEach(node => { node.hidden = !memorialOpen; });
+      document.querySelectorAll('[data-booking-asap-route]').forEach(node => { node.hidden = memorialOpen; });
       document.querySelectorAll('[data-booking-offer]').forEach(node => {
         const show = state.slots.length > 0;
         node.hidden = !show;
@@ -183,13 +187,13 @@
     const memorial = select.value === 'recuerdame';
     summary.textContent = `${info.duration}-hour appointment · $${info.total} total · $${info.deposit} nonrefundable deposit toward your total · $${info.total - info.deposit} due at your appointment.${memorial ? ' Recuérdame applies to approved memorial tattoos held November 1, 2026 only. Stencil placement and aftercare are included in your one-hour block.' : ''}`;
     form.querySelector('[data-booking-payment-ack]').textContent = memorial ? 'I have read the event details and regular tattoo policies, including the memorial-only limits, $25 nonrefundable deposit toward the $75 total, and one-guest rule. I understand my appointment requires approval and payment.' : `I understand the $${info.deposit} deposit is nonrefundable, is applied toward my $${info.total} session, and leaves a $${info.total - info.deposit} balance. My appointment is confirmed once my tattoo and time are approved and my deposit is received.`;
-    form.querySelector('[data-booking-payment-title]').textContent = `Session deposit · $${info.deposit}`;
-    form.querySelector('[data-booking-payment-copy]').textContent = memorial ? 'After your text, lettering, placement, color, and appointment time are approved, Jessica will send the $25 deposit payment link. Requested ink is secured once your deposit is paid, subject to availability. Your remaining balance is $50.' : `Send your inquiry and use the matching Square deposit option. Total: $${info.total}. Remaining balance: $${info.total - info.deposit}.`;
+    form.querySelector('[data-booking-payment-title]').textContent = memorial ? 'Already approved? · $25 deposit' : `Session deposit · $${info.deposit}`;
+    form.querySelector('[data-booking-payment-copy]').textContent = memorial ? 'Pay only after Jessica has approved your text, lettering, placement, color, and appointment time. Your $25 nonrefundable deposit applies toward the $75 total; $50 is due at your appointment. Use the same name and email as your inquiry. Requested ink is secured after payment, subject to availability.' : `Send your inquiry and use the matching Square deposit option. Total: $${info.total}. Remaining balance: $${info.total - info.deposit}.`;
     const link = form.querySelector('[data-booking-deposit]');
-    link.href = REGULAR_DEPOSIT;
-    link.hidden = memorial;
+    link.href = memorial ? MEMORIAL_DEPOSIT : REGULAR_DEPOSIT;
+    link.hidden = false;
     link.textContent = `Pay the $${info.deposit} deposit ♡`;
-    pay.hidden = memorial;
+    pay.hidden = false;
   }
   function formData(form) {
     return Object.fromEntries([...new FormData(form)].map(([key, value]) => [key, key === 'memorial_text' || key === 'memorial_confirm' ? String(value) : String(value).trim()]));

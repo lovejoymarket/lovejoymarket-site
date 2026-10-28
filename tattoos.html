@@ -41,6 +41,24 @@
 }
 .tattoo-availability-banner:hover { background: #fff8ec; }
 .tattoo-availability-banner:focus-visible { outline: 3px solid #fff8ec; outline-offset: 3px; }
+.tattoo-availability-banner[hidden], [data-booking-asap-route][hidden] { display: none !important; }
+.tattoo-memorial-feature { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1.5rem; padding: clamp(1rem, 3vw, 1.5rem); border: 2px solid #ff2d8d; background: #07182c; color: #fff8ec; box-shadow: 5px 5px 0 rgba(255,45,141,.2); }
+.tattoo-memorial-feature:hover { background: #0b223a; color: #fff8ec; }
+.tattoo-memorial-copy { display: grid; gap: .4rem; min-width: 0; }
+.tattoo-memorial-kicker { font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.tattoo-memorial-title { font-family: var(--heading-font); font-size: clamp(2.4rem, 6vw, 3.4rem); font-weight: 400; line-height: 1.1; color: #ff2d8d; }
+.tattoo-memorial-summary { font-size: 1rem; }
+.tattoo-memorial-limits { font-size: .85rem; }
+.tattoo-memorial-cta { margin-top: .35rem; font-size: .95rem; font-weight: 800; text-decoration: underline; text-underline-offset: 3px; }
+.tattoo-memorial-ticket { display: grid; gap: .25rem; min-width: 200px; padding: .8rem 1rem; background: #ff2d8d; color: #07182c; text-align: center; font-size: .85rem; font-weight: 700; }
+.tattoo-memorial-ticket > strong { font-family: var(--heading-font); font-size: 3.7rem; font-weight: 400; line-height: 1; }
+.tattoo-memorial-ticket > small { margin-top: .3rem; font-size: .75rem; }
+@media (max-width: 560px) {
+  .tattoo-memorial-feature { grid-template-columns: 1fr; gap: 1rem; }
+  .tattoo-memorial-ticket { grid-template-columns: auto 1fr; column-gap: 1rem; min-width: 0; text-align: left; align-items: center; }
+  .tattoo-memorial-ticket > strong { grid-row: span 2; }
+  .tattoo-memorial-ticket > small { grid-column: 1 / -1; }
+}
 </style>
 <link href="recuerdame.css?v=20261027-complete8" rel="stylesheet"/>
 </head>
@@ -77,12 +95,12 @@
 <div aria-hidden="true" class="tattoo-help-sparkles">✦   ♡   ★   ✧   ✦</div>
 </section>
 
-<a class="tattoo-availability-banner" id="current-openings" href="tattoo-get-in-asap.html#current-openings"><span>See this week’s availability ♡</span><span aria-hidden="true">→</span></a>
+<a class="tattoo-availability-banner tattoo-memorial-feature" id="current-openings" data-booking-tattoo-feature hidden href="tattoo-recuerdame.html"><span class="tattoo-memorial-copy"><span class="tattoo-memorial-kicker">In loving memory · Sunday, November 1</span><strong class="tattoo-memorial-title" lang="es">Recuérdame ♡</strong><span class="tattoo-memorial-summary">Memorial names + dates · One-hour appointment</span><span class="tattoo-memorial-limits">Up to 2 lines · 5 inches maximum · One ink color</span><span class="tattoo-memorial-cta">View details + request a time →</span></span><span class="tattoo-memorial-ticket"><strong>$75</strong><span>$25 deposit applied</span><span>$50 due at your appointment</span><small>Noon · Last start 8 p.m. Eastern</small></span></a>
 
 <section class="module-card section-hub-card">
 <div class="module-title">Choose Your Tattoo Adventure</div>
 <div aria-hidden="true" class="quiz-glitter-bar"><span>✦</span><span>♡</span><span>★</span><span>✧</span><span>♡</span><span>★</span><span>✦</span></div>
-<div class="module-body"><a class="section-route-card asap-route-card" href="tattoo-get-in-asap.html" id="get-in-asap"><span aria-hidden="true" class="section-route-icon">⚡</span><span class="section-route-copy"><strong>Current Openings</strong><p>See available appointment times and send your tattoo inquiry.</p></span><b>see times →</b></a><div class="section-route-grid" data-inbox-label="♡ INBOX • FROM: LOVEJOY • PICK YOUR FAVORITE"><a class="section-route-card" href="tattoo-sessions.html" id="sessions">
+<div class="module-body"><a class="section-route-card asap-route-card" href="tattoo-get-in-asap.html" id="get-in-asap" data-booking-asap-route><span aria-hidden="true" class="section-route-icon">⚡</span><span class="section-route-copy"><strong>Current Openings</strong><p>See available appointment times and send your tattoo inquiry.</p></span><b>see times →</b></a><div class="section-route-grid" data-inbox-label="♡ INBOX • FROM: LOVEJOY • PICK YOUR FAVORITE"><a class="section-route-card" href="tattoo-sessions.html" id="sessions">
 <span aria-hidden="true" class="section-route-icon">♡</span>
 <span class="section-route-copy"><strong>Scheduled Sessions</strong><p>One hour, three hours, or the full day. Your tattoo decides how serious this gets.</p></span>
 <b>come look →</b>
@@ -144,7 +162,7 @@
 </footer>
 <script src="site.js?v=20260922-popups1"></script>
 <script src="recuerdame.js?v=20261027-complete8" defer></script>
-<script src="tattoo-booking.js?v=20261027-complete8" defer></script>
+<script src="tattoo-booking.js?v=20261027-banner1" defer></script>
 </body>
 </html>
 
