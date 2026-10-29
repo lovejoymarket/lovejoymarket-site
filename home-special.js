@@ -18,10 +18,16 @@
       ? 'RECUÉRDAME ♡ IN LOVING MEMORY ✦ SUNDAY, NOVEMBER 1 ✦ 1 HOUR · $75 ✦ $25 DEPOSIT ♡'
       : 'TATTOOS ♡ INQUIRIES ✦ CUSTOM WORK ✦';
     document.querySelectorAll('[data-home-booking-strip]').forEach(node => { node.textContent = notice; });
-    const link = document.querySelector('[data-home-booking-link]');
-    if (link) {
+    document.querySelectorAll('[data-home-booking-link]').forEach(link => {
       link.href = active ? 'tattoo-recuerdame.html#tattoo-inquiry-form' : 'tattoo-inquiry.html';
       link.setAttribute('aria-label', active ? 'Recuérdame memorial tattoo availability' : 'Tattoo inquiries');
+    });
+    const marketCard = document.querySelector('.home-market-card');
+    const marketUpcoming = Date.now() < Date.parse('2026-11-13T23:00:00-05:00');
+    document.body.classList.toggle('is-market-primary', !active && marketUpcoming);
+    if (calendar && marketCard) {
+      if (active && marketCard.previousElementSibling !== calendar) calendar.insertAdjacentElement('afterend', marketCard);
+      if (!active && marketCard.nextElementSibling !== calendar) calendar.insertAdjacentElement('beforebegin', marketCard);
     }
     if (!calendar) return;
     if (!active) {
