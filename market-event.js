@@ -10,8 +10,8 @@
     vendorFee: 20,
     vendorSpaces: 6,
     email: 'hello@lovejoymarket.co',
-    // Add the event-specific Square vendor checkout URL once Jessie creates it.
-    vendorPaymentUrl: ''
+    // Approved vendor checkout for the November 13 market.
+    vendorPaymentUrl: 'https://square.link/u/7jUCFMxP'
   });
   function getState(now) {
     const stamp = now === undefined ? Date.now() : new Date(now).getTime();
@@ -31,7 +31,8 @@
       name: 'Contact name', business: 'Business name', email: 'Email', phone: 'Mobile number',
       links: 'Website / Instagram / portfolio', vendor_type: 'Vendor type', offerings: 'Products or services',
       footprint: 'Full setup footprint', table: 'Table / display plan', people: 'People staffing the setup',
-      power: 'Power needed', power_details: 'Power details', documents: 'Relevant documents / status', notes: 'Other notes'
+      power: 'Power needed', power_details: 'Power details', documents: 'Relevant documents / status', notes: 'Other notes',
+      waitlist_request: 'Join the waitlist if approved and the event is full'
     };
     const lines = [event.name + ' | Vendor Application', event.date + ' | ' + event.hours, event.venue, 'Vendor fee: $20 per approved business', ''];
     Object.entries(labels).forEach(([key, label]) => {

@@ -6,17 +6,13 @@
 .profile-strip a { color: inherit; text-decoration: none; }
 .profile-strip a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .profile-strip a:focus-visible { outline: 2px solid var(--navy); outline-offset: -2px; }
-.home-market-card { border-color: var(--pink); }
-.home-market-card .module-body { padding: 12px; }
-.home-market-card p { margin: 0 0 9px; }
-.home-market-card .market-mini-date { font-weight: 800; color: var(--navy); }
-.home-market-card .market-mini-links { display: flex; flex-wrap: wrap; gap: 8px 15px; font-weight: 700; }
+.home-market-card { min-width: 0; }
 .market-event-hero { display: grid; grid-template-columns: minmax(0, 1fr) 200px; align-items: center; gap: 24px; }
 .market-event-hero .market-event-title { margin: 4px 0 12px; }
 .market-event-hero .market-event-subtitle { max-width: 650px; }
 .market-page .myspace-page .market-event-hero .market-event-subtitle { font-family: Verdana, Arial, sans-serif !important; font-size: 1rem !important; font-weight: 400 !important; line-height: 1.6; }
 .market-event-hero .text-link { color: var(--cream); }
-#friday-13th, #tattoo-details, #vendor-form { scroll-margin-top: 90px; }
+#friday-13th, #tattoo-details, #vendor-form, #friday13-rules { scroll-margin-top: 90px; }
 .market-event-number { display: grid; place-items: center; aspect-ratio: 1; border: 2px solid var(--pink); color: var(--pink); background: var(--navy); box-shadow: 8px 8px 0 var(--pink); }
 .market-event-number strong { font: 700 9rem/1 "Unique", sans-serif; }
 .market-event-number span { margin-top: -24px; font: 700 1.1rem "Unique", sans-serif; letter-spacing: .15em; }
@@ -63,6 +59,9 @@
 .vendor-email-review .vendor-email-link { display: inline-block; padding: 10px 14px; margin: 8px 12px 8px 0; background: var(--navy); color: var(--cream); font-weight: 800; }
 .vendor-fee-line { margin: 0 0 18px; padding: 14px; background: #fff0f6; border: 1px solid var(--pink); color: var(--navy); }
 .vendor-fee-line strong { display: block; }
+.friday13-policy-card { margin: 12px 0; border-color: var(--pink); }
+.friday13-policy-card ul { margin: 14px 0; padding-left: 22px; }
+.friday13-policy-card li { margin: 8px 0; line-height: 1.5; }
 @media (max-width: 760px) {
   .home-page .profile-left { grid-template-areas: "photo photo" "contact details" "request details" "availability availability" "market market" "music music"; }
   .home-page .profile-left .home-market-card { grid-area: market; }
@@ -94,7 +93,8 @@
 .friday13-shell { max-width: 850px; }
 .friday13-invite { position: relative; isolation: isolate; margin: 22px 15px 20px; padding: 40px 55px 24px; border: 2px solid var(--pink); background: var(--cream); color: var(--navy); text-align: center; box-shadow: 9px 9px 0 var(--pink); transform: rotate(-.6deg); }
 .friday13-invite::before { content: ''; position: absolute; inset: 0 0 auto; height: 12px; background: repeating-linear-gradient(135deg, var(--pink) 0 10px, var(--cream) 10px 20px); }
-.friday13-guest-page .myspace-page .friday13-invite h1 { margin: 8px 0 0; color: var(--pink); font-family: 'Unique', sans-serif !important; font-size: clamp(4.4rem, 10vw, 7.8rem) !important; line-height: 1; letter-spacing: -.025em; text-shadow: 2px 2px 0 #ffd1e4; }
+.friday13-guest-page .myspace-page .friday13-invite h1,
+body .myspace-page .friday13-invite .friday13-heading { margin: 8px 0 0; color: var(--pink); font-family: 'Unique', sans-serif !important; font-size: clamp(4.4rem, 10vw, 7.8rem) !important; line-height: 1; letter-spacing: -.025em; text-shadow: 2px 2px 0 #ffd1e4; }
 .friday13-eyebrow { position: relative; margin: 0 75px 22px; font: 700 .8rem/1.5 'Courier New', monospace; letter-spacing: .1em; }
 .friday13-lucky { display: inline-block; margin: 0; padding: 5px 15px; color: var(--cream); background: var(--navy); font: 700 1rem/1.3 'Courier New', monospace; transform: rotate(-3deg); }
 .friday13-tagline { margin: 12px 0 20px; font: italic 1.2rem/1.5 Georgia, serif; }
@@ -120,14 +120,37 @@
 .friday13-star-one { top: 67px; left: 24px; transform: rotate(-12deg); }
 .friday13-star-two { bottom: 48px; right: 18px; transform: rotate(12deg); }
 .friday13-back { margin: 24px 16px; font-size: .85rem; }
-.home-market-card .module-title::after { content: '♡'; float: right; }
-.market-page:not(.friday13-guest-page) [data-friday13-upcoming].module-card { border: 2px solid var(--pink); box-shadow: 5px 5px 0 #ffc8df; }
+.friday13-invite-feature { max-width: 850px; box-sizing: border-box; margin: 28px auto 38px; }
+.friday13-invite .friday13-links a { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; }
+.home-page .friday13-invite-compact { margin: 18px 5px 8px 0; padding: 26px 15px 15px; transform: none; box-shadow: 5px 5px 0 var(--pink); }
+.home-page .friday13-invite-compact .friday13-eyebrow { margin: 0 40px 12px 0; font-size: .68rem; text-align: left; }
+.home-page .friday13-invite-compact .friday13-lucky { font-size: .75rem; padding: 4px 10px; }
+.home-page .myspace-page .friday13-invite-compact .friday13-heading { margin: 8px 0 12px; font-size: 3.8rem !important; line-height: 1; }
+.home-page .friday13-invite-compact .friday13-tagline { margin: 10px 0 18px; font-size: .96rem; }
+.home-page .friday13-invite-compact .friday13-date { gap: 5px 10px; font-size: .85rem; }
+.home-page .friday13-invite-compact .friday13-date span + span::before { margin-right: 8px; }
+.home-page .friday13-invite-compact .friday13-tiny-hearts { margin: 14px 0 8px; font-size: .9rem; }
+.home-page .friday13-invite-compact .friday13-night { gap: 5px; margin-top: 18px; }
+.home-page .friday13-invite-compact .friday13-night strong { font-size: 1.2rem; }
+.home-page .friday13-invite-compact .friday13-night > span { font-size: .85rem; line-height: 1.5; }
+.home-page .friday13-invite-compact .friday13-walkins { margin: 12px 0; font-size: .85rem; line-height: 1.5; }
+.home-page .friday13-invite-compact .friday13-walkins small { display: block; margin-top: 3px; font-size: .78rem; line-height: 1.5; }
+.home-page .friday13-invite-compact .friday13-venue { margin: 10px 0 5px; padding-top: 10px; font-size: .8rem; }
+.home-page .friday13-invite-compact .friday13-venue > span { font-size: .8rem; line-height: 1.5; }
+.home-page .friday13-invite-compact .friday13-links { gap: 3px 12px; font-size: .8rem; }
+.home-page .friday13-invite-compact .friday13-vendor-link { padding: 6px 9px; }
+.home-page .friday13-invite-compact .friday13-signoff { margin-top: 15px; font-size: .95rem; }
+.home-page .friday13-invite-compact .friday13-sticker { width: 73px; height: 67px; top: -17px; right: -2px; }
+.home-page .friday13-invite-compact .friday13-sticker span { inset: 9px 0 0; font-size: 2.8rem; }
+.home-page .friday13-invite-compact .friday13-star-one { left: 6px; top: 109px; font-size: 1.2rem; }
+.home-page .friday13-invite-compact .friday13-star-two { bottom: 17px; right: 7px; font-size: 1.5rem; }
 @media (max-width: 600px) {
   .friday13-invite { margin: 25px 8px 20px; padding: 38px 18px 22px; box-shadow: 5px 5px 0 var(--pink); transform: none; }
   .friday13-eyebrow { margin: 0 50px 22px 0; font-size: .68rem; text-align: left; }
   .friday13-sticker { width: 90px; height: 83px; top: -22px; right: -9px; }
   .friday13-sticker span { top: 13px; font-size: 3.3rem; }
-  .friday13-guest-page .myspace-page .friday13-invite h1 { font-size: clamp(4rem, 15vw, 6rem) !important; }
+  .friday13-guest-page .myspace-page .friday13-invite h1,
+  body .myspace-page .friday13-invite-feature .friday13-heading { font-size: clamp(4rem, 15vw, 6rem) !important; }
   .friday13-star-one { top: 104px; left: 7px; font-size: 2rem; }
   .friday13-star-two { right: 8px; bottom: 25px; font-size: 1.7rem; }
   .friday13-date { gap: 8px 14px; font-size: .95rem; }
