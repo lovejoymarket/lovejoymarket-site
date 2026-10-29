@@ -108,8 +108,16 @@ body .myspace-page .friday13-invite .friday13-heading { margin: 8px 0 0; color: 
 .friday13-walkins small { font-size: .8rem; font-weight: 400; }
 .friday13-venue { display: grid; gap: 6px; margin: 20px 0 16px; padding-top: 18px; border-top: 2px dashed #f29abc; }
 .friday13-venue > span { font-size: .85rem; }
+.friday13-map-link { display: inline-block; min-height: 24px; padding: 2px 0; box-sizing: border-box; color: inherit; text-decoration: underline; text-decoration-color: var(--pink); text-underline-offset: 3px; }
+.friday13-map-link:hover { color: #a40a4c; }
+.friday13-map-link:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
 .friday13-links { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 22px; font-size: .85rem; }
 .friday13-vendor-link { display: inline-block; padding: 9px 18px; color: var(--navy); background: #ffc8df; border: 1px solid var(--pink); text-decoration: none; font-weight: 700; }
+.home-page .friday13-heading .friday13-title-link { color: inherit; font: inherit; text-decoration: none; }
+.home-page .friday13-heading .friday13-title-link:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
+.home-page .friday13-heading .friday13-title-link:focus-visible { outline: 3px solid var(--pink); outline-offset: 5px; }
+.friday13-links .friday13-details-link { flex-basis: 100%; padding: 9px 16px; color: var(--cream); background: var(--navy); border: 1px solid var(--navy); text-decoration: none; font-weight: 700; }
+.friday13-links .friday13-details-link:hover { background: #17314b; }
 .friday13-links a:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
 .friday13-signoff { margin: 22px 0 0; font: italic 1.1rem Georgia, serif; color: #a40a4c; }
 .friday13-sticker { position: absolute; top: -25px; right: -20px; width: 125px; height: 115px; transform: rotate(12deg); z-index: 2; filter: drop-shadow(3px 4px 0 var(--navy)); }
