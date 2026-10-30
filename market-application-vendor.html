@@ -19,15 +19,15 @@
 <link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="apple-touch-icon.png" rel="apple-touch-icon"/>
 <link href="site.webmanifest" rel="manifest"/>
-<link href="market-event.css?v=20261029-market2" rel="stylesheet"/>
+<link href="market-event.css?v=20261029-market5" rel="stylesheet"/>
 </head>
 <body class="market-page">
 <div aria-hidden="true" class="star-rain"></div>
 <div aria-hidden="true" class="ambient-stars"></div>
 <div class="profile-strip">
 <div class="profile-strip-track">
-<span>NOVEMBER 13 ✦ 7–11 PM ✦ SIX GUEST VENDOR SPACES ✦</span>
-<span aria-hidden="true">NOVEMBER 13 ✦ 7–11 PM ✦ SIX GUEST VENDOR SPACES ✦</span>
+<span>NOVEMBER 13 ✦ 7–11 PM ✦ SIX INDOOR VENDOR SPACES ✦</span>
+<span aria-hidden="true">NOVEMBER 13 ✦ 7–11 PM ✦ SIX INDOOR VENDOR SPACES ✦</span>
 </div>
 </div>
 <header class="site-header">
@@ -55,10 +55,10 @@
 </section><nav aria-label="Back to section menu" class="section-backbar"><a href="friday-the-13th.html">← back to the November 13 event</a><span aria-hidden="true">✦ ♡ ✦</span></nav>
 <section class="module-card" id="vendor-form" aria-labelledby="vendor-form-heading">
 <div class="module-title" id="vendor-form-heading">November 13 Vendor Form</div><div class="module-body market-event-details">
-<p class="vendor-fee-line"><strong>$20 per approved business · six guest spaces</strong>Tell me what you do and what your setup needs. I’ll confirm your spot, payment link, and setup details by email.</p>
+<p class="vendor-fee-line"><strong>$20 per approved business · six indoor table spaces</strong>Tell me what you do and what your setup needs. I’ll confirm your spot, payment link, and setup details by email.</p>
 <p>The market is in the event space across the parking lot from the LoveJoy studio. Expect local vendors, Kelz’s vintage boutique, art, merch and $50 walk-in flash tattoos. Tattoo clients must be 18+. Tattoos use pre-drawn designs only, with no customizations.</p>
 <p>The event runs 7–11 p.m. Setup and breakdown times will be shared with accepted vendors. Please include a link to your work; you can attach product / booth photos and relevant documents to the email.</p>
-<p class="vendor-resource-links"><a href="market-policies.html">vendor policies →</a> · <a href="market-waitlist.html">how the waitlist works →</a></p>
+<p class="vendor-resource-links"><button type="button" class="vendor-guidelines-text-link" data-vendor-guidelines-open>read vendor guidelines →</button> · <a href="market-waitlist.html">how the waitlist works →</a></p>
 <p>Fill out this inquiry form if you’d like to be considered for the waitlist, and select the waitlist option below. I’ll review your application and contact you if a suitable space opens.</p>
 <p data-friday13-ended hidden>This event has ended. For future markets, email <a href="mailto:hello@lovejoymarket.co">hello@lovejoymarket.co</a>.</p>
 <form class="vendor-form" data-vendor-form>
@@ -70,8 +70,9 @@
 <label><span>Mobile number *</span><input name="phone" type="tel" autocomplete="tel" maxlength="50" required/></label>
 <label><span>Website, Instagram or portfolio</span><input name="links" type="text" maxlength="400" placeholder="A link or @handle is fine"/></label>
 <label><span>Vendor type *</span><select name="vendor_type" required><option value="">Choose one</option><option>Artist / maker</option><option>Retail / vintage</option><option>Food / drink</option><option>Beauty / wellness / service</option><option>Other</option></select></label>
+<label class="vendor-full"><span>Requested setup *</span><select name="setup_type" required><option value="">Choose one</option><option>Indoor table space</option><option>Hallway food vendor</option><option>Food truck / outdoor setup request</option></select><small>Food vendors use assigned hallway spaces. Food truck / outdoor setups require separate approval.</small></label>
 <label class="vendor-full"><span>What will you sell, serve or offer? *</span><textarea name="offerings" maxlength="1500" rows="3" required></textarea></label>
-<label><span>Full setup footprint *</span><input name="footprint" maxlength="160" placeholder="Width × depth, including your chair / rack" required/><small>The room is compact. Include everything that needs floor space.</small></label>
+<label><span>Full setup footprint *</span><input name="footprint" maxlength="160" placeholder="Width × depth, including your chair / rack" required/><small>Indoor spaces fit one six-foot table with about two feet behind it. Include chairs, racks and extra displays; for a truck, give the full vehicle / equipment dimensions.</small></label>
 <label><span>Table / display plan *</span><select name="table" required><option value="">Choose one</option><option>I’m bringing my own table / display</option><option>I need to discuss a table / display</option><option>I do not need a table</option></select></label>
 <label><span>People staffing your setup, including you *</span><input name="people" type="number" min="1" step="1" required/></label>
 <label><span>Do you need power? *</span><select name="power" required><option value="">Choose one</option><option>No</option><option>Yes</option></select></label>
@@ -80,14 +81,56 @@
 <label class="vendor-full"><span>Anything else I should know?</span><textarea name="notes" maxlength="1000" rows="3"></textarea></label>
 </div>
 <label class="vendor-check"><input type="checkbox" name="event_ack" value="yes" required/><span>I can participate Friday, November 13, from 7–11 p.m. and follow the setup / breakdown instructions Jessie confirms. *</span></label>
-<label class="vendor-check"><input type="checkbox" name="approval_ack" value="yes" required/><span>I understand this application does not reserve a space. The $20 payment details are sent after acceptance. I’ve reviewed the <a href="market-policies.html" target="_blank" rel="noopener">vendor policies</a>. *</span></label>
+<label class="vendor-check"><input type="checkbox" name="approval_ack" value="yes" required/><span>I understand this application does not reserve a space. The $20 payment details are sent after acceptance. *</span></label>
 <label class="vendor-check"><input type="checkbox" name="waitlist_request" value="yes"/><span>If approved and this market is full, I’d like to join the waitlist. No payment is due to request a waitlist spot.</span></label>
+<div class="vendor-guidelines-gate" aria-labelledby="vendor-guidelines-gate-title">
+<strong id="vendor-guidelines-gate-title">Before you create your inquiry ♡</strong>
+<p>Fill out your details first. Before preparing or copying your inquiry, open the vendor guidelines, scroll to the bottom, then check the acknowledgment.</p>
+<button type="button" data-vendor-guidelines-open>read vendor guidelines ♡</button>
+<a href="market-policies.html#nov13-vendor-guidelines" target="_blank" rel="noopener">open the full policies page ↗</a>
+<label class="vendor-check"><input type="checkbox" name="guidelines_ack" value="yes" data-vendor-guidelines-ack required disabled/><span>I have read and agree to the November 13 vendor guidelines. *</span></label>
+<p class="vendor-guidelines-gate-note" data-guidelines-gate-note role="status" aria-live="polite">Read the guidelines to enable the acknowledgment. You can keep filling out the form first.</p>
+</div>
 <p>This form prepares an email to <a href="mailto:hello@lovejoymarket.co">hello@lovejoymarket.co</a>. Review the draft, attach any samples or documents, and press Send in your email app.</p>
-<div class="vendor-form-actions"><button type="submit">prepare application email ♡</button><button type="button" class="vendor-secondary" data-vendor-copy>copy application</button></div>
+<div class="vendor-form-actions"><button type="submit" data-vendor-create disabled>prepare inquiry ♡</button><button type="button" class="vendor-secondary" data-vendor-copy data-vendor-create disabled>copy inquiry</button></div>
 </fieldset>
+
+<dialog class="vendor-guidelines-dialog" data-vendor-guidelines-dialog aria-labelledby="vendor-guidelines-dialog-title" aria-describedby="vendor-guidelines-dialog-intro">
+<div class="vendor-guidelines-dialog-header"><h2 class="vendor-guidelines-heading" id="vendor-guidelines-dialog-title">Vendor guidelines ♡</h2><button type="button" class="vendor-guidelines-close" data-guidelines-close aria-label="Close vendor guidelines">×</button></div>
+<p class="vendor-guidelines-dialog-intro" id="vendor-guidelines-dialog-intro">Read through the rules, then scroll to the bottom to continue. Your inquiry stays here while you read.</p>
+<div class="vendor-guidelines-scroll" data-guidelines-scroll tabindex="0" role="region" aria-label="Vendor guidelines text">
+<div class="vendor-guidelines-copy">
+<p><strong>Friday, November 13, 2026 · 7–11 p.m.</strong><br/>Elevated Image Suites event space · Fishers, Indiana</p>
+<h3>Your table space</h3>
+<p>Each indoor vendor space fits one six-foot table, with about two feet of space behind it for you and your chair. Include racks, extra displays and all other space needs in your inquiry. Extra space needs approval. Confirm your table / display plan with Jessie.</p>
+<h3>Food and open containers</h3>
+<p><strong>No food or open containers in the event room.</strong> Food vendors must use an assigned hallway space, not a table inside the event room.</p>
+<h3>Food vendors and food trucks</h3>
+<p>Hallway food spaces are assigned individually. Keep displays, equipment and customer lines clear of exits and walkways. Include your menu, full setup dimensions, power needs and relevant documents in your inquiry.</p>
+<p>Food truck and other outdoor setups are requests for review. They are not confirmed by this form. Wait for Jessie to approve your setup and location before making arrangements.</p>
+<h3>Event hours and setup</h3>
+<p>The market runs 7–11 p.m. Jessie will share load-in and breakdown instructions with accepted vendors. Keep your setup staffed, stay through your approved breakdown time, and leave your space clean.</p>
+<h3>Confirmation and payment</h3>
+<p>The vendor fee is $20 per approved business. An inquiry does not reserve a space. Pay only after Jessie confirms your participation. If you would like to be considered for the waitlist, select that option in the same inquiry form. There is no payment to request a waitlist spot.</p>
+</div><h3 class="vendor-guidelines-subheading">The rules for every vendor</h3><div class="policy-grid">
+<div><strong>An application is not a spot.</strong><p>You are not booked until I confirm you for that specific event.</p></div>
+<div><strong>Do not send money early.</strong><p>Fees change by event. If I accept you, the email will tell you the amount, deadline, and real payment method.</p></div>
+<div><strong>You cannot give your spot away.</strong><p>Do not sell it, trade it, split it, send a substitute, or tell a friend they can have it. The waitlist exists for a reason.</p></div>
+<div><strong>Bring what I approved.</strong><p>Sell, serve, or perform only what was accepted. If the plan changes in a real way, ask first.</p></div>
+<div><strong>If it needs a permit, I need to see it.</strong><p>Food, body art, cosmetology, alcohol, and other regulated work cannot happen until I verify the current required documents.</p></div>
+<div><strong>Stay in your space.</strong><p>Keep exits, stairs, walkways, tattoo areas, and private areas clear. Your display may have personality. It may not have territorial ambitions.</p></div>
+<div><strong>You run your own checkout.</strong><p>Bring your payment setup, receipts, bags, change, and whatever you need for your own taxes unless we agreed to something else.</p></div>
+<div><strong>Show up and clean up.</strong><p>Arrive during your load-in window, keep the booth staffed, stay until approved breakdown, and leave the space the way you found it.</p></div>
+<div><strong>Safety ends the debate.</strong><p>Harassment, threats, unsafe behavior, illegal products, unapproved flame or alcohol, or refusing a safety direction can end your participation immediately.</p></div>
+</div>
+<p class="policy-footnote">A specific event may add rules. Health, safety, licensing, insurance, lease, and legal requirements always win over convenience. Annoying sometimes, still true.</p><h3>Flash tattoo details for your guests</h3><p>Tattoo clients must be 18+ with government-issued photo ID. Walk-ins only, first come, first served; 13 client spots. Pre-drawn designs only, no customizations. $50 per tattoo, two tattoos maximum per person.</p>
+<p class="vendor-guidelines-end"><strong>That’s the whole thing. ♡</strong><br/>Choose “done reading,” then check the acknowledgment on your inquiry.</p>
+</div>
+<div class="vendor-guidelines-dialog-footer"><p data-guidelines-reading-status role="status" aria-live="polite">Scroll to the bottom to enable “done reading.”</p><button type="button" data-guidelines-done disabled>done reading →</button></div>
+</dialog>
 <p class="vendor-form-status" data-vendor-status role="status" aria-live="polite"></p>
-<div class="vendor-email-review" data-vendor-review hidden><strong>One last look before you send.</strong><label><span>Your prepared vendor application</span><textarea data-vendor-email-text readonly rows="12"></textarea></label><a class="vendor-email-link" data-vendor-email-link>open email draft →</a><p>No email app opening? Use “copy application” above and paste it into an email to hello@lovejoymarket.co.</p></div>
-<noscript><p>Enable JavaScript to prepare your email, or email your name, business, contact details, products / services and setup dimensions directly to hello@lovejoymarket.co.</p></noscript>
+<div class="vendor-email-review" data-vendor-review hidden><strong>One last look before you send.</strong><label><span>Your prepared vendor application</span><textarea data-vendor-email-text readonly rows="12"></textarea></label><a class="vendor-email-link" data-vendor-email-link>open email draft →</a><p>No email app opening? Use “copy inquiry” above and paste it into an email to hello@lovejoymarket.co.</p></div>
+<noscript><p>Enable JavaScript to prepare your inquiry. Read the vendor guidelines at market-policies.html before emailing your name, business, contact details, products / services and setup dimensions to hello@lovejoymarket.co.</p></noscript>
 </form>
 </div></section>
 <section class="module-card"><div class="module-title">After You’re Accepted</div><div class="module-body market-event-details"><p>Use the link below to pay the $20 vendor fee after Jessie confirms your space. Your assigned space and setup instructions will be sent by email. Keep product displays within your confirmed footprint and walkways clear.</p><a data-vendor-payment href="https://square.link/u/7jUCFMxP" hidden target="_blank" rel="noopener">pay approved vendor fee →</a><p><a href="friday-the-13th.html">back to the event →</a></p></div></section></div>
@@ -99,6 +142,6 @@
 </div>
 </footer>
 <script src="site.js?v=20260922-popups1"></script>
-<script src="market-event.js?v=20261029-market3" defer></script>
+<script src="market-event.js?v=20261029-market5" defer></script>
 </body>
 </html>

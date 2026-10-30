@@ -52,6 +52,34 @@
 .vendor-form .vendor-form-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 .vendor-form button { font: inherit; cursor: pointer; padding: 11px 16px; border: 1px solid var(--navy); background: var(--pink); color: var(--navy); }
 .vendor-form button.vendor-secondary { background: transparent; }
+.vendor-form button:disabled { opacity: .45; cursor: not-allowed; }
+.vendor-resource-links .vendor-guidelines-text-link { appearance: none; border: 0; padding: 0; color: inherit; background: none; font: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.vendor-resource-links .vendor-guidelines-text-link:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
+.vendor-guidelines-gate { margin-top: 18px; padding: 16px; border: 2px solid var(--pink); background: #fff0f6; }
+.vendor-guidelines-gate > strong { font-size: 1.1rem; }
+.vendor-guidelines-gate > p { margin: 10px 0; }
+.vendor-guidelines-gate > a { display: inline-block; margin: 10px 0 4px 12px; }
+.vendor-form .vendor-guidelines-gate-note { margin: 12px 0 0; font-size: .9rem; line-height: 1.5; }
+.vendor-guidelines-open { overflow: hidden; }
+.vendor-form .vendor-guidelines-dialog { position: fixed; inset: 0; width: min(720px, calc(100vw - 24px)); max-width: none; max-height: calc(100dvh - 32px); margin: auto; padding: 0; border: 2px solid var(--pink); background: var(--cream); color: var(--navy); box-shadow: 7px 7px 0 var(--pink); box-sizing: border-box; }
+.vendor-guidelines-dialog:not([open]) { display: none; }
+.vendor-guidelines-dialog[open] { display: flex; flex-direction: column; }
+.vendor-guidelines-dialog::backdrop { background: rgba(7,24,44,.8); backdrop-filter: blur(3px); }
+.vendor-guidelines-dialog-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 16px; background: var(--pink); }
+.vendor-form .vendor-guidelines-dialog .vendor-guidelines-heading { margin: 0; color: var(--navy) !important; font-family: 'Unique', sans-serif !important; font-size: 2rem !important; line-height: 1.1; }
+.vendor-form .vendor-guidelines-close { padding: 0; min-width: 44px; min-height: 44px; background: var(--cream); font: 700 1.5rem/1 Arial, sans-serif; }
+.vendor-form .vendor-guidelines-dialog-intro { margin: 0; padding: 12px 20px; border-bottom: 1px solid #e2d2c7; font-size: .9rem; line-height: 1.5; }
+.vendor-guidelines-scroll { min-height: 0; max-height: 55dvh; overflow-y: auto; overscroll-behavior: contain; padding: 16px 22px; font: .95rem/1.65 Verdana, Arial, sans-serif; }
+.vendor-guidelines-scroll:focus-visible { outline: 3px solid var(--pink); outline-offset: -3px; }
+.vendor-guidelines-copy h3, .vendor-guidelines-subheading { margin: 22px 0 7px; font-size: 1.05rem; }
+body .myspace-page .vendor-guidelines-copy h3, .vendor-guidelines-dialog .vendor-guidelines-scroll h3 { color: #a40a4c; font-family: Verdana, Arial, sans-serif !important; font-size: 1rem !important; font-weight: 800; }
+.vendor-guidelines-copy p { line-height: 1.65; }
+.vendor-guidelines-dialog .policy-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+.vendor-guidelines-dialog .policy-grid > div { padding: 12px; border: 1px solid #d8c8bc; background: #fffaf1; }
+.vendor-guidelines-dialog .policy-grid p { margin: 5px 0 0; }
+.vendor-form .vendor-guidelines-end { margin: 20px 0 0; padding: 14px; background: #ffe3ef; }
+.vendor-guidelines-dialog-footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 18px; border-top: 1px solid #e2d2c7; background: #fff0f6; }
+.vendor-guidelines-dialog-footer p { flex: 1 1 240px; margin: 0; font-size: .85rem; line-height: 1.5; }
 .vendor-form :focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
 .vendor-form .vendor-form-status { margin: 0; overflow-wrap: anywhere; font-weight: 700; }
 .vendor-email-review { padding: 16px; border: 2px solid var(--pink); background: #fff0f6; }
@@ -62,6 +90,7 @@
 .friday13-policy-card { margin: 12px 0; border-color: var(--pink); }
 .friday13-policy-card ul { margin: 14px 0; padding-left: 22px; }
 .friday13-policy-card li { margin: 8px 0; line-height: 1.5; }
+#nov13-vendor-guidelines { scroll-margin-top: 90px; }
 @media (max-width: 760px) {
   .home-page .profile-left { grid-template-areas: "photo photo" "contact details" "request details" "availability availability" "market market" "music music"; }
   .home-page .profile-left .home-market-card { grid-area: market; }
@@ -74,6 +103,10 @@
   .market-event-facts > div + div { border-left: 0; border-top: 1px solid var(--navy); }
   .market-event-grid, .vendor-form-grid { grid-template-columns: minmax(0, 1fr); }
   .vendor-form fieldset { padding: 12px; }
+  .vendor-guidelines-gate { padding: 12px; }
+  .vendor-guidelines-gate > a { display: block; margin-left: 0; }
+  .vendor-guidelines-scroll { padding: 12px 16px; }
+  .vendor-guidelines-dialog-footer > button { width: 100%; }
 }
 @media (max-width: 360px) {
   .home-page .profile-left { grid-template-areas: "photo" "contact" "request" "details" "availability" "market" "music"; }
